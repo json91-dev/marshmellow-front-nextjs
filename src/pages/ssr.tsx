@@ -6,22 +6,20 @@ import {useEffect, useState} from "react";
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+export async function getServerSideProps() {
+  const response = await fetch("https://api.adviceslip.com/advice")
+  const data = await response.json()
+  const quote = data.slip.advice
+  console.log(`Client-side rendered page: ${quote}`)
 
-  const [quote, setQuote] = useState();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch("https://api.adviceslip.com/advice")
-      const data = await response.json()
-      const quote = data.slip.advice
-      setQuote(quote);
-
-      console.log(`Client-side rendered page: ${quote}`)
+  return {
+    props: {
+      quote,
     }
+  }
+}
 
-    fetchData().then();
-  }, [])
+export default function Home({ quote }) {
 
   return (
     <>
@@ -33,15 +31,12 @@ export default function Home() {
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
         <div className={styles.card}>
-          <h1>CSR</h1>
+          <h1>SSR</h1>
           <div className={styles.center}>
             <div className={styles.description}>
               {quote && quote}
             </div>
           </div>
-        </div>
-        <div>
-          <a href="/ssr">server-side-rendered page 에서 보기</a>
         </div>
       </main>
     </>
