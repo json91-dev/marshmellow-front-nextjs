@@ -41,7 +41,7 @@ export default function Home() {
           </div>
         </div>
         <div>
-          <a href="/ssr">server-side-rendered page 에서 보기</a>
+          <a href="ssr">server-side-rendered page 에서 보기</a>
         </div>
       </main>
     </>
