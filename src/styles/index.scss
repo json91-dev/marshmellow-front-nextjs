@@ -1,0 +1,66 @@
+@import '@/styles/fonts.scss';
+@import '@/styles/reset.scss';
+@import '@/styles/palette.scss';
+@import '@/styles/responsive.scss';
+@import '@/styles/transitionGroup.scss';
+
+@include desktop {
+  html { font-size: 12px; }
+}
+
+@include tablet {
+  html { font-size: 12px; }
+}
+
+@include mobile {
+  html { font-size: 12px; }
+}
+
+@include mobile-mini {
+  html { font-size: 10px; }
+}
+
+* {
+  -webkit-touch-callout: none; /* disable the IOS popup when long-press on a link */
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  touch-action: none;
+
+  @include theme-light-vars;
+  @include z-index-vars;
+  @include userSelectNone;
+}
+
+html {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body {
+  overflow: hidden;
+  position: relative;
+}
+
+#root {
+  box-sizing: border-box;
+  z-index: var(--rootIndex);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#main-canvas {
+  z-index: 0;
+}
+
+.dg.ac {
+  z-index: 9999 !important;
+}

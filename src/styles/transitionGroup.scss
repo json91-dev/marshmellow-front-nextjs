@@ -1,0 +1,35 @@
+// Animation Type 1 : opacity
+.opacity-enter {
+  opacity: 0;
+}
+.opacity-enter-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+.opacity-exit {
+  opacity: 1;
+}
+.opacity-exit-active {
+  opacity: 0;
+  transition: opacity 200ms;
+}
+
+// Animation Type 2 : map animation
+.kakaomap-enter {
+  opacity: 0;
+  transform: translateX(-50%) translateY(100%);
+}
+.kakaomap-enter-active {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0%);
+  transition: opacity 500ms cubic-bezier(.25,.85,.42,.93), transform 500ms cubic-bezier(.25,.85,.42,.93);
+}
+.kakaomap-exit {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0%);
+}
+.kakaomap-exit-active {
+  opacity: 0;
+  transform: translateX(-50%) translateY(100%);
+  transition: opacity 500ms cubic-bezier(.25,.85,.42,.93), transform 500ms cubic-bezier(.25,.85,.42,.93);
+}

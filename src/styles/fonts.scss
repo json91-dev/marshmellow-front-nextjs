@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'Museum';
+  font-weight: 500;
+  src: url("/static/fonts/museum.woff2") format('woff2'),
+    url("/static/fonts/museum.woff") format('woff');
+}
+@font-face {
+  font-family: 'SUIT';
+  font-weight: 100 900;
+  src: url('/static/fonts/SUIT-Variable.woff2') format('woff2-variations'),
+    url('/static/fonts/SUIT-Variable.ttf') format('truetype-variations');
+}
