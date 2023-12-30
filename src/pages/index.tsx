@@ -1,28 +1,10 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
-import {useEffect, useState} from "react";
-
-const inter = Inter({ subsets: ['latin'] })
+import Head from "next/head";
+import Image from "next/image";
+import { Inter } from "next/font/google";
+import styles from "@/styles/Home.module.css";
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-
-  const [quote, setQuote] = useState();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch("https://api.adviceslip.com/advice")
-      const data = await response.json()
-      const quote = data.slip.advice
-      setQuote(quote);
-
-      console.log(`Client-side rendered page: ${quote}`)
-    }
-
-    fetchData().then();
-  }, [])
-
   return (
     <>
       <Head>
@@ -31,19 +13,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={`${styles.main} ${inter.className}`}>
-        <div className={styles.card}>
-          <h1>CSR</h1>
-          <div className={styles.center}>
-            <div className={styles.description}>
-              {quote && quote}
-            </div>
-          </div>
-        </div>
-        <div>
-          <a href="ssr">server-side-rendered page 에서 보기</a>
-        </div>
-      </main>
+      <div className={`${styles.main}`}></div>
     </>
-  )
+  );
 }

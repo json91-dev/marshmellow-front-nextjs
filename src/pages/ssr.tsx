@@ -19,7 +19,7 @@ export async function getServerSideProps() {
   }
 }
 
-export default function Home({ quote }) {
+export default function Home({ quote }: any) {
 
   return (
     <>

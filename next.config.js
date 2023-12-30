@@ -1,9 +1,11 @@
 /** @type {import('next').NextConfig} */
+const path = require("path");
+
 const nextConfig = {
   reactStrictMode: true,
   typescript: {
-    ignoreBuildErrors: true
-  }
-}
+    ignoreBuildErrors: true,
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

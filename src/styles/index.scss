@@ -1,8 +1,8 @@
-@import '@/styles/fonts.scss';
-@import '@/styles/reset.scss';
-@import '@/styles/palette.scss';
-@import '@/styles/responsive.scss';
-@import '@/styles/transitionGroup.scss';
+@import './fonts.scss';
+@import './reset.scss';
+@import './palette.scss';
+@import './responsive.scss';
+@import './transitionGroup.scss';
 
 @include desktop {
   html { font-size: 12px; }
