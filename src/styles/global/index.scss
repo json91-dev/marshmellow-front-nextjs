@@ -1,8 +1,8 @@
-@import './fonts.scss';
-@import './reset.scss';
-@import './palette.scss';
-@import './responsive.scss';
-@import './transitionGroup.scss';
+@import 'fonts';
+@import 'reset';
+@import 'palette';
+@import 'responsive';
+@import 'transitionGroup';
 
 @include desktop {
   html { font-size: 12px; }
@@ -30,6 +30,7 @@ html, body {
   margin: 0;
   overflow: hidden;
   touch-action: none;
+  font-size: 62.5%;
 
   @include theme-light-vars;
   @include z-index-vars;
