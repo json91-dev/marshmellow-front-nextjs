@@ -7,7 +7,8 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   sassOptions: {
-    includePaths: [path.join(__dirname, "styles")],
+    includePaths: [path.join(__dirname, 'styles'), path.join(__dirname, 'src')],
+    prependData: `@import "src/styles/global.scss";`
   },
 };
 
