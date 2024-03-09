@@ -9,7 +9,7 @@ export default function Login() {
         <h2>오늘도 열심히 일한 당신! 혜택을 누리고 즐겨라!</h2>
         <h1>직장인들의 달달한 간식</h1>
         <div className={style.image}>
-          {/*<Image src="/images/login_main.svg" width="527" height="512" layout="responsive" alt="No Image"></Image>*/}
+          <Image src="/images/login_main.svg" width="527" height="512" layout="responsive" alt="No Image"></Image>
         </div>
       </div>
 

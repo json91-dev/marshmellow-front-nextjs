@@ -17,6 +17,7 @@
   justify-content: center;
   align-items: center;
   background: white;
+  position: relative;
 
   @include isMobile {
     width: 43rem;
@@ -24,10 +25,24 @@
   }
 
   @include isDesktop {
-    position: relative;
     height: 100%;
     width: 43rem;
     left: 50%;
   }
+}
 
+.LeftContent {
+  position: fixed;
+  left:calc(50vw - 70rem);
+  width: 70rem;
+  height: 100%;
+  border: 2px solid green;
+
+  @include isMobile {
+    display: none;
+  }
+}
+
+.RightContent {
+  position: fixed;
 }

@@ -17,9 +17,9 @@ export default function RootLayout({ children }: Props) {
     <html lang="en">
       <body>
         <div className={style.RootLayout}>
-          <div className={style.Content}>
-            <div className={style.ContentMain}>{children}</div>
-          </div>
+          <div className={style.LeftContent}>asdfasdf</div>
+          <div className={style.Content}>{children}</div>
+          <div className={style.RightContent}></div>
         </div>
       </body>
     </html>
