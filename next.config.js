@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const path = require("path");
+const path = require('path');
 
 const nextConfig = {
   reactStrictMode: true,
@@ -7,8 +7,7 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   sassOptions: {
-    includePaths: [path.join(__dirname, 'styles'), path.join(__dirname, 'src')],
-    prependData: `@import "src/styles/global.scss";`
+    prependData: `@import "src/styles/index.scss";`,
   },
 };
 
