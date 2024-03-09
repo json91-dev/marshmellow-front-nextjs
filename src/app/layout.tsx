@@ -16,10 +16,10 @@ export default function RootLayout({ children }: Props) {
   return (
     <html lang="en">
       <body>
-        <div className={style.RootLayout}>
-          <div className={style.LeftContent}>asdfasdf</div>
-          <div className={style.Content}>{children}</div>
-          <div className={style.RightContent}></div>
+        <div className={style.rootLayout}>
+          <div className={style.leftContent}>asdfasdf</div>
+          <div className={style.content}>{children}</div>
+          <div className={style.rightContent}></div>
         </div>
       </body>
     </html>

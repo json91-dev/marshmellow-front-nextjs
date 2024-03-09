@@ -1,7 +1,6 @@
-.RootLayout {
+.rootLayout {
   width: 100%;
   height: 100%;
-  border: 1px solid red;
 
   @include isMobile {
     display: flex;
@@ -10,7 +9,7 @@
   }
 }
 
-.Content {
+.content {
   z-index: 1;
   top: 0;
   display: flex;
@@ -31,18 +30,17 @@
   }
 }
 
-.LeftContent {
+.leftContent {
   position: fixed;
   left:calc(50vw - 70rem);
   width: 70rem;
   height: 100%;
-  border: 2px solid green;
 
   @include isMobile {
     display: none;
   }
 }
 
-.RightContent {
+.rightContent {
   position: fixed;
 }

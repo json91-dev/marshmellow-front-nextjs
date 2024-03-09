@@ -1,0 +1,36 @@
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .button {
+    width: 90%;
+    max-width: 50rem;
+    height: 6rem;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    border-radius: 1rem;
+    align-items: center;
+    flex-direction: row;
+    transition: transform .2s;
+    border: 1px solid #D4DBE9;
+
+    &:active {
+      transform: scale(.97)
+    }
+
+    .image {
+      position: relative;
+      width: 3rem;
+      height: 3rem;
+    }
+
+    p {
+      margin-left: 1rem;
+      font-size: 1.7rem;
+      padding-top: 0.3rem;
+    }
+  }
+}
