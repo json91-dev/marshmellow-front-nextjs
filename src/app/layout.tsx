@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './layout.module.scss';
 import './global.css';
+import { useMediaQuery } from 'react-responsive';
 
 export const metadata = {
   title: '마쉬멜로우',
@@ -15,11 +16,9 @@ export default function RootLayout({ children }: Props) {
   return (
     <html lang="en">
       <body>
-        <div className={style.layout}>
-          <div className={style.layout__bg}></div>
-          <div className={style.layout__menu}></div>
-          <div className={style.layout__content}>
-            <div className={style.layout__contentMain}>{children}</div>
+        <div className={style.RootLayout}>
+          <div className={style.Content}>
+            <div className={style.ContentMain}>{children}</div>
           </div>
         </div>
       </body>
