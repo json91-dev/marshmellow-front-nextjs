@@ -17,7 +17,7 @@ export default function RootLayout({ children }: Props) {
     <html lang="en">
       <body>
         <div className={style.rootLayout}>
-          <div className={style.leftContent}>asdfasdf</div>
+          <div className={style.leftContent}></div>
           <div className={style.content}>{children}</div>
           <div className={style.rightContent}></div>
         </div>
