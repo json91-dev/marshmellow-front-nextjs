@@ -9,7 +9,7 @@
 }
 
 .tab {
-  width: 90%;
+  width: 100%;
   max-width: 90rem;
   display: flex;
   flex-direction: row;
@@ -49,7 +49,6 @@
 
 .activeBox {
   background: #9CA6BE;
-  border: 1px solid red;
 }
 
 .activeFont {
