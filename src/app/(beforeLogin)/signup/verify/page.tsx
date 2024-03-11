@@ -1,7 +1,9 @@
 import style from './verify.module.scss';
 import InformationTab from '@/app/(beforeLogin)/signup/_components/InformationTab';
 import React from 'react';
-export default function SignUpVerify() {
+
+/** 회원가입 인증 페이지  **/
+export default function Verify() {
   return (
     <div className={style.container}>
       <InformationTab index={1} />
