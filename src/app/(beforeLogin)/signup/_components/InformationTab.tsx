@@ -21,6 +21,10 @@ export default function InformationTab({ index }: Props) {
           <p className={cx(index === 3 && style.activeFont)}>3.최종제출</p>
         </div>
       </div>
+
+      <div className={style.description}>
+        입사 지원서는 순서대로 기재 바랍니다. '최종제출' 버튼을 눌러야 입사 지원이 완료되오니 유의하시기 바랍니다.
+      </div>
     </div>
   );
 }

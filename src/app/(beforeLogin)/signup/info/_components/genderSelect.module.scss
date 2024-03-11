@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  flex-direction: row;
+  box-sizing: border-box;
+}
+
+.genderOption {
+  flex: 1; /* 동일한 너비를 가지도록 */
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+
+  div {
+    font-size: 1rem;
+  }
+}
+
+.selected {
+  border: 1px solid black;
+}
+

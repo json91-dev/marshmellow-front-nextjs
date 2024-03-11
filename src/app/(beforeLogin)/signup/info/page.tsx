@@ -4,18 +4,17 @@ import style from './info.module.scss';
 import InformationTab from '@/app/(beforeLogin)/signup/_components/InformationTab';
 import React from 'react';
 import 'react-datepicker/dist/react-datepicker.css';
-import ReactDatePicker from '@/app/(beforeLogin)/signup/info/_components/ReactDatePicker';
+import DateSelect from '@/app/(beforeLogin)/signup/info/_components/DateSelect';
 import HorizontalLine from '@/app/(beforeLogin)/signup/info/_components/HorizontalLine';
 import Image from 'next/image';
+import GenderSelect from '@/app/(beforeLogin)/signup/info/_components/GenderSelect';
+import NicknameSelect from '@/app/(beforeLogin)/signup/info/_components/NicknameSelect';
 
 /** 회원가입 정보 입력 페이지 **/
 export default function Info() {
   return (
     <div className={style.container}>
       <InformationTab index={2} />
-      <div className={style.description}>
-        입사 지원서는 순서대로 기재 바랍니다. '최종제출' 버튼을 눌러야 입사 지원이 완료되오니 유의하시기 바랍니다.
-      </div>
 
       <div className={style.secitionInfo}>
         <div>*기본정보</div>
@@ -39,20 +38,17 @@ export default function Info() {
 
       <div className={style.nicknameArea}>
         <div className={style.label}>닉네임</div>
-        <div className={style.nicknam}>
-          <input className={style.textInput} type="text" placeholder="특수문자 제외 2~8자" />
-          <div>중복 확인</div>
-        </div>
+        <NicknameSelect />
       </div>
 
       <div className={style.genderArea}>
-        <div>성별</div>
-        <div>토글 성별영역</div>
+        <div className={style.label}>성별</div>
+        <GenderSelect />
       </div>
 
       <div className={style.birthArea}>
         <div>생년월일</div>
-        <ReactDatePicker />
+        <DateSelect />
       </div>
 
       {/*기타*/}
