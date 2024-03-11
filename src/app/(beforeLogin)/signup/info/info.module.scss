@@ -10,14 +10,32 @@
   padding-left: 2rem;
   padding-right: 2rem;
   border: 3px solid green;
+  overflow: hidden;
 
-  div {
-    border: 1px solid blue;
-  }
 }
 
 .subscription {
   color: gray;
-  font-size: 1rem;
+  font-size: 1.2rem;
   margin-top: 1.5rem;
+}
+
+.textInput {
+  width: 90%;
+  border: 1px solid #D5DBE8;
+  padding: 0.8rem 1rem;
+  outline: none;
+
+  &:focus {
+    border: 1px solid black;
+  }
+}
+
+.dateInput {
+  -webkit-appearance: none;
+  width: 90%;
+  padding: 2rem;
+  font-size: 1.8rem;
+  text-align: left;
+
 }

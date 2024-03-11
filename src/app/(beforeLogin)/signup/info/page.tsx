@@ -1,16 +1,18 @@
+'use client';
+
 import style from './info.module.scss';
 import InformationTab from '@/app/(beforeLogin)/signup/_components/InformationTab';
 import React from 'react';
+import 'react-datepicker/dist/react-datepicker.css';
+import ReactDatePicker from '@/app/(beforeLogin)/signup/info/_components/ReactDatePicker';
 
 export default function SignUpInfo() {
   return (
     <div className={style.container}>
       <InformationTab index={2} />
-
       <div className={style.subscription}>
         입사 지원서는 순서대로 기재 바랍니다. '최종제출' 버튼을 눌러야 입사 지원이 완료되오니 유의하시기 바랍니다.
       </div>
-
       {/*기본정보*/}
       <>
         <div className={style.sesctionText}>*기본정보</div>
@@ -24,10 +26,10 @@ export default function SignUpInfo() {
         </div>
 
         <div className={style.infoText}>이름</div>
-        <input type="text" placeholder="아이디를 입력해주세요" />
+        <input className={style.textInput} type="text" placeholder="아이디를 입력해주세요" />
 
         <div>닉네임</div>
-        <input type="text" placeholder="특수문자 제외 2~8자" />
+        <input className={style.textInput} type="text" placeholder="특수문자 제외 2~8자" />
         <div>
           <div>입력영역</div>
           <div>중복 확인</div>
@@ -37,10 +39,191 @@ export default function SignUpInfo() {
         <div>토글 성별영역</div>
 
         <div>생년월일</div>
-        <input type="date" placeholder="특수문자 제외 2~8자" />
+        <ReactDatePicker />
       </>
-
       {/*기타*/}
+      <>
+        <div>기타</div>
+        <div>
+          <div>지원경로</div>
+          <div>선택영역</div>
+        </div>
+        <div>
+          <div>추천인 입력</div>
+          <div>추천인 입력시, 마시멜로우 10개를 드려요</div>
+        </div>
+        <div>추천인 닉네임을 입력해주세요.</div>
+
+        <div>다음 단계 버튼</div>
+      </>
+      <>
+        <div>기타</div>
+        <div>
+          <div>지원경로</div>
+          <div>선택영역</div>
+        </div>
+        <div>
+          <div>추천인 입력</div>
+          <div>추천인 입력시, 마시멜로우 10개를 드려요</div>
+        </div>
+        <div>추천인 닉네임을 입력해주세요.</div>
+
+        <div>다음 단계 버튼</div>
+      </>
+      <>
+        <div>기타</div>
+        <div>
+          <div>지원경로</div>
+          <div>선택영역</div>
+        </div>
+        <div>
+          <div>추천인 입력</div>
+          <div>추천인 입력시, 마시멜로우 10개를 드려요</div>
+        </div>
+        <div>추천인 닉네임을 입력해주세요.</div>
+
+        <div>다음 단계 버튼</div>
+      </>{' '}
+      <>
+        <div>기타</div>
+        <div>
+          <div>지원경로</div>
+          <div>선택영역</div>
+        </div>
+        <div>
+          <div>추천인 입력</div>
+          <div>추천인 입력시, 마시멜로우 10개를 드려요</div>
+        </div>
+        <div>추천인 닉네임을 입력해주세요.</div>
+
+        <div>다음 단계 버튼</div>
+      </>
+      <>
+        <div>기타</div>
+        <div>
+          <div>지원경로</div>
+          <div>선택영역</div>
+        </div>
+        <div>
+          <div>추천인 입력</div>
+          <div>추천인 입력시, 마시멜로우 10개를 드려요</div>
+        </div>
+        <div>추천인 닉네임을 입력해주세요.</div>
+
+        <div>다음 단계 버튼</div>
+      </>{' '}
+      <>
+        <div>기타</div>
+        <div>
+          <div>지원경로</div>
+          <div>선택영역</div>
+        </div>
+        <div>
+          <div>추천인 입력</div>
+          <div>추천인 입력시, 마시멜로우 10개를 드려요</div>
+        </div>
+        <div>추천인 닉네임을 입력해주세요.</div>
+
+        <div>다음 단계 버튼</div>
+      </>{' '}
+      <>
+        <div>기타</div>
+        <div>
+          <div>지원경로</div>
+          <div>선택영역</div>
+        </div>
+        <div>
+          <div>추천인 입력</div>
+          <div>추천인 입력시, 마시멜로우 10개를 드려요</div>
+        </div>
+        <div>추천인 닉네임을 입력해주세요.</div>
+
+        <div>다음 단계 버튼</div>
+      </>{' '}
+      <>
+        <div>기타</div>
+        <div>
+          <div>지원경로</div>
+          <div>선택영역</div>
+        </div>
+        <div>
+          <div>추천인 입력</div>
+          <div>추천인 입력시, 마시멜로우 10개를 드려요</div>
+        </div>
+        <div>추천인 닉네임을 입력해주세요.</div>
+
+        <div>다음 단계 버튼</div>
+      </>{' '}
+      <>
+        <div>기타</div>
+        <div>
+          <div>지원경로</div>
+          <div>선택영역</div>
+        </div>
+        <div>
+          <div>추천인 입력</div>
+          <div>추천인 입력시, 마시멜로우 10개를 드려요</div>
+        </div>
+        <div>추천인 닉네임을 입력해주세요.</div>
+
+        <div>다음 단계 버튼</div>
+      </>{' '}
+      <>
+        <div>기타</div>
+        <div>
+          <div>지원경로</div>
+          <div>선택영역</div>
+        </div>
+        <div>
+          <div>추천인 입력</div>
+          <div>추천인 입력시, 마시멜로우 10개를 드려요</div>
+        </div>
+        <div>추천인 닉네임을 입력해주세요.</div>
+
+        <div>다음 단계 버튼</div>
+      </>{' '}
+      <>
+        <div>기타</div>
+        <div>
+          <div>지원경로</div>
+          <div>선택영역</div>
+        </div>
+        <div>
+          <div>추천인 입력</div>
+          <div>추천인 입력시, 마시멜로우 10개를 드려요</div>
+        </div>
+        <div>추천인 닉네임을 입력해주세요.</div>
+
+        <div>다음 단계 버튼</div>
+      </>{' '}
+      <>
+        <div>기타</div>
+        <div>
+          <div>지원경로</div>
+          <div>선택영역</div>
+        </div>
+        <div>
+          <div>추천인 입력</div>
+          <div>추천인 입력시, 마시멜로우 10개를 드려요</div>
+        </div>
+        <div>추천인 닉네임을 입력해주세요.</div>
+
+        <div>다음 단계 버튼</div>
+      </>{' '}
+      <>
+        <div>기타</div>
+        <div>
+          <div>지원경로</div>
+          <div>선택영역</div>
+        </div>
+        <div>
+          <div>추천인 입력</div>
+          <div>추천인 입력시, 마시멜로우 10개를 드려요</div>
+        </div>
+        <div>추천인 닉네임을 입력해주세요.</div>
+
+        <div>다음 단계 버튼</div>
+      </>{' '}
       <>
         <div>기타</div>
         <div>
