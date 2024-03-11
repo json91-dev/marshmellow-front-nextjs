@@ -54,3 +54,38 @@ button {
   color: #000;
 }
 
+
+/** DatePicker 커스터마이징 **/
+
+.dateSelect_container {
+  width: 100%;
+  border: 1px solid red;
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
+  border: 1px solid red;
+
+}
+
+.react-datepicker-wrapper input {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #9DA5B7;
+  color: black;
+  outline: none;
+}
+
+.react-datepicker-wrapper input:focus {
+  border: 1px solid black;
+  color: black;
+}
+
+.react-datepicker__input-container {
+  display: block !important;
+}
+
+.datePicker {
+  border: 1px solid red;
+  width: 100% !important;
+}

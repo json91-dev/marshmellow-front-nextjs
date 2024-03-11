@@ -47,7 +47,7 @@ export default function Info() {
       </div>
 
       <div className={style.birthArea}>
-        <div>생년월일</div>
+        <div className={style.label}>생년월일</div>
         <DateSelect />
       </div>
 
