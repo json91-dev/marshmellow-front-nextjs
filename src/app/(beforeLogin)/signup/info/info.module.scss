@@ -13,9 +13,7 @@
 
 }
 
-.label {
 
-}
 
 .textInput {
   width: 100%;
@@ -111,5 +109,17 @@
 
   > :last-child {
     width: 100%;
+  }
+}
+
+.recommendArea {
+  width: 100%;
+
+  > :nth-child(1) {
+    margin-bottom: 0.5rem !important;
+  }
+
+  > :nth-child(2) {
+    margin-bottom: 1rem !important;
   }
 }

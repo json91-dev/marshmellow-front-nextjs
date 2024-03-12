@@ -10,6 +10,7 @@ import Image from 'next/image';
 import GenderSelect from '@/app/(beforeLogin)/signup/info/_components/GenderSelect';
 import NicknameSelect from '@/app/(beforeLogin)/signup/info/_components/NicknameSelect';
 import ContactSelect from '@/app/(beforeLogin)/signup/info/_components/ContectSelect';
+import RecomendSelect from '@/app/(beforeLogin)/signup/info/_components/RecomendSelect';
 
 /** 회원가입 정보 입력 페이지 **/
 export default function Info() {
@@ -64,14 +65,12 @@ export default function Info() {
       </div>
 
       <div className={style.recommendArea}>
-        <div>
-          <div>추천인 입력</div>
-          <div>추천인 입력시, 마시멜로우 10개를 드려요</div>
-        </div>
-        <div>추천인 닉네임을 입력해주세요.</div>
+        <div className={style.labelLarge}>추천인 입력</div>
+        <div className={style.label}>추천인 입력시, 마시멜로우 10개를 드려요</div>
+        <RecomendSelect />
       </div>
 
-      <div>다음 단계 버튼</div>
+      {/*<div>다음 단계 버튼</div>*/}
     </div>
   );
 }
