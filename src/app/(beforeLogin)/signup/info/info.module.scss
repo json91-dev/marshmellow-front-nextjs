@@ -53,6 +53,11 @@
   margin-bottom: 0.5rem;
 }
 
+.labelLarge {
+  color: black;
+  font-size: 1.4rem;
+}
+
 .imageArea {
   width: 100%;
   height: 10rem;
@@ -93,5 +98,18 @@
   margin-bottom: 3rem;
 }
 
+.contactArea {
+  width: 100%;
+  margin-bottom: 3rem;
+  display: flex;
+  align-items: center;
 
+  > :first-child {
+    display: flex;
+    width: 20%;
+  }
 
+  > :last-child {
+    width: 100%;
+  }
+}

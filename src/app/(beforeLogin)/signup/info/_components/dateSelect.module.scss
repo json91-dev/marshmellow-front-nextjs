@@ -1,3 +1,17 @@
 .container {
   width: 100%;
 }
+
+.textInput {
+  width: 100%;
+  border: 1px solid #9DA5B7;
+  padding: 1rem;
+  outline: none;
+  font-size: 16px;
+  border-radius: 0.5rem;
+
+
+  &:focus {
+    border: 1px solid black;
+  }
+}

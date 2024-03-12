@@ -9,6 +9,7 @@ import HorizontalLine from '@/app/(beforeLogin)/signup/info/_components/Horizont
 import Image from 'next/image';
 import GenderSelect from '@/app/(beforeLogin)/signup/info/_components/GenderSelect';
 import NicknameSelect from '@/app/(beforeLogin)/signup/info/_components/NicknameSelect';
+import ContactSelect from '@/app/(beforeLogin)/signup/info/_components/ContectSelect';
 
 /** 회원가입 정보 입력 페이지 **/
 export default function Info() {
@@ -58,8 +59,8 @@ export default function Info() {
       </div>
 
       <div className={style.contactArea}>
-        <div>지원경로</div>
-        <div>선택영역</div>
+        <div className={style.labelLarge}>지원경로</div>
+        <ContactSelect />
       </div>
 
       <div className={style.recommendArea}>
