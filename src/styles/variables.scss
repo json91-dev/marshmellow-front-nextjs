@@ -1,3 +1,8 @@
 
-$sizes-topnav-height: 5.2rem;
-$sizes-topnav-min-height: 3rem;
+/** 사이즈 관리 **/
+$sizes-signup-topnav-height: 5.2rem;
+$sizes-content-width: 43rem;
+
+/** z-index 관리 **/
+$z-index-signup-topnav: 2;
+$z-index-signup-children: 1;

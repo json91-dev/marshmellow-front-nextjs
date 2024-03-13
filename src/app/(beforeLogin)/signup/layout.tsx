@@ -1,6 +1,5 @@
 import style from './signupLayout.module.scss';
 import React from 'react';
-import InformationTab from '@/app/(beforeLogin)/signup/_components/InformationTab';
 import TopNavigation from '@/app/(beforeLogin)/signup/_components/TopNavigation';
 
 type Props = {
@@ -9,9 +8,9 @@ type Props = {
 
 export default function SignUpLayout({ children }: Props) {
   return (
-    <div className={style.container}>
+    <>
       <TopNavigation />
-      {children}
-    </div>
+      <div className={style.container}>{children}</div>
+    </>
   );
 }

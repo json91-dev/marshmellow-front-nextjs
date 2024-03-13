@@ -2,6 +2,7 @@ import React from 'react';
 import style from './layout.module.scss';
 import './global.css';
 import { useMediaQuery } from 'react-responsive';
+import LeftZone from '@/app/_components/LeftZone';
 
 export const metadata = {
   title: '마쉬멜로우',
@@ -17,9 +18,11 @@ export default function RootLayout({ children }: Props) {
     <html lang="en">
       <body>
         <div className={style.rootLayout}>
-          <div className={style.leftContent}></div>
+          <LeftZone />
+
           <div className={style.content}>{children}</div>
-          <div className={style.rightContent}></div>
+
+          <div className={style.rightZone}></div>
         </div>
       </body>
     </html>

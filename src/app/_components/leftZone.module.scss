@@ -1,0 +1,10 @@
+.container {
+  position: fixed;
+  left:calc(50vw - 70rem);
+  width: 70rem;
+  height: 100%;
+
+  @include isMobile {
+    display: none;
+  }
+}

@@ -17,30 +17,19 @@
   align-items: center;
   background: white;
   position: relative;
+  height: 100%;
+  overflow: scroll;
+
 
   @include isMobile {
-    width: 43rem;
-    height: 100%;
+    width: $sizes-content-width;
   }
 
   @include isDesktop {
-    height: 100%;
-    width: 43rem;
+    width: $sizes-content-width;
     left: 50%;
   }
 }
-
-.leftContent {
-  position: fixed;
-  left:calc(50vw - 70rem);
-  width: 70rem;
-  height: 100%;
-
-  @include isMobile {
-    display: none;
-  }
-}
-
 .rightContent {
   position: fixed;
 }

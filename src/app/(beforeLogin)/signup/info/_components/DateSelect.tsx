@@ -23,6 +23,7 @@ export default function DateSelect() {
       <input
         className={style.textInput}
         value={birthdate}
+        pattern="\d*"
         onChange={handleTextChange}
         maxLength={10}
         placeholder="YYYY.MM.DD"
