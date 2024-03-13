@@ -14,11 +14,7 @@
     border-radius: 1rem;
     align-items: center;
     flex-direction: row;
-    transition: transform .2s;
-
-    &:active {
-      transform: scale(.97)
-    }
+    @include buttonActiveScale;
 
     .image {
       position: relative;

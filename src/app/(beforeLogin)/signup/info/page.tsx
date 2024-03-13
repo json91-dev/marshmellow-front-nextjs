@@ -18,7 +18,7 @@ export default function Info() {
     <div className={style.container}>
       <InformationTab index={2} />
 
-      <div className={style.secitionInfo}>
+      <div className={style.sectionInfo}>
         <div>*기본정보</div>
         <HorizontalLine />
       </div>
@@ -54,7 +54,7 @@ export default function Info() {
       </div>
 
       {/*기타*/}
-      <div className={style.secitionInfo}>
+      <div className={style.sectionInfo}>
         <div>*기타</div>
         <HorizontalLine />
       </div>
@@ -70,7 +70,11 @@ export default function Info() {
         <RecomendSelect />
       </div>
 
-      {/*<div>다음 단계 버튼</div>*/}
+      <div className={style.confirmArea}>
+        <div className={style.confirmButton}>다음 단계 버튼</div>
+      </div>
+
+      <div className={style.emptyArea}></div>
     </div>
   );
 }

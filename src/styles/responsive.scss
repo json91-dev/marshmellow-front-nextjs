@@ -1,4 +1,6 @@
 
+
+
 @mixin isMobile {
   @media (min-width: 0) and (max-width: 1023px) {
     @content;
@@ -7,6 +9,12 @@
 
 @mixin isSmallMobile {
   @media (min-width: 0) and (max-width: 430px) {
+    @content;
+  }
+}
+
+@mixin isTablet {
+  @media (min-width: 431px) and (max-width: 1023px) {
     @content;
   }
 }

@@ -12,6 +12,10 @@
   background-color: white;
 
 
+  @include isSmallMobile {
+    width: 100% !important;
+  }
+
   @include isMobile {
     width: $sizes-content-width;
   }
@@ -30,5 +34,8 @@
     width: 3rem;
     height: 3rem;
     position:relative;
+
+    @include buttonActiveOpacity;
+    @include buttonActiveScale;
   }
 }
