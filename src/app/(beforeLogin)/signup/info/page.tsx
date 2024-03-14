@@ -5,12 +5,14 @@ import InformationTab from '@/app/(beforeLogin)/signup/_components/InformationTa
 import React from 'react';
 import 'react-datepicker/dist/react-datepicker.css';
 import DateSelect from '@/app/(beforeLogin)/signup/info/_components/DateSelect';
-import HorizontalLine from '@/app/(beforeLogin)/signup/info/_components/HorizontalLine';
 import Image from 'next/image';
 import GenderSelect from '@/app/(beforeLogin)/signup/info/_components/GenderSelect';
 import NicknameSelect from '@/app/(beforeLogin)/signup/info/_components/NicknameSelect';
 import ContactSelect from '@/app/(beforeLogin)/signup/info/_components/ContectSelect';
 import RecomendSelect from '@/app/(beforeLogin)/signup/info/_components/RecomendSelect';
+import HorizontalLine from '@/app/(beforeLogin)/signup/_components/HorizontalLine';
+import SectionInfo from '@/app/(beforeLogin)/signup/_components/SectionInfo';
+import ConfirmButton from '@/app/(beforeLogin)/signup/_components/ConfirmButton';
 
 /** 회원가입 정보 입력 페이지 **/
 export default function Info() {
@@ -18,10 +20,7 @@ export default function Info() {
     <div className={style.container}>
       <InformationTab index={2} />
 
-      <div className={style.sectionInfo}>
-        <div>*기본정보</div>
-        <HorizontalLine />
-      </div>
+      <SectionInfo title={'*기본정보'} />
 
       <div className={style.imageArea}>
         <div className={style.image}>
@@ -54,10 +53,7 @@ export default function Info() {
       </div>
 
       {/*기타*/}
-      <div className={style.sectionInfo}>
-        <div>*기타</div>
-        <HorizontalLine />
-      </div>
+      <SectionInfo title={'*기타'} />
 
       <div className={style.contactArea}>
         <div className={style.labelLarge}>지원경로</div>
@@ -71,7 +67,7 @@ export default function Info() {
       </div>
 
       <div className={style.confirmArea}>
-        <div className={style.confirmButton}>다음 단계 버튼</div>
+        <ConfirmButton text={'다음 단계 버튼'} customStyle={{ width: '100%' }} />
       </div>
 
       <div className={style.emptyArea}></div>
