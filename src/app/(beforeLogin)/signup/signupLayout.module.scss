@@ -5,3 +5,46 @@
   z-index: $z-index-signup-children;
   bottom: 0;
 }
+
+.topNav {
+  position: fixed;
+  top: 0;
+  z-index: $z-index-signup-topnav;
+  height: $sizes-signup-topnav-height;
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+  flex-direction: row;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  background-color: white;
+  border: 1px solid red;
+
+
+  @include isSmallMobile {
+    width: 100% !important;
+  }
+
+  @include isMobile {
+    width: $sizes-content-width;
+  }
+
+  @include isDesktop {
+    width: $sizes-content-width;
+    left: 50%;
+  }
+
+  p {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .leftIcon {
+    width: 3rem;
+    height: 3rem;
+    position:relative;
+
+    @include buttonActiveOpacity;
+    @include buttonActiveScale;
+  }
+}

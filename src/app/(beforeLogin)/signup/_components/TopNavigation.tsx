@@ -1,12 +1,23 @@
+'use client';
+
 import style from './topNavigation.module.scss';
 import Image from 'next/image';
 import React from 'react';
+import { usePathname } from 'next/navigation';
 
-export default function TopNavigation() {
+type Props = {
+  isShowBackButton: boolean;
+};
+
+export default function TopNavigation({ isShowBackButton = true }: Props) {
+  const pathname = usePathname();
+
   return (
     <div className={style.container}>
       <div className={style.leftIcon}>
-        <Image src="/images/icon_arrow.png" alt="No Image" fill objectFit="contain" />
+        {pathname !== '/signup/submit-complete' && (
+          <Image src="/images/icon_arrow.png" alt="No Image" fill objectFit="contain" />
+        )}
       </div>
       <p>지원하기</p>
       <div className={style.leftIcon}></div>

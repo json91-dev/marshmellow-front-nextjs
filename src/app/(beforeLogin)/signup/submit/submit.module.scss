@@ -1,8 +1,49 @@
 .container {
   width: 100%;
   height: 100%;
+  position: absolute;
+  z-index: 1;
+  padding-top: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.label {
+  color: #9DA5B7;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.infoCheckArea {
+  width: 100%;
+  margin-top: 1.6rem;
+
+  > div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.4rem;
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+    margin-bottom: 1.6rem;
+    >:first-child {
+      color: #1C222B;
+    }
+
+    >:last-child {
+      color: #5C6475;
+    }
+  }
+}
+
+.confirmArea {
+  width: 100%;
+
+  position: absolute;
+  bottom: 4rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
