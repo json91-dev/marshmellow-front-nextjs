@@ -5,11 +5,7 @@ import Image from 'next/image';
 import React from 'react';
 import { usePathname } from 'next/navigation';
 
-type Props = {
-  isShowBackButton: boolean;
-};
-
-export default function TopNavigation({ isShowBackButton = true }: Props) {
+export default function TopNavigation() {
   const pathname = usePathname();
 
   return (

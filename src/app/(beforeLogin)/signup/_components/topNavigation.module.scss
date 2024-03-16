@@ -1,8 +1,11 @@
 .container {
+  @include z-index-vars;
+  @include sizes;
+
   position: fixed;
   top: 0;
-  z-index: $z-index-signup-topnav;
-  height: $sizes-signup-topnav-height;
+  z-index: var(--signUpTopNavIndex);
+  height: var(--signUpTopNavHeight);
   display: flex;
   justify-content: space-between;
   align-items:center;
@@ -17,11 +20,13 @@
   }
 
   @include isMobile {
-    width: $sizes-content-width;
+    @include sizes;
+    width: var(--mainLayoutChildrenWidth);
   }
 
   @include isDesktop {
-    width: $sizes-content-width;
+    @include sizes;
+    width: var(--mainLayoutChildrenWidth);
     left: 50%;
   }
 

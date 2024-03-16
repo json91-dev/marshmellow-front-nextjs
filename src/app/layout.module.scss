@@ -10,6 +10,8 @@
 }
 
 .content {
+  @include sizes;
+
   z-index: 1;
   top: 0;
   display: flex;
@@ -22,11 +24,11 @@
 
 
   @include isMobile {
-    width: $sizes-content-width;
+    width: var(--mainLayoutChildrenWidth);
   }
 
   @include isDesktop {
-    width: $sizes-content-width;
+    width: var(--mainLayoutChildrenWidth);
     left: 50%;
   }
 }

@@ -1,16 +1,23 @@
-.container {
+.layoutChildren {
+  @include z-index-vars;
+  z-index: var(--signUpLayoutChildrenIndex);
+
   width: 100%;
-  height: calc(100% - $sizes-signup-topnav-height);
+
+  @include sizes;
+  height: calc(100% - var(--signUpTopNavHeight));
   position: absolute;
-  z-index: $z-index-signup-children;
   bottom: 0;
 }
 
 .topNav {
+  @include z-index-vars;
+  @include sizes;
+
+  z-index: var(--signUpTopNavIndex);
   position: fixed;
   top: 0;
-  z-index: $z-index-signup-topnav;
-  height: $sizes-signup-topnav-height;
+  height: var(--signUpTopNavHeight);
   display: flex;
   justify-content: space-between;
   align-items:center;
@@ -20,17 +27,16 @@
   background-color: white;
   border: 1px solid red;
 
-
   @include isSmallMobile {
     width: 100% !important;
   }
 
   @include isMobile {
-    width: $sizes-content-width;
+    width: var(--mainLayoutChildrenWidth);
   }
 
   @include isDesktop {
-    width: $sizes-content-width;
+    width: var(--mainLayoutChildrenWidth);
     left: 50%;
   }
 

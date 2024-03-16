@@ -19,9 +19,7 @@ export default function RootLayout({ children }: Props) {
       <body>
         <div className={style.rootLayout}>
           <LeftZone />
-
           <div className={style.content}>{children}</div>
-
           <div className={style.rightZone}></div>
         </div>
       </body>

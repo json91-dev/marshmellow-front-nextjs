@@ -3,12 +3,14 @@
 }
 
 @mixin z-index-vars {
-  --rootIndex: 1000;
-  --mapIndex: 1190;
-  --modalIndex: 1200;
-  --viewerGuideIndex: 4000;
-  --loadingScreenIndex: 5000;
-  --toastIndex: 6000;
+  --signUpModalIndex: 3000;
+  --signUpTopNavIndex: 2000;
+  --signUpLayoutChildrenIndex: 1000;
+}
+
+@mixin sizes {
+  --signUpTopNavHeight: 5.2rem;
+  --mainLayoutChildrenWidth: 43rem;
 }
 
 @mixin userSelectNone {
