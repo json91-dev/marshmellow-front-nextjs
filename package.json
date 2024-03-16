@@ -16,7 +16,8 @@
     "react-datepicker": "^6.3.0",
     "react-dom": "^18",
     "react-responsive": "^9.0.2",
-    "react-transition-group": "^4.4.5"
+    "react-transition-group": "^4.4.5",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@types/node": "^20",

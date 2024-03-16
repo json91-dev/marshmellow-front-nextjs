@@ -1,3 +1,5 @@
-export default function Page() {
-  return <div>페러럴</div>;
+import Toast from '../_components/Toast';
+
+export default function Identify() {
+  return <>{/*<Toast text={'aaa'} />*/}</>;
 }
