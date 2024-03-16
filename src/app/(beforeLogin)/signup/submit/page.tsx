@@ -5,6 +5,7 @@ import React from 'react';
 import SectionInfo from '@/app/(beforeLogin)/signup/_components/SectionInfo';
 import ConfirmButton from '@/app/(beforeLogin)/signup/_components/ConfirmButton';
 import { useRouter } from 'next/navigation';
+import Confirm from '@/app/(beforeLogin)/signup/submit/_components/Confirm';
 
 /** 회원가입 제출 페이지 **/
 export default function Submit() {
@@ -45,7 +46,7 @@ export default function Submit() {
         </div>
       </div>
       <div className={style.confirmArea}>
-        <ConfirmButton text={'최종 제출'} customStyle={{ width: '100%' }} />
+        <Confirm />
       </div>
     </div>
   );

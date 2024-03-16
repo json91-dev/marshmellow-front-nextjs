@@ -6,7 +6,9 @@ import { useRouter } from 'next/navigation';
 export default function ConfirmAndNext() {
   const router = useRouter();
 
-  const onClickButton = useCallback(() => {}, []);
+  const onClickButton = useCallback(() => {
+    router.push('/signup/submit');
+  }, []);
 
   return <ConfirmButton text={'다음 단계'} onClick={onClickButton} />;
 }
