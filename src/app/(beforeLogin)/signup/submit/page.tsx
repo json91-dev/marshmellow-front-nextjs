@@ -45,11 +45,7 @@ export default function Submit() {
         </div>
       </div>
       <div className={style.confirmArea}>
-        <ConfirmButton
-          onClick={() => router.push('/signup/submit-complete')}
-          text={'최종 제출'}
-          customStyle={{ width: '100%' }}
-        />
+        <ConfirmButton text={'최종 제출'} customStyle={{ width: '100%' }} />
       </div>
     </div>
   );

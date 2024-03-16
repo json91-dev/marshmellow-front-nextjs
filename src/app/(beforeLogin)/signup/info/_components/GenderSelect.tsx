@@ -1,3 +1,5 @@
+'use client';
+
 import style from './genderSelect.module.scss'; // CSS 파일을 불러옵니다.
 import cx from 'classnames';
 import { useCallback, useState } from 'react';

@@ -1,5 +1,3 @@
-'use client';
-
 import style from './info.module.scss';
 import InformationTab from '@/app/(beforeLogin)/signup/_components/InformationTab';
 import React from 'react';
@@ -13,6 +11,7 @@ import RecomendSelect from '@/app/(beforeLogin)/signup/info/_components/Recomend
 import HorizontalLine from '@/app/(beforeLogin)/signup/_components/HorizontalLine';
 import SectionInfo from '@/app/(beforeLogin)/signup/_components/SectionInfo';
 import ConfirmButton from '@/app/(beforeLogin)/signup/_components/ConfirmButton';
+import ConfirmAndNext from '@/app/(beforeLogin)/signup/info/_components/ConfirmAndNext';
 
 /** 회원가입 정보 입력 페이지 **/
 export default function Info() {
@@ -67,7 +66,7 @@ export default function Info() {
       </div>
 
       <div className={style.confirmArea}>
-        <ConfirmButton text={'다음 단계 버튼'} customStyle={{ width: '100%' }} />
+        <ConfirmAndNext />
       </div>
 
       <div className={style.emptyArea}></div>
