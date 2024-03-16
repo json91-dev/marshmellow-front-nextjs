@@ -11,31 +11,3 @@
   padding-right: 2rem;
 }
 
-.grayArea {
-  width: 100%;
-  height: 50%;
-  background-color:#ECF0F9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  border-radius: 0.5rem;
-
-  @include isMobile() {
-    height: 65%;
-  }
-
-}
-
-.description {
-  color: #4D5564;
-  font-size: 1.4rem;
-  padding-bottom: 1rem;
-}
-
-.image {
-  position: relative;
-  width: 15rem;
-  height: 15rem;
-  margin-bottom: 1.5rem;
-}
