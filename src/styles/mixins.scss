@@ -3,6 +3,7 @@
 }
 
 @mixin z-index-vars {
+  --signUpModalIndex: 3000;
   --signUpToastIndex: 3000;
   --signUpTopNavIndex: 2000;
   --signUpLayoutChildrenIndex: 1000;
@@ -20,6 +21,35 @@
   -webkit-user-select: none;
 }
 
+@mixin modalBoxShadow {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+@mixin buttonBlack {
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  color: white;
+  font-size: 1.6rem;
+  background-color: black;
+}
+
+@mixin buttonWhite {
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  color: black;
+  font-size: 1.6rem;
+  background-color: white;
+}
+
+
 @mixin buttonActiveScale($scale: 0.97, $duration: 200ms) {
   transition: transform $duration;
   &:active { transform: scale($scale); }
@@ -30,10 +60,7 @@
   &:active { opacity: $opacity; }
 }
 
-@mixin modalBoxShadow01 {
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-}
 
-@mixin modalBoxShadow01 {
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-}
+
+
+

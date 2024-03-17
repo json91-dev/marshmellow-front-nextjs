@@ -89,3 +89,27 @@ button {
   border: 1px solid red;
   width: 100% !important;
 }
+
+/**테스트 **/
+.modal-enter {
+  opacity: 0;
+  transform: translateY(10%);
+}
+
+.modal-enter-active {
+  opacity: 1;
+  transform: translateY(0%);
+  transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
+}
+
+.modal-exit {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
+}
+
+.modal-exit-active {
+  opacity: 0;
+  transform: translateY(10%);
+  transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
+}

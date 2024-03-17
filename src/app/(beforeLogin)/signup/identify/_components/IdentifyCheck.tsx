@@ -5,13 +5,18 @@ import Image from 'next/image';
 import ConfirmButton from '@/app/(beforeLogin)/signup/_components/ConfirmButton';
 import React, { useCallback, useState } from 'react';
 import cx from 'classnames';
+import { useIdentifyStore } from '@/store/identify';
 
 export default function IdentifyCheck() {
   const [isRunningPASS, setIsRunningPASS] = useState(false);
+  const { openAuthFailModal, openAuthSuccessModal } = useIdentifyStore();
 
   const onClickStartPASS = useCallback(() => {
-    setIsRunningPASS(true);
+    // setIsRunningPASS(true);
+
+    openAuthSuccessModal();
   }, [isRunningPASS]);
+
   const onClickConfirmPASS = useCallback(() => {}, []);
 
   return (
