@@ -4,7 +4,7 @@
 
   position: fixed;
   top: 0;
-  z-index: var(--signUpTopNavIndex);
+  z-index: var(--topNavIndex);
   height: var(--signUpTopNavHeight);
   display: flex;
   justify-content: space-between;
@@ -40,7 +40,7 @@
     height: 3rem;
     position:relative;
 
-    @include buttonActiveOpacity;
-    @include buttonActiveScale;
+    @include activeOpacity;
+    @include activeScale;
   }
 }

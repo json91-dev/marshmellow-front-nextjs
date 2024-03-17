@@ -15,7 +15,7 @@ export default function SignUpLayout({ children, modal }: Props) {
       <TopNavigation />
       {modal}
       <Toast />
-      <div className={style.layoutChildren}>{children}</div>
+      <div className={style.layoutChild}>{children}</div>
     </>
   );
 }

@@ -1,6 +1,6 @@
 .container {
   @include z-index-vars;
-  z-index: var(--signUpToastIndex);
+  z-index: var(--toastIndex);
   position: fixed;
   width: calc(var(--mainLayoutChildrenWidth) - 4rem) !important;
   border-radius: 0.5rem;

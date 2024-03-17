@@ -1,6 +1,6 @@
-.layoutChildren {
+.layoutChild {
   @include z-index-vars;
-  z-index: var(--signUpLayoutChildrenIndex);
+  z-index: var(--layoutChildIndex);
 
   width: 100%;
 
@@ -17,7 +17,7 @@
   @include z-index-vars;
   @include sizes;
 
-  z-index: var(--signUpTopNavIndex);
+  z-index: var(--topNavIndex);
   position: fixed;
   top: 0;
   height: var(--signUpTopNavHeight);
@@ -49,8 +49,8 @@
   }
 
   .leftIcon {
-    @include buttonActiveOpacity;
-    @include buttonActiveScale;
+    @include activeOpacity;
+    @include activeScale;
 
     width: 3rem;
     height: 3rem;

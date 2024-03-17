@@ -145,8 +145,8 @@
   color: white;
   font-size: 1.2rem;
 
-  @include buttonActiveScale(0.99);
-  @include buttonActiveOpacity(0.8);
+  @include activeScale(0.99);
+  @include activeOpacity(0.8);
 }
 
 .emptyArea {

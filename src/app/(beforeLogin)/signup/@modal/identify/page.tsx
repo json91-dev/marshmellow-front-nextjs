@@ -7,6 +7,7 @@ import AuthSuccessModal from '@/app/(beforeLogin)/signup/@modal/identify/_compon
 import QuitModal from '@/app/(beforeLogin)/signup/@modal/identify/_components/QuitModal';
 import ExistPhoneModal from '@/app/(beforeLogin)/signup/@modal/identify/_components/ExistPhoneModal';
 import { useEffect } from 'react';
+import TermsBottomSheet from '@/app/(beforeLogin)/signup/@modal/identify/_components/TermsBottomSheet';
 
 export default function Identify() {
   return (
@@ -15,6 +16,7 @@ export default function Identify() {
       <AuthSuccessModal />
       <ExistPhoneModal />
       <QuitModal />
+      <TermsBottomSheet />
     </>
   );
 }

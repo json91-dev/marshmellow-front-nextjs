@@ -1,0 +1,32 @@
+.bottomSheet {
+  @include z-index-vars;
+  z-index: var(--bottomSheetIndex);
+
+  height: 44rem;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  border: 1px solid red;
+  background: white;
+  display: flex;
+  padding-top: 3.8rem;
+}
+
+.topLine {
+  background-color: gray;
+  height: 0.4rem;
+  width: 3.8rem;
+  position: absolute;
+  top: 1rem;
+  left: calc(50% - 0.2rem)
+}
+
+.button {
+  @include buttonCustom(#F5F5F5);
+  @include activeOpacity;
+  @include activeScale;
+
+  &.enabled {
+    color: black;
+  }
+}

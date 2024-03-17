@@ -9,12 +9,12 @@ import { useIdentifyStore } from '@/store/identify';
 
 export default function IdentifyCheck() {
   const [isRunningPASS, setIsRunningPASS] = useState(false);
-  const { openAuthFailModal, openAuthSuccessModal } = useIdentifyStore();
+  const { openAuthFailModal, openAuthSuccessModal, openTermsBottomSheet } = useIdentifyStore();
 
   const onClickStartPASS = useCallback(() => {
     // setIsRunningPASS(true);
-
-    openAuthSuccessModal();
+    // openAuthSuccessModal();
+    openTermsBottomSheet();
   }, [isRunningPASS]);
 
   const onClickConfirmPASS = useCallback(() => {}, []);

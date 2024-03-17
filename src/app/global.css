@@ -27,6 +27,7 @@ html, body {
   height: 100%;
   background-image: linear-gradient(to bottom, #EDF0F9 60%, #D5DBE8 40%);
   background-repeat: no-repeat; /* 배경 이미지가 반복되지 않도록 설정 */
+  touch-action: none;
 }
 ol, ul {
   list-style: none;
@@ -96,6 +97,7 @@ button {
   transform: translateY(10%);
 }
 
+/** 모달 CSS Transition **/
 .modal-enter-active {
   opacity: 1;
   transform: translateY(0%);
@@ -105,11 +107,33 @@ button {
 .modal-exit {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
 }
 
 .modal-exit-active {
   opacity: 0;
   transform: translateY(10%);
+  transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
+}
+
+/** 바텀시트 CSS Transition **/
+.bottom-sheet-enter {
+  opacity: 0;
+  transform: translateY(50%);
+}
+
+.bottom-sheet-enter-active {
+  opacity: 1;
+  transform: translateY(0%);
+  transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
+}
+
+.bottom-sheet-exit {
+  opacity: 1;
+  transform: translateY(0%);
+}
+
+.bottom-sheet-exit-active {
+  opacity: 0;
+  transform: translateY(50%);
   transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
 }

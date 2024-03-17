@@ -16,7 +16,7 @@
     flex-direction: row;
     border: 1px solid #D4DBE9;
 
-    @include buttonActiveScale;
+    @include activeScale;
 
     .image {
       position: relative;
