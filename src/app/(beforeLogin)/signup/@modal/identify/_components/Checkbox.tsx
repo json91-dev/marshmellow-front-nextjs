@@ -8,17 +8,9 @@ type Props = {
 };
 export default function Checkbox({ disabled, checked, onChange }: Props) {
   return (
-    <div>
-      <label>
-        <input
-          type="checkbox"
-          disabled={disabled}
-          checked={checked}
-          onChange={(e) => {
-            console.log(e.target.checked);
-          }}
-        />
-      </label>
-    </div>
+    <label className={style.label}>
+      <input type="checkbox" />
+      <p></p>
+    </label>
   );
 }

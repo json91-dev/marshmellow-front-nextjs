@@ -57,6 +57,7 @@
   font-weight: 400;
   font-size: 1.2rem;
   padding-left: 1.6rem;
+  margin-left: 1rem;
 }
 
 .grayBoxArea {
@@ -64,6 +65,7 @@
   margin-top: 1.6rem;
   padding: 1.2rem 1.6rem 1.2rem;
   background-color: #F0F3FA;
+  border-radius: .8rem;
 }
 
 .terms {
@@ -104,6 +106,7 @@
   flex-direction: row;
 
   > :last-child {
+    margin-top: 0.4rem;
     margin-left: 0.8rem;
   }
 }
@@ -116,3 +119,8 @@
   width: calc(100% - 6.4rem)
 }
 
+.image {
+  position: relative;
+  width: 2.4rem;
+  height: 2.4rem;
+}
