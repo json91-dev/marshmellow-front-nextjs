@@ -12,8 +12,7 @@ type Props = {
 export default function KakaoLoginButton(props: Props) {
   const router = useRouter();
   const onClickButton = () => {
-    // signIn('google', {})
-    router.push('/signup/info');
+    router.push('/signup/identify');
   };
 
   return (

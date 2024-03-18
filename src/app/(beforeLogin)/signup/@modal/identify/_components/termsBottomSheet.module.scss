@@ -6,19 +6,34 @@
   position: absolute;
   width: 100%;
   bottom: 0;
-  border: 1px solid red;
   background: white;
   display: flex;
+
   padding-top: 3.8rem;
+  padding-left: 3.2rem;
+  padding-right: 3.2rem;
+  border-top-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+
+  span {
+    text-decoration: underline;
+    font-weight: bold;
+  }
+}
+
+.content {
+  width: 100%;
+  padding-top: 2rem;
 }
 
 .topLine {
-  background-color: gray;
+  background-color: #CED5E4;
   height: 0.4rem;
   width: 3.8rem;
   position: absolute;
   top: 1rem;
-  left: calc(50% - 0.2rem)
+  left: calc(50% - 1.9em);
+  border-radius: 0.5rem;
 }
 
 .button {
@@ -30,3 +45,74 @@
     color: black;
   }
 }
+
+.title {
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: #333333;
+}
+
+.description {
+  color: #5C6475;
+  font-weight: 400;
+  font-size: 1.2rem;
+  padding-left: 1.6rem;
+}
+
+.grayBoxArea {
+  width: 100%;
+  margin-top: 1.6rem;
+  padding: 1.2rem 1.6rem 1.2rem;
+  background-color: #F0F3FA;
+}
+
+.terms {
+  .link {
+    width: 100%;
+    margin: 1.2rem 0;
+    color: #5C6475;
+    font-weight: 400;
+    font-size: 1.2rem;
+
+    > div {
+      width: 100%;
+      padding: 0.7rem 0 0.7rem 1.6rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}
+
+.marketing {
+
+}
+
+.push {
+  margin-top: 1.2rem;
+}
+
+.age {
+  margin-top: 1.2rem;
+}
+
+
+.checkboxGroup {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+
+  > :last-child {
+    margin-left: 0.8rem;
+  }
+}
+
+.button {
+  position: absolute;
+  bottom: 2.4rem;
+  left: 3.2rem;
+  @include buttonBlack;
+  width: calc(100% - 6.4rem)
+}
+

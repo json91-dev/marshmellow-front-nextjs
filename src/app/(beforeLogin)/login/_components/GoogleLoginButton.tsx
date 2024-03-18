@@ -13,7 +13,7 @@ export default function GoogleLoginButton(props: Props) {
   const router = useRouter();
   const onClickButton = () => {
     // signIn('google', {})
-    router.push('/signup/info');
+    router.push('/signup/identify');
   };
 
   return (
