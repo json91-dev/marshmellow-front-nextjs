@@ -8,9 +8,7 @@ import GenderSelect from '@/app/(beforeLogin)/signup/info/_components/GenderSele
 import NicknameSelect from '@/app/(beforeLogin)/signup/info/_components/NicknameSelect';
 import ContactSelect from '@/app/(beforeLogin)/signup/info/_components/ContectSelect';
 import RecomendSelect from '@/app/(beforeLogin)/signup/info/_components/RecomendSelect';
-import HorizontalLine from '@/app/(beforeLogin)/signup/_components/HorizontalLine';
 import SectionInfo from '@/app/(beforeLogin)/signup/_components/SectionInfo';
-import ConfirmButton from '@/app/(beforeLogin)/signup/_components/ConfirmButton';
 import ConfirmAndNext from '@/app/(beforeLogin)/signup/info/_components/ConfirmAndNext';
 
 /** 회원가입 정보 입력 페이지 **/
@@ -51,7 +49,6 @@ export default function Info() {
         <DateSelect />
       </div>
 
-      {/*기타*/}
       <SectionInfo title={'*기타'} />
 
       <div className={style.contactArea}>

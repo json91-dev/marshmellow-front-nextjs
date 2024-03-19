@@ -1,18 +1,20 @@
 'use client';
 import style from './termsBottomSheet.module.scss';
-import { useIdentifyStore } from '@/store/identify';
+import { useModalStore } from '@/store/modal';
 import ModalBackdrop from '@/app/(beforeLogin)/signup/@modal/identify/_components/ModalBackdrop';
 import { CSSTransition } from 'react-transition-group';
 import React, { useEffect, useRef } from 'react';
 import Checkbox from '@/app/(beforeLogin)/signup/@modal/identify/_components/Checkbox';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 export default function TermsBottomSheet() {
-  const { isOpenTermsBottomSheet, closeTermsBottomSheet } = useIdentifyStore();
+  const { isOpenTermsBottomSheet, closeTermsBottomSheet } = useModalStore();
   const bottomSheetRef = useRef<HTMLDivElement>(null!);
   const backDropRef = useRef<HTMLDivElement>(null!);
   const startY = useRef(0);
   const isDragging = useRef(false);
+  const router = useRouter();
 
   const onPointerDown = (e: PointerEvent) => {
     e.stopPropagation();
@@ -145,7 +147,9 @@ export default function TermsBottomSheet() {
               </div>
             </div>
           </div>
-          <div className={style.button}>확인</div>
+          <div className={style.button} onClick={() => router.push('/signup/info')}>
+            확인
+          </div>
         </div>
       </CSSTransition>
     </>

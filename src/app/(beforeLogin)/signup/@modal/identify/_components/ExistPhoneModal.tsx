@@ -2,10 +2,10 @@
 import style from './modal.module.scss';
 import ModalBackdrop from '@/app/(beforeLogin)/signup/@modal/identify/_components/ModalBackdrop';
 import { CSSTransition } from 'react-transition-group';
-import { useIdentifyStore } from '@/store/identify';
+import { useModalStore } from '@/store/modal';
 
 export default function ExistPhoneModal() {
-  const { isOpenExistNumberModal, closeExistNumberModal } = useIdentifyStore();
+  const { isOpenExistNumberModal, closeExistNumberModal } = useModalStore();
 
   return (
     <>

@@ -2,10 +2,10 @@
 
 import style from './modal.module.scss';
 import ModalBackdrop from '@/app/(beforeLogin)/signup/@modal/identify/_components/ModalBackdrop';
-import { useIdentifyStore } from '@/store/identify';
+import { useModalStore } from '@/store/modal';
 import { CSSTransition } from 'react-transition-group';
 export default function AuthSuccessModal() {
-  const { isOpenAuthSuccessModal, closeAuthSuccessModal } = useIdentifyStore();
+  const { isOpenAuthSuccessModal, closeAuthSuccessModal } = useModalStore();
   return (
     <>
       <CSSTransition in={isOpenAuthSuccessModal} timeout={200} unmountOnExit>
@@ -14,9 +14,13 @@ export default function AuthSuccessModal() {
 
       <CSSTransition in={isOpenAuthSuccessModal} timeout={200} unmountOnExit classNames="modal">
         <div className={style.modal}>
-          <div className={style.title}>입사지원이 완료되었습니다.</div>
+          <div className={style.title}>
+            본인인증이 완료되었습니다. <br />
+            지원정보를 작성후 제출하시겠어요?
+          </div>
           <div className={style.description}>
-            입사지원이 완료되었습니다. 지원정보를 작성해주시면 마시멜로우 10개를 드려요!
+            지원정보를 작성해주시면 <br />
+            마시멜로우 10개를 드려요!
           </div>
 
           <div className={style.firstButton}>지원 정보 작성하기</div>

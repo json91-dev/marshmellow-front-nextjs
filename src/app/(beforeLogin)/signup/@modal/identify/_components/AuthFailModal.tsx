@@ -1,10 +1,10 @@
 'use client';
 import style from './modal.module.scss';
 import ModalBackdrop from '@/app/(beforeLogin)/signup/@modal/identify/_components/ModalBackdrop';
-import { useIdentifyStore } from '@/store/identify';
+import { useModalStore } from '@/store/modal';
 import { CSSTransition } from 'react-transition-group';
 export default function AuthFailModal() {
-  const { isOpenAuthFailModal, closeAuthFailModal } = useIdentifyStore();
+  const { isOpenAuthFailModal, closeAuthFailModal } = useModalStore();
 
   return (
     <>

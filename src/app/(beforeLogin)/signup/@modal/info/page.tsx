@@ -1,6 +1,9 @@
-'use client';
-import style from './info.module.scss';
+import QuitInfoModal from '@/app/(beforeLogin)/signup/@modal/info/_components/QuitInfoModal';
 
 export default function InfoModal() {
-  return <div className={style.container}></div>;
+  return (
+    <>
+      <QuitInfoModal />
+    </>
+  );
 }

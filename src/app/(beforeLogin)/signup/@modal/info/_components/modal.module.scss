@@ -1,0 +1,50 @@
+.modal {
+  @include modalBoxShadow;
+  @include z-index-vars;
+  @include sizes;
+  position: absolute;
+  background: white;
+
+  z-index: var(--modalIndex);
+  width: 30rem;
+  padding: 3.6rem 1.6rem 2.4rem;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  left: calc((var(--mainLayoutChildrenWidth) - 30rem) / 2);
+  top: 40vh;
+}
+
+
+
+.title {
+  color: #12171E;
+  margin-bottom: 0.8rem;
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+.description {
+  color: #3D4451;
+  margin-bottom: 2.4rem;
+  font-size: 1.4rem;
+  text-align: center;
+
+  &.bold {
+
+  }
+}
+
+.firstButton {
+  @include buttonBlack;
+  @include activeOpacity;
+  @include activeScale;
+}
+
+.secondButton {
+  @include buttonWhite;
+  @include activeOpacity;
+  @include activeScale;
+}
