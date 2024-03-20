@@ -12,7 +12,7 @@ export default function TopNavigation() {
     <div className={style.container}>
       <div className={style.leftIcon}>
         {pathname !== '/signup/submit-complete' && (
-          <Image src="/images/icon_arrow.png" alt="No Image" fill objectFit="contain" />
+          <Image src="/images/icon_arrow_left.svg" alt="No Image" fill objectFit="contain" />
         )}
       </div>
       <p>지원하기</p>

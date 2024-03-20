@@ -23,7 +23,7 @@ export default function ContactSelect() {
         </option>
       </select>
       <div className={style.image}>
-        <Image src="/images/icon_bottom_arrow.png" alt="No Image" fill objectFit="contain" />
+        <Image src="/images/icon_arrow_bottom.svg" alt="No Image" fill objectFit="contain" />
       </div>
     </div>
   );

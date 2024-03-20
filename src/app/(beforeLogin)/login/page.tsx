@@ -1,8 +1,7 @@
 import style from './login.module.scss';
 import React from 'react';
 import Image from 'next/image';
-import KakaoLoginButton from '@/app/(beforeLogin)/login/_components/KakaoLoginButton';
-import GoogleLoginButton from '@/app/(beforeLogin)/login/_components/GoogleLoginButton';
+import LoginButtons from '@/app/(beforeLogin)/login/_components/LoginButtons';
 
 export default function Login() {
   return (
@@ -17,8 +16,7 @@ export default function Login() {
 
       <div className={style.bottomLoginSection}>
         <p>합류하시면 다양한 서비스들을 이용해보실 수 있어요!</p>
-        <KakaoLoginButton style={{ marginTop: '2rem' }} />
-        <GoogleLoginButton style={{ marginTop: '1rem' }} />
+        <LoginButtons />
         <div className={style.lookAroundButton}>
           <p>마시멜로우 둘러보기 </p>
         </div>

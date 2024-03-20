@@ -21,7 +21,7 @@ export default function Info() {
 
       <div className={style.imageArea}>
         <div className={style.image}>
-          <Image src="/images/icon_airpod.png" alt="No Image" fill objectFit="contain" />
+          <Image src="/images/icon_mellow_normal.svg" alt="No Image" fill objectFit="contain" />
         </div>
         <div className={style.info}>
           <div className={style.label}>지원서 사진등록</div>
