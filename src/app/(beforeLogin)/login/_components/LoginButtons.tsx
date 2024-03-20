@@ -4,17 +4,38 @@ import KakaoLoginButton from '@/app/(beforeLogin)/login/_components/KakaoLoginBu
 import { isMobile } from '@/utils/utils';
 import AppleLoginButton from '@/app/(beforeLogin)/login/_components/AppleLoginButton';
 import GoogleLoginButton from '@/app/(beforeLogin)/login/_components/GoogleLoginButton';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import Spinner from '@/app/(beforeLogin)/login/_components/Spinner';
 
 export default function LoginButtons() {
-  return (
-    <>
-      <KakaoLoginButton style={{ marginTop: '2rem' }} />
-      {isMobile.iOS() ? (
-        <AppleLoginButton style={{ marginTop: '1rem' }} />
-      ) : (
-        <GoogleLoginButton style={{ marginTop: '1rem' }} />
-      )}
-    </>
-  );
+  const [isIOS, setIsIOS] = useState<boolean>(null!);
+
+  useEffect(() => {
+    const isIOS = !!isMobile.iOS();
+    setIsIOS(isIOS);
+  }, []);
+
+  if (isIOS === null) {
+    return (
+      <>
+        <KakaoLoginButton style={{ marginTop: '2rem' }} />
+        <div
+          style={{ marginTop: '1rem', height: '6rem', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+        >
+          <Spinner />
+        </div>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <KakaoLoginButton style={{ marginTop: '2rem' }} />
+        {isIOS ? (
+          <AppleLoginButton style={{ marginTop: '1rem' }} />
+        ) : (
+          <GoogleLoginButton style={{ marginTop: '1rem' }} />
+        )}
+      </>
+    );
+  }
 }
