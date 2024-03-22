@@ -16,6 +16,12 @@ export default function TermsBottomSheet() {
   const isDragging = useRef(false);
   const router = useRouter();
 
+  useEffect(() => {
+    setTimeout(() => {
+      showTermsBottomSheet(true);
+    }, 300);
+  }, []);
+
   const onPointerDown = (e: PointerEvent) => {
     e.stopPropagation();
     bottomSheetRef.current.style.transition = `none`;
@@ -30,7 +36,6 @@ export default function TermsBottomSheet() {
     const deltaY = e.clientY - startY.current;
     if (deltaY < 0) return;
 
-    console.log(bottomSheetRef.current.style.transform);
     bottomSheetRef.current.style.transform = `translateY(${deltaY}px)`;
   };
 
@@ -43,11 +48,13 @@ export default function TermsBottomSheet() {
     const currentTranslateY =
       parseInt(bottomSheetRef.current.style.transform.replace('translateY(', '').replace('px)', '')) || 0;
 
+    /** 전체 영역중 1/6 이상 움직였을때 모달창이 닫히고 이전페이지 이동 **/
     if (Math.abs(currentTranslateY) >= bottomSheetHeight / 6) {
       bottomSheetRef.current.style.transition = `transform 200ms ease-in-out`;
       bottomSheetRef.current.style.transform = `translateY(${bottomSheetHeight}px`;
       setTimeout(() => {
         showTermsBottomSheet(false);
+        router.back();
       }, 250);
     } else {
       bottomSheetRef.current.style.transition = `transform 300ms ease-in-out`;
@@ -61,7 +68,10 @@ export default function TermsBottomSheet() {
       bottomSheetRef.current?.addEventListener('pointermove', onPointerMove);
       bottomSheetRef.current?.addEventListener('pointerup', onPointerUp);
 
-      backDropRef.current.addEventListener('pointerup', () => showTermsBottomSheet(false));
+      backDropRef.current.addEventListener('pointerup', () => {
+        showTermsBottomSheet(false);
+        router.back();
+      });
     }
   }, [isShowTermsBottomSheet]);
   useEffect(() => {
