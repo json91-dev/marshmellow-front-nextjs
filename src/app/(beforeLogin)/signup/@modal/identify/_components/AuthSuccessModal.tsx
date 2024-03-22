@@ -5,14 +5,14 @@ import ModalBackdrop from '@/app/(beforeLogin)/signup/@modal/identify/_component
 import { useModalStore } from '@/store/modal';
 import { CSSTransition } from 'react-transition-group';
 export default function AuthSuccessModal() {
-  const { isOpenAuthSuccessModal, closeAuthSuccessModal } = useModalStore();
+  const { isShowAuthSuccessModal, showAuthSuccessModal } = useModalStore();
   return (
     <>
-      <CSSTransition in={isOpenAuthSuccessModal} timeout={200} unmountOnExit>
+      <CSSTransition in={isShowAuthSuccessModal} timeout={200} unmountOnExit>
         <ModalBackdrop />
       </CSSTransition>
 
-      <CSSTransition in={isOpenAuthSuccessModal} timeout={200} unmountOnExit classNames="modal">
+      <CSSTransition in={isShowAuthSuccessModal} timeout={200} unmountOnExit classNames="modal">
         <div className={style.modal}>
           <div className={style.title}>
             본인인증이 완료되었습니다. <br />
@@ -24,7 +24,7 @@ export default function AuthSuccessModal() {
           </div>
 
           <div className={style.firstButton}>지원 정보 작성하기</div>
-          <div className={style.secondButton} onClick={closeAuthSuccessModal}>
+          <div className={style.secondButton} onClick={() => showAuthSuccessModal(true)}>
             다음에 작성할게요
           </div>
         </div>

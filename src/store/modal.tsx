@@ -4,81 +4,63 @@ import { devtools } from 'zustand/middleware';
 /** Modal store **/
 
 interface IdentifyModalState {
-  isOpenAuthFailModal: boolean;
-  isOpenAuthSuccessModal: boolean;
-  isOpenQuitModal: boolean;
-  isOpenExistNumberModal: boolean;
-  isOpenTermsBottomSheet: boolean;
-  isOpenQuitInfoModal: boolean;
+  isShowAuthFailModal: boolean;
+  isShowAuthSuccessModal: boolean;
+  isShowQuitModal: boolean;
+  isShowExistNumberModal: boolean;
+  isShowTermsBottomSheet: boolean;
+  isShowQuitInfoModal: boolean;
 
-  openAuthFailModal(): void;
-  closeAuthFailModal(): void;
-  openAuthSuccessModal(): void;
-  closeAuthSuccessModal(): void;
-  openQuitModal(): void;
-  closeQuitModal(): void;
-  openExistNumberModal(): void;
-  closeExistNumberModal(): void;
-  openTermsBottomSheet(): void;
-  closeTermsBottomSheet(): void;
-  openQuitInfoModal(): void;
-  closeQuitInfoModal(): void;
+  showAuthFailModal(isShow: boolean): void;
+  showAuthSuccessModal(isShow: boolean): void;
+  showQuitModal(isShow: boolean): void;
+  showExistNumberModal(isShow: boolean): void;
+  showTermsBottomSheet(isShow: boolean): void;
+  showQuitInfoModal(isShow: boolean): void;
   closeAll(): void;
 }
 
 export const useModalStore = create(
   devtools<IdentifyModalState>((set) => ({
-    isOpenAuthFailModal: false,
-    isOpenAuthSuccessModal: false,
-    isOpenQuitModal: false,
-    isOpenTermsBottomSheet: false,
-    isOpenExistNumberModal: false,
-    isOpenQuitInfoModal: false,
+    isShowAuthFailModal: false,
+    isShowAuthSuccessModal: false,
+    isShowQuitModal: false,
+    isShowTermsBottomSheet: false,
+    isShowExistNumberModal: false,
+    isShowQuitInfoModal: false,
 
-    openAuthFailModal() {
-      set({ isOpenAuthFailModal: true });
+    showAuthFailModal(isShow) {
+      set({ isShowAuthFailModal: isShow });
     },
-    closeAuthFailModal() {
-      set({ isOpenAuthFailModal: false });
+
+    showAuthSuccessModal(isShow) {
+      set({ isShowAuthSuccessModal: isShow });
     },
-    openAuthSuccessModal() {
-      set({ isOpenAuthSuccessModal: true });
+
+    showQuitModal(isShow) {
+      set({ isShowQuitModal: isShow });
     },
-    closeAuthSuccessModal() {
-      set({ isOpenAuthSuccessModal: false });
+
+    showTermsBottomSheet(isShow) {
+      set({ isShowTermsBottomSheet: isShow });
     },
-    openQuitModal() {
-      set({ isOpenQuitModal: true });
+
+    showExistNumberModal(isShow) {
+      set({ isShowExistNumberModal: isShow });
     },
-    closeQuitModal() {
-      set({ isOpenQuitModal: false });
+
+    showQuitInfoModal(isShow) {
+      set({ isShowQuitInfoModal: isShow });
     },
-    openTermsBottomSheet() {
-      set({ isOpenTermsBottomSheet: true });
-    },
-    closeTermsBottomSheet() {
-      set({ isOpenTermsBottomSheet: false });
-    },
-    openExistNumberModal() {
-      set({ isOpenExistNumberModal: true });
-    },
-    closeExistNumberModal() {
-      set({ isOpenExistNumberModal: false });
-    },
-    openQuitInfoModal() {
-      set({ isOpenQuitInfoModal: true });
-    },
-    closeQuitInfoModal() {
-      set({ isOpenQuitInfoModal: false });
-    },
+
     closeAll() {
       set({
-        isOpenAuthFailModal: false,
-        isOpenTermsBottomSheet: false,
-        isOpenAuthSuccessModal: false,
-        isOpenExistNumberModal: false,
-        isOpenQuitModal: false,
-        isOpenQuitInfoModal: false,
+        isShowAuthFailModal: false,
+        isShowTermsBottomSheet: false,
+        isShowAuthSuccessModal: false,
+        isShowExistNumberModal: false,
+        isShowQuitModal: false,
+        isShowQuitInfoModal: false,
       });
     },
   })),

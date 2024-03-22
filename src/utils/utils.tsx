@@ -9,3 +9,13 @@ export const isMobile = {
     return isMobile.Android() || isMobile.iOS();
   },
 };
+
+export const isAppleBrowser = () => {
+  const userAgent = navigator.userAgent;
+  return /Macintosh/.test(userAgent) || /iPhone|iPad|iPod/.test(userAgent);
+};
+
+export const browserPreventEvent = (event: () => void) => {
+  history.pushState(null, '', location.href);
+  event();
+};

@@ -4,27 +4,22 @@ import { devtools } from 'zustand/middleware';
 /** Modal store **/
 
 interface ToastState {
-  isOpen: boolean;
+  isShow: boolean;
   message: string;
-  openToast(): void;
-  closeToast(): void;
+  showToast(isShow: boolean): void;
   setMessage(message: string): void;
 }
 
 export const useToastStore = create(
   devtools<ToastState>((set) => ({
-    isOpen: false,
+    isShow: false,
     message: '',
-    openToast() {
+    showToast(isShow) {
       set({
-        isOpen: true,
+        isShow: isShow,
       });
     },
-    closeToast() {
-      set({
-        isOpen: false,
-      });
-    },
+
     setMessage(message: string) {
       set({
         message: message,

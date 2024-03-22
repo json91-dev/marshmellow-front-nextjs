@@ -9,12 +9,12 @@ import { useModalStore } from '@/store/modal';
 
 export default function IdentifyCheck() {
   const [isRunningPASS, setIsRunningPASS] = useState(false);
-  const { openAuthFailModal, openAuthSuccessModal, openTermsBottomSheet } = useModalStore();
+  const { showTermsBottomSheet } = useModalStore();
 
   const onClickStartPASS = useCallback(() => {
     // setIsRunningPASS(true);
     // openAuthSuccessModal();
-    openTermsBottomSheet();
+    showTermsBottomSheet(true);
   }, [isRunningPASS]);
 
   const onClickConfirmPASS = useCallback(() => {}, []);

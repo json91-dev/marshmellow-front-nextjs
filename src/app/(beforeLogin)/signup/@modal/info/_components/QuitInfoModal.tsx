@@ -5,15 +5,15 @@ import { CSSTransition } from 'react-transition-group';
 import { useModalStore } from '@/store/modal';
 
 export default function QuitInfoModal() {
-  const { isOpenQuitInfoModal, closeQuitInfoModal } = useModalStore();
+  const { isShowQuitInfoModal, showQuitInfoModal } = useModalStore();
 
   return (
     <>
-      <CSSTransition in={isOpenQuitInfoModal} timeout={200} unmountOnExit>
+      <CSSTransition in={isShowQuitInfoModal} timeout={200} unmountOnExit>
         <ModalBackdrop />
       </CSSTransition>
 
-      <CSSTransition in={isOpenQuitInfoModal} timeout={200} unmountOnExit classNames="modal">
+      <CSSTransition in={isShowQuitInfoModal} timeout={200} unmountOnExit classNames="modal">
         <div className={style.modal}>
           <div className={style.title}>정말 나가실건가요?</div>
           <div className={style.description}>
@@ -21,7 +21,7 @@ export default function QuitInfoModal() {
           </div>
 
           <div className={style.firstButton}>아니오</div>
-          <div className={style.secondButton} onClick={closeQuitInfoModal}>
+          <div className={style.secondButton} onClick={() => showQuitInfoModal(false)}>
             다음에 작성할게요
           </div>
         </div>

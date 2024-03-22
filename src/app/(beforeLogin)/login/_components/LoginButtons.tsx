@@ -1,7 +1,7 @@
 'use client';
 
 import KakaoLoginButton from '@/app/(beforeLogin)/login/_components/KakaoLoginButton';
-import { isMobile } from '@/utils/utils';
+import { isAppleBrowser } from '@/utils/utils';
 import AppleLoginButton from '@/app/(beforeLogin)/login/_components/AppleLoginButton';
 import GoogleLoginButton from '@/app/(beforeLogin)/login/_components/GoogleLoginButton';
 import React, { useEffect, useState } from 'react';
@@ -11,7 +11,7 @@ export default function LoginButtons() {
   const [isIOS, setIsIOS] = useState<boolean>(null!);
 
   useEffect(() => {
-    const isIOS = !!isMobile.iOS();
+    const isIOS = isAppleBrowser();
     setIsIOS(isIOS);
   }, []);
 

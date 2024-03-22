@@ -9,7 +9,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 export default function TermsBottomSheet() {
-  const { isOpenTermsBottomSheet, closeTermsBottomSheet } = useModalStore();
+  const { isShowTermsBottomSheet, showTermsBottomSheet } = useModalStore();
   const bottomSheetRef = useRef<HTMLDivElement>(null!);
   const backDropRef = useRef<HTMLDivElement>(null!);
   const startY = useRef(0);
@@ -47,7 +47,7 @@ export default function TermsBottomSheet() {
       bottomSheetRef.current.style.transition = `transform 200ms ease-in-out`;
       bottomSheetRef.current.style.transform = `translateY(${bottomSheetHeight}px`;
       setTimeout(() => {
-        closeTermsBottomSheet();
+        showTermsBottomSheet(false);
       }, 250);
     } else {
       bottomSheetRef.current.style.transition = `transform 300ms ease-in-out`;
@@ -56,14 +56,14 @@ export default function TermsBottomSheet() {
   };
 
   useEffect(() => {
-    if (isOpenTermsBottomSheet) {
+    if (isShowTermsBottomSheet) {
       bottomSheetRef.current?.addEventListener('pointerdown', onPointerDown);
       bottomSheetRef.current?.addEventListener('pointermove', onPointerMove);
       bottomSheetRef.current?.addEventListener('pointerup', onPointerUp);
 
-      backDropRef.current.addEventListener('pointerup', () => closeTermsBottomSheet());
+      backDropRef.current.addEventListener('pointerup', () => showTermsBottomSheet(false));
     }
-  }, [isOpenTermsBottomSheet]);
+  }, [isShowTermsBottomSheet]);
   useEffect(() => {
     return () => {
       bottomSheetRef.current?.removeEventListener('pointerdown', onPointerDown);
@@ -74,12 +74,12 @@ export default function TermsBottomSheet() {
 
   return (
     <>
-      <CSSTransition in={isOpenTermsBottomSheet} timeout={200} unmountOnExit>
+      <CSSTransition in={isShowTermsBottomSheet} timeout={200} unmountOnExit>
         <ModalBackdrop ref={backDropRef} />
       </CSSTransition>
 
       <CSSTransition
-        in={isOpenTermsBottomSheet}
+        in={isShowTermsBottomSheet}
         timeout={200}
         classNames={'bottom-sheet'}
         unmountOnExit
