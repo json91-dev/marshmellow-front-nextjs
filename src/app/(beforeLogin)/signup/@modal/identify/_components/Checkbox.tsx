@@ -9,7 +9,7 @@ type Props = {
 export default function Checkbox({ disabled, checked, onChange }: Props) {
   return (
     <label className={style.label}>
-      <input type="checkbox" />
+      <input type="checkbox" onChange={onChange} checked={checked} />
       <p></p>
     </label>
   );

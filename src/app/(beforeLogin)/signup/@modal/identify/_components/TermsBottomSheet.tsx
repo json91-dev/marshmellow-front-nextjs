@@ -3,10 +3,11 @@ import style from './termsBottomSheet.module.scss';
 import { useModalStore } from '@/store/modal';
 import ModalBackdrop from '@/app/(beforeLogin)/signup/@modal/identify/_components/ModalBackdrop';
 import { CSSTransition } from 'react-transition-group';
-import React, { useEffect, useRef } from 'react';
+import React, { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react';
 import Checkbox from '@/app/(beforeLogin)/signup/@modal/identify/_components/Checkbox';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import cx from 'classnames';
 
 export default function TermsBottomSheet() {
   const { isShowTermsBottomSheet, showTermsBottomSheet } = useModalStore();
@@ -16,6 +17,28 @@ export default function TermsBottomSheet() {
   const isDragging = useRef(false);
   const router = useRouter();
 
+  const [allCheck, setAllCheck] = useState(false);
+  const [check1, setCheck1] = useState(false);
+  const [check2, setCheck2] = useState(false);
+  const [check3, setCheck3] = useState(false);
+  const [check4, setCheck4] = useState(false);
+
+  /** "모두 동의" 체크시 다른 체크박스 자동 선택  **/
+  const handleAllCheckboxChange = useCallback((isChecked: boolean) => {
+    setAllCheck(isChecked);
+    setCheck1(isChecked);
+    setCheck2(isChecked);
+    setCheck3(isChecked);
+    setCheck4(isChecked);
+  }, []);
+
+  /** 약관 체크에 따라 "모두 동의" 체크박스 제어 **/
+  useEffect(() => {
+    // 다른 체크박스가 참일때만 "모두 동의" 체크박스 선택되도록 설정
+    setAllCheck(check1 && check2 && check3 && check4);
+  }, [check1, check2, check3, check4]);
+
+  /** 맨 처음 약관화면 애니메이션 로딩시 타이밍 조절 **/
   useEffect(() => {
     setTimeout(() => {
       showTermsBottomSheet(true);
@@ -100,14 +123,22 @@ export default function TermsBottomSheet() {
           <div className={style.content}>
             <div className={style.allAgree}>
               <div className={style.checkboxGroup}>
-                <Checkbox disabled={false} checked={false} onChange={() => {}} />
+                <Checkbox
+                  disabled={false}
+                  checked={allCheck}
+                  onChange={(e: ChangeEvent<HTMLInputElement>) => handleAllCheckboxChange(e.target.checked)}
+                />
                 <div className={style.title}>약관에 모두 동의합니다.</div>
               </div>
             </div>
             <div className={style.grayBoxArea}>
               <div className={style.terms}>
                 <div className={style.checkboxGroup}>
-                  <Checkbox disabled={false} checked={false} onChange={() => {}} />
+                  <Checkbox
+                    disabled={false}
+                    checked={check1}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => setCheck1(e.target.checked)}
+                  />
                   <div className={style.title}>
                     (필수) 마시멜로우 <span>이용약관</span>에 동의합니다.
                   </div>
@@ -131,7 +162,11 @@ export default function TermsBottomSheet() {
 
               <div className={style.marketing}>
                 <div className={style.checkboxGroup} style={{ marginBottom: '.2rem' }}>
-                  <Checkbox disabled={false} checked={false} onChange={() => {}} />
+                  <Checkbox
+                    disabled={false}
+                    checked={check2}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => setCheck2(e.target.checked)}
+                  />
                   <div className={style.title} style={{ marginBottom: '.4rem' }}>
                     (선택) <span>마케팅 및 광고 정보 수신동의.</span>
                   </div>
@@ -143,7 +178,11 @@ export default function TermsBottomSheet() {
 
               <div className={style.push}>
                 <div className={style.checkboxGroup} style={{ marginBottom: '.4rem' }}>
-                  <Checkbox disabled={false} checked={false} onChange={() => {}} />
+                  <Checkbox
+                    disabled={false}
+                    checked={check3}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => setCheck3(e.target.checked)}
+                  />
                   <div className={style.title}>(선택) 푸시 알림 켜기</div>
                 </div>
                 <div className={style.description}>푸시 알림을 켜면 마시멜로우 획득에 도움이 돼요</div>
@@ -151,13 +190,24 @@ export default function TermsBottomSheet() {
 
               <div className={style.age}>
                 <div className={style.checkboxGroup}>
-                  <Checkbox disabled={false} checked={false} onChange={() => {}} />
+                  <Checkbox
+                    disabled={false}
+                    checked={check4}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => setCheck4(e.target.checked)}
+                  />
                   <div className={style.title}>(필수) 만 14세 이상입니다.</div>
                 </div>
               </div>
             </div>
           </div>
-          <div className={style.button} onClick={() => router.push('/signup/info')}>
+          <div
+            className={cx(check1 ? style.buttonActive : style.buttonInActive)}
+            onClick={() => {
+              if (check1) {
+                router.push('/signup/info');
+              }
+            }}
+          >
             확인
           </div>
         </div>

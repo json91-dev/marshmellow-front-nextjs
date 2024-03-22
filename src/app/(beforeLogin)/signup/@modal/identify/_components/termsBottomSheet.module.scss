@@ -35,15 +35,7 @@
   border-radius: 0.5rem;
 }
 
-.button {
-  @include buttonCustom(#F5F5F5);
-  @include activeOpacity;
-  @include activeScale;
 
-  &.enabled {
-    color: black;
-  }
-}
 
 .title {
   font-size: 1.4rem;
@@ -110,12 +102,27 @@
   }
 }
 
-.button {
+
+.buttonInActive {
   position: absolute;
   bottom: 2.4rem;
   left: 3.2rem;
+  width: calc(100% - 6.4rem) !important;
+  color: #D9D9D9 !important;
+  background: #F5F5F5 !important;
+
+  @include buttonCustom(#F5F5F5);
+}
+
+.buttonActive {
+  position: absolute;
+  bottom: 2.4rem;
+  left: 3.2rem;
+  width: calc(100% - 6.4rem) !important;
+
   @include buttonBlack;
-  width: calc(100% - 6.4rem)
+  @include activeOpacity;
+  @include activeScale;
 }
 
 .image {
