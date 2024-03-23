@@ -1,5 +1,5 @@
 // import KakaoProvider from "next-auth/providers/kakao"
-// import KakaoProvider from "next-auth/providers/kakao"
+import kakao from 'next-auth/providers/kakao';
 import google from 'next-auth/providers/google'; // import 추가
 import NextAuth from 'next-auth';
 
@@ -12,6 +12,10 @@ export const {
     google({
       clientId: process.env.GOOGLE_CLIENT_ID ?? '',
       clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? '',
+    }),
+    kakao({
+      clientId: process.env.KAKAO_CLIENT_ID ?? '',
+      clientSecret: process.env.KAKAO_CLIENT_SECRET ?? '',
     }),
   ],
   callbacks: {
