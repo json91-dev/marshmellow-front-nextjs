@@ -19,3 +19,12 @@ export const browserPreventEvent = (event: () => void) => {
   history.pushState(null, '', location.href);
   event();
 };
+
+export async function fakeServerCall(data: any) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      // 여기서는 단순히 받은 데이터를 반환하지만, 여기에 실제로 서버 로직을 구현할 수 있습니다.
+      resolve({ success: false, data });
+    }, 300); // 300ms 지연 후 응답 반환
+  });
+}

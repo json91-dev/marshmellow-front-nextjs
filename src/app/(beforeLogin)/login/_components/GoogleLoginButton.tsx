@@ -2,19 +2,24 @@
 
 import style from './googleLoginButton.module.scss';
 import Image from 'next/image';
-import React, { CSSProperties } from 'react';
-import { useRouter } from 'next/navigation';
-// import {signIn} from "next-auth/react";
+import React, { CSSProperties, useCallback, useEffect } from 'react';
+import { AuthError } from 'next-auth';
+import { signIn } from 'next-auth/react';
 
 type Props = {
   style?: CSSProperties;
 };
 export default function GoogleLoginButton(props: Props) {
-  const router = useRouter();
-  const onClickButton = () => {
-    // signIn('google', {})
-    router.push('/signup/identify');
-  };
+  const onClickButton = useCallback(async () => {
+    try {
+      await signIn('google');
+    } catch (error) {
+      if (error instanceof AuthError) {
+        return '구글 로그인 실패';
+      }
+      throw error;
+    }
+  }, []);
 
   return (
     <div className={style.container} style={props.style} onClick={onClickButton}>
