@@ -2,8 +2,10 @@
 
 import style from './appleLoginButton.module.scss';
 import Image from 'next/image';
-import React, { CSSProperties } from 'react';
+import React, { CSSProperties, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
+import { signIn } from 'next-auth/react';
+import { AuthError } from 'next-auth';
 // import {signIn} from "next-auth/react";
 
 type Props = {
@@ -11,10 +13,17 @@ type Props = {
 };
 export default function AppleLoginButton(props: Props) {
   const router = useRouter();
-  const onClickButton = () => {
-    // signIn('google', {})
-    router.push('/signup/identify');
-  };
+  const onClickButton = useCallback(async () => {
+    try {
+      await signIn('apple');
+    } catch (error) {
+      if (error instanceof AuthError) {
+        console.error(error);
+        return '애플 로그인 실패';
+      }
+      throw error;
+    }
+  }, []);
 
   return (
     <div className={style.container} style={props.style} onClick={onClickButton}>

@@ -2,21 +2,32 @@
 
 import style from './bottomNavMenu.module.scss';
 import Link from 'next/link';
+import Image from 'next/image';
+import React from 'react';
+import { usePathname } from 'next/navigation';
+import cx from 'classnames';
 export default function BottomNavMenu() {
+  const pathname = usePathname();
+
+  console.log(pathname !== '/pantry');
   return (
     <div className={style.nav}>
       <li>
         <Link href="/pantry">
-          <div className={style.menu}>
-            <div>아이콘</div>
+          <div className={cx(pathname === '/pantry' && style.selected)}>
+            <div className={style.image}>
+              <Image src="/images/bottom-test.svg" alt="No Image" fill objectFit="contain" />
+            </div>
             <div>탕비실</div>
           </div>
         </Link>
       </li>
       <li>
         <Link href="/office">
-          <div>
-            <div>아이콘</div>
+          <div className={cx(pathname === '/office' && style.selected)}>
+            <div className={style.image}>
+              <Image src="/images/bottom-test.svg" alt="No Image" fill objectFit="contain" />
+            </div>
             <div>사무실</div>
           </div>
         </Link>
@@ -24,8 +35,10 @@ export default function BottomNavMenu() {
 
       <li>
         <Link href="/desk">
-          <div>
-            <div>아이콘</div>
+          <div className={cx(pathname === '/desk' && style.selected)}>
+            <div className={style.image}>
+              <Image src="/images/bottom-test.svg" alt="No Image" fill objectFit="contain" />
+            </div>
             <div>내 책상</div>
           </div>
         </Link>

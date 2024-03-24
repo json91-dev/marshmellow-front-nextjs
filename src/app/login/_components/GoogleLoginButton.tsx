@@ -15,6 +15,7 @@ export default function GoogleLoginButton(props: Props) {
       await signIn('google');
     } catch (error) {
       if (error instanceof AuthError) {
+        console.error(error);
         return '구글 로그인 실패';
       }
       throw error;

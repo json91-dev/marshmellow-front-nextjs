@@ -21,12 +21,12 @@
 
   @include isMobile {
     @include sizes;
-    width: var(--mainLayoutChildrenWidth);
+    width: var(--rootLayoutChildrenWidth);
   }
 
   @include isDesktop {
     @include sizes;
-    width: var(--mainLayoutChildrenWidth);
+    width: var(--rootLayoutChildrenWidth);
     left: 50%;
   }
 

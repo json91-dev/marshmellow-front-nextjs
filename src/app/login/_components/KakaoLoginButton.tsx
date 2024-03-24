@@ -18,6 +18,7 @@ export default function KakaoLoginButton(props: Props) {
       await signIn('kakao');
     } catch (error) {
       if (error instanceof AuthError) {
+        console.error(error);
         return '카카오 로그인 실패';
       }
       throw error;

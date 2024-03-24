@@ -62,8 +62,7 @@ export default memo(function LoginButtons() {
       <>
         <KakaoLoginButton style={{ marginTop: '2rem' }} />
         {isIOS ? (
-          // <AppleLoginButton style={{ marginTop: '1rem' }} />
-          <GoogleLoginButton style={{ marginTop: '1rem' }} />
+          <AppleLoginButton style={{ marginTop: '1rem' }} />
         ) : (
           <GoogleLoginButton style={{ marginTop: '1rem' }} />
         )}

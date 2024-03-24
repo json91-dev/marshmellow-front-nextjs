@@ -1,0 +1,8 @@
+.layoutChild {
+  @include sizes;
+  border: 1px solid red;
+  width: 100%;
+  height: calc(100vh - var(--mainLayoutBottomNavHeight));
+  position: absolute;
+  top: 0;
+}

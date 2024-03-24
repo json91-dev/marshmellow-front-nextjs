@@ -2,7 +2,7 @@
   @include z-index-vars;
   z-index: var(--toastIndex);
   position: fixed;
-  width: calc(var(--mainLayoutChildrenWidth) - 4rem) !important;
+  width: calc(var(--rootLayoutChildrenWidth) - 4rem) !important;
   border-radius: 0.5rem;
   background-color: #1C222B;
   color: white;

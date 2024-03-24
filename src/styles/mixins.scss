@@ -12,7 +12,8 @@
 
 @mixin sizes {
   --signUpTopNavHeight: 5.2rem;
-  --mainLayoutChildrenWidth: 43rem;
+  --rootLayoutChildrenWidth: 43rem;
+  --mainLayoutBottomNavHeight: 5.6rem;
 }
 
 @mixin userSelectNone {

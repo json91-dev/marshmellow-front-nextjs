@@ -34,11 +34,11 @@
   }
 
   @include isMobile {
-    width: var(--mainLayoutChildrenWidth);
+    width: var(--rootLayoutChildrenWidth);
   }
 
   @include isDesktop {
-    width: var(--mainLayoutChildrenWidth);
+    width: var(--rootLayoutChildrenWidth);
     left: 50%;
   }
 
