@@ -4,6 +4,7 @@ import './global.css';
 import { useMediaQuery } from 'react-responsive';
 import LeftZone from '@/app/_components/LeftZone';
 import AuthSession from '@/app/_components/AuthSession';
+import RQProvider from '@/app/_components/RQProvider';
 
 export const metadata = {
   title: '마쉬멜로우',
@@ -19,11 +20,13 @@ export default function RootLayout({ children }: Props) {
     <html lang="en">
       <body>
         <AuthSession>
-          <div className={style.rootLayout}>
-            <LeftZone />
-            <div className={style.content}>{children}</div>
-            <div className={style.rightZone}></div>
-          </div>
+          <RQProvider>
+            <div className={style.rootLayout}>
+              <LeftZone />
+              <div className={style.content}>{children}</div>
+              <div className={style.rightZone}></div>
+            </div>
+          </RQProvider>
         </AuthSession>
       </body>
     </html>
