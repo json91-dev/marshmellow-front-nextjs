@@ -26,7 +26,9 @@ export const {
   callbacks: {
     async jwt({ token, user, account, profile, isNewUser }) {
       if (account) {
+        console.log(account);
         token.accessToken = account.access_token;
+        token.vendor = account.provider;
       }
       return token;
     },
@@ -34,6 +36,7 @@ export const {
     async session({ session, token }) {
       if (session) {
         session.accessToken = token.accessToken;
+        session.vendor = token.vendor;
       }
       return session;
     },

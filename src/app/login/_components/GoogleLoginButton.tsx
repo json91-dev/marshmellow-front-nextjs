@@ -5,6 +5,7 @@ import Image from 'next/image';
 import React, { CSSProperties, useCallback, useEffect } from 'react';
 import { AuthError } from 'next-auth';
 import { signIn } from 'next-auth/react';
+import { useMutation } from '@tanstack/react-query/build/modern/index';
 
 type Props = {
   style?: CSSProperties;
