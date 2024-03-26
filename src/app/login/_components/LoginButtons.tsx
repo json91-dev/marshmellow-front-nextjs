@@ -17,7 +17,6 @@ export default memo(function LoginButtons() {
   const isFetchingServer = useRef<boolean>(false);
   const router = useRouter();
   const { showExistNumberModal } = useModalStore();
-  // signOut();
 
   const mutation = useMutation({
     async mutationFn(data: { accessToken: string; vendor: string }) {
@@ -48,8 +47,7 @@ export default memo(function LoginButtons() {
   useEffect(() => {
     console.log(status);
     if (status === 'authenticated') {
-      console.log(session.vendor);
-      mutation.mutate({ accessToken: session.accessToken, vendor: 'Kakao' });
+      mutation.mutate({ accessToken: session.accessToken, vendor: session.vendor });
     }
 
     // if (status === 'authenticated' && !isFetchingServer.current) {
@@ -94,7 +92,8 @@ export default memo(function LoginButtons() {
       <>
         <KakaoLoginButton style={{ marginTop: '2rem' }} />
         {isIOS ? (
-          <AppleLoginButton style={{ marginTop: '1rem' }} />
+          // <AppleLoginButton style={{ marginTop: '1rem' }} />
+          <GoogleLoginButton style={{ marginTop: '1rem' }} />
         ) : (
           <GoogleLoginButton style={{ marginTop: '1rem' }} />
         )}

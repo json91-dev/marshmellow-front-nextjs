@@ -2,19 +2,12 @@ import style from './desk.module.scss';
 import NameCard from '@/app/(main)/desk/_components/NameCard';
 import Image from 'next/image';
 import React from 'react';
+import Options from '@/app/(main)/desk/_components/Options';
 
 export default function DeskPage() {
   return (
     <div className={style.container}>
-      <div className={style.options}>
-        <div className={style.image}>
-          <Image src="/images/icon_notice.svg" alt="No Image" width={24} height={24} />
-        </div>
-        <div className={style.image}>
-          <Image src="/images/icon_setting.svg" width={24} height={24} alt={'No Image'} />
-        </div>
-      </div>
-
+      <Options />
       <div className={style.deskMain}>
         <NameCard />
         <NameCard />
