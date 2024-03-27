@@ -1,17 +1,23 @@
 import style from './nameCard.module.scss';
+import Image from 'next/image';
+import React from 'react';
 
 export default function NameCard() {
   return (
     <div className={style.container}>
-      <div>
-        <div>아이콘</div>
-      </div>
-      <div>
-        <div>닉네임</div>
-        <div>(아이콘) </div>
+      <div className={style.topName}>MARSHMALLOW</div>
+
+      <div className={style.profile}>
+        <div className={style.backgroundBall}></div>
+        <Image src="/images/icon_marshmellow.svg" alt="No Image" width={68} height={68} />
       </div>
 
-      <div>
+      <div className={style.nickname}>
+        <div>닉네임</div>
+        <div> > </div>
+      </div>
+
+      <div className={style.detailInfo}>
         <div>
           <div>입사일</div>
           <div>직급</div>

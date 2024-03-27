@@ -29,6 +29,7 @@ export const {
         console.log(account);
         token.accessToken = account.access_token;
         token.vendor = account.provider;
+        token.idToken = account.id_token;
       }
       return token;
     },
@@ -37,6 +38,7 @@ export const {
       if (session) {
         session.accessToken = token.accessToken;
         session.vendor = token.vendor;
+        session.idToken = token.idToken;
       }
       return session;
     },

@@ -1,0 +1,23 @@
+<svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_i_293_5350)">
+<rect width="72" height="72" rx="13.2" fill="white"/>
+</g>
+<rect x="0.75" y="0.75" width="70.5" height="70.5" rx="12.45" stroke="#1C222B" stroke-width="1.5"/>
+<ellipse cx="17.0909" cy="27.7278" rx="4.09092" ry="2.27273" fill="#FBBAF9"/>
+<ellipse cx="44.9088" cy="27.7278" rx="4.09092" ry="2.27273" fill="#FBBAF9"/>
+<path d="M24.8 22.4C24.8 23.7255 23.7255 24.8 22.4 24.8C21.0745 24.8 20 23.7255 20 22.4C20 21.0745 21.0745 20 22.4 20C23.7255 20 24.8 21.0745 24.8 22.4Z" fill="#1C222B"/>
+<path d="M28.0367 34.3374L27.0462 33.153C26.7503 32.7991 26.8141 32.2688 27.1857 31.9953L30.4134 29.6197C30.7039 29.4058 31.1016 29.4129 31.3844 29.6368L34.3766 32.0063C34.7215 32.2795 34.7812 32.7798 34.5101 33.1264L33.6349 34.2456C32.2233 36.0508 29.5068 36.0953 28.0367 34.3374Z" fill="#FF6661"/>
+<path d="M42.8 22.4C42.8 23.7255 41.7255 24.8 40.4 24.8C39.0745 24.8 38 23.7255 38 22.4C38 21.0745 39.0745 20 40.4 20C41.7255 20 42.8 21.0745 42.8 22.4Z" fill="#1C222B"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M24.323 27.6369C24.7445 27.3735 25.2998 27.5016 25.5632 27.9231L27.6474 31.2578C27.7179 31.3706 27.8822 31.3706 27.9527 31.2578L30.0368 27.9231C30.2013 27.66 30.4897 27.5001 30.8 27.5001C31.1103 27.5001 31.3988 27.66 31.5632 27.9231L33.6474 31.2578C33.7179 31.3706 33.8822 31.3706 33.9527 31.2578L36.0368 27.9231C36.3003 27.5016 36.8555 27.3735 37.277 27.6369C37.6985 27.9004 37.8267 28.4556 37.5632 28.8771L35.4791 32.2118C34.7036 33.4526 32.8965 33.4526 32.121 32.2118L30.8 30.0982L29.4791 32.2118C28.7036 33.4526 26.8965 33.4526 26.121 32.2118L24.0368 28.8771C23.7734 28.4556 23.9015 27.9004 24.323 27.6369Z" fill="#1C222B"/>
+<defs>
+<filter id="filter0_i_293_5350" x="0" y="0" width="72" height="72" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dx="-5" dy="-5"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.898039 0 0 0 0 0.913725 0 0 0 0 0.94902 0 0 0 1 0"/>
+<feBlend mode="normal" in2="shape" result="effect1_innerShadow_293_5350"/>
+</filter>
+</defs>
+</svg>

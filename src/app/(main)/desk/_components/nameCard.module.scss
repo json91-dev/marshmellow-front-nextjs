@@ -1,7 +1,57 @@
 
 .container {
   width: 90%;
-  background-image: linear-gradient(to bottom, #FFF381 0%, #FFF381 10rem, #FFFDE9 10rem, #FFFDE9 100%, transparent);
-  height: 50rem;
+  background-image: linear-gradient(to bottom, #FFF381 0%, #FFF381 4rem, #FFFDE9 4rem, #FFFDE9 100%, transparent);
+  border-radius: 1.6rem;
+  padding-top: 8rem;
+  padding-bottom: 2.4rem;
+  display : flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
 
+  .topName {
+    position: absolute;
+    top: 2.4rem;
+    right: 3rem;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: white;
+  }
+
+  .profile {
+    width: 12rem;
+    height: 12rem;
+    background-color: #FFF381;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .icon {
+
+    }
+  }
+
+  .nickname {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 1rem;
+
+    >:first-child {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    >:last-child {
+      font-size: 1.4rem;
+      font-weight: 700;
+      padding-left: 0.6rem;
+    }
+  }
+
+  .detailInfo {
+
+  }
 }

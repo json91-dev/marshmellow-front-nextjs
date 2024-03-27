@@ -10,18 +10,6 @@ export default function DeskPage() {
       <Options />
       <div className={style.deskMain}>
         <NameCard />
-        <NameCard />
-        <NameCard />
-        <NameCard />
-        <NameCard />
-        <NameCard />
-        <NameCard />
-        <NameCard />
-        <NameCard />
-        <NameCard />
-        <NameCard />
-        <NameCard />
-        <NameCard />
 
         <div className={style.ticket}>
           <div>

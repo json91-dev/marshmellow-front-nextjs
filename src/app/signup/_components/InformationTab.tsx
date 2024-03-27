@@ -7,7 +7,6 @@ type Props = {
 };
 
 export default function InformationTab({ index }: Props) {
-  console.log(index);
   return (
     <div className={style.container}>
       <div className={style.tab}>

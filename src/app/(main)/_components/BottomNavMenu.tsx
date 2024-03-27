@@ -9,7 +9,6 @@ import cx from 'classnames';
 export default function BottomNavMenu() {
   const pathname = usePathname();
 
-  console.log(pathname !== '/pantry');
   return (
     <div className={style.nav}>
       <li>

@@ -19,17 +19,26 @@ export default memo(function LoginButtons() {
   const { showExistNumberModal } = useModalStore();
 
   const mutation = useMutation({
-    async mutationFn(data: { accessToken: string; vendor: string }) {
-      const { accessToken, vendor } = data;
-      return fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/signin`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ accessToken: accessToken, vendor: vendor }),
-      });
+    async mutationFn(data: { accessToken: string; vendor: string; idToken: string }) {
+      const { accessToken, vendor, idToken } = data;
+      console.log(data);
+
+      if (vendor === 'kakao') {
+        return fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/signin`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ accessToken: accessToken, vendor: vendor }),
+        });
+      } else if (vendor === 'google') {
+        return fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/signin`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ accessToken: idToken, vendor: vendor }),
+        });
+      }
     },
     async onSuccess(response: any) {
       const result = response.json();
-      console.log(result);
     },
 
     onError: (error: string) => {
@@ -45,35 +54,13 @@ export default memo(function LoginButtons() {
   }, []);
 
   useEffect(() => {
-    console.log(status);
     if (status === 'authenticated') {
-      mutation.mutate({ accessToken: session.accessToken, vendor: session.vendor });
+      mutation.mutate({
+        accessToken: session.accessToken,
+        vendor: session.vendor,
+        idToken: session.idToken,
+      });
     }
-
-    // if (status === 'authenticated' && !isFetchingServer.current) {
-    //   console.log('authenticated');
-    //   isFetchingServer.current = true;
-    //   fakeServerCall({}).then((result) => {
-    //     if (result.success) {
-    //       console.log(session);
-    //       console.log(session.accessToken);
-    //       router.push('/signup/identify');
-    //     } else {
-    //       console.log(session);
-    //       console.log(session.accessToken);
-    //       showExistNumberModal(true);
-    //       signOut();
-    //       console.log('모달 띄우기');
-    //     }
-    //   });
-    //   isFetchingServer.current = false;
-    //
-    //   isFetchingServer.current = false;
-    // } else if (status === 'loading') {
-    //   console.log('loading');
-    // } else if (status === 'unauthenticated') {
-    //   console.log('unauthenticated');
-    // }
   }, [status]);
 
   if (isIOS === null) {
