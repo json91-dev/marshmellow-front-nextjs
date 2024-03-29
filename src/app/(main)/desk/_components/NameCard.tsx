@@ -1,6 +1,7 @@
 import style from './nameCard.module.scss';
 import Image from 'next/image';
 import React from 'react';
+import TicketLinks from '@/app/(main)/desk/_components/TickekLinks';
 
 export default function NameCard() {
   return (
@@ -8,13 +9,12 @@ export default function NameCard() {
       <div className={style.topName}>MARSHMALLOW</div>
 
       <div className={style.profile}>
-        <div className={style.backgroundBall}></div>
         <Image src="/images/icon_marshmellow.svg" alt="No Image" width={68} height={68} />
       </div>
 
       <div className={style.nickname}>
         <div>닉네임</div>
-        <div> > </div>
+        <div> {'>'} </div>
       </div>
 
       <div className={style.detailInfo}>
@@ -25,16 +25,16 @@ export default function NameCard() {
         </div>
 
         <div>
-          <div>
+          <div className={style.workPeriod}>
             <div>2022년 00월 00일</div>
-            <div>0년 0개월 0일 재직</div>
+            <div className={style.workPeriodTag}>0년 0개월 0일 재직</div>
           </div>
           <div>인턴</div>
           <div>08:00 ~ 17:00 (점심시간 12:00)</div>
         </div>
       </div>
 
-      <div>로고</div>
+      <div className={style.logo}></div>
     </div>
   );
 }

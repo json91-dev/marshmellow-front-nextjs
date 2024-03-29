@@ -10,12 +10,13 @@
 
 .deskMain {
   position: relative;
-  top: 6rem;
+  top: 7rem;
   height: calc(100vh - 6rem - 5.6rem);
   width: 100%;
   overflow-y: scroll;
   display: flex;
   align-items: center;
   flex-direction: column;
+  gap: 2rem;
   @include noScrollBar
 }
