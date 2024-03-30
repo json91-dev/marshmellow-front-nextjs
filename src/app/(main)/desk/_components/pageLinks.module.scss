@@ -1,0 +1,26 @@
+.container {
+  width: 100%;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.link {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1.6rem;
+  padding-bottom: 1.6rem;
+  @include activeOpacity(0.35, 100ms);
+  cursor: pointer;
+
+  > :first-child {
+    font-size: 1.6rem;
+
+  }
+
+  > :last-child {
+    font-size: 1.6rem;
+
+  }
+}
+

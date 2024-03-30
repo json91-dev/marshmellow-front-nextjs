@@ -4,6 +4,8 @@ import Image from 'next/image';
 import React from 'react';
 import Options from '@/app/(main)/desk/_components/Options';
 import TicketLinks from '@/app/(main)/desk/_components/TickekLinks';
+import HorizontalLine from '@/app/(main)/desk/_components/HorizontalLine';
+import PageLinks from '@/app/(main)/desk/_components/PageLinks';
 
 export default function DeskPage() {
   return (
@@ -12,6 +14,8 @@ export default function DeskPage() {
       <div className={style.deskMain}>
         <NameCard />
         <TicketLinks />
+        <HorizontalLine />
+        <PageLinks />
         {/*<div className={style.menu}>*/}
         {/*  <div>사용가이드</div>*/}
         {/*  <div>아이콘</div>*/}
