@@ -19,6 +19,8 @@
   flex-direction: column;
   gap: 2rem;
   @include noScrollBar;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .link {
@@ -36,7 +38,82 @@
   }
 
   > :last-child {
+    margin-top: 0.4rem;
     font-size: 1.6rem;
+  }
+}
 
+.idCardInfo {
+  width: 100%;
+
+  .title {
+    color: #1C222B;
+    font-size: 1.4rem;
+    font-weight: 700;
+  }
+
+  .description {
+    color: #5C6475;
+    font-size: 10px;
+    font-weight: 400;
+    text-align: left;
+    margin-top: 0.5rem;
+  }
+}
+
+.nickname {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .left {
+    font-size: 1.4rem;
+    font-weight: 400;
+    text-align: left;
+    color: #5C6475;
+  }
+
+  .right {
+    font-size: 1.6rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #5C6475;
+
+    :last-child {
+      margin-left: 0.5rem;
+    }
+    :last-child {
+      margin-bottom: 0.2rem;
+    }
+  }
+}
+
+.level {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .left {
+    font-size: 1.4rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #5C6475;
+
+    :last-child {
+      margin-left: 0.5rem;
+    }
+  }
+
+  .right {
+    display: flex;
+    flex-direction: row;
+    font-size: 1.6rem;
+    font-weight: 400;
+    text-align: right;
+    color: #5C6475;
   }
 }

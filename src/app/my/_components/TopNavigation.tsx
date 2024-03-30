@@ -1,4 +1,4 @@
-import style from '@/app/signup/_components/topNavigation.module.scss';
+import style from './topNavigation.module.scss';
 import Image from 'next/image';
 import React from 'react';
 
@@ -8,7 +8,7 @@ export default function TopNavigation() {
       <div className={style.leftIcon}>
         <Image src="/images/icon_arrow_left.svg" alt="No Image" fill objectFit="contain" />
       </div>
-      <p>지원하기</p>
+      <p>사원증</p>
       <div className={style.leftIcon}></div>
     </div>
   );
