@@ -29,43 +29,45 @@ export default function myPage() {
           <div className={style.right}>인턴</div>
         </div>
 
-        <div className={style.time}>
-          <div>근무시간</div>
-          <div>
-            <div>
+        <div className={style.workTime}>
+          <div className={style.left}>근무시간</div>
+          <div className={style.right}>
+            <div className={style.workTimeDetail}>
               <div>08시 ~ 17시</div>
               <div>점심시간은 11시입니다.</div>
             </div>
-            <div>icon</div>
+            <Image src="/images/icon_arrow_right.svg" alt="No Image" width={25} height={25} />
           </div>
         </div>
 
-        <div className={style.myInfo}>
-          <div>
+        <div className={style.myEditInfo}>
+          <div className={style.left}>
             <div>내정보</div>
             <div>내 정보가 변경되었다면 본인확인을 통해 정보를 수정할 수 있습니다.</div>
           </div>
-          <div>icon</div>
+          <div className={style.right}>
+            <Image src="/images/icon_arrow_right.svg" alt="No Image" width={25} height={25} />
+          </div>
         </div>
 
         <div className={style.profileInfo}>
-          <div>이름</div>
-          <div>김이름</div>
+          <div className={style.left}>이름</div>
+          <div className={style.right}>김이름</div>
         </div>
 
         <div className={style.profileInfo}>
-          <div>성별</div>
-          <div>여자</div>
+          <div className={style.left}>성별</div>
+          <div className={style.right}>여자</div>
         </div>
 
         <div className={style.profileInfo}>
-          <div>생년월일</div>
-          <div>1991.03.11</div>
+          <div className={style.left}>생년월일</div>
+          <div className={style.right}>1991.03.11</div>
         </div>
 
         <div className={style.profileInfo}>
-          <div>전화번호</div>
-          <div>010-0000-0000</div>
+          <div className={style.left}>전화번호</div>
+          <div className={style.right}>010-0000-0000</div>
         </div>
 
         <div className={style.link}>
