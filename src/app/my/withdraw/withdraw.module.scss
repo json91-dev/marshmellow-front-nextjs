@@ -1,0 +1,45 @@
+.container {
+  width: 100%;
+  height: 100%;
+  border: 1px solid red;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+  padding: 0 2rem;
+}
+
+.title {
+  color: #12171E;
+  font-size: 2.4rem;
+  font-weight: 700;
+  width: 100%;
+}
+
+.description {
+  width: 100%;
+  color: #1C222B;
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-top: 1.6rem;
+
+}
+
+.reason {
+  margin-top: 1.6rem;
+  width: 100%;
+  height: 40rem;
+
+  textarea {
+    background-color: #F6F8FC;
+    width: 100%;
+    height: 100%;
+    resize: none; // 하단 표시 없애기
+    border-radius: 0.4rem;
+    padding: 1.2rem;
+
+
+
+
+  }
+}
