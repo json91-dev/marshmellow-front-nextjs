@@ -8,10 +8,13 @@
   color: white;
   font-size: 1.2rem;
   background-color: #D4DBE9;
+  pointer-events: none;
 }
 
 .isActive {
   background-color: black;
   @include activeScale(0.99);
   @include activeOpacity(0.8);
+  pointer-events: all;
+  cursor: pointer;
 }

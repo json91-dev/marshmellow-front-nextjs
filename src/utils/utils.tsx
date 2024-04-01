@@ -9,6 +9,16 @@ export const isMobile = {
     return isMobile.Android() || isMobile.iOS();
   },
 };
+export function debounce(func: Function, delay: number) {
+  let timerId: NodeJS.Timeout;
+
+  return (...args: any[]) => {
+    clearTimeout(timerId);
+    timerId = setTimeout(() => {
+      func(...args);
+    }, delay);
+  };
+}
 
 export const isAppleBrowser = () => {
   const userAgent = navigator.userAgent;
