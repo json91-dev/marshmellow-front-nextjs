@@ -38,3 +38,24 @@ export async function fakeServerCall(data: any) {
     }, 300); // 300ms 지연 후 응답 반환
   });
 }
+
+// 로컬 스토리지에 값을 설정하는 함수
+export const setLocalStorage = (key, value) => {
+  localStorage.setItem(key, JSON.stringify(value));
+};
+
+// 로컬 스토리지에서 값을 가져오는 함수
+export const getLocalStorage = (key) => {
+  const value = localStorage.getItem(key);
+  return value ? JSON.parse(value) : null;
+};
+
+// 로컬 스토리지에서 특정 키의 값을 삭제하는 함수
+export const removeLocalStorage = (key) => {
+  localStorage.removeItem(key);
+};
+
+// 로컬 스토리지의 모든 값을 삭제하는 함수
+export const clearLocalStorage = () => {
+  localStorage.clear();
+};

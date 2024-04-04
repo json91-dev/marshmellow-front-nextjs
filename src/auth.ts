@@ -24,22 +24,41 @@ export const {
     }),
   ],
   callbacks: {
-    async jwt({ token, user, account, profile, isNewUser }) {
+    async jwt({ token, user, account, profile, isNewUser, trigger, session }) {
       if (account) {
-        console.log(account);
-        token.accessToken = account.access_token;
-        token.vendor = account.provider;
-        token.idToken = account.id_token;
+        if (account.provider === 'google') {
+          const response = await fetch(`${process.env.API_URL}/auth/signin`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ accessToken: account.id_token, vendor: account.provider }),
+          });
+          const result = await response.json();
+          token.accessToken = result.data.credentials.accessToken;
+          token.refreshToken = result.data.credentials.refreshToken;
+          console.log(token.accessToken);
+        } else {
+          const response = await fetch(`${process.env.API_URL}/auth/signin`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ accessToken: account.access_token, vendor: account.provider }),
+          });
+
+          const result = await response.json();
+          token.accessToken = result.data.credentials.accessToken;
+          token.refreshToken = result.data.credentials.refreshToken;
+          console.log(token.accessToken);
+        }
       }
+
       return token;
     },
 
-    async session({ session, token }) {
+    async session({ session, token, trigger, newSession }) {
       if (session) {
         session.accessToken = token.accessToken;
-        session.vendor = token.vendor;
-        session.idToken = token.idToken;
+        session.refreshToken = token.refreshToken;
       }
+
       return session;
     },
   },
