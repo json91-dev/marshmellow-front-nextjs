@@ -2,6 +2,7 @@ import style from './my.module.scss';
 import TopNavigation from '@/app/my/_components/TopNavigation';
 import Image from 'next/image';
 import React from 'react';
+import HorizontalLine from '@/app/my/_components/HorizontalLine';
 
 export default function myPage() {
   return (
@@ -24,7 +25,7 @@ export default function myPage() {
         <div className={style.level}>
           <div className={style.left}>
             <div>직급</div>
-            <Image src="/images/icon_coachmark.svg" alt="No Image" width={16} height={16} />
+            <Image src="/images/icon_coachmark.svg" alt="No Image" width={18} height={18} />
           </div>
           <div className={style.right}>인턴</div>
         </div>
@@ -70,19 +71,45 @@ export default function myPage() {
           <div className={style.right}>010-0000-0000</div>
         </div>
 
-        <div className={style.link}>
-          <div>배송지 관리</div>
-          <div>icon</div>
-        </div>
+        <div style={{ width: '100%', display: 'flex', flexDirection: 'column' }}>
+          <HorizontalLine
+            height={'0.2rem'}
+            color={'#EAEFF7'}
+            customStyle={{ position: 'relative', width: 'calc(100% + 4rem)', left: '-2rem' }}
+          />
 
-        <div className={style.link}>
-          <div>로그아웃</div>
-          <div></div>
-        </div>
+          <div className={style.link}>
+            <div>배송지 관리</div>
+            <Image src="/images/icon_arrow_right.svg" alt="No Image" width={25} height={25} />
+          </div>
 
-        <div className={style.link}>
-          <div>탈퇴하기</div>
-          <div></div>
+          <HorizontalLine
+            height={'0.2rem'}
+            color={'#EAEFF7'}
+            customStyle={{ position: 'relative', width: 'calc(100% + 4rem)', left: '-2rem' }}
+          />
+
+          <div className={style.link}>
+            <div>로그아웃</div>
+            <div></div>
+          </div>
+
+          <HorizontalLine
+            height={'0.2rem'}
+            color={'#EAEFF7'}
+            customStyle={{ position: 'relative', width: 'calc(100% + 4rem)', left: '-2rem' }}
+          />
+
+          <div className={style.link}>
+            <div>탈퇴하기</div>
+            <div></div>
+          </div>
+
+          <HorizontalLine
+            height={'0.2rem'}
+            color={'#EAEFF7'}
+            customStyle={{ position: 'relative', width: 'calc(100% + 4rem)', left: '-2rem' }}
+          />
         </div>
       </div>
     </div>
