@@ -18,14 +18,14 @@ export default function myPage() {
           <div className={style.left}>닉네임</div>
           <div className={style.right}>
             <div>말랑이</div>
-            <Image src="/images/icon_arrow_right.svg" alt="No Image" width={25} height={25} />
+            <Image src="/images/arrow.right.svg" alt="No Image" width={25} height={25} />
           </div>
         </div>
 
         <div className={style.level}>
           <div className={style.left}>
             <div>직급</div>
-            <Image src="/images/icon_coachmark.svg" alt="No Image" width={18} height={18} />
+            <Image src="/images/coachmark.svg" alt="No Image" width={18} height={18} />
           </div>
           <div className={style.right}>인턴</div>
         </div>
@@ -37,7 +37,7 @@ export default function myPage() {
               <div>08시 ~ 17시</div>
               <div>점심시간은 11시입니다.</div>
             </div>
-            <Image src="/images/icon_arrow_right.svg" alt="No Image" width={25} height={25} />
+            <Image src="/images/arrow.right.svg" alt="No Image" width={25} height={25} />
           </div>
         </div>
 
@@ -47,7 +47,7 @@ export default function myPage() {
             <div>내 정보가 변경되었다면 본인확인을 통해 정보를 수정할 수 있습니다.</div>
           </div>
           <div className={style.right}>
-            <Image src="/images/icon_arrow_right.svg" alt="No Image" width={25} height={25} />
+            <Image src="/images/arrow.right.svg" alt="No Image" width={25} height={25} />
           </div>
         </div>
 
@@ -80,7 +80,7 @@ export default function myPage() {
 
           <div className={style.link}>
             <div>배송지 관리</div>
-            <Image src="/images/icon_arrow_right.svg" alt="No Image" width={25} height={25} />
+            <Image src="/images/arrow.right.svg" alt="No Image" width={25} height={25} />
           </div>
 
           <HorizontalLine

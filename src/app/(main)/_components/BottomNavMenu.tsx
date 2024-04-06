@@ -15,7 +15,7 @@ export default function BottomNavMenu() {
         <Link href="/pantry">
           <div className={cx(pathname === '/pantry' && style.selected)}>
             <div className={style.image}>
-              <Image src="/images/icon_pantry.svg" alt="No Image" fill objectFit="contain" />
+              <Image src="/images/bottom.tab.pantry.svg" alt="No Image" fill objectFit="contain" />
             </div>
             <div>탕비실</div>
           </div>
@@ -25,7 +25,7 @@ export default function BottomNavMenu() {
         <Link href="/office">
           <div className={cx(pathname === '/office' && style.selected)}>
             <div className={style.image}>
-              <Image src="/images/icon_office.svg" alt="No Image" fill objectFit="contain" />
+              <Image src="/images/bottom.tab.office.svg" alt="No Image" fill objectFit="contain" />
             </div>
             <div>사무실</div>
           </div>
@@ -36,7 +36,7 @@ export default function BottomNavMenu() {
         <Link href="/desk">
           <div className={cx(pathname === '/desk' && style.selected)}>
             <div className={style.image}>
-              <Image src="/images/icon_desk.svg" alt="No Image" fill objectFit="contain" />
+              <Image src="/images/bottom.tab.desk.svg" alt="No Image" fill objectFit="contain" />
             </div>
             <div>내 책상</div>
           </div>

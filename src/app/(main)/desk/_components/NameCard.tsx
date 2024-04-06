@@ -9,7 +9,7 @@ export default function NameCard() {
       <div className={style.topName}>MARSHMALLOW</div>
 
       <div className={style.profile}>
-        <Image src="/images/icon_marshmellow.svg" alt="No Image" width={68} height={68} />
+        <Image src="/images/mallow.happy.svg" alt="No Image" width={68} height={68} />
       </div>
 
       <div className={style.nickname}>

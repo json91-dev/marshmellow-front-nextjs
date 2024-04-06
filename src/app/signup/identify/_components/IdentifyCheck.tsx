@@ -24,7 +24,7 @@ export default function IdentifyCheck() {
       {!isRunningPASS && (
         <>
           <div className={style.image}>
-            <Image src="/images/icon_mellow_work.svg" alt="No Image" fill objectFit="contain" />
+            <Image src="/images/mallow.work.svg" alt="No Image" fill objectFit="contain" />
           </div>
           <div className={style.description}>입사지원을 위해 최초 1회 본인인증이 필요합니다.</div>
           <ConfirmButton

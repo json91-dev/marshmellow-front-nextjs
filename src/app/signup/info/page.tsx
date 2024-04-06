@@ -67,7 +67,7 @@ export default function SignupInfoPage() {
       <form className={style.form} onSubmit={handleSubmit}>
         <div className={style.imageArea}>
           <div className={style.image}>
-            <Image src="/images/icon_mellow_normal.svg" alt="No Image" fill objectFit="contain" />
+            <Image src="/images/mallow.image.svg" alt="No Image" fill objectFit="contain" />
           </div>
           <div className={style.info}>
             <div className={style.label}>지원서 사진등록</div>
@@ -149,7 +149,7 @@ export default function SignupInfoPage() {
               </option>
             </select>
             <div className={style.image}>
-              <Image src="/images/icon_arrow_bottom.svg" alt="No Image" fill objectFit="contain" />
+              <Image src="/images/arrow.bottom.svg" alt="No Image" fill objectFit="contain" />
             </div>
           </div>
         </div>

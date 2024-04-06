@@ -27,7 +27,7 @@ export default function GoogleLoginButton(props: Props) {
     <div className={style.container} style={props.style} onClick={onClickButton}>
       <div className={style.button}>
         <div className={style.image}>
-          <Image src="/images/logo_google.svg" alt="No Image" fill objectFit="contain" />
+          <Image src="/images/login.google.svg" alt="No Image" fill objectFit="contain" />
         </div>
         <p>구글로 시작하기</p>
       </div>

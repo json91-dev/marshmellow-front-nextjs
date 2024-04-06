@@ -12,7 +12,7 @@ export default function SignupSubmitCompletePage() {
       <div className={style.header}>
         <div className={style.headerTitle}>마시멜로우 채용팀</div>
         <div className={style.headerImage}>
-          <Image src="/images/icon_document.svg" alt="No Image" fill objectFit="contain" />
+          <Image src="/images/document.svg" alt="No Image" fill objectFit="contain" />
         </div>
       </div>
       <div className={style.main}>
