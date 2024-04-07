@@ -73,14 +73,21 @@ export default function NicknameChangeModal() {
             <button
               onSubmit={onClicksubmit}
               className={style.confirmButton}
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault();
                 showNicknameChangeModal(false);
                 openToast('내 닉네임이 변경되었어요.');
               }}
             >
               확인
             </button>
-            <button className={style.cancelButton} onClick={() => showNicknameChangeModal(false)}>
+            <button
+              className={style.cancelButton}
+              onClick={(e) => {
+                e.preventDefault();
+                showNicknameChangeModal(false);
+              }}
+            >
               취소
             </button>
           </form>
