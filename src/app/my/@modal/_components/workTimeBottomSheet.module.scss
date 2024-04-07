@@ -1,0 +1,36 @@
+.bottomSheet {
+  @include z-index-vars;
+  z-index: var(--bottomSheetIndex);
+
+  height: 44rem;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  background: white;
+  display: flex;
+
+  padding-top: 3.8rem;
+  padding-left: 3.2rem;
+  padding-right: 3.2rem;
+  border-top-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+
+  .title {
+
+  }
+
+  .description {
+
+  }
+
+  .workTimeSelect {
+    .item {
+      .select {
+
+      }
+      .info {
+
+      }
+    }
+  }
+}

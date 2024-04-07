@@ -5,18 +5,18 @@ import { useEffect, useRef } from 'react';
 import { useToastStore } from '@/store/toast';
 
 export default function Toast() {
-  const { isShow, showToast, message } = useToastStore();
+  const { message, closeToast, isOpen } = useToastStore();
 
   useEffect(() => {
-    if (isShow) {
+    if (isOpen) {
       setTimeout(() => {
-        showToast(false);
-      }, 1000);
+        closeToast();
+      }, 2500);
     }
-  }, [isShow]);
+  }, [isOpen]);
 
   return (
-    <div className={cx(style.container, isShow && style.active)} onClick={() => showToast(false)}>
+    <div className={cx(style.toast, isOpen && style.active)} onClick={() => closeToast()}>
       {message}
     </div>
   );

@@ -1,4 +1,4 @@
-.container {
+.toast {
   @include z-index-vars;
   z-index: var(--toastIndex);
   position: fixed;
@@ -12,11 +12,9 @@
   height: 4.8rem;
   pointer-events: none;
   bottom: 2rem;
-  transition: .1s;
-
   opacity: 0;
-  //transform: scale(0.8);
-
+  transition: all 0.4s;
+  font-size: 1.6rem;
 
   @include isMobile {
   }
@@ -27,8 +25,8 @@
 }
 
 .active {
+  pointer-events: all;
   opacity: 0.9;
-  //transform: scale(1);
 }
 
 
