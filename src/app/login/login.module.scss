@@ -63,20 +63,19 @@
   p {
     font-size: 1.4rem;
   }
+}
 
-  .lookAroundButton {
-    margin-top: 4rem;
-    padding: 1rem;
-    transition: transform .2s;
+.lookAroundButton {
+  margin-top: 2rem;
+  padding: 2rem;
+  cursor: pointer;
 
-    &:active {
-      transform: scale(.97)
-    }
+  &:active {
+    transform: scale(.97)
+  }
 
-    p {
-      font-size: 1.4rem;
-      color: #5C6475
-    }
-
+  p {
+    font-size: 1.4rem;
+    color: #5C6475
   }
 }

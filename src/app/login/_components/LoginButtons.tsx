@@ -9,6 +9,7 @@ import Spinner from '@/app/login/_components/Spinner';
 import { useSession, signOut, getCsrfToken } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useModalStore } from '@/store/modal';
+import style from '@/app/login/login.module.scss';
 
 export default memo(function LoginButtons() {
   const [isIOS, setIsIOS] = useState<boolean>(null!);
@@ -44,11 +45,14 @@ export default memo(function LoginButtons() {
       <>
         <KakaoLoginButton style={{ marginTop: '2rem' }} />
         {isIOS ? (
-          // <AppleLoginButton style={{ marginTop: '1rem' }} />
-          <GoogleLoginButton style={{ marginTop: '1rem' }} />
+          <AppleLoginButton style={{ marginTop: '1rem' }} />
         ) : (
           <GoogleLoginButton style={{ marginTop: '1rem' }} />
         )}
+
+        <div className={style.lookAroundButton} onClick={() => router.push('/desk')}>
+          <p>마시멜로우 둘러보기 </p>
+        </div>
       </>
     );
   }

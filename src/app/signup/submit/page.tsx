@@ -12,7 +12,7 @@ export default function SignupSubmitPage() {
   const router = useRouter();
 
   return (
-    <div className={style.container}>
+    <div className={style.submit}>
       <InformationTab index={3} />
       <SectionInfo title={'최종제출'} />
       <div className={style.label}>
@@ -45,8 +45,8 @@ export default function SignupSubmitPage() {
           <div>추천인닉네임</div>
         </div>
       </div>
-      <div className={style.confirmArea}>
-        <Confirm />
+      <div className={style.confirmButton} onClick={() => router.push('/signup/submit-complete')}>
+        최종 제출
       </div>
     </div>
   );

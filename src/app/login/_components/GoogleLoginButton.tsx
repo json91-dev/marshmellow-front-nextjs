@@ -6,21 +6,24 @@ import React, { CSSProperties, useCallback, useEffect } from 'react';
 import { AuthError } from 'next-auth';
 import { signIn } from 'next-auth/react';
 import { useMutation } from '@tanstack/react-query/build/modern/index';
+import { useRouter } from 'next/navigation';
 
 type Props = {
   style?: CSSProperties;
 };
 export default function GoogleLoginButton(props: Props) {
+  const router = useRouter();
   const onClickButton = useCallback(async () => {
-    try {
-      await signIn('google');
-    } catch (error) {
-      if (error instanceof AuthError) {
-        console.error(error);
-        return '구글 로그인 실패';
-      }
-      throw error;
-    }
+    router.push('/signup/identify');
+    // try {
+    //   await signIn('google');
+    // } catch (error) {
+    //   if (error instanceof AuthError) {
+    //     console.error(error);
+    //     return '구글 로그인 실패';
+    //   }
+    //   throw error;
+    // }
   }, []);
 
   return (

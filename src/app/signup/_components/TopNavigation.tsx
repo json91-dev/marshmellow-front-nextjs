@@ -8,6 +8,7 @@ import { browserPreventEvent } from '@/utils/utils';
 
 export default function TopNavigation() {
   const pathname = usePathname();
+  const router = useRouter();
 
   /** 안드로이드는 두번 백버튼 눌렀을때 꺼져버림. **/
   /** 생각보다 모바일 백버튼 제어가 까다로울수 있는 부분. 우선순위는 뒤로 할것. **/
@@ -33,7 +34,7 @@ export default function TopNavigation() {
     <div className={style.container}>
       <div className={style.leftIcon}>
         {pathname !== '/signup/submit-complete' && (
-          <Image src="/images/arrow.left.svg" alt="No Image" fill objectFit="contain" />
+          <Image src="/images/arrow.left.svg" alt="No Image" fill objectFit="contain" onClick={() => router.back()} />
         )}
       </div>
       <p>지원하기</p>

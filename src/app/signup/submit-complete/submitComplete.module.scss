@@ -55,11 +55,21 @@
   line-height: 2rem;
 }
 
-.confirmArea {
-  width: 100%;
-
+.confirmButton {
   position: absolute;
-  bottom: 4rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  width: 90%;
+  height: 5rem;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-top: 3rem;
+  bottom: 2.4rem;
+
+  @include activeScale(0.99);
+  @include activeOpacity(0.8);
 }

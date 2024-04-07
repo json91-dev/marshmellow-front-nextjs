@@ -14,15 +14,17 @@ type Props = {
 export default function KakaoLoginButton(props: Props) {
   const router = useRouter();
   const onClickButton = useCallback(async () => {
-    try {
-      await signIn('kakao');
-    } catch (error) {
-      if (error instanceof AuthError) {
-        console.error(error);
-        return '카카오 로그인 실패';
-      }
-      throw error;
-    }
+    router.push('/signup/identify');
+
+    // try {
+    //   await signIn('kakao');
+    // } catch (error) {
+    //   if (error instanceof AuthError) {
+    //     console.error(error);
+    //     return '카카오 로그인 실패';
+    //   }
+    //   throw error;
+    // }
   }, []);
 
   return (

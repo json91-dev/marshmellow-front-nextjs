@@ -77,7 +77,7 @@ export default function TermsBottomSheet() {
       bottomSheetRef.current.style.transform = `translateY(${bottomSheetHeight}px`;
       setTimeout(() => {
         showTermsBottomSheet(false);
-        router.back();
+        router.push('/signup/info');
       }, 250);
     } else {
       bottomSheetRef.current.style.transition = `transform 300ms ease-in-out`;
@@ -93,7 +93,7 @@ export default function TermsBottomSheet() {
 
       backDropRef.current.addEventListener('pointerup', () => {
         showTermsBottomSheet(false);
-        router.back();
+        router.push('/signup/info');
       });
     }
   }, [isShowTermsBottomSheet]);

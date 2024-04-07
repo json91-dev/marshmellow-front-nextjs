@@ -43,7 +43,7 @@
 
 .label {
   color: #9DA5B7;
-  font-size: 1rem;
+  font-size: 1.2rem;
   margin-bottom: 0.5rem;
 }
 
@@ -63,6 +63,7 @@
     width: 10rem;
     height: 10rem;
     position: relative;
+    cursor: pointer;
   }
 
   .info {
@@ -79,6 +80,22 @@
 .nicknameArea {
   width: 100%;
   margin-bottom: 2rem;
+
+  .message {
+    width :100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+
+    div {
+      color: #1D9C28;
+      margin-top: 0.1rem;
+      margin-left: 0.2rem;
+    }
+  }
 }
 
 
@@ -144,6 +161,7 @@
   border-radius: 0.5rem;
   color: white;
   font-size: 1.2rem;
+  cursor: pointer;
 
   @include activeScale(0.99);
   @include activeOpacity(0.8);
@@ -197,6 +215,7 @@
     transition: transform .2s;
     @include activeScale;
     @include activeOpacity(0.8);
+    cursor: pointer;
 
     &:active {
       transform: scale(.97)
@@ -270,23 +289,28 @@
 .gender {
   display: flex;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 0.8rem;
   flex-direction: row;
   box-sizing: border-box;
 
   .genderOption {
     flex: 1; /* 동일한 너비를 가지도록 */
-    padding: 10px;
+    padding: 12px;
     text-align: center;
     cursor: pointer;
 
     div {
-      font-size: 1rem;
+      font-size: 1.6rem;
+      color: #ACB6CA;
+      margin-top: 0.2rem;
     }
   }
 
 
   .selected {
+    div {
+      color: #12171E !important;
+    }
     border: 1px solid black;
   }
 }

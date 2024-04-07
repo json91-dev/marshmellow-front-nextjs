@@ -7,16 +7,18 @@ import 'react-datepicker/dist/react-datepicker.css';
 import Image from 'next/image';
 import SectionInfo from '@/app/signup/_components/SectionInfo';
 import cx from 'classnames';
+import { useRouter } from 'next/navigation';
 
 /** 회원가입 정보 입력 페이지 **/
 export default function SignupInfoPage() {
   const [name, setName] = useState('');
-  const [nickname, setNickname] = useState('M');
+  const [nickname, setNickname] = useState('');
   const [birth, setBirth] = useState('');
   const [recommender, setRecommender] = useState('');
   const [profileImageUrl, setProfileImageUrl] = useState('');
   const [gender, setGender] = useState<string>('M');
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState(true);
+  const router = useRouter();
 
   const selectGender = useCallback(
     (gender: string) => {
@@ -87,28 +89,28 @@ export default function SignupInfoPage() {
               <input
                 className={style.textInput}
                 value={nickname}
+                onChange={(e) => setNickname(e.target.value)}
                 type="text"
                 placeholder="특수문자 제외 2~8자"
                 required
               />
             </div>
-            <div>중복 확인</div>
+            <div onClick={() => {}}>중복 확인</div>
+          </div>
+
+          <div className={style.message}>
+            <Image src="/images/nickname.ok.svg" alt="No Image" width={20} height={20} />
+            <div>사용할 수 있는 닉네임이에요</div>
           </div>
         </div>
 
         <div className={style.genderArea}>
           <div className={style.label}>성별</div>
           <div className={style.gender}>
-            <div
-              onClick={() => selectGender('male')}
-              className={cx(style.genderOption, gender === 'M' && style.selected)}
-            >
+            <div onClick={() => selectGender('M')} className={cx(style.genderOption, gender === 'M' && style.selected)}>
               <div>남</div>
             </div>
-            <div
-              onClick={() => selectGender('female')}
-              className={cx(style.genderOption, gender === 'F' && style.selected)}
-            >
+            <div onClick={() => selectGender('F')} className={cx(style.genderOption, gender === 'F' && style.selected)}>
               <div>여</div>
             </div>
           </div>
@@ -164,7 +166,11 @@ export default function SignupInfoPage() {
         </div>
 
         <div className={style.confirmArea}>
-          <button type="submit" className={cx(style.confirmButton, isActive && style.isActive)}>
+          <button
+            onClick={() => router.push('/signup/submit')}
+            type="submit"
+            className={cx(style.confirmButton, isActive && style.isActive)}
+          >
             다음단계
           </button>
         </div>

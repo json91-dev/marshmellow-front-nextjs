@@ -17,9 +17,6 @@ export default function Login() {
       <div className={style.bottomLoginSection}>
         <p>합류하시면 다양한 서비스들을 이용해보실 수 있어요!</p>
         <LoginButtons />
-        <div className={style.lookAroundButton}>
-          <p>마시멜로우 둘러보기 </p>
-        </div>
       </div>
     </div>
   );

@@ -2,11 +2,12 @@
 import style from './submitComplete.module.scss';
 import React, { useState } from 'react';
 import Image from 'next/image';
-import Confirm from '@/app/signup/submit-complete/_components/Confirm';
+import { useRouter } from 'next/navigation';
 
 /** 회원가입 제출 페이지 **/
 export default function SignupSubmitCompletePage() {
   const [isSubmit, setIsSubmit] = useState(true);
+  const router = useRouter();
   return (
     <div className={style.container}>
       <div className={style.header}>
@@ -28,8 +29,8 @@ export default function SignupSubmitCompletePage() {
         </div>
       </div>
 
-      <div className={style.confirmArea}>
-        <Confirm />
+      <div className={style.confirmButton} onClick={() => router.push('/desk')}>
+        채용 결과 보기
       </div>
     </div>
   );
