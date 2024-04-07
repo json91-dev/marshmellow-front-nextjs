@@ -7,10 +7,15 @@ export default function TicketLinks() {
     <div className={style.container}>
       <div className={style.link}>
         <div>
+          <Image src="/images/mallow.snack.svg" alt="No Image" width={26} height={26} />
           <div>마시멜로우</div>
-          {/*<Image src="/images/marshmellow.svg" alt="No Image" width={68} height={68} />*/}
         </div>
-        <div>324개</div>
+        <div>
+          <div>324개</div>
+          <div>
+            <Image src="/images/arrow.right.svg" alt="No Image" width={26} height={26} />
+          </div>
+        </div>
       </div>
     </div>
   );

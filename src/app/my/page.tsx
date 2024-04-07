@@ -1,10 +1,15 @@
+'use client';
+
 import style from './my.module.scss';
 import TopNavigation from '@/app/my/_components/TopNavigation';
 import Image from 'next/image';
-import React from 'react';
+import React, { useEffect } from 'react';
 import HorizontalLine from '@/app/my/_components/HorizontalLine';
+import { useModalStore } from '@/store/modal';
 
 export default function myPage() {
+  const { showRankingChartModal } = useModalStore();
+
   return (
     <div className={style.container}>
       <TopNavigation />
@@ -25,7 +30,13 @@ export default function myPage() {
         <div className={style.level}>
           <div className={style.left}>
             <div>직급</div>
-            <Image src="/images/coachmark.svg" alt="No Image" width={18} height={18} />
+            <Image
+              onClick={() => showRankingChartModal(true)}
+              src="/images/coachmark.svg"
+              alt="No Image"
+              width={18}
+              height={18}
+            />
           </div>
           <div className={style.right}>인턴</div>
         </div>

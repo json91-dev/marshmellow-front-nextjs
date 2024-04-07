@@ -10,6 +10,7 @@ interface IdentifyModalState {
   isShowExistNumberModal: boolean;
   isShowTermsBottomSheet: boolean;
   isShowQuitInfoModal: boolean;
+  isShowRankingChartModal: boolean;
 
   showAuthFailModal(isShow: boolean): void;
   showAuthSuccessModal(isShow: boolean): void;
@@ -17,6 +18,7 @@ interface IdentifyModalState {
   showExistNumberModal(isShow: boolean): void;
   showTermsBottomSheet(isShow: boolean): void;
   showQuitInfoModal(isShow: boolean): void;
+  showRankingChartModal(isShow: boolean): void;
   closeAll(): void;
 }
 
@@ -28,6 +30,7 @@ export const useModalStore = create(
     isShowTermsBottomSheet: false,
     isShowExistNumberModal: false,
     isShowQuitInfoModal: false,
+    isShowRankingChartModal: false,
 
     showAuthFailModal(isShow) {
       set({ isShowAuthFailModal: isShow });
@@ -53,6 +56,10 @@ export const useModalStore = create(
       set({ isShowQuitInfoModal: isShow });
     },
 
+    showRankingChartModal(isShow) {
+      set({ isShowRankingChartModal: isShow });
+    },
+
     closeAll() {
       set({
         isShowAuthFailModal: false,
@@ -61,6 +68,7 @@ export const useModalStore = create(
         isShowExistNumberModal: false,
         isShowQuitModal: false,
         isShowQuitInfoModal: false,
+        isShowRankingChartModal: false,
       });
     },
   })),

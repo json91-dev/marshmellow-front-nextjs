@@ -9,6 +9,7 @@
   flex-direction: row;
 
   .image {
+    cursor: pointer;
     @include activeScale(0.94);
     padding: 0.5rem;
   }
