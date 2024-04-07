@@ -5,7 +5,7 @@ import ConfirmButton from '@/app/_components/common/ConfirmButton';
 import { useCallback, useRef, useState } from 'react';
 import { debounce } from '@/utils/utils';
 
-export default function withdrawPage() {
+export default function WithdrawPage() {
   const [text, setText] = useState<string>('');
   const textRef = useRef<HTMLTextAreaElement>(null!);
   const onClickButton = useCallback(() => {

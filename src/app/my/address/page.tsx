@@ -1,1 +1,3 @@
-export default function addressPage() {}
+export default function AddressPage() {
+  return <></>;
+}
