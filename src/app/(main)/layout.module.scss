@@ -1,7 +1,7 @@
 .layoutChild {
   @include sizes;
   width: 100%;
-  height: calc(100vh - var(--mainLayoutBottomNavHeight));
-  position: absolute;
   top: 0;
+  height: calc(100% - var(--mainLayoutBottomNavHeight));
+  position: absolute;
 }

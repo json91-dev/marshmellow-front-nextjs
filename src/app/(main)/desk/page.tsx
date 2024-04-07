@@ -9,9 +9,11 @@ import PageLinks from '@/app/(main)/desk/_components/PageLinks';
 
 export default function DeskPage() {
   return (
-    <div className={style.container}>
-      <Options />
-      <div className={style.deskMain}>
+    <div className={style.deskPage}>
+      <div className={style.option}>
+        <Options />
+      </div>
+      <div className={style.main}>
         <NameCard />
         <TicketLinks />
         <HorizontalLine />
