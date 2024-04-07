@@ -169,21 +169,22 @@
   .right {
     display: flex;
     align-items: center;
-  }
 
-  .workTimeDetail {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    .workTimeDetail {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      cursor: pointer;
 
-    > :first-child {
-      font-size: 1.6rem;
-      color: #1C222B;
-    }
+      > :first-child {
+        font-size: 1.6rem;
+        color: #1C222B;
+      }
 
-    > :last-child {
-      color: #1C222B;
-      margin-top: 0.5rem;
+      > :last-child {
+        color: #1C222B;
+        margin-top: 0.5rem;
+      }
     }
   }
 }

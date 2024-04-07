@@ -8,7 +8,7 @@ import HorizontalLine from '@/app/my/_components/HorizontalLine';
 import { useModalStore } from '@/store/modal';
 
 export default function myPage() {
-  const { showRankingChartModal, showNicknameChangeModal } = useModalStore();
+  const { showRankingChartModal, showNicknameChangeModal, showWorkTimeBottomSheet } = useModalStore();
 
   return (
     <div className={style.container}>
@@ -43,7 +43,7 @@ export default function myPage() {
 
         <div className={style.workTime}>
           <div className={style.left}>근무시간</div>
-          <div className={style.right}>
+          <div className={style.right} onClick={() => showWorkTimeBottomSheet(true)}>
             <div className={style.workTimeDetail}>
               <div>08시 ~ 17시</div>
               <div>점심시간은 11시입니다.</div>

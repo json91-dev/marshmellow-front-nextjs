@@ -15,14 +15,6 @@ export default function WorkTimeBottomSheet() {
   const backDropRef = useRef<HTMLDivElement>(null!);
   const startY = useRef(0);
   const isDragging = useRef(false);
-  const router = useRouter();
-
-  /** 맨 처음 약관화면 애니메이션 로딩시 타이밍 조절 **/
-  useEffect(() => {
-    setTimeout(() => {
-      showWorkTimeBottomSheet(true);
-    }, 300);
-  }, []);
 
   const onPointerDown = (e: PointerEvent) => {
     e.stopPropagation();
@@ -71,8 +63,8 @@ export default function WorkTimeBottomSheet() {
       bottomSheetRef.current?.addEventListener('pointerup', onPointerUp);
 
       backDropRef.current.addEventListener('pointerup', () => {
+        console.log('클릭');
         showWorkTimeBottomSheet(false);
-        router.back();
       });
     }
   }, [isShowWorkTimeBottomSheet]);
@@ -107,9 +99,12 @@ export default function WorkTimeBottomSheet() {
 
           <div className={style.workTimeSelect}>
             <div className={style.item}>
-              <div className={style.select}>
+              <div className={style.checkArea}>
                 <div>08시 ~ 17시</div>
-                <input type={'checkbox'} />
+                <label className={style.label}>
+                  <input type="radio" name={'worktime'} />
+                  <span className={style.radioInnerCircle}></span>
+                </label>
               </div>
 
               <div className={style.info}>
@@ -120,12 +115,16 @@ export default function WorkTimeBottomSheet() {
             </div>
 
             <div className={style.item}>
-              <div className={style.select}>
+              <div className={style.checkArea}>
                 <div>09시 ~ 18시</div>
-                <input type={'checkbox'} />
+                <label className={style.label}>
+                  {/*<input type="checkbox" onChange={onChange} checked={checked} />*/}
+                  <input type="radio" name={'worktime'} />
+                  <span className={style.radioInnerCircle}></span>
+                </label>
               </div>
 
-              <div>
+              <div className={style.info}>
                 <div>정시출근: 08:00 ~ 08:15</div>
                 <div>점심시간: 11:00 ~ 11:15</div>
                 <div>정시퇴근: 15:00 ~ 15:15</div>
@@ -133,16 +132,30 @@ export default function WorkTimeBottomSheet() {
             </div>
 
             <div className={style.item}>
-              <div className={style.select}>
+              <div className={style.checkArea}>
                 <div>10시 ~ 19시</div>
-                <input type={'checkbox'} />
+                <label className={style.label}>
+                  {/*<input type="checkbox" onChange={onChange} checked={checked} />*/}
+                  <input type="radio" name={'worktime'} />
+                  <span className={style.radioInnerCircle}></span>
+                </label>
               </div>
 
-              <div>
+              <div className={style.info}>
                 <div>정시출근: 08:00 ~ 08:15</div>
                 <div>점심시간: 11:00 ~ 11:15</div>
                 <div>정시퇴근: 15:00 ~ 15:15</div>
               </div>
+            </div>
+
+            <div
+              onClick={(e) => {
+                e.stopPropagation();
+                showWorkTimeBottomSheet(false);
+              }}
+              className={style.confirmButton}
+            >
+              확인
             </div>
           </div>
         </div>
