@@ -11,9 +11,9 @@ export default function myPage() {
   const { showRankingChartModal, showNicknameChangeModal, showWorkTimeBottomSheet } = useModalStore();
 
   return (
-    <div className={style.container}>
+    <div className={style.myPage}>
       <TopNavigation />
-      <div className={style.myMain}>
+      <div className={style.main}>
         <div className={style.idCardInfo}>
           <div className={style.title}>내 사원증</div>
           <div className={style.description}>내 사원증의 정보입니다.</div>
