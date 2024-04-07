@@ -1,5 +1,5 @@
-.modal {
 
+@mixin modal() {
   @include modalBoxShadow;
   @include z-index-vars;
   @include sizes;
@@ -16,6 +16,11 @@
   flex-direction: column;
   left: calc((var(--rootLayoutChildrenWidth) - 30rem) / 2);
   top: 40vh;
+
+}
+
+.rankingChartModal {
+  @include modal;
 
   .inner {
     width: 100%;
@@ -94,6 +99,7 @@
     }
 
     .confirmButton {
+      cursor: pointer;
       width: 100%;
       height: 3.6rem;
       background-color: black;
@@ -109,4 +115,105 @@
       @include activeOpacity(0.8);
     }
   }
+}
+
+.nicknameChangeModal {
+  @include modal;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 2.4rem;
+  }
+
+  .nicknameVaildArea {
+    display: flex;
+    flex-direction:column;
+    width: 100%;
+
+    .check {
+      width: 100%;
+      height: 4rem;
+      border: 1px solid #3D4451;
+      display: flex;
+      flex-direction:row;
+      padding-left: 1rem;
+      border-radius: 0.8rem;
+
+
+      .inputText {
+        flex: 4;
+        //width :100%;
+        height: 100%;
+        border: 0;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .validateButton {
+        flex: 1.5;
+        right: 0;
+        height: 100%;
+        cursor: pointer;
+      }
+    }
+
+    .message {
+      width :100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .description {
+    color: #5C6475;
+    text-align: center;
+    white-space: pre-wrap;
+    font-size: 1.4rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .confirmButton {
+    width: 100%;
+    height: 3.6rem;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    color: white;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    cursor: pointer;
+
+    @include activeScale(0.99);
+    @include activeOpacity(0.8);
+  }
+
+  .cancelButton {
+    width: 100%;
+    height: 3.6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    color: black;
+    cursor: pointer;
+
+    @include activeScale(0.99);
+    @include activeOpacity(0.8);
+  }
+
 }

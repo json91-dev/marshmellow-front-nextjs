@@ -15,5 +15,9 @@ export default function Toast() {
     }
   }, [isShow]);
 
-  return <div className={cx(style.container, isShow && style.active)}>{message}</div>;
+  return (
+    <div className={cx(style.container, isShow && style.active)} onClick={() => showToast(false)}>
+      {message}
+    </div>
+  );
 }

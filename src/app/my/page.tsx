@@ -8,7 +8,7 @@ import HorizontalLine from '@/app/my/_components/HorizontalLine';
 import { useModalStore } from '@/store/modal';
 
 export default function myPage() {
-  const { showRankingChartModal } = useModalStore();
+  const { showRankingChartModal, showNicknameChangeModal } = useModalStore();
 
   return (
     <div className={style.container}>
@@ -21,7 +21,7 @@ export default function myPage() {
 
         <div className={style.nickname}>
           <div className={style.left}>닉네임</div>
-          <div className={style.right}>
+          <div className={style.right} onClick={() => showNicknameChangeModal(true)}>
             <div>말랑이</div>
             <Image src="/images/arrow.right.svg" alt="No Image" width={25} height={25} />
           </div>
