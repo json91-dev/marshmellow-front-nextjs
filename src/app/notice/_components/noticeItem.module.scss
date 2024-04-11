@@ -1,0 +1,33 @@
+.noticeItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1.6rem 2rem;
+  border-bottom: 1px solid #E5E9F2;
+  cursor: pointer;
+
+  .left {
+    flex: 6;
+
+    .date {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #929DB0
+    }
+
+    .content {
+      font-size: 1.4rem;
+      color: #1C222B;
+      font-weight: 400;
+      margin-top: 1rem;
+      line-height: 2rem;
+    }
+  }
+
+  .right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+  }
+}

@@ -2,8 +2,11 @@
 
 import style from './pageLinks.module.scss';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 export default function PageLinks() {
+  const router = useRouter();
+
   return (
     <div className={style.container}>
       {/*<div className={style.link}>*/}
@@ -21,7 +24,7 @@ export default function PageLinks() {
         <Image src={'/images/arrow.right.svg'} width={24} height={24} alt="No Image" />
       </div>
 
-      <div className={style.link}>
+      <div className={style.link} onClick={() => router.push('/notice')}>
         <div>공지사항</div>
         <Image src={'/images/arrow.right.svg'} width={24} height={24} alt="No Image" />
       </div>

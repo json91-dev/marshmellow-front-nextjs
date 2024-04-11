@@ -1,0 +1,32 @@
+.container {
+  @include z-index-vars;
+  @include sizes;
+
+  position: relative;
+  top: 0;
+  z-index: var(--topNavIndex);
+  height: 5.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+  flex-direction: row;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  background-color: white;
+  cursor: pointer;
+  flex-shrink: 0;
+
+  p {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .leftIcon {
+    width: 3rem;
+    height: 3rem;
+    position:relative;
+
+    @include activeOpacity;
+    @include activeScale;
+  }
+}

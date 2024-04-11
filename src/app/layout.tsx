@@ -2,7 +2,7 @@ import React from 'react';
 import style from './layout.module.scss';
 import './global.css';
 import { useMediaQuery } from 'react-responsive';
-import LeftZone from '@/app/_components/LeftZone';
+import LeftZone from '@/app/_components/leftzone/LeftZone';
 import AuthSession from '@/app/_components/AuthSession';
 import RQProvider from '@/app/_components/RQProvider';
 import Toast from '@/app/signup/_components/Toast';

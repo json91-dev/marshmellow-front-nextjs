@@ -98,7 +98,7 @@ export default function MarshmallowPage() {
               <div>뽑기 참여</div>
               <div>18:53 | 사용</div>
             </div>
-            <div className={style.count}>-3개</div>
+            <div className={cx(style.count, style.decrease)}>-3개</div>
           </div>
 
           <div className={style.item}>

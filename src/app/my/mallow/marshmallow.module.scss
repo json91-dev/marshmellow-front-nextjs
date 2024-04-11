@@ -172,7 +172,13 @@
         }
 
         .count {
+          color: #BB4EF2;
+          font-size: 1.6rem;
+          font-weight: bold;
+        }
 
+        .count.decrease {
+          color: #929DB0 !important;
         }
       }
     }
