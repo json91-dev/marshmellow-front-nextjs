@@ -7,5 +7,101 @@
   align-items: center;
   display: flex;
   position: absolute;
-  border: 1px solid red;
+
+  .contentBody {
+    overflow-y: scroll;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1.6rem;
+    position: relative;
+    align-items: center;
+
+
+    .addressCard {
+      width: 100%;
+      max-width: 34rem;
+      padding: 1.6rem;
+      border: 1px solid #ACB6CA;
+      border-radius: 0.8rem;
+      position: relative;
+
+      .name {
+        :first-child {
+          color: #1C222B;
+          font-weight: 500;
+          font-size: 1.2rem;
+        }
+
+        :last-child {
+          margin-top: 0.6rem;
+          color: #1C222B;
+          font-weight: 700;
+          font-size: 1.6rem;
+        }
+      }
+
+      .addressArea {
+        background: #F6F8FC;
+        border-radius: 0.4rem;
+        margin-top: 1rem;
+        padding: 0.8rem;
+        line-height: 2rem;
+        font-size: 1.4rem;
+        color: #1C222B;
+      }
+
+      .editButton {
+        padding: 0.8rem 1.6rem;
+        border: 1px solid #ACB6CA;
+        border-radius: 0.6rem;
+        margin-top: 1.2rem;
+
+        @include activeScale;
+        @include activeOpacity;
+      }
+    }
+
+    .addButton {
+      border: 1px solid #ACB6CA;
+      width: 100%;
+      max-width: 34rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1.2rem;
+      border-radius: 0.8rem;
+
+      @include activeScale;
+      @include activeOpacity;
+
+      p {
+        font-weight: 500;
+        font-size: 1.6rem;
+      }
+    }
+
+    .rightTopArea {
+      position: absolute;
+      right: 1.6rem;
+      top: 1.6rem;
+
+      .mainAddressTag {
+        padding: 0.6rem 0.8rem;
+        background-color: #F9EEFF;
+        color: #E44EDD;
+        font-size: 1.1rem;
+        border-radius: 1rem;
+        font-weight: 500;
+      }
+
+      .deleteAddressButton {
+        @include activeScale;
+        @include activeOpacity;
+      }
+    }
+  }
 }
