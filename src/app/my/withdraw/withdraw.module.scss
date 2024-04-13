@@ -6,12 +6,14 @@
   align-items: center;
   display: flex;
   position: absolute;
+
 }
 
 .main {
   margin-top: 1rem;
   padding-left: 2rem;
   padding-right: 2rem;
+  flex: 1;
 
   .title {
     color: #12171E;
@@ -35,7 +37,7 @@
   .reason {
     margin-top: 1.6rem;
     width: 100%;
-    height: 40rem;
+    height: 50%;
 
     textarea {
       background-color: #F0F3FA;
@@ -45,6 +47,7 @@
       border-radius: 0.4rem;
       padding: 1.2rem;
       border: none;
+      font-size: 1.6rem; // 모바일에서 포커스 막기 위함
     }
 
     textarea:focus {
