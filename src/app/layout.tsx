@@ -15,11 +15,13 @@ export const metadata = {
 type Props = {
   children: React.ReactNode;
 };
+import localFont from 'next/font/local';
+const pretendard = localFont({ src: '../font/PretendardVariable.woff2' });
 
 export default function RootLayout({ children }: Props) {
   return (
     <html lang="en">
-      <body>
+      <body className={pretendard.className}>
         <AuthSession>
           <RQProvider>
             <div className={style.rootLayout}>

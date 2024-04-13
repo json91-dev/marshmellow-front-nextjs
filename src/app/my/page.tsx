@@ -91,7 +91,7 @@ export default function myPage() {
             customStyle={{ position: 'relative', width: 'calc(100% + 4rem)', left: '-2rem' }}
           />
 
-          <div className={style.link}>
+          <div className={style.link} onClick={() => router.push('/my/address')}>
             <div>배송지 관리</div>
             <Image src="/images/arrow.right.svg" alt="No Image" width={25} height={25} />
           </div>
