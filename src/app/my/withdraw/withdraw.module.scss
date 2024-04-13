@@ -1,44 +1,83 @@
-.container {
+.withdrawPage {
   width: 100%;
   height: 100%;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   align-items: center;
   display: flex;
-  padding: 0 2rem;
+  position: absolute;
 }
 
-.title {
-  color: #12171E;
-  font-size: 2.4rem;
-  font-weight: 700;
-  width: 100%;
-}
+.main {
+  margin-top: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 
-.description {
-  width: 100%;
-  color: #1C222B;
-  font-size: 1.8rem;
-  font-weight: 500;
-  margin-top: 1.6rem;
-
-}
-
-.reason {
-  margin-top: 1.6rem;
-  width: 100%;
-  height: 40rem;
-
-  textarea {
-    background-color: #F6F8FC;
+  .title {
+    color: #12171E;
+    font-size: 2.4rem;
+    font-weight: 700;
     width: 100%;
-    height: 100%;
-    resize: none; // 하단 표시 없애기
-    border-radius: 0.4rem;
-    padding: 1.2rem;
-
-
-
+    white-space: pre-wrap;
+    line-height: 3.2rem;
 
   }
+
+  .description {
+    width: 100%;
+    color: #1C222B;
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-top: 1.6rem;
+    line-height: 2.8rem;
+  }
+
+  .reason {
+    margin-top: 1.6rem;
+    width: 100%;
+    height: 40rem;
+
+    textarea {
+      background-color: #F0F3FA;
+      width: 100%;
+      height: 100%;
+      resize: none; // 하단 표시 없애기
+      border-radius: 0.4rem;
+      padding: 1.2rem;
+      border: none;
+    }
+
+    textarea:focus {
+      border: none;
+      outline:none;
+    }
+  }
 }
+
+.confirmButton {
+  width: calc(100% - 4rem);
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  color: white;
+  font-size: 1.2rem;
+  background-color: #D4DBE9;
+  pointer-events: none;
+  position: absolute;
+  bottom: 2.4rem;
+  left: 2rem;
+  cursor: pointer;
+
+
+  &.isActive {
+    background-color: black;
+    @include activeScale(0.99);
+    @include activeOpacity(0.8);
+    pointer-events: all;
+    cursor: pointer;
+  }
+}
+
+

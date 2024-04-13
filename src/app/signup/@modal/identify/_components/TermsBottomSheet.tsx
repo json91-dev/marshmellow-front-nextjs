@@ -4,7 +4,7 @@ import { useModalStore } from '@/store/modal';
 import ModalBackdrop from '@/app/signup/@modal/identify/_components/ModalBackdrop';
 import { CSSTransition } from 'react-transition-group';
 import React, { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react';
-import Checkbox from '@/app/signup/@modal/identify/_components/Checkbox';
+import Checkbox from '@/app/_components/common/Checkbox';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import cx from 'classnames';
@@ -124,7 +124,6 @@ export default function TermsBottomSheet() {
             <div className={style.allAgree}>
               <div className={style.checkboxGroup}>
                 <Checkbox
-                  disabled={false}
                   checked={allCheck}
                   onChange={(e: ChangeEvent<HTMLInputElement>) => handleAllCheckboxChange(e.target.checked)}
                 />
@@ -135,7 +134,6 @@ export default function TermsBottomSheet() {
               <div className={style.terms}>
                 <div className={style.checkboxGroup}>
                   <Checkbox
-                    disabled={false}
                     checked={check1}
                     onChange={(e: ChangeEvent<HTMLInputElement>) => setCheck1(e.target.checked)}
                   />
@@ -163,7 +161,6 @@ export default function TermsBottomSheet() {
               <div className={style.marketing}>
                 <div className={style.checkboxGroup} style={{ marginBottom: '.2rem' }}>
                   <Checkbox
-                    disabled={false}
                     checked={check2}
                     onChange={(e: ChangeEvent<HTMLInputElement>) => setCheck2(e.target.checked)}
                   />
@@ -179,7 +176,6 @@ export default function TermsBottomSheet() {
               <div className={style.push}>
                 <div className={style.checkboxGroup} style={{ marginBottom: '.4rem' }}>
                   <Checkbox
-                    disabled={false}
                     checked={check3}
                     onChange={(e: ChangeEvent<HTMLInputElement>) => setCheck3(e.target.checked)}
                   />
@@ -191,7 +187,6 @@ export default function TermsBottomSheet() {
               <div className={style.age}>
                 <div className={style.checkboxGroup}>
                   <Checkbox
-                    disabled={false}
                     checked={check4}
                     onChange={(e: ChangeEvent<HTMLInputElement>) => setCheck4(e.target.checked)}
                   />

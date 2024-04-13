@@ -6,9 +6,11 @@ import Image from 'next/image';
 import React, { useEffect } from 'react';
 import HorizontalLine from '@/app/my/_components/HorizontalLine';
 import { useModalStore } from '@/store/modal';
+import { useRouter } from 'next/navigation';
 
 export default function myPage() {
   const { showRankingChartModal, showNicknameChangeModal, showWorkTimeBottomSheet } = useModalStore();
+  const router = useRouter();
 
   return (
     <div className={style.myPage}>
@@ -111,7 +113,7 @@ export default function myPage() {
             customStyle={{ position: 'relative', width: 'calc(100% + 4rem)', left: '-2rem' }}
           />
 
-          <div className={style.link}>
+          <div className={style.link} onClick={() => router.push('/my/withdraw')}>
             <div>탈퇴하기</div>
             <div></div>
           </div>
