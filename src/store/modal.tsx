@@ -13,6 +13,8 @@ interface IdentifyModalState {
   isShowRankingChartModal: boolean;
   isShowNicknameChangeModal: boolean;
   isShowWorkTimeBottomSheet: boolean;
+  isShowWithdrawConfirmModal: boolean;
+  isShowWithdrawConfirmCompleteModal: boolean;
 
   showAuthFailModal(isShow: boolean): void;
   showAuthSuccessModal(isShow: boolean): void;
@@ -23,6 +25,8 @@ interface IdentifyModalState {
   showRankingChartModal(isShow: boolean): void;
   showNicknameChangeModal(isShow: boolean): void;
   showWorkTimeBottomSheet(isShow: boolean): void;
+  showWithdrawConfirmModal(isShow: boolean): void;
+  showWithdrawConfirmCompleteModal(isShow: boolean): void;
   closeAll(): void;
 }
 
@@ -37,6 +41,8 @@ export const useModalStore = create(
     isShowRankingChartModal: false,
     isShowNicknameChangeModal: false,
     isShowWorkTimeBottomSheet: false,
+    isShowWithdrawConfirmModal: false,
+    isShowWithdrawConfirmCompleteModal: false,
 
     showAuthFailModal(isShow) {
       set({ isShowAuthFailModal: isShow });
@@ -74,6 +80,14 @@ export const useModalStore = create(
       set({ isShowWorkTimeBottomSheet: isShow });
     },
 
+    showWithdrawConfirmModal(isShow) {
+      set({ isShowWithdrawConfirmModal: isShow });
+    },
+
+    showWithdrawConfirmCompleteModal(isShow) {
+      set({ isShowWithdrawConfirmCompleteModal: isShow });
+    },
+
     closeAll() {
       set({
         isShowAuthFailModal: false,
@@ -85,6 +99,8 @@ export const useModalStore = create(
         isShowRankingChartModal: false,
         isShowNicknameChangeModal: false,
         isShowWorkTimeBottomSheet: false,
+        isShowWithdrawConfirmModal: false,
+        isShowWithdrawConfirmCompleteModal: false,
       });
     },
   })),

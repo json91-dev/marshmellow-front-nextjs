@@ -3,14 +3,16 @@
 import style from './withdrawConfirm.module.scss';
 import TopNavigation from '@/app/_components/common/TopNavigation';
 import Image from 'next/image';
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import cx from 'classnames';
 import { useRouter } from 'next/navigation';
 import Checkbox from '@/app/_components/common/Checkbox';
+import { useModalStore } from '@/store/modal';
 
 export default function WithdrawConfirmPage() {
   const router = useRouter();
   const [checked, setChecked] = useState(false);
+  const { showWithdrawConfirmModal } = useModalStore();
 
   return (
     <div className={style.withdrawConfirmPage}>
@@ -52,7 +54,12 @@ export default function WithdrawConfirmPage() {
           <div className={style.checkMessage}>위 내용을 이해했으며 동의합니다.</div>
         </div>
 
-        <div className={cx(style.confirmButton, checked && style.isActive)}>탈퇴하기</div>
+        <div
+          className={cx(style.confirmButton, checked && style.isActive)}
+          onClick={() => showWithdrawConfirmModal(true)}
+        >
+          탈퇴하기
+        </div>
       </div>
     </div>
   );
