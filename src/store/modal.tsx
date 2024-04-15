@@ -15,6 +15,7 @@ interface IdentifyModalState {
   isShowWorkTimeBottomSheet: boolean;
   isShowWithdrawConfirmModal: boolean;
   isShowWithdrawConfirmCompleteModal: boolean;
+  isShowMallowFilterDateBottomSheet: boolean;
 
   showAuthFailModal(isShow: boolean): void;
   showAuthSuccessModal(isShow: boolean): void;
@@ -27,6 +28,7 @@ interface IdentifyModalState {
   showWorkTimeBottomSheet(isShow: boolean): void;
   showWithdrawConfirmModal(isShow: boolean): void;
   showWithdrawConfirmCompleteModal(isShow: boolean): void;
+  showMallowFilterDateBottomSheet(isShow: boolean): void;
   closeAll(): void;
 }
 
@@ -43,6 +45,7 @@ export const useModalStore = create(
     isShowWorkTimeBottomSheet: false,
     isShowWithdrawConfirmModal: false,
     isShowWithdrawConfirmCompleteModal: false,
+    isShowMallowFilterDateBottomSheet: false,
 
     showAuthFailModal(isShow) {
       set({ isShowAuthFailModal: isShow });
@@ -88,6 +91,10 @@ export const useModalStore = create(
       set({ isShowWithdrawConfirmCompleteModal: isShow });
     },
 
+    showMallowFilterDateBottomSheet(isShow) {
+      set({ isShowMallowFilterDateBottomSheet: isShow });
+    },
+
     closeAll() {
       set({
         isShowAuthFailModal: false,
@@ -101,6 +108,7 @@ export const useModalStore = create(
         isShowWorkTimeBottomSheet: false,
         isShowWithdrawConfirmModal: false,
         isShowWithdrawConfirmCompleteModal: false,
+        isShowMallowFilterDateBottomSheet: false,
       });
     },
   })),

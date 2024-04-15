@@ -3,11 +3,7 @@ import style from './workTimeBottomSheet.module.scss';
 import { useModalStore } from '@/store/modal';
 import ModalBackdrop from '@/app/signup/@modal/identify/_components/ModalBackdrop';
 import { CSSTransition } from 'react-transition-group';
-import React, { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react';
-import Checkbox from '@/app/signup/@modal/identify/_components/Checkbox';
-import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-import cx from 'classnames';
+import React, { useEffect, useRef } from 'react';
 
 export default function WorkTimeBottomSheet() {
   const { isShowWorkTimeBottomSheet, showWorkTimeBottomSheet } = useModalStore();

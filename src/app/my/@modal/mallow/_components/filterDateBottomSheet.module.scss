@@ -1,0 +1,51 @@
+.bottomSheet {
+  @include z-index-vars;
+  z-index: var(--bottomSheetIndex);
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  background: white;
+  padding-top: 3.8rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  padding-bottom: 4rem;
+  border-top-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+
+  .topLine {
+    background-color: #CED5E4;
+    height: 0.4rem;
+    width: 3.8rem;
+    position: absolute;
+    top: 1rem;
+    left: calc(50% - 1.9em);
+    border-radius: 0.5rem;
+  }
+
+  .title {
+    color: #1C222B;
+    font-size: 1.7rem;
+    font-weight: 700;
+  }
+
+  .selectPeriod {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 3rem;
+
+    div {
+      font-size: 1.5rem;
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    div.active {
+      color: #BB4EF2;
+    }
+  }
+}

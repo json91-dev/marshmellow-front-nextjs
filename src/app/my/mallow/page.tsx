@@ -1,11 +1,23 @@
+'use client';
 import style from './marshmallow.module.scss';
 import TopNavigation from '@/app/my/mallow/_components/TopNavigation';
 import HorizontalLine from '@/app/my/_components/HorizontalLine';
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
 import cx from 'classnames';
+import { useModalStore } from '@/store/modal';
+
+type filterActionType = 'All' | 'Acquire' | 'Use' | 'Expire';
 
 export default function MarshmallowPage() {
+  const [filterAction, setFilterAction] = useState<filterActionType>('All');
+  const { showMallowFilterDateBottomSheet } = useModalStore();
+
+  // 액션을 클릭할 때 호출되는 함수
+  const handleActionClick = (action: filterActionType) => {
+    setFilterAction(action); // 상태 업데이트
+  };
+
   return (
     <div className={style.myMarshMallowPage}>
       <TopNavigation />
@@ -24,15 +36,35 @@ export default function MarshmallowPage() {
       <div className={style.horizontalLine}></div>
 
       <div className={style.filterAction}>
-        <div className={style.action}>전체</div>
-        <div className={style.action}>획득</div>
-        <div className={style.action}>사용</div>
-        <div className={cx(style.action, style.active)}>소멸</div>
+        <div
+          className={cx(style.action, filterAction === 'All' && style.active)}
+          onClick={() => handleActionClick('All')}
+        >
+          전체
+        </div>
+        <div
+          className={cx(style.action, filterAction === 'Acquire' && style.active)}
+          onClick={() => handleActionClick('Acquire')}
+        >
+          획득
+        </div>
+        <div
+          className={cx(style.action, filterAction === 'Use' && style.active)}
+          onClick={() => handleActionClick('Use')}
+        >
+          사용
+        </div>
+        <div
+          className={cx(style.action, filterAction === 'Expire' && style.active)}
+          onClick={() => handleActionClick('Expire')}
+        >
+          소멸
+        </div>
       </div>
 
       <div className={style.banner}>적응형 배너</div>
 
-      <div className={style.filterDate}>
+      <div className={style.filterDate} onClick={() => showMallowFilterDateBottomSheet(true)}>
         <div>1개월</div>
         <Image src={'/images/arrow.bottom.svg'} width={30} height={30} alt="No Image" />
       </div>
