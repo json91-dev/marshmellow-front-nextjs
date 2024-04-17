@@ -1,7 +1,6 @@
 'use client';
 import style from './marshmallow.module.scss';
 import TopNavigation from '@/app/my/mallow/_components/TopNavigation';
-import HorizontalLine from '@/app/my/_components/HorizontalLine';
 import Image from 'next/image';
 import React, { useState } from 'react';
 import cx from 'classnames';
@@ -11,7 +10,7 @@ type filterActionType = 'All' | 'Acquire' | 'Use' | 'Expire';
 
 export default function MarshmallowPage() {
   const [filterAction, setFilterAction] = useState<filterActionType>('All');
-  const { showMallowFilterDateBottomSheet } = useModalStore();
+  const { showMallowFilterDateBottomSheet, showMallowExpiredThisMonthModal } = useModalStore();
 
   // 액션을 클릭할 때 호출되는 함수
   const handleActionClick = (action: filterActionType) => {
@@ -27,7 +26,7 @@ export default function MarshmallowPage() {
           <Image src="/images/mallow.snack.svg" alt="No Image" width={34} height={34} />
           <div>324개</div>
         </div>
-        <div className={style.right}>
+        <div className={style.right} onClick={() => showMallowExpiredThisMonthModal(true)}>
           <div>당월 소멸 예정 마시멜로우 조회</div>
           <Image src={'/images/arrow.right.svg'} width={30} height={30} alt="No Image" />
         </div>
