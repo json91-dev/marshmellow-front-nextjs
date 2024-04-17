@@ -9,7 +9,7 @@ import { useModalStore } from '@/store/modal';
 import { useRouter } from 'next/navigation';
 
 export default function myPage() {
-  const { showRankingChartModal, showNicknameChangeModal, showWorkTimeBottomSheet } = useModalStore();
+  const { showRankingChartModal, showNicknameChangeModal, showWorkTimeBottomSheet, showLogoutModal } = useModalStore();
   const router = useRouter();
 
   return (
@@ -102,7 +102,7 @@ export default function myPage() {
             customStyle={{ position: 'relative', width: 'calc(100% + 4rem)', left: '-2rem' }}
           />
 
-          <div className={style.link}>
+          <div className={style.link} onClick={() => showLogoutModal(true)}>
             <div>로그아웃</div>
             <div></div>
           </div>

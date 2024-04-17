@@ -4,17 +4,25 @@ import { devtools } from 'zustand/middleware';
 /** Modal store **/
 
 interface IdentifyModalState {
+  // 회원가입 페이지
   isShowAuthFailModal: boolean;
   isShowAuthSuccessModal: boolean;
   isShowQuitModal: boolean;
   isShowExistNumberModal: boolean;
   isShowTermsBottomSheet: boolean;
   isShowQuitInfoModal: boolean;
+
+  // 마이페이지
   isShowRankingChartModal: boolean;
   isShowNicknameChangeModal: boolean;
   isShowWorkTimeBottomSheet: boolean;
+  isShowLogoutModal: boolean;
+
+  // 회원 탈퇴 페이지
   isShowWithdrawConfirmModal: boolean;
   isShowWithdrawConfirmCompleteModal: boolean;
+
+  // 마시멜로우 확인 페이지
   isShowMallowFilterDateBottomSheet: boolean;
   isShowMallowExpiredThisMonthModal: boolean;
 
@@ -27,6 +35,7 @@ interface IdentifyModalState {
   showRankingChartModal(isShow: boolean): void;
   showNicknameChangeModal(isShow: boolean): void;
   showWorkTimeBottomSheet(isShow: boolean): void;
+  showLogoutModal(isShow: boolean): void;
   showWithdrawConfirmModal(isShow: boolean): void;
   showWithdrawConfirmCompleteModal(isShow: boolean): void;
   showMallowFilterDateBottomSheet(isShow: boolean): void;
@@ -36,17 +45,25 @@ interface IdentifyModalState {
 
 export const useModalStore = create(
   devtools<IdentifyModalState>((set) => ({
+    // 회원가입 페이지
     isShowAuthFailModal: false,
     isShowAuthSuccessModal: false,
     isShowQuitModal: false,
     isShowTermsBottomSheet: false,
     isShowExistNumberModal: false,
     isShowQuitInfoModal: false,
+
+    // 마이페이지
     isShowRankingChartModal: false,
     isShowNicknameChangeModal: false,
     isShowWorkTimeBottomSheet: false,
+    isShowLogoutModal: false,
+
+    // 회원 탈퇴 페이지
     isShowWithdrawConfirmModal: false,
     isShowWithdrawConfirmCompleteModal: false,
+
+    // 마시멜로우 확인 페이지
     isShowMallowFilterDateBottomSheet: false,
     isShowMallowExpiredThisMonthModal: false,
 
@@ -86,6 +103,10 @@ export const useModalStore = create(
       set({ isShowWorkTimeBottomSheet: isShow });
     },
 
+    showLogoutModal(isShow: boolean) {
+      set({ isShowLogoutModal: isShow });
+    },
+
     showWithdrawConfirmModal(isShow) {
       set({ isShowWithdrawConfirmModal: isShow });
     },
@@ -113,6 +134,7 @@ export const useModalStore = create(
         isShowRankingChartModal: false,
         isShowNicknameChangeModal: false,
         isShowWorkTimeBottomSheet: false,
+        isShowLogoutModal: false,
         isShowWithdrawConfirmModal: false,
         isShowWithdrawConfirmCompleteModal: false,
         isShowMallowFilterDateBottomSheet: false,

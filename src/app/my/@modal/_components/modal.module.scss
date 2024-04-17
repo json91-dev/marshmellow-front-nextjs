@@ -30,11 +30,11 @@
 
     .title {
       font-weight: bold;
-      font-size: 1.5rem;
+      font-size: 2rem;
     }
 
     .header {
-      margin-top: 1rem;
+      margin-top: 1.6rem;
       display: flex;
       flex-direction: row;
       width: 100%;
@@ -75,17 +75,18 @@
         display: flex;
         justify-content: center;
         flex-direction: column;
-        color: #1C222B;
 
         div {
           margin-top: 1rem;
           font-weight: 500;
-          font-size: 0.9rem;
+          font-size: 1.2rem;
+          color: #1C222B;
         }
       }
 
       .right {
         color: #3D4451;
+        font-size: 1.4rem;
         flex: 3.5
       }
     }
@@ -93,23 +94,7 @@
     .description {
       color: #5C6475;
       margin-top: 1rem;
-    }
-
-    .confirmButton {
-      cursor: pointer;
-      width: 100%;
-      height: 3.6rem;
-      background-color: black;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 0.5rem;
-      color: white;
-      font-size: 1.2rem;
-      margin-top: 1rem;
-
-      @include activeScale(0.99);
-      @include activeOpacity(0.8);
+      font-size: 1.4rem;
     }
   }
 }
@@ -125,6 +110,7 @@
     font-size: 1.8rem;
     font-weight: bold;
     margin-bottom: 2.4rem;
+    text-align: center;
   }
 
   .nicknameVaildArea {
@@ -181,38 +167,61 @@
     margin-top: 1.6rem;
     margin-bottom: 1rem;
   }
+}
 
-  .confirmButton {
-    width: 100%;
-    height: 3.6rem;
-    background-color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 0.5rem;
-    color: white;
-    font-size: 1.2rem;
-    margin-top: 2.4rem;
-    cursor: pointer;
+.logoutModal {
+  @include modal;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-    @include activeScale(0.99);
-    @include activeOpacity(0.8);
+  .title {
+    font-size: 1.8rem;
+    font-weight: 700;
   }
 
-  .cancelButton {
-    width: 100%;
-    height: 3.6rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 0.5rem;
-    font-size: 1.2rem;
-    margin-top: 1rem;
-    color: black;
-    cursor: pointer;
-
-    @include activeScale(0.99);
-    @include activeOpacity(0.8);
+  .description {
+    color: #5C6475;
+    text-align: center;
+    white-space: pre-wrap;
+    font-size: 1.4rem;
+    margin-top: 1.2rem;
+    margin-bottom: 1rem;
+    line-height: 2rem;
+    font-weight: 500;
   }
+}
 
+.confirmButton {
+  width: 100%;
+  height: 4.8rem;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  color: white;
+  font-size: 1.6rem;
+  margin-top: 2.4rem;
+  cursor: pointer;
+
+  @include activeScale(0.99);
+  @include activeOpacity(0.8);
+}
+
+
+.cancelButton {
+  width: 100%;
+  height: 4.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  font-size: 1.6rem;
+  margin-top: 1rem;
+  color: black;
+  cursor: pointer;
+
+  @include activeScale(0.99);
+  @include activeOpacity(0.8);
 }
