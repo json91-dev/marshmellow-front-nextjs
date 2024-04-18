@@ -15,8 +15,12 @@ interface IdentifyModalState {
   // 마이페이지
   isShowRankingChartModal: boolean;
   isShowNicknameChangeModal: boolean;
+  isShowNicknameNotChangeByDateModal: boolean;
   isShowWorkTimeBottomSheet: boolean;
   isShowLogoutModal: boolean;
+  isShowWorkTimeNotChangeByTimeModal: boolean;
+  isShowWorkTimeNotChangeByDateModal: boolean;
+  isShowWorkTimeChangeModal: boolean;
 
   // 회원 탈퇴 페이지
   isShowWithdrawConfirmModal: boolean;
@@ -40,6 +44,10 @@ interface IdentifyModalState {
   showWithdrawConfirmCompleteModal(isShow: boolean): void;
   showMallowFilterDateBottomSheet(isShow: boolean): void;
   showMallowExpiredThisMonthModal(isShow: boolean): void;
+  showWorkTimeNotChangeByTimeModal(isShow: boolean): void;
+  showWorkTimeNotChangeByDateModal(isShow: boolean): void;
+  showWorkTimeChangeModal(isShow: boolean): void;
+  showNicknameNotChangeByDateModal(isShow: boolean): void;
   closeAll(): void;
 }
 
@@ -56,8 +64,12 @@ export const useModalStore = create(
     // 마이페이지
     isShowRankingChartModal: false,
     isShowNicknameChangeModal: false,
+    isShowNicknameNotChangeByDateModal: false,
     isShowWorkTimeBottomSheet: false,
     isShowLogoutModal: false,
+    isShowWorkTimeNotChangeByTimeModal: false,
+    isShowWorkTimeNotChangeByDateModal: false,
+    isShowWorkTimeChangeModal: false,
 
     // 회원 탈퇴 페이지
     isShowWithdrawConfirmModal: false,
@@ -123,6 +135,19 @@ export const useModalStore = create(
       set({ isShowMallowExpiredThisMonthModal: isShow });
     },
 
+    showWorkTimeNotChangeByTimeModal(isShow: boolean) {
+      set({ isShowWorkTimeNotChangeByTimeModal: isShow });
+    },
+    showWorkTimeNotChangeByDateModal(isShow: boolean) {
+      set({ isShowWorkTimeNotChangeByDateModal: isShow });
+    },
+    showWorkTimeChangeModal(isShow: boolean) {
+      set({ isShowWorkTimeChangeModal: isShow });
+    },
+    showNicknameNotChangeByDateModal(isShow: boolean) {
+      set({ isShowNicknameNotChangeByDateModal: isShow });
+    },
+
     closeAll() {
       set({
         isShowAuthFailModal: false,
@@ -139,6 +164,10 @@ export const useModalStore = create(
         isShowWithdrawConfirmCompleteModal: false,
         isShowMallowFilterDateBottomSheet: false,
         isShowMallowExpiredThisMonthModal: false,
+        isShowWorkTimeNotChangeByTimeModal: false,
+        isShowWorkTimeNotChangeByDateModal: false,
+        isShowWorkTimeChangeModal: false,
+        isShowNicknameNotChangeByDateModal: false,
       });
     },
   })),

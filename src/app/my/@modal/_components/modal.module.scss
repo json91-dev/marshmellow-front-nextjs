@@ -169,7 +169,11 @@
   }
 }
 
-.logoutModal {
+.logoutModal,
+.workTimeNotChangeByDateModal,
+.workTimeNotChangeByTimeModal,
+.nicknameNotChangeByDateModal,
+.workTimeChangeModal {
   @include modal;
   display: flex;
   flex-direction: column;

@@ -6,7 +6,7 @@ import { CSSTransition } from 'react-transition-group';
 import React, { useEffect, useRef } from 'react';
 
 export default function WorkTimeBottomSheet() {
-  const { isShowWorkTimeBottomSheet, showWorkTimeBottomSheet } = useModalStore();
+  const { isShowWorkTimeBottomSheet, showWorkTimeBottomSheet, showWorkTimeChangeModal } = useModalStore();
   const bottomSheetRef = useRef<HTMLDivElement>(null!);
   const backDropRef = useRef<HTMLDivElement>(null!);
   const startY = useRef(0);
@@ -148,6 +148,7 @@ export default function WorkTimeBottomSheet() {
               onClick={(e) => {
                 e.stopPropagation();
                 showWorkTimeBottomSheet(false);
+                showWorkTimeChangeModal(true);
               }}
               className={style.confirmButton}
             >
