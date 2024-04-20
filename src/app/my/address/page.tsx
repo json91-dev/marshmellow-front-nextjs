@@ -1,12 +1,14 @@
 import style from './address.module.scss';
 import TopNavigation from '@/app/_components/common/TopNavigation';
 import Image from 'next/image';
+import { router } from 'next/client';
+import Link from 'next/link';
 
 export default function AddressPage() {
   return (
     <div className={style.addressPage}>
       <TopNavigation title={'배송지 관리'} />
-      <div className={style.contentBody}>
+      <div className={style.content}>
         <div className={style.addressCard}>
           <div className={style.rightTopArea}>
             <div className={style.mainAddressTag}>대표배송지</div>
@@ -90,9 +92,11 @@ export default function AddressPage() {
           <button className={style.editButton}>수정하기</button>
         </div>
 
-        <button className={style.addButton}>
+        <Link href={'/my/address/add'} className={style.addButton}>
           <p>배송지 추가하기 +</p>
-        </button>
+        </Link>
+
+        <p className={style.addressMaxInfo}></p>
       </div>
     </div>
   );
