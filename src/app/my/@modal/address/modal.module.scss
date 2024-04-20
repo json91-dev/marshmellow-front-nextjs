@@ -16,7 +16,7 @@
   flex-direction: column;
 }
 
-.mallowExpiredThisMonthModal {
+.addressDeleteModal, .addressChangeQuitModal  {
   @include modal;
   display: flex;
   flex-direction: column;

@@ -138,3 +138,7 @@ button {
   transform: translateY(50%);
   transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
 }
+
+.border-test {
+  border: 1px solid red;
+}

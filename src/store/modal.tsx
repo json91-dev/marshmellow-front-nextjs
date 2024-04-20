@@ -30,6 +30,10 @@ interface IdentifyModalState {
   isShowMallowFilterDateBottomSheet: boolean;
   isShowMallowExpiredThisMonthModal: boolean;
 
+  // 주소창 페이지
+  isShowAddressChangeQuitModal: boolean;
+  isShowAddressDeleteModal: boolean;
+
   showAuthFailModal(isShow: boolean): void;
   showAuthSuccessModal(isShow: boolean): void;
   showQuitModal(isShow: boolean): void;
@@ -48,6 +52,8 @@ interface IdentifyModalState {
   showWorkTimeNotChangeByDateModal(isShow: boolean): void;
   showWorkTimeChangeModal(isShow: boolean): void;
   showNicknameNotChangeByDateModal(isShow: boolean): void;
+  showAddressChangeQuitModal(isShow: boolean): void;
+  showAddressDeleteModal(isShow: boolean): void;
   closeAll(): void;
 }
 
@@ -78,6 +84,10 @@ export const useModalStore = create(
     // 마시멜로우 확인 페이지
     isShowMallowFilterDateBottomSheet: false,
     isShowMallowExpiredThisMonthModal: false,
+
+    // 주소창 페이지
+    isShowAddressChangeQuitModal: false,
+    isShowAddressDeleteModal: false,
 
     showAuthFailModal(isShow) {
       set({ isShowAuthFailModal: isShow });
@@ -148,6 +158,14 @@ export const useModalStore = create(
       set({ isShowNicknameNotChangeByDateModal: isShow });
     },
 
+    showAddressChangeQuitModal(isShow: boolean) {
+      set({ isShowAddressChangeQuitModal: isShow });
+    },
+
+    showAddressDeleteModal(isShow: boolean) {
+      set({ isShowAddressDeleteModal: isShow });
+    },
+
     closeAll() {
       set({
         isShowAuthFailModal: false,
@@ -168,6 +186,8 @@ export const useModalStore = create(
         isShowWorkTimeNotChangeByDateModal: false,
         isShowWorkTimeChangeModal: false,
         isShowNicknameNotChangeByDateModal: false,
+        isShowAddressChangeQuitModal: false,
+        isShowAddressDeleteModal: false,
       });
     },
   })),

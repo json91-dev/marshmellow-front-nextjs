@@ -1,7 +1,6 @@
 import React from 'react';
 import style from './layout.module.scss';
-import './global.css';
-import { useMediaQuery } from 'react-responsive';
+import './global.scss';
 import LeftZone from '@/app/_components/leftzone/LeftZone';
 import AuthSession from '@/app/_components/AuthSession';
 import RQProvider from '@/app/_components/RQProvider';
