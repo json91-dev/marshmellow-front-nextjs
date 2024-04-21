@@ -14,8 +14,9 @@
 
     .label {
       color: #929DB0;
-      padding-bottom: 0.3rem;
-      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+      margin-top: 1.2rem;
+      font-size: 1.2rem;
       font-weight: 500;
     }
 
@@ -26,7 +27,7 @@
       align-items: center;
 
       div {
-        font-size: 1rem;
+        font-size: 1.2rem;
         margin-left: 0.6rem;
         font-weight: 400;
       }
@@ -35,8 +36,8 @@
     input[type="text"] {
       border-radius: 0.6rem;
       border: 1px solid #ACB6CA;
-      font-size: 1.2rem;
-      height: 3.6rem;
+      font-size: 1.6rem;
+      height: 4.8rem;
       padding-left: 1.2rem;
       width: 100%;
       outline: none;
@@ -83,6 +84,7 @@
           button {
             cursor: pointer;
             width: 100%;
+            height: 4.6rem;
             background-color: black;
             display: flex;
             justify-content: center;

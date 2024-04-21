@@ -9,7 +9,8 @@ export default function SignupSubmitCompletePage() {
   const [isSubmit, setIsSubmit] = useState(true);
   const router = useRouter();
   return (
-    <div className={style.container}>
+    <div className={style.submitCompletePage}>
+      <div className={style.title}>지원 완료</div>
       <div className={style.header}>
         <div className={style.headerTitle}>마시멜로우 채용팀</div>
         <div className={style.headerImage}>
@@ -17,7 +18,7 @@ export default function SignupSubmitCompletePage() {
         </div>
       </div>
       <div className={style.main}>
-        <div className={style.mainTitle}>00님 입사지원을 감사드려요!</div>
+        <div className={style.mainTitle}>{'00님,\n입사지원을 감사드려요!'}</div>
         <div className={style.mainDescription}>
           000님의 입사지원서가 무사히 제출되었어요! 마시멜로우에 관심을 가지고 지원해 주셔서 너무나도 기뻐요! :)
           <br />

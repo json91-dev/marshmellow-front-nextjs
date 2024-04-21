@@ -7,64 +7,66 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-}
 
-.content {
-  width: 100%;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  overflow-y: scroll;
-
-  .label {
-    color: #5C6475;
-    font-size: 1.2rem;
-    line-height: 1.6rem;
-    margin-bottom: 0.5rem;
-    margin-top: 0.8rem;
-  }
-
-  .infoCheckArea {
+  .content {
     width: 100%;
-    margin-top: 1.6rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    overflow-y: scroll;
 
-    > div {
+    .label {
+      color: #5C6475;
+      font-size: 1.2rem;
+      line-height: 1.6rem;
+      margin-bottom: 0.5rem;
+      margin-top: 0.8rem;
+    }
+
+    .infoCheckArea {
       width: 100%;
-      display: flex;
-      justify-content: space-between;
-      font-size: 1.4rem;
-      padding-top: 0.8rem;
-      padding-bottom: 0.8rem;
-      margin-bottom: 1.6rem;
-      font-weight: 400;
-      >:first-child {
-        color: #1C222B;
-      }
+      margin-top: 1.6rem;
 
-      >:last-child {
-        color: #5C6475;
+      > div {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.4rem;
+        padding-top: 0.8rem;
+        padding-bottom: 0.8rem;
+        margin-bottom: 1.6rem;
+        font-weight: 400;
+        >:first-child {
+          color: #1C222B;
+        }
+
+        >:last-child {
+          color: #5C6475;
+        }
       }
     }
-  }
 
-  .confirmButton {
-    position: absolute;
-    width: 90%;
-    height: 5rem;
-    background-color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 1.6rem;
-    font-weight: 500;
-    border-radius: 0.8rem;
-    cursor: pointer;
-    margin-top: 3rem;
-    bottom: 2.4rem;
+    .confirmButton {
+      position: absolute;
+      width: 90%;
+      height: 5rem;
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 1.6rem;
+      font-weight: 500;
+      border-radius: 0.8rem;
+      cursor: pointer;
+      margin-top: 3rem;
+      bottom: 2.4rem;
 
-    @include activeScale(0.99);
-    @include activeOpacity(0.8);
+      @include activeScale(0.99);
+      @include activeOpacity(0.8);
+    }
+
   }
 
 }
+
 

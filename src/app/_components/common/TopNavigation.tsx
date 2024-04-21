@@ -14,11 +14,16 @@ type Props = {
 export default function TopNavigation({ title = '', isTitleExist = true }: Props) {
   const router = useRouter();
   const pathname = usePathname();
-  const { showAddressChangeQuitModal } = useModalStore();
+  const { showAddressChangeQuitModal, showQuitInfoModal } = useModalStore();
 
   const onClickBackButton = () => {
     if (pathname === '/my/address/add' || pathname === '/my/address/edit') {
       showAddressChangeQuitModal(true);
+      return;
+    }
+
+    if (pathname === '/signup/info') {
+      showQuitInfoModal(true);
       return;
     }
 

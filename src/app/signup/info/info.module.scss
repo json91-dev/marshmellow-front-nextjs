@@ -116,6 +116,8 @@
   .contactArea {
     width: 100%;
     margin-bottom: 3rem;
+    margin-top: 1.6rem;
+
     display: flex;
     align-items: center;
 
@@ -148,7 +150,7 @@
 
     @media (min-height: 1000px) {
       position: absolute;
-      bottom: 4rem;
+      bottom: 2.4rem;
       left: 0;
       padding-left: 2rem;
       padding-right: 2rem;
@@ -263,24 +265,6 @@
         border-bottom-right-radius: 0.8rem;
       }
     }
-    //
-    //:first-child {
-    //  &.selected {
-    //    div {
-    //      color: #12171E !important;
-    //    }
-    //    border: 1px solid black;
-    //  }
-    //}
-    //
-    //:last-child {
-    //  &.selected {
-    //    div {
-    //      color: #12171E !important;
-    //    }
-    //    border: 1px solid black;
-    //  }
-    //}
 
     .genderOption {
       flex: 1; /* 동일한 너비를 가지도록 */
@@ -299,6 +283,7 @@
 
   .form {
     width: 100%;
+    margin-top: 1.6rem;
   }
 
   .confirmButton {
