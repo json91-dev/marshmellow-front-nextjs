@@ -12,6 +12,7 @@
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none; /* 비표준 브라우저를 위한 기본 값 */
   word-break: keep-all;
+  -webkit-tap-highlight-color : transparent;
 }
 
 /* HTML5 display-role reset for older browsers */

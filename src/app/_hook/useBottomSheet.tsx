@@ -33,6 +33,18 @@ export default function useBottomSheet({ bottomSheetRef, backDropRef, isShow, se
     }
   };
 
+  const closeBottomSheet = () => {
+    if (bottomSheetRef.current !== null) {
+      const bottomSheetHeight = bottomSheetRef.current.offsetHeight;
+      bottomSheetRef.current.style.transition = `transform 200ms ease-in-out`;
+      bottomSheetRef.current.style.transform = `translateY(${bottomSheetHeight}px`;
+      setTimeout(() => {
+        setIsShow(false);
+        // router.back();
+      }, 250);
+    }
+  };
+
   const onPointerUp = (e: PointerEvent) => {
     e.stopPropagation();
     if (!isDragging.current) return;
@@ -45,12 +57,7 @@ export default function useBottomSheet({ bottomSheetRef, backDropRef, isShow, se
 
       /** 전체 영역중 1/6 이상 움직였을때 모달창이 닫히고 이전페이지 이동 **/
       if (Math.abs(currentTranslateY) >= bottomSheetHeight / 6) {
-        bottomSheetRef.current.style.transition = `transform 200ms ease-in-out`;
-        bottomSheetRef.current.style.transform = `translateY(${bottomSheetHeight}px`;
-        setTimeout(() => {
-          setIsShow(false);
-          // router.back();
-        }, 250);
+        closeBottomSheet();
       } else {
         bottomSheetRef.current.style.transition = `transform 300ms ease-in-out`;
         bottomSheetRef.current.style.transform = `translateY(0)`;
@@ -79,4 +86,6 @@ export default function useBottomSheet({ bottomSheetRef, backDropRef, isShow, se
       bottomSheetRef.current?.removeEventListener('pointerup', onPointerDown);
     };
   }, []);
+
+  return { closeBottomSheet };
 }
