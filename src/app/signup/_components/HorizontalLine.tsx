@@ -1,9 +1,8 @@
 const HorizontalLine = () => {
   const style = {
-    backgroundColor: 'black', // 선의 색상
     marginTop: '1rem', // 상하 여백
     width: '100%',
-    border: '1px solid black',
+    border: '0.5px solid #1C222B',
   };
 
   return <div style={style}></div>;

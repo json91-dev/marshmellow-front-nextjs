@@ -45,17 +45,18 @@ export const setLocalStorage = (key, value) => {
 };
 
 // 로컬 스토리지에서 값을 가져오는 함수
-export const getLocalStorage = (key) => {
+export const getLocalStorage = (key: string) => {
   const value = localStorage.getItem(key);
   return value ? JSON.parse(value) : null;
 };
 
-// 로컬 스토리지에서 특정 키의 값을 삭제하는 함수
-export const removeLocalStorage = (key) => {
-  localStorage.removeItem(key);
-};
-
-// 로컬 스토리지의 모든 값을 삭제하는 함수
-export const clearLocalStorage = () => {
-  localStorage.clear();
-};
+// localStorage에서 값을 가져오는 함수. 값이 없는 경우 기본값을 반환합니다.
+export function getLocalStorageItem(key: string, defaultValue = null) {
+  try {
+    const storedValue = localStorage.getItem(key);
+    return storedValue ? JSON.parse(storedValue) : defaultValue;
+  } catch (error) {
+    console.error('localStorage에서 값을 가져오는 중 오류가 발생했습니다:', error);
+    return defaultValue;
+  }
+}

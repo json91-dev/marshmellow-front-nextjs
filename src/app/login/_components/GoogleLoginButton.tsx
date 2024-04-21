@@ -13,17 +13,18 @@ type Props = {
 };
 export default function GoogleLoginButton(props: Props) {
   const router = useRouter();
+
   const onClickButton = useCallback(async () => {
-    router.push('/signup/identify');
-    // try {
-    //   await signIn('google');
-    // } catch (error) {
-    //   if (error instanceof AuthError) {
-    //     console.error(error);
-    //     return '구글 로그인 실패';
-    //   }
-    //   throw error;
-    // }
+    try {
+      await signIn('google');
+      // router.push('/sign')
+    } catch (error) {
+      if (error instanceof AuthError) {
+        console.error(error);
+        return '구글 로그인 실패';
+      }
+      throw error;
+    }
   }, []);
 
   return (

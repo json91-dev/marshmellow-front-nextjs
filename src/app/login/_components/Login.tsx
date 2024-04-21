@@ -1,7 +1,7 @@
 'use client';
 
 import KakaoLoginButton from '@/app/login/_components/KakaoLoginButton';
-import { fakeServerCall, isAppleBrowser } from '@/utils/utils';
+import { fakeServerCall, isAppleBrowser, setLocalStorage } from '@/utils/utils';
 import AppleLoginButton from '@/app/login/_components/AppleLoginButton';
 import GoogleLoginButton from '@/app/login/_components/GoogleLoginButton';
 import React, { memo, useEffect, useRef, useState } from 'react';
@@ -11,11 +11,11 @@ import { useRouter } from 'next/navigation';
 import { useModalStore } from '@/store/modal';
 import style from '@/app/login/login.module.scss';
 
-export default memo(function LoginButtons() {
+export default memo(function Login() {
   const [isIOS, setIsIOS] = useState<boolean>(null!);
-  const { data: session, status, update } = useSession();
+  const { data: session, status } = useSession();
+
   const router = useRouter();
-  const { showExistNumberModal } = useModalStore();
 
   useEffect(() => {
     const isIOS = isAppleBrowser();
@@ -24,10 +24,23 @@ export default memo(function LoginButtons() {
 
   useEffect(() => {
     if (status === 'authenticated') {
-      console.log('mutation 요청');
-      console.log(session);
+      const type = session.type;
+      if (!type) {
+        console.log('타입이 존재하지 않습니다. (로그인 실패)');
+        return;
+      }
+
+      if (type === 'NEED_IDENTITY') {
+        router.push('/signup/identify');
+      } else if (type === 'NEED_REGISTER') {
+        router.push('/signup/info');
+      } else if (type === 'SIGNIN_SUCCESS') {
+        router.push('/desk');
+      }
+    } else {
+      console.log(status);
     }
-  }, [status]);
+  }, [status, session]);
 
   if (isIOS === null) {
     return (
@@ -44,11 +57,12 @@ export default memo(function LoginButtons() {
     return (
       <>
         <KakaoLoginButton style={{ marginTop: '2rem' }} />
-        {isIOS ? (
-          <AppleLoginButton style={{ marginTop: '1rem' }} />
-        ) : (
-          <GoogleLoginButton style={{ marginTop: '1rem' }} />
-        )}
+        <GoogleLoginButton style={{ marginTop: '1rem' }} />
+        {/*{isIOS ? (*/}
+        {/*  <AppleLoginButton style={{ marginTop: '1rem' }} />*/}
+        {/*) : (*/}
+        {/*  <GoogleLoginButton style={{ marginTop: '1rem' }} />*/}
+        {/*)}*/}
 
         <div className={style.lookAroundButton} onClick={() => router.push('/desk')}>
           <p>마시멜로우 둘러보기 </p>

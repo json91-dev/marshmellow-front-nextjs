@@ -1,9 +1,9 @@
 import style from './login.module.scss';
 import React from 'react';
 import Image from 'next/image';
-import LoginButtons from '@/app/login/_components/LoginButtons';
+import Login from '@/app/login/_components/Login';
 
-export default function Login() {
+export default function LoginPage() {
   return (
     <div className={style.container}>
       <div className={style.titleSection}>
@@ -16,7 +16,7 @@ export default function Login() {
 
       <div className={style.bottomLoginSection}>
         <p>합류하시면 다양한 서비스들을 이용해보실 수 있어요!</p>
-        <LoginButtons />
+        <Login />
       </div>
     </div>
   );

@@ -12,7 +12,6 @@ type Props = {
 export default function SignUpLayout({ children, modal }: Props) {
   return (
     <>
-      <TopNavigation />
       {modal}
       <div className={style.layoutChild}>{children}</div>
     </>
