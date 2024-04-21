@@ -12,16 +12,17 @@ import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import TopNavigation from '@/app/_components/common/TopNavigation';
 import { useForm } from 'react-hook-form';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 interface Inputs {
   imageFile: FileList;
   image: FileList;
+  nickname: string;
 }
 
 /** 회원가입 정보 입력 페이지 **/
 export default function SignupInfoPage() {
   const [name, setName] = useState('');
-  const [nickname, setNickname] = useState('');
   const [birth, setBirth] = useState('');
   const [recommender, setRecommender] = useState('');
   const [profileImageUrl, setProfileImageUrl] = useState('');
@@ -36,17 +37,38 @@ export default function SignupInfoPage() {
     watch,
     formState: { errors },
     setValue,
+    setError,
+    getValues,
+    trigger,
   } = useForm<Inputs>();
 
-  const profile = watch('image');
+  const watchProfile = watch('image');
   const [profilePreviewUrl, setProfilePreviewUrl] = useState('');
 
+  const queryClient = useQueryClient();
+  const { mutate: nicknameCheckMutate } = useMutation({
+    async mutationFn(data: { nickname: string }) {
+      return fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/valid/nickname?nickname=${data.nickname}`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      });
+    },
+    onSuccess: async (response) => {
+      const result = await response.json();
+      if (result.data === 'INVALID_NAME_FORMAT') {
+        setError('nickname', { type: 'custom', message: '사용할 수 없는 닉네임입니다.' });
+      } else if (result.data === 'PASSED') {
+      }
+    },
+  });
+
+  /** 프로필 이미지 미리보기 **/
   useEffect(() => {
-    if (profile && profile.length > 0) {
-      const file = profile[0];
+    if (watchProfile && watchProfile.length > 0) {
+      const file = watchProfile[0];
       setProfilePreviewUrl(URL.createObjectURL(file));
     }
-  }, [profile]);
+  }, [watchProfile]);
 
   /** 생년월일 선택 **/
   const selectGender = useCallback(
@@ -55,6 +77,14 @@ export default function SignupInfoPage() {
     },
     [gender],
   );
+
+  const onClickNicknameCheck = useCallback(async () => {
+    const isValidate = await trigger('nickname');
+    if (isValidate) {
+      const nickname = getValues('nickname');
+      await nicknameCheckMutate({ nickname: nickname });
+    }
+  }, []);
 
   return (
     <div className={style.signupInfoPage}>
@@ -89,20 +119,41 @@ export default function SignupInfoPage() {
             <div className={style.nickname}>
               <div>
                 <input
-                  value={nickname}
-                  onChange={(e) => setNickname(e.target.value)}
                   type="text"
-                  placeholder="특수문자 제외 2~8자"
-                  required
+                  placeholder="닉네임을 입력해주세요"
+                  {...register('nickname', {
+                    required: '닉네임을 입력해주세요',
+                    minLength: {
+                      value: 3,
+                      message: '특수문자 제외 2~8글자를 입력해주세요', // 에러 메세지
+                    },
+                    maxLength: {
+                      value: 10,
+                      message: '특수문자 제외 2~8글자를 입력해주세요', // 에러 메세지
+                    },
+                    pattern: {
+                      value: /^[A-za-z0-9가-힣]{3,10}$/,
+                      message: '특수문자가 포함되어있습니다.', // 에러 메세지
+                    },
+                  })}
                 />
               </div>
-              <div onClick={() => {}}>중복 확인</div>
+              <div onClick={onClickNicknameCheck}>중복 확인</div>
             </div>
 
-            <div className={style.message}>
-              <Image src="/images/nickname.ok.svg" alt="No Image" width={20} height={20} />
-              <div>사용할 수 있는 닉네임이에요</div>
-            </div>
+            {errors.nickname && (
+              <div className={cx(style.message, style.fail)}>
+                <Image src="/images/nickname.wrong.svg" alt="No Image" width={20} height={20} />
+                <div>{errors.nickname.message}</div>
+              </div>
+            )}
+
+            {!errors.nickname && getValues('nickname') && getValues('nickname')?.length !== 0 && (
+              <div className={cx(style.message, style.success)}>
+                <Image src="/images/nickname.ok.svg" alt="No Image" width={20} height={20} />
+                <div>사용할 수 있는 닉네임이에요</div>
+              </div>
+            )}
           </div>
 
           <div className={style.genderArea}>
