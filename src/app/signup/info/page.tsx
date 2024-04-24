@@ -8,17 +8,22 @@ import Image from 'next/image';
 import SectionInfo from '@/app/signup/_components/SectionInfo';
 import cx from 'classnames';
 import { useRouter } from 'next/navigation';
-// import { useForm } from 'react-hook-form';
 import { useSession } from 'next-auth/react';
 import TopNavigation from '@/app/_components/common/TopNavigation';
 import { useForm } from 'react-hook-form';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 interface Inputs {
   imageFile: FileList;
   image: FileList;
   nickname: string;
+  funnelId: number;
 }
+
+const nickNameCheckApi = async (nickname: string) => {
+  return await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/valid/nickname?nickname=${nickname}`)
+    .then((response) => response.json())
+    .catch((err) => 'error');
+};
 
 /** 회원가입 정보 입력 페이지 **/
 export default function SignupInfoPage() {
@@ -45,23 +50,6 @@ export default function SignupInfoPage() {
   const watchProfile = watch('image');
   const [profilePreviewUrl, setProfilePreviewUrl] = useState('');
 
-  const queryClient = useQueryClient();
-  const { mutate: nicknameCheckMutate } = useMutation({
-    async mutationFn(data: { nickname: string }) {
-      return fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/valid/nickname?nickname=${data.nickname}`, {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-      });
-    },
-    onSuccess: async (response) => {
-      const result = await response.json();
-      if (result.data === 'INVALID_NAME_FORMAT') {
-        setError('nickname', { type: 'custom', message: '사용할 수 없는 닉네임입니다.' });
-      } else if (result.data === 'PASSED') {
-      }
-    },
-  });
-
   /** 프로필 이미지 미리보기 **/
   useEffect(() => {
     if (watchProfile && watchProfile.length > 0) {
@@ -82,9 +70,17 @@ export default function SignupInfoPage() {
     const isValidate = await trigger('nickname');
     if (isValidate) {
       const nickname = getValues('nickname');
-      await nicknameCheckMutate({ nickname: nickname });
+      const result = await nickNameCheckApi(nickname);
+      if (result.data === 'INVALID_NAME_FORMAT') {
+        setError('nickname', { type: 'custom', message: '사용할 수 없는 닉네임입니다.' });
+      } else if (result.data === 'PASSED') {
+      }
     }
   }, []);
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
 
   return (
     <div className={style.signupInfoPage}>
@@ -94,7 +90,7 @@ export default function SignupInfoPage() {
         <InformationTab index={2} />
         <SectionInfo title={'*기본정보'} />
 
-        <form className={style.form}>
+        <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
           <div className={style.imageArea}>
             <input type="file" id="profileInput" style={{ display: 'none' }} accept="image/*" {...register('image')} />
             <div className={style.image} onClick={() => document.getElementById('profileInput')?.click()}>
@@ -111,7 +107,7 @@ export default function SignupInfoPage() {
 
           <div className={style.nameArea}>
             <div className={style.label}>이름</div>
-            <input value={session?.user?.name} type="text" required disabled={true} />
+            <input value={session?.user?.name || ''} type="text" required disabled={true} readOnly />
           </div>
 
           <div className={style.nicknameArea}>
@@ -183,10 +179,10 @@ export default function SignupInfoPage() {
                 type={'text'}
                 value={birth}
                 pattern="\d*"
-                // onChange={onDateTextChange}
                 maxLength={10}
                 placeholder="YYYY.MM.DD"
                 required
+                readOnly
               />
             </div>
           </div>
@@ -196,13 +192,11 @@ export default function SignupInfoPage() {
           <div className={style.contactArea}>
             <div className={style.labelLarge}>지원경로</div>
             <div className={style.contact}>
-              <select className={style.input}>
-                <option selected={true} value="선택없음">
-                  선택없음
-                </option>
-                <option value="0">광고</option>
-                <option value="1">지인 추천</option>
-                <option value="2">기타</option>
+              <select className={style.input} {...register('funnelId')}>
+                <option value="0">선택없음</option>
+                <option value="1">광고</option>
+                <option value="2">지인 추천</option>
+                <option value="3">기타</option>
               </select>
               <div className={style.image}>
                 <Image src="/images/arrow.bottom.svg" alt="No Image" fill objectFit="contain" />
@@ -220,11 +214,7 @@ export default function SignupInfoPage() {
           </div>
 
           <div className={style.confirmArea}>
-            <button
-              onClick={() => router.push('/signup/submit')}
-              type="submit"
-              className={cx(style.confirmButton, isActive && style.isActive)}
-            >
+            <button type="submit" className={cx(style.confirmButton, isActive && style.isActive)}>
               다음 단계
             </button>
           </div>

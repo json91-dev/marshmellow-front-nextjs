@@ -60,6 +60,7 @@ export const {
         session.accessToken = token.accessToken;
         session.refreshToken = token.refreshToken;
         session.type = token.type;
+        console.log('엑세스토큰: ', session.accessToken);
       }
 
       return session;
