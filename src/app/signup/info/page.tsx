@@ -11,6 +11,7 @@ import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import TopNavigation from '@/app/_components/common/TopNavigation';
 import { useForm } from 'react-hook-form';
+import { useToastStore } from '@/store/toast';
 
 interface Inputs {
   imageFile: FileList;
@@ -25,6 +26,15 @@ const nickNameCheckApi = async (nickname: string) => {
     .catch((err) => 'error');
 };
 
+const profileImageUploadApi = async (file) => {
+  const formData = new FormData();
+  formData.append('file', file);
+
+  return await fetch(`${process.env.NEXT_PUBLIC_API_URL}/images`, { method: 'POST', body: formData })
+    .then((response) => response.json())
+    .catch((err) => 'error');
+};
+
 /** 회원가입 정보 입력 페이지 **/
 export default function SignupInfoPage() {
   const [name, setName] = useState('');
@@ -35,6 +45,7 @@ export default function SignupInfoPage() {
   const [isActive, setIsActive] = useState(true);
   const router = useRouter();
   const { data: session } = useSession();
+  const { openToast } = useToastStore();
 
   const {
     register,
@@ -52,10 +63,22 @@ export default function SignupInfoPage() {
 
   /** 프로필 이미지 미리보기 **/
   useEffect(() => {
-    if (watchProfile && watchProfile.length > 0) {
-      const file = watchProfile[0];
-      setProfilePreviewUrl(URL.createObjectURL(file));
+    async function uploadFile() {
+      if (watchProfile && watchProfile.length > 0) {
+        const file = watchProfile[0];
+        const result = await profileImageUploadApi(file);
+        if (!result.errorCode) {
+          setProfilePreviewUrl(URL.createObjectURL(file));
+        }
+
+        if (result.errorCode === 'INVALID_IMAGE_NAME_FORMAT') {
+          openToast('jpg|png|gif|bmp|jpeg 형식만 허용합니다.');
+        } else if (result.errorCode === 'INVALID_IMAGE_SIZE') {
+          openToast('160x160 이미지만 사용할 수 있습니다.');
+        }
+      }
     }
+    uploadFile().then();
   }, [watchProfile]);
 
   /** 생년월일 선택 **/
