@@ -10,13 +10,13 @@ import cx from 'classnames';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import TopNavigation from '@/app/_components/common/TopNavigation';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { useToastStore } from '@/store/toast';
 import { debounce, getBirthNumberWithDot } from '@/utils/utils';
 
 interface Inputs {
-  imageFile: FileList;
-  image: FileList;
+  name: string;
+  gender: string;
   nickname: string;
   funnelId: number;
   birth: string;
@@ -40,8 +40,6 @@ const profileImageUploadApi = async (file: File) => {
 
 /** 회원가입 정보 입력 페이지 **/
 export default function SignupInfoPage() {
-  const [gender, setGender] = useState<string>('M');
-  const [isButtonActive, setIsActive] = useState(true);
   const { data: session } = useSession();
   const { openToast } = useToastStore();
   const router = useRouter();
@@ -49,48 +47,40 @@ export default function SignupInfoPage() {
   const {
     register,
     handleSubmit,
-    watch,
-    formState: { errors },
+    formState: { errors, isValid },
     setValue,
     setError,
     getValues,
     trigger,
+    control,
   } = useForm<Inputs>();
 
-  const watchProfile = watch('image');
+  // const watchProfile = watch('image');
   const [profilePreviewUrl, setProfilePreviewUrl] = useState('');
   const [isPassNickname, setIsPassNickname] = useState(false);
-  console.log(errors);
 
   /** 프로필 이미지 미리보기 **/
-  useEffect(() => {
-    async function uploadFile() {
-      if (watchProfile && watchProfile.length > 0) {
-        const file = watchProfile[0];
-        const result = await profileImageUploadApi(file);
-        if (!result.errorCode) {
-          setProfilePreviewUrl(URL.createObjectURL(file));
-        }
+  const onChangeInputImage = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      const file = e.target.files[0];
+      const result = await profileImageUploadApi(file);
+      if (!result.errorCode) {
+        setProfilePreviewUrl(URL.createObjectURL(file));
+      }
 
-        if (result.errorCode === 'INVALID_IMAGE_NAME_FORMAT') {
-          openToast('jpg|png|gif|bmp|jpeg 형식만 허용합니다.');
-        } else if (result.errorCode === 'INVALID_IMAGE_SIZE') {
-          openToast('160x160 이미지만 사용할 수 있습니다.');
-        }
+      if (result.errorCode === 'INVALID_IMAGE_NAME_FORMAT') {
+        openToast('jpg|png|gif|bmp|jpeg 형식만 허용합니다.');
+      } else if (result.errorCode === 'INVALID_IMAGE_SIZE') {
+        openToast('160x160 이미지만 사용할 수 있습니다.');
       }
     }
-    uploadFile().then();
-  }, [watchProfile]);
+  }, []);
 
-  /** 생년월일 선택 **/
-  const selectGender = useCallback(
-    (gender: string) => {
-      setGender(gender);
-    },
-    [gender],
-  );
-
-  const onChangeBirth = useCallback(() => {}, []);
+  useEffect(() => {
+    if (session?.user?.name) {
+      setValue('name', session.user.name);
+    }
+  }, [session?.user?.name]);
 
   /** 닉네임 중복 확인 이후 서버 응답 처리 구현 **/
   const onClickNicknameCheck = useCallback(async () => {
@@ -121,7 +111,13 @@ export default function SignupInfoPage() {
 
         <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
           <div className={style.imageArea}>
-            <input type="file" id="profileInput" style={{ display: 'none' }} accept="image/*" {...register('image')} />
+            <input
+              type="file"
+              id="profileInput"
+              style={{ display: 'none' }}
+              accept="image/*"
+              onChange={onChangeInputImage}
+            />
             <div className={style.image} onClick={() => document.getElementById('profileInput')?.click()}>
               <>
                 {!profilePreviewUrl && <Image src="/images/mallow.image.svg" alt="No Image" fill objectFit="contain" />}
@@ -136,7 +132,7 @@ export default function SignupInfoPage() {
 
           <div className={style.nameArea}>
             <div className={style.label}>이름</div>
-            <input value={session?.user?.name || '소셜인증X'} type="text" required disabled={true} readOnly />
+            <input type="text" {...register('name')} required disabled readOnly />
           </div>
 
           <div className={style.nicknameArea}>
@@ -184,26 +180,38 @@ export default function SignupInfoPage() {
             ) : null}
           </div>
 
-          <div className={style.genderArea}>
-            <div className={style.label}>성별</div>
-            <div
-              className={cx(style.gender, gender === 'M' && style.leftSelected, gender === 'F' && style.rightSelected)}
-            >
-              <div
-                onClick={() => selectGender('M')}
-                className={cx(style.genderOption, gender === 'M' && style.selected)}
-              >
-                <div>남</div>
-              </div>
-              <div
-                onClick={() => selectGender('F')}
-                className={cx(style.genderOption, gender === 'F' && style.selected)}
-              >
-                <div>여</div>
-              </div>
-            </div>
-          </div>
-
+          <Controller
+            control={control}
+            defaultValue={'M'}
+            render={({ field }) => {
+              return (
+                <div className={style.genderArea}>
+                  <div className={style.label}>성별</div>
+                  <div
+                    className={cx(
+                      style.gender,
+                      field.value === 'M' && style.leftSelected,
+                      field.value === 'F' && style.rightSelected,
+                    )}
+                  >
+                    <div
+                      onClick={() => setValue('gender', 'M')}
+                      className={cx(style.genderOption, field.value === 'M' && style.selected)}
+                    >
+                      <div>남</div>
+                    </div>
+                    <div
+                      onClick={() => setValue('gender', 'F')}
+                      className={cx(style.genderOption, field.value === 'F' && style.selected)}
+                    >
+                      <div>여</div>
+                    </div>
+                  </div>
+                </div>
+              );
+            }}
+            name={'gender'}
+          ></Controller>
           <div className={style.birthArea}>
             <div className={style.label}>생년월일</div>
             <div className={style.date}>
@@ -264,7 +272,7 @@ export default function SignupInfoPage() {
             <div className={style.label}>추천인 입력시, 마시멜로우 10개를 드려요</div>
 
             <div className={style.recommend}>
-              <input type="text" required placeholder="추천인 닉네임을 입력해주세요." />
+              <input {...register('recommender', {})} type="text" placeholder="추천인 닉네임을 입력해주세요." />
             </div>
           </div>
 
@@ -272,7 +280,7 @@ export default function SignupInfoPage() {
             <button
               // onClick={() => router.push('/signup/submit')}
               type="submit"
-              className={cx(style.confirmButton, isButtonActive && style.isActive)}
+              className={cx(style.confirmButton, isValid && isPassNickname && style.isActive)}
             >
               다음 단계
             </button>

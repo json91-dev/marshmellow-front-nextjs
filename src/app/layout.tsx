@@ -4,7 +4,7 @@ import './global.scss';
 import LeftZone from '@/app/_components/leftzone/LeftZone';
 import AuthSession from '@/app/_components/AuthSession';
 import RQProvider from '@/app/_components/RQProvider';
-import Toast from '@/app/signup/_components/Toast';
+import Toast from '@/app/_components/common/Toast';
 
 export const metadata = {
   title: '마쉬멜로우',

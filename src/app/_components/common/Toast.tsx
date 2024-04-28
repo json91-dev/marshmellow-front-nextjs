@@ -11,7 +11,7 @@ export default function Toast() {
     if (isOpen) {
       setTimeout(() => {
         closeToast();
-      }, 2500);
+      }, 2000);
     }
   }, [isOpen]);
 
