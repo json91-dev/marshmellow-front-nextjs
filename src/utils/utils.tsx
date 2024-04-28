@@ -60,3 +60,25 @@ export function getLocalStorageItem(key: string, defaultValue = null) {
     return defaultValue;
   }
 }
+
+export function getBirthNumberWithDot(input: string) {
+  let output = input.toString(); // 입력값을 문자열로 변환
+
+  if (output.length <= 4) {
+    // 네 자리 이하 숫자는 변환 없이 반환
+    return output;
+  } else if (output.length === 5) {
+    // 다섯 자리 숫자는 뒤에서 두 자리를 소수점으로 변환
+    return output.substring(0, output.length - 1) + '.' + output.substring(output.length - 1);
+  } else if (output.length === 6) {
+    // 다섯 자리 숫자는 뒤에서 두 자리를 소수점으로 변환
+    return output.substring(0, output.length - 2) + '.' + output.substring(output.length - 2);
+  } else if (output.length === 7) {
+    // 다섯 자리 숫자는 뒤에서 두 자리를 소수점으로 변환
+    return output.substring(0, 4) + '.' + output.substring(4, 6) + '.' + output.substring(6);
+  } else if (output.length === 8) {
+    // 여덟 자리 숫자는 날짜 형태로 변환
+    return output.substring(0, 4) + '.' + output.substring(4, 6) + '.' + output.substring(6);
+  }
+  return output; // 그 외의 경우는 입력값을 그대로 반환
+}

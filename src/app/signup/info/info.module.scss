@@ -84,31 +84,31 @@
   .nicknameArea {
     width: 100%;
     margin-bottom: 2rem;
+  }
 
-    .message {
-      width :100%;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      margin-top: 0.5rem;
-      margin-bottom: 0.5rem;
-      font-size: 1.4rem;
-      font-weight: 500;
+  .errorMessage {
+    width :100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+    font-weight: 500;
 
-      &.success {
-        div {
-          color: #1D9C28;
-          margin-top: 0.1rem;
-          margin-left: 0.2rem;
-        }
+    &.success {
+      div {
+        color: #1D9C28;
+        margin-top: 0.1rem;
+        margin-left: 0.2rem;
       }
+    }
 
-      &.fail {
-        div {
-          color: #DD2C27;
-          margin-top: 0.1rem;
-          margin-left: 0.2rem;
-        }
+    &.fail {
+      div {
+        color: #DD2C27;
+        margin-top: 0.1rem;
+        margin-left: 0.2rem;
       }
     }
   }

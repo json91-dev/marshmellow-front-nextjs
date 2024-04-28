@@ -12,7 +12,7 @@ import { useSession } from 'next-auth/react';
 import TopNavigation from '@/app/_components/common/TopNavigation';
 import { useForm } from 'react-hook-form';
 import { useToastStore } from '@/store/toast';
-import { debounce } from '@/utils/utils';
+import { debounce, getBirthNumberWithDot } from '@/utils/utils';
 
 interface Inputs {
   imageFile: FileList;
@@ -60,6 +60,7 @@ export default function SignupInfoPage() {
   const watchProfile = watch('image');
   const [profilePreviewUrl, setProfilePreviewUrl] = useState('');
   const [isPassNickname, setIsPassNickname] = useState(false);
+  console.log(errors);
 
   /** 프로필 이미지 미리보기 **/
   useEffect(() => {
@@ -89,6 +90,9 @@ export default function SignupInfoPage() {
     [gender],
   );
 
+  const onChangeBirth = useCallback(() => {}, []);
+
+  /** 닉네임 중복 확인 이후 서버 응답 처리 구현 **/
   const onClickNicknameCheck = useCallback(async () => {
     const isValidate = await trigger('nickname');
     if (isValidate) {
@@ -102,6 +106,7 @@ export default function SignupInfoPage() {
     }
   }, []);
 
+  /** 폼 제출 요청 **/
   const onSubmit = (data) => {
     console.log(data);
   };
@@ -165,14 +170,14 @@ export default function SignupInfoPage() {
             </div>
 
             {errors.nickname && (
-              <div className={cx(style.message, style.fail)}>
+              <div className={cx(style.errorMessage, style.fail)}>
                 <Image src="/images/nickname.wrong.svg" alt="No Image" width={20} height={20} />
                 <div>{errors.nickname.message}</div>
               </div>
             )}
 
             {!errors.nickname && getValues('nickname') && isPassNickname ? (
-              <div className={cx(style.message, style.success)}>
+              <div className={cx(style.errorMessage, style.success)}>
                 <Image src="/images/nickname.ok.svg" alt="No Image" width={20} height={20} />
                 <div>사용할 수 있는 닉네임이에요</div>
               </div>
@@ -206,14 +211,35 @@ export default function SignupInfoPage() {
                 type="text"
                 {...register('birth', {
                   required: '생년월일을 입력해주세요.',
+                  minLength: {
+                    value: 10,
+                    message: '생년월일을 모두 입력해주세요.', // 에러 메세지
+                  },
+                  pattern: {
+                    value: /^(19[0-9]{2}|20[0-9]{2}|2100)\.(0[1-9]|1[0-2])\.(0[1-9]|[12][0-9]|3[01])$/,
+                    message: '올바른 날짜를 입력해주세요.', // 에러 메세지
+                  },
                 })}
-                pattern="\d*"
                 maxLength={10}
                 placeholder="YYYY.MM.DD"
-                required
-                readOnly
+                onChange={(e) => {
+                  const { value } = e.target;
+
+                  // value의 값이 숫자가 아닐경우 빈문자열로 replace 해버림.
+                  const onlyNumber = value.replace(/[^0-9]/g, '');
+                  const birthdayString = getBirthNumberWithDot(onlyNumber);
+
+                  setValue('birth', birthdayString);
+                }}
               />
             </div>
+
+            {errors.birth && (
+              <div className={cx(style.errorMessage, style.fail)}>
+                <Image src="/images/nickname.wrong.svg" alt="No Image" width={20} height={20} />
+                <div>{errors.birth.message}</div>
+              </div>
+            )}
           </div>
 
           <SectionInfo title={'*기타'} />
@@ -238,7 +264,7 @@ export default function SignupInfoPage() {
             <div className={style.label}>추천인 입력시, 마시멜로우 10개를 드려요</div>
 
             <div className={style.recommend}>
-              <input type="text" placeholder="추천인 닉네임을 입력해주세요." />
+              <input type="text" required placeholder="추천인 닉네임을 입력해주세요." />
             </div>
           </div>
 

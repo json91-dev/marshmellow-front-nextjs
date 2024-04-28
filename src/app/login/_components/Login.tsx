@@ -34,13 +34,13 @@ export default memo(function Login() {
         return;
       }
 
-      // if (type === 'NEED_IDENTITY') {
-      //   router.push('/signup/identify');
-      // } else if (type === 'NEED_REGISTER') {
-      //   router.push('/signup/info');
-      // } else if (type === 'SIGNIN_SUCCESS') {
-      //   router.push('/desk');
-      // }
+      if (type === 'NEED_IDENTITY') {
+        router.push('/signup/identify');
+      } else if (type === 'NEED_REGISTER') {
+        router.push('/signup/info');
+      } else if (type === 'SIGNIN_SUCCESS') {
+        router.push('/desk');
+      }
     } else {
       console.log(status);
     }
