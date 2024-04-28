@@ -122,25 +122,27 @@ export default function TermsBottomSheet() {
           <div className={style.topLine} />
           <div className={style.content}>
             <div className={style.allAgree}>
-              <div className={style.checkboxGroup}>
+              <label htmlFor={'all'} className={style.checkboxGroup}>
                 <Checkbox
+                  labelId={'all'}
                   checked={allCheck}
                   onChange={(e: ChangeEvent<HTMLInputElement>) => handleAllCheckboxChange(e.target.checked)}
                 />
                 <div className={style.title}>약관에 모두 동의합니다.</div>
-              </div>
+              </label>
             </div>
             <div className={style.grayBoxArea}>
               <div className={style.terms}>
-                <div className={style.checkboxGroup}>
+                <label htmlFor={'check1'} className={style.checkboxGroup}>
                   <Checkbox
+                    labelId={'check1'}
                     checked={check1}
                     onChange={(e: ChangeEvent<HTMLInputElement>) => setCheck1(e.target.checked)}
                   />
                   <div className={style.title}>
                     (필수) 마시멜로우 <span>이용약관</span>에 동의합니다.
                   </div>
-                </div>
+                </label>
                 <div className={style.link}>
                   <div>
                     <div>개인정보 수집 이용동의</div>
@@ -159,39 +161,42 @@ export default function TermsBottomSheet() {
               </div>
 
               <div className={style.marketing}>
-                <div className={style.checkboxGroup} style={{ marginBottom: '.2rem' }}>
+                <label htmlFor={'check2'} className={style.checkboxGroup} style={{ marginBottom: '.2rem' }}>
                   <Checkbox
+                    labelId={'check2'}
                     checked={check2}
                     onChange={(e: ChangeEvent<HTMLInputElement>) => setCheck2(e.target.checked)}
                   />
                   <div className={style.title} style={{ marginBottom: '.4rem' }}>
                     (선택) <span>마케팅 및 광고 정보 수신동의.</span>
                   </div>
-                </div>
+                </label>
                 <div className={style.description}>
                   마케팅 정보 동의를 하면 마시멜로우의 다양한 혜택 및 이벤트를 빠르게 알 수 있어요
                 </div>
               </div>
 
               <div className={style.push}>
-                <div className={style.checkboxGroup} style={{ marginBottom: '.4rem' }}>
+                <label htmlFor={'check3'} className={style.checkboxGroup} style={{ marginBottom: '.4rem' }}>
                   <Checkbox
+                    labelId={'check3'}
                     checked={check3}
                     onChange={(e: ChangeEvent<HTMLInputElement>) => setCheck3(e.target.checked)}
                   />
                   <div className={style.title}>(선택) 푸시 알림 켜기</div>
-                </div>
+                </label>
                 <div className={style.description}>푸시 알림을 켜면 마시멜로우 획득에 도움이 돼요</div>
               </div>
 
               <div className={style.age}>
-                <div className={style.checkboxGroup}>
+                <label htmlFor={'check4'} className={style.checkboxGroup}>
                   <Checkbox
+                    labelId={'check4'}
                     checked={check4}
                     onChange={(e: ChangeEvent<HTMLInputElement>) => setCheck4(e.target.checked)}
                   />
                   <div className={style.title}>(필수) 만 14세 이상입니다.</div>
-                </div>
+                </label>
               </div>
             </div>
           </div>

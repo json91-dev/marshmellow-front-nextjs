@@ -12,12 +12,15 @@ import { useSession } from 'next-auth/react';
 import TopNavigation from '@/app/_components/common/TopNavigation';
 import { useForm } from 'react-hook-form';
 import { useToastStore } from '@/store/toast';
+import { debounce } from '@/utils/utils';
 
 interface Inputs {
   imageFile: FileList;
   image: FileList;
   nickname: string;
   funnelId: number;
+  birth: string;
+  recommender: string;
 }
 
 const nickNameCheckApi = async (nickname: string) => {
@@ -26,7 +29,7 @@ const nickNameCheckApi = async (nickname: string) => {
     .catch((err) => 'error');
 };
 
-const profileImageUploadApi = async (file) => {
+const profileImageUploadApi = async (file: File) => {
   const formData = new FormData();
   formData.append('file', file);
 
@@ -37,15 +40,11 @@ const profileImageUploadApi = async (file) => {
 
 /** 회원가입 정보 입력 페이지 **/
 export default function SignupInfoPage() {
-  const [name, setName] = useState('');
-  const [birth, setBirth] = useState('');
-  const [recommender, setRecommender] = useState('');
-  const [profileImageUrl, setProfileImageUrl] = useState('');
   const [gender, setGender] = useState<string>('M');
-  const [isActive, setIsActive] = useState(true);
-  const router = useRouter();
+  const [isButtonActive, setIsActive] = useState(true);
   const { data: session } = useSession();
   const { openToast } = useToastStore();
+  const router = useRouter();
 
   const {
     register,
@@ -60,6 +59,7 @@ export default function SignupInfoPage() {
 
   const watchProfile = watch('image');
   const [profilePreviewUrl, setProfilePreviewUrl] = useState('');
+  const [isPassNickname, setIsPassNickname] = useState(false);
 
   /** 프로필 이미지 미리보기 **/
   useEffect(() => {
@@ -97,6 +97,7 @@ export default function SignupInfoPage() {
       if (result.data === 'INVALID_NAME_FORMAT') {
         setError('nickname', { type: 'custom', message: '사용할 수 없는 닉네임입니다.' });
       } else if (result.data === 'PASSED') {
+        setIsPassNickname(true);
       }
     }
   }, []);
@@ -130,7 +131,7 @@ export default function SignupInfoPage() {
 
           <div className={style.nameArea}>
             <div className={style.label}>이름</div>
-            <input value={session?.user?.name || ''} type="text" required disabled={true} readOnly />
+            <input value={session?.user?.name || '소셜인증X'} type="text" required disabled={true} readOnly />
           </div>
 
           <div className={style.nicknameArea}>
@@ -151,9 +152,12 @@ export default function SignupInfoPage() {
                       message: '특수문자 제외 2~8글자를 입력해주세요', // 에러 메세지
                     },
                     pattern: {
-                      value: /^[A-za-z0-9가-힣]{3,10}$/,
+                      value: /^[A-za-z0-9가-힣ㄱ-ㅎㅏ-ㅣ]{3,10}$/,
                       message: '특수문자가 포함되어있습니다.', // 에러 메세지
                     },
+                    onChange: debounce(() => {
+                      setIsPassNickname(false);
+                    }, 300),
                   })}
                 />
               </div>
@@ -167,12 +171,12 @@ export default function SignupInfoPage() {
               </div>
             )}
 
-            {!errors.nickname && getValues('nickname') && getValues('nickname')?.length !== 0 && (
+            {!errors.nickname && getValues('nickname') && isPassNickname ? (
               <div className={cx(style.message, style.success)}>
                 <Image src="/images/nickname.ok.svg" alt="No Image" width={20} height={20} />
                 <div>사용할 수 있는 닉네임이에요</div>
               </div>
-            )}
+            ) : null}
           </div>
 
           <div className={style.genderArea}>
@@ -199,8 +203,10 @@ export default function SignupInfoPage() {
             <div className={style.label}>생년월일</div>
             <div className={style.date}>
               <input
-                type={'text'}
-                value={birth}
+                type="text"
+                {...register('birth', {
+                  required: '생년월일을 입력해주세요.',
+                })}
                 pattern="\d*"
                 maxLength={10}
                 placeholder="YYYY.MM.DD"
@@ -237,7 +243,11 @@ export default function SignupInfoPage() {
           </div>
 
           <div className={style.confirmArea}>
-            <button type="submit" className={cx(style.confirmButton, isActive && style.isActive)}>
+            <button
+              // onClick={() => router.push('/signup/submit')}
+              type="submit"
+              className={cx(style.confirmButton, isButtonActive && style.isActive)}
+            >
               다음 단계
             </button>
           </div>

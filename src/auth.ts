@@ -33,10 +33,12 @@ export const {
             body: JSON.stringify({ accessToken: account.id_token, vendor: account.provider }),
           });
           console.log(`구글 로그인 토큰: ${account.id_token}`);
+
           const result = await response.json();
           token.accessToken = result.data.credentials.accessToken;
           token.refreshToken = result.data.credentials.refreshToken;
           token.type = result.data.type;
+          token.profileImg = profile?.picture;
         } else {
           const response = await fetch(`${process.env.API_URL}/auth/signin`, {
             method: 'POST',
@@ -46,9 +48,12 @@ export const {
 
           console.log(`카카오 로그인 토큰: ${account.access_token}`);
           const result = await response.json();
+
           token.accessToken = result.data.credentials.accessToken;
           token.refreshToken = result.data.credentials.refreshToken;
           token.type = result.data.type;
+          // @ts-ignore
+          token.profileImg = profile?.properties?.profile_image;
         }
       }
 
@@ -60,7 +65,7 @@ export const {
         session.accessToken = token.accessToken;
         session.refreshToken = token.refreshToken;
         session.type = token.type;
-        console.log('엑세스토큰: ', session.accessToken);
+        session.profileImg = token.profileImg;
       }
 
       return session;
