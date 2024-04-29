@@ -37,7 +37,9 @@ export const {
           const result = await response.json();
           token.accessToken = result.data.credentials.accessToken;
           token.refreshToken = result.data.credentials.refreshToken;
+          token.accountId = result.data.accountId;
           token.type = result.data.type;
+          token.accountId = result.data.accountId;
           token.profileImg = profile?.picture;
         } else {
           const response = await fetch(`${process.env.API_URL}/auth/signin`, {
@@ -52,6 +54,7 @@ export const {
           token.accessToken = result.data.credentials.accessToken;
           token.refreshToken = result.data.credentials.refreshToken;
           token.type = result.data.type;
+          token.accountId = result.data.accountId;
           // @ts-ignore
           token.profileImg = profile?.properties?.profile_image;
         }
@@ -65,6 +68,7 @@ export const {
         session.accessToken = token.accessToken;
         session.refreshToken = token.refreshToken;
         session.type = token.type;
+        session.accountId = token.accountId;
         session.profileImg = token.profileImg;
       }
 

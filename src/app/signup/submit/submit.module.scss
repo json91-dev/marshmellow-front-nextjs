@@ -21,50 +21,6 @@
       margin-bottom: 0.5rem;
       margin-top: 0.8rem;
     }
-
-    .infoCheckArea {
-      width: 100%;
-      margin-top: 1.6rem;
-
-      > div {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        font-size: 1.4rem;
-        padding-top: 0.8rem;
-        padding-bottom: 0.8rem;
-        margin-bottom: 1.6rem;
-        font-weight: 400;
-        >:first-child {
-          color: #1C222B;
-        }
-
-        >:last-child {
-          color: #5C6475;
-        }
-      }
-    }
-
-    .confirmButton {
-      position: absolute;
-      width: 90%;
-      height: 5rem;
-      background-color: black;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      font-size: 1.6rem;
-      font-weight: 500;
-      border-radius: 0.8rem;
-      cursor: pointer;
-      margin-top: 3rem;
-      bottom: 2.4rem;
-
-      @include activeScale(0.99);
-      @include activeOpacity(0.8);
-    }
-
   }
 
 }

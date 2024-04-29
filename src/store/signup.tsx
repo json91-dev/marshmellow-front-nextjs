@@ -1,4 +1,4 @@
-import { devtools } from 'zustand/middleware';
+import { createJSONStorage, devtools, persist } from 'zustand/middleware';
 import { create } from 'zustand';
 
 type SignupInfo = {
@@ -6,27 +6,35 @@ type SignupInfo = {
   nickname: string;
   gender: 'M' | 'F';
   birth: string;
-  funnelId?: number;
+  funnelId?: string;
   recommender?: string;
 };
 
 interface SignupStoreState {
   signupInfo: SignupInfo;
+
+  setSignupInfo(signupInfo: SignupInfo): void;
 }
 
 export const useSignupStore = create(
-  devtools<SignupStoreState>((set) => ({
-    signupInfo: {
-      name: '',
-      nickname: '',
-      gender: 'M',
-      birth: '',
-      funnelId: 0,
-      recommender: '',
-    },
+  persist(
+    devtools<SignupStoreState>((set) => ({
+      signupInfo: {
+        name: '',
+        nickname: '',
+        gender: 'M',
+        birth: '',
+        funnelId: '',
+        recommender: '',
+      },
 
-    setSignupInfo(signupInfo: SignupInfo) {
-      set({ signupInfo: signupInfo });
+      setSignupInfo(signupInfo: SignupInfo) {
+        set({ signupInfo: signupInfo });
+      },
+    })),
+    {
+      name: 'signup',
+      storage: createJSONStorage(() => localStorage),
     },
-  })),
+  ),
 );
