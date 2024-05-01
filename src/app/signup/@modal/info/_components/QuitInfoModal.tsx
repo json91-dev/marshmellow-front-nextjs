@@ -32,7 +32,7 @@ export default function QuitInfoModal() {
             onClick={async () => {
               await signOut();
               showQuitInfoModal(false);
-              router.replace('/');
+              router.replace('/login');
             }}
           >
             다음에 작성할게요

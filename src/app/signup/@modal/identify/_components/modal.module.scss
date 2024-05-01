@@ -13,28 +13,29 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  left: calc((var(--rootLayoutChildrenWidth) - 30rem) / 2);
   top: 50%;
-  transform: translateY(-50%)
-}
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
 
+  .title {
+    color: #12171E;
+    margin-bottom: 0.8rem;
+    font-size: 1.6rem;
+    text-align: center;
+    font-weight: 700;
+  }
 
+  .description {
+    color: #3D4451;
+    margin-bottom: 2.4rem;
+    margin-top: 1.2rem;
+    font-size: 1.4rem;
+    text-align: center;
+    line-height: 2rem;
 
-.title {
-  color: #12171E;
-  margin-bottom: 0.8rem;
-  font-size: 1.6rem;
-  text-align: center;
-}
+    &.bold {
 
-.description {
-  color: #3D4451;
-  margin-bottom: 2.4rem;
-  font-size: 1.4rem;
-  text-align: center;
-
-  &.bold {
-
+    }
   }
 }
 

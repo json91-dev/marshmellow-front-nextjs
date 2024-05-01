@@ -22,10 +22,6 @@ export default memo(function Login() {
     setIsIOS(isIOS);
   }, []);
 
-  // useEffect(() => {
-  //   signOut();
-  // }, []);
-
   useEffect(() => {
     if (status === 'authenticated') {
       const type = session.type;
@@ -68,7 +64,7 @@ export default memo(function Login() {
         {/*  <GoogleLoginButton style={{ marginTop: '1rem' }} />*/}
         {/*)}*/}
 
-        <div className={style.lookAroundButton} onClick={() => router.push('/desk')}>
+        <div className={style.lookAroundButton} onClick={() => router.replace('/desk')}>
           <p>마시멜로우 둘러보기 </p>
         </div>
       </>
