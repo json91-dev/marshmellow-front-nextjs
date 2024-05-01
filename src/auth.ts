@@ -9,6 +9,7 @@ export const {
   auth, // 요부분이 결국 미들웨어가 되는것 체크할것 / auth 함수 호출시 내가 로그인했는지 안했는지 여부 판단 가능.
   signIn, // 로그인용
 } = NextAuth({
+  trustHost: true,
   providers: [
     google({
       clientId: process.env.GOOGLE_CLIENT_ID ?? '',
