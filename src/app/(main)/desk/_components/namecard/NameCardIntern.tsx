@@ -1,11 +1,17 @@
+'use client';
 import style from './nameCard.module.scss';
 import Image from 'next/image';
 import React from 'react';
-import TicketLinks from '@/app/(main)/desk/_components/TickekLinks';
+import useMemberProfile from '@/app/_hook/quries/useMemberProfile';
+import { dateStringToFormat, dateStringToFormatDiff, formatHourMinute } from '@/utils/utils';
 
-export default function NameCard() {
+export default function NameCardIntern() {
+  const { data: result } = useMemberProfile();
+  const { createdAt, grade } = result.data;
+  const { startHour, endHour, launchTimeAt } = result.data.officeHour;
+
   return (
-    <div className={style.container}>
+    <div className={style.nameCardIntern}>
       <div className={style.topName}>MARSHMALLOW</div>
 
       <div className={style.profile}>
@@ -26,11 +32,11 @@ export default function NameCard() {
 
         <div>
           <div className={style.workPeriod}>
-            <div>2022년 00월 00일</div>
-            <div className={style.workPeriodTag}>0년 0개월 0일 재직</div>
+            <div>{dateStringToFormat(createdAt)}</div>
+            <div className={style.workPeriodTag}>{dateStringToFormatDiff(createdAt)}</div>
           </div>
-          <div>인턴</div>
-          <div>08:00 ~ 17:00 (점심시간 12:00)</div>
+          <div>{grade}</div>
+          <div>{`${formatHourMinute(startHour)} ~ ${formatHourMinute(endHour)} (점심시간 ${formatHourMinute(launchTimeAt)})`}</div>
         </div>
       </div>
 

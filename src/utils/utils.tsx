@@ -82,3 +82,31 @@ export function getBirthNumberWithDot(input: string) {
   }
   return output; // 그 외의 경우는 입력값을 그대로 반환
 }
+
+/** DateString을 년/월/일로 변환하는 함수 **/
+export function dateStringToFormat(dateString: string) {
+  const date = new Date(dateString);
+  const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: '2-digit', day: '2-digit' };
+  const formattedData = new Intl.DateTimeFormat('ko-KR', options).format(date);
+  const [year, month, day] = formattedData.split('.').map((part) => part.trim());
+  return `${year}년 ${month}월 ${day}일`;
+}
+
+/** 현재 날짜까지 지난 시간을 반환해주는 함수 **/
+export function dateStringToFormatDiff(dateString: string) {
+  const diffDate = new Date().getTime() - new Date(dateString).getTime();
+  const getDayDiffDay = (startDate, finalDate) => Math.floor((finalDate - startDate) / (1000 * 3600 * 24));
+  const days = getDayDiffDay(new Date(dateString), new Date());
+
+  const years = Math.floor(days / 365.25);
+  const months = Math.floor((days % 365.25) / 30.44);
+  const remainingDays = Math.floor((days % 365.25) % 30.44);
+
+  return `${years}년 ${months}개월 ${remainingDays}일 재직`;
+}
+
+/** 시간 number를 입력받아서, 01:00 등의 시간으로 바꿔주는 함수 **/
+export function formatHourMinute(hour: number): string {
+  const formattedHour = hour < 10 ? `0${hour}` : `${hour}`;
+  return `${formattedHour}:00`;
+}

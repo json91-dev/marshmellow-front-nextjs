@@ -1,5 +1,5 @@
 import style from './desk.module.scss';
-import NameCard from '@/app/(main)/desk/_components/NameCard';
+import NameCard from '@/app/(main)/desk/_components/namecard/NameCard';
 import Image from 'next/image';
 import React from 'react';
 import Options from '@/app/(main)/desk/_components/Options';
@@ -18,20 +18,6 @@ export default function DeskPage() {
         <TicketLinks />
         <HorizontalLine />
         <PageLinks />
-        {/*<div className={style.menu}>*/}
-        {/*  <div>사용가이드</div>*/}
-        {/*  <div>아이콘</div>*/}
-        {/*</div>*/}
-
-        {/*<div className={style.menu}>*/}
-        {/*  <div>이벤트</div>*/}
-        {/*  <div>아이콘</div>*/}
-        {/*</div>*/}
-
-        {/*<div className={style.menu}>*/}
-        {/*  <div>공지사항</div>*/}
-        {/*  <div>아이콘</div>*/}
-        {/*</div>*/}
       </div>
     </div>
   );

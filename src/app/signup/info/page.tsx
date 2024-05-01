@@ -8,7 +8,7 @@ import Image from 'next/image';
 import SectionInfo from '@/app/signup/_components/SectionInfo';
 import cx from 'classnames';
 import { useRouter } from 'next/navigation';
-import { useSession } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 import TopNavigation from '@/app/_components/common/TopNavigation';
 import { Controller, useForm } from 'react-hook-form';
 import { useToastStore } from '@/store/toast';

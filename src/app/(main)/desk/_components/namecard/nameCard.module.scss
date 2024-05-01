@@ -1,0 +1,400 @@
+
+.nameCardIntern {
+  width: 90%;
+  max-width: 33rem;
+  background-image: linear-gradient(to bottom, #FFF381 0%, #FFF381 4rem, #FFFDE9 4rem, #FFFDE9 100%, transparent);
+  border-radius: 1.6rem;
+  padding-top: 8rem;
+  padding-bottom: 2.4rem;
+  display : flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  box-shadow: 0 1px 1.4rem #3F454D24;
+  position: relative;
+
+  .topName {
+    position: absolute;
+    top: 2.2rem;
+    right: 1.2rem;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: white;
+  }
+
+  .profile {
+    width: 12rem;
+    height: 12rem;
+    background-color: #FFF381;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .icon {
+
+    }
+  }
+
+  .nickname {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 1rem;
+
+    >:first-child {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    >:last-child {
+      font-size: 1.4rem;
+      font-weight: 700;
+      padding-left: 0.6rem;
+    }
+  }
+
+  .detailInfo {
+    display:flex;
+    margin-top: 2.4rem;
+
+    >:first-child {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      color: #12171E;
+      font-weight: 500;
+      font-size: 1.4rem;
+
+      >div {
+        margin-top: 0.8rem;
+      }
+    }
+
+    >:last-child {
+      margin-left: 1rem;
+      flex-grow: 6;
+      color: #12171E;
+      font-weight: 400;
+      font-size: 1.4rem;
+
+      >div {
+        margin-top: 0.8rem;
+      }
+    }
+  }
+
+  .workPeriod {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .workPeriodTag {
+      margin-left: 1.5rem;
+      font-weight: 400;
+      font-size:1.1rem;
+      background-color: #FFF381;
+      border-radius: 0.2rem;
+    }
+  }
+
+  .logo {
+    background-color: #EAEAEA;
+    width: 8rem;
+    height: 2rem;
+    margin-top:2rem;
+  }
+}
+
+.nameCardEmploy {
+  width: 90%;
+  max-width: 33rem;
+  background-image: linear-gradient(to bottom, #EAC0FF 0%, #EAC0FF 4rem, #F9EEFF 4rem, #F9EEFF 100%, transparent);
+  border-radius: 1.6rem;
+  padding-top: 8rem;
+  padding-bottom: 2.4rem;
+  display : flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  box-shadow: 0 1px 1.4rem #3F454D24;
+  position: relative;
+
+  .topName {
+    position: absolute;
+    top: 2.2rem;
+    right: 1.2rem;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: white;
+  }
+
+  .profile {
+    width: 12rem;
+    height: 12rem;
+    background-color: #EAC0FF;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .icon {
+
+    }
+  }
+
+  .nickname {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 1rem;
+
+    >:first-child {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    >:last-child {
+      font-size: 1.4rem;
+      font-weight: 700;
+      padding-left: 0.6rem;
+    }
+  }
+
+  .detailInfo {
+    display:flex;
+    margin-top: 2.4rem;
+
+    >:first-child {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      color: #12171E;
+      font-weight: 500;
+      font-size: 1.4rem;
+
+      >div {
+        margin-top: 0.8rem;
+      }
+    }
+
+    >:last-child {
+      margin-left: 1rem;
+      flex-grow: 6;
+      color: #12171E;
+      font-weight: 400;
+      font-size: 1.4rem;
+
+      >div {
+        margin-top: 0.8rem;
+      }
+    }
+  }
+
+  .workPeriod {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .workPeriodTag {
+      margin-left: 1.5rem;
+      font-weight: 400;
+      font-size: 1.1rem;
+      background-color: #EAC0FF;
+      border-radius: 0.2rem;
+    }
+  }
+
+  .logo {
+    background-color: #EAEAEA;
+    width: 8rem;
+    height: 2rem;
+    margin-top:2rem;
+  }
+}
+
+.passCard {
+  width: 90%;
+  max-width: 33rem;
+  background-image: linear-gradient(to bottom, #CED5E4 0%, #CED5E4 4rem, #F6F8FC 4rem, #F6F8FC 100%, transparent);
+  border-radius: 1.6rem;
+  padding-top: 4rem;
+  padding-bottom: 2.4rem;
+  display : flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  box-shadow: 0 1px 1.4rem #3F454D24;
+  position: relative;
+
+  .topName {
+    position: absolute;
+    top: 2.2rem;
+    right: 1.2rem;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: white;
+  }
+
+  .title {
+    color: #1E1E1E;
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin-top: 2rem;
+  }
+
+  .info {
+    width: 100%;
+    background-color: #DDE2ED;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 0.8rem;
+    padding: 1.2rem;
+    margin-top: 1.6rem;
+
+
+    p {
+      color: #1C222B;
+      white-space: pre-wrap;
+      font-size: 1.4rem;
+      line-height: 2rem;
+      font-weight: 500;
+
+      span {
+        font-weight: 700;
+      }
+    }
+  }
+
+  .horizontalLine {
+    width: 100%;
+    border: 1px solid #DBDBDB;
+    margin-top: 1.6rem;
+  }
+
+  .loginButtons {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.6rem;
+    gap: 0.8rem;
+    .kakaoButton {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+
+      .button {
+        width: 100%;
+        max-width: 50rem;
+        height: 4.4rem;
+        display: flex;
+        justify-content: center;
+        background-color: #FFE611;
+        border-radius: 1rem;
+        align-items: center;
+        flex-direction: row;
+        @include activeScale;
+
+        .image {
+          position: relative;
+
+        }
+
+        p {
+          margin-left: 0.8rem;
+          font-size: 1.4rem;
+        }
+      }
+    }
+
+    .googleButton {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+
+      .button {
+        width: 100%;
+        max-width: 50rem;
+        height: 4.4rem;
+        display: flex;
+        justify-content: center;
+        background-color: white;
+        border-radius: 1rem;
+        align-items: center;
+        flex-direction: row;
+        border: 1px solid #D4DBE9;
+
+        @include activeScale;
+
+        .image {
+          position: relative;
+        }
+
+        p {
+          margin-left: 1rem;
+          font-size: 1.4rem;
+        }
+      }
+    }
+
+    .appleButton {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+
+      .button {
+        width: 100%;
+        max-width: 50rem;
+        height: 4.4rem;
+        display: flex;
+        justify-content: center;
+        background-color: white;
+        border-radius: 1rem;
+        align-items: center;
+        flex-direction: row;
+        border: 1px solid #D4DBE9;
+
+        @include activeScale;
+
+        .image {
+          position: relative;
+
+        }
+
+        p {
+          font-size: 1.4rem;
+          margin-left: 0.8rem;
+        }
+      }
+    }
+  }
+
+  .logo {
+    background-color: #EAEAEA;
+    width: 8rem;
+    height: 2rem;
+    margin-top:2rem;
+  }
+}
+
+
+
+
+
+
