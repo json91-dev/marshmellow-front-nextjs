@@ -1,11 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 import { getSession } from 'next-auth/react';
 
-const getMemberProfile = async () => {
+const getMember = async () => {
   const session = await getSession();
   if (!session) throw new Error('Not logged in');
 
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/member/me/profile`, {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/member/me`, {
     method: 'GET',
     headers: {
       Authorization: `Bearer ${session?.accessToken}`,
@@ -17,10 +17,10 @@ const getMemberProfile = async () => {
   return response.json();
 };
 
-export default function useMemberProfile() {
+export default function useMember() {
   return useQuery({
-    queryKey: ['me', 'profile'],
-    queryFn: getMemberProfile,
+    queryKey: ['me'],
+    queryFn: getMember,
     staleTime: 1000 * 20,
   });
 }

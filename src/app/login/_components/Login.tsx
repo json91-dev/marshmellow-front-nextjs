@@ -35,7 +35,7 @@ export default memo(function Login() {
       } else if (type === 'NEED_REGISTER') {
         router.push('/signup/info');
       } else if (type === 'SIGNIN_SUCCESS') {
-        router.push('/desk');
+        router.replace('/desk');
       }
     } else {
       console.log(status);

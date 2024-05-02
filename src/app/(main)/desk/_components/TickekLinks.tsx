@@ -1,12 +1,20 @@
-'use client'
+'use client';
 
 import style from './ticketLink.module.scss';
 import Image from 'next/image';
 import React from 'react';
-import {useRouter} from "next/navigation";
+import { useRouter } from 'next/navigation';
+import useMember from '@/app/_hook/quries/useMember';
+import { useSession } from 'next-auth/react';
+import Spinner from '@/app/login/_components/Spinner';
 
 export default function TicketLinks() {
-  const router= useRouter()
+  const router = useRouter();
+  const { data: result, status, error } = useMember();
+
+  if (status === 'pending') {
+    return <Spinner />;
+  }
 
   return (
     <div className={style.container}>
@@ -16,7 +24,8 @@ export default function TicketLinks() {
           <div>마시멜로우</div>
         </div>
         <div onClick={() => router.push('/my/mallow')}>
-          <div>324개</div>
+          {status === 'success' && <div>{result?.data?.currency?.marshmallowQuantity}개</div>}
+          {status === 'error' && <div>{0}개</div>}
           <div>
             <Image src="/images/arrow.right.svg" alt="No Image" width={26} height={26} />
           </div>

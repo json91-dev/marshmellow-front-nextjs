@@ -7,10 +7,14 @@ import React, { useEffect } from 'react';
 import HorizontalLine from '@/app/my/_components/HorizontalLine';
 import { useModalStore } from '@/store/modal';
 import { useRouter } from 'next/navigation';
+import useMember from '@/app/_hook/quries/useMember';
+import useMemberProfile from '@/app/_hook/quries/useMemberProfile';
+import { formatHourMinute } from '@/utils/utils';
 
 export default function myPage() {
   const { showRankingChartModal, showNicknameChangeModal, showWorkTimeBottomSheet, showLogoutModal } = useModalStore();
   const router = useRouter();
+  const { data: result, status, error } = useMemberProfile();
 
   return (
     <div className={style.myPage}>
@@ -24,7 +28,7 @@ export default function myPage() {
         <div className={style.nickname}>
           <div className={style.left}>닉네임</div>
           <div className={style.right} onClick={() => showNicknameChangeModal(true)}>
-            <div>말랑이</div>
+            <div>{result?.data?.nickname}</div>
             <Image src="/images/arrow.right.svg" alt="No Image" width={25} height={25} />
           </div>
         </div>
@@ -40,15 +44,22 @@ export default function myPage() {
               height={18}
             />
           </div>
-          <div className={style.right}>인턴</div>
+          <div className={style.right}>{result?.data?.grade}</div>
         </div>
 
         <div className={style.workTime}>
           <div className={style.left}>근무시간</div>
           <div className={style.right} onClick={() => showWorkTimeBottomSheet(true)}>
             <div className={style.workTimeDetail}>
-              <div>08시 ~ 17시</div>
-              <div>점심시간은 11시입니다.</div>
+              {result?.data && (
+                <>
+                  <div>
+                    {formatHourMinute(result.data.officeHour.startHour).substring(0, 2)}시 ~{' '}
+                    {formatHourMinute(result.data.officeHour.endHour).substring(0, 2)}시
+                  </div>
+                  <div>점심시간은 {formatHourMinute(result.data.officeHour.launchTimeAt).substring(0, 2)}시입니다.</div>
+                </>
+              )}
             </div>
             <Image src="/images/arrow.right.svg" alt="No Image" width={25} height={25} />
           </div>
