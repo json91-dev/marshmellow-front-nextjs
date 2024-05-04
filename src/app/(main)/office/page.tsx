@@ -63,50 +63,54 @@ export default function OfficePage() {
             </div>
           </div>
         </div>
-        {/*<div className={style.attendance}>*/}
-        {/*  <div>*/}
-        {/*    <p>근태 관리</p>*/}
-        {/*    <p>2024.02.26 ~ 2024.03.03</p>*/}
-        {/*    <Image src="/images/arrow.gray.right.svg" alt="No Image" width={100} height={100} />*/}
-        {/*  </div>*/}
-        {/*  <div>*/}
-        {/*    <div>*/}
-        {/*      <Image src="/images/snack.gray.light.svg" alt="No Image" width={24} height={24} />*/}
-        {/*      <p>월</p>*/}
-        {/*      <div className={style.dot}></div>*/}
-        {/*    </div>*/}
-        {/*    <div>*/}
-        {/*      <Image src="/images/snack.gray.light.svg" alt="No Image" width={24} height={24} />*/}
-        {/*      <p>화</p>*/}
-        {/*      <div className={style.dot}></div>*/}
-        {/*    </div>*/}
-        {/*    <div>*/}
-        {/*      <Image src="/images/snack.gray.light.svg" alt="No Image" width={24} height={24} />*/}
-        {/*      <p>수</p>*/}
-        {/*      <div className={style.dot}></div>*/}
-        {/*    </div>*/}
-        {/*    <div>*/}
-        {/*      <Image src="/images/snack.gray.light.svg" alt="No Image" width={24} height={24} />*/}
-        {/*      <p>목</p>*/}
-        {/*      <div className={style.dot}></div>*/}
-        {/*    </div>*/}
-        {/*    <div>*/}
-        {/*      <Image src="/images/snack.gray.light.svg" alt="No Image" width={24} height={24} />*/}
-        {/*      <p>금</p>*/}
-        {/*      <div className={style.dot}></div>*/}
-        {/*    </div>*/}
-        {/*    <div>*/}
-        {/*      <Image src="/images/snack.gray.light.svg" alt="No Image" width={24} height={24} />*/}
-        {/*      <p>토</p>*/}
-        {/*      <div className={style.dot}></div>*/}
-        {/*    </div>*/}
-        {/*    <div>*/}
-        {/*      <Image src="/images/snack.gray.light.svg" alt="No Image" width={24} height={24} />*/}
-        {/*      <p>일</p>*/}
-        {/*      <div className={style.dot}></div>*/}
-        {/*    </div>*/}
-        {/*  </div>*/}
-        {/*</div>*/}
+        <div className={style.attendance}>
+          <div className={style.header}>
+            <p className={style.name}>근태 관리</p>
+            <p className={style.date}>2024.02.26 ~ 2024.03.03</p>
+            <div className={style.image}>
+              <Image src="/images/arrow.gray.right.v2.svg" alt="No Image" width={24} height={24} />
+              <div className={style.redDot}></div>
+            </div>
+          </div>
+
+          <div className={style.weekMissions}>
+            <div className={style.col}>
+              <Image src="/images/snack.gray.svg" alt="No Image" width={24} height={24} />
+              <p>월</p>
+            </div>
+
+            <div className={style.col}>
+              <Image src="/images/snack.purple.svg" alt="No Image" width={24} height={24} />
+              <p>화</p>
+            </div>
+
+            <div className={style.col}>
+              <Image src="/images/snack.purple.svg" alt="No Image" width={24} height={24} />
+              <p>수</p>
+            </div>
+
+            <div className={style.col}>
+              <Image src="/images/snack.gray.svg" alt="No Image" width={24} height={24} />
+              <p>목</p>
+            </div>
+
+            <div className={style.col}>
+              <Image src="/images/snack.gray.light.svg" alt="No Image" width={24} height={24} />
+              <p>금</p>
+            </div>
+
+            <div className={style.col}>
+              <Image src="/images/snack.purple.light.svg" alt="No Image" width={24} height={24} />
+              <p>토</p>
+            </div>
+
+            <div className={style.col}>
+              <Image src="/images/snack.purple.svg" alt="No Image" width={24} height={24} />
+              <p>일</p>
+              <div className={style.blackDot}></div>
+            </div>
+          </div>
+        </div>
         {/*<div className={style.enjoy}>*/}
         {/*  <Image src="/images/enjoy.game.svg" alt="No Image" width={100} height={100} />*/}
         {/*  <Image src="/images/enjoy.event.svg" alt="No Image" width={100} height={100} />*/}

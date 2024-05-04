@@ -95,8 +95,6 @@
           text-shadow: 0 0 2px white;
           margin-bottom: 0.3rem;
         }
-
-
       }
 
       .todayMission {
@@ -194,6 +192,85 @@
             }
           }
 
+        }
+      }
+    }
+
+    .attendance {
+      width: 100%;
+      height: 11.4rem;
+      background: white;
+      border-radius: 1.6rem;
+      margin-top: 1.6rem;
+      padding: 1.4rem 1.6rem 1.6rem 1.6rem;
+      display: flex;
+      flex-direction: column;
+
+
+      .header {
+        display: flex;
+        align-items: center;
+
+        .name {
+          color: #1C222B;
+          font-size: 1.6rem;
+          font-weight: 700;
+        }
+
+        .date {
+          flex: 1;
+          margin-left: 0.8rem;
+          color: #7A8497;
+          font-size: 1.2rem;
+          font-weight: 500;
+        }
+
+        .image {
+          cursor: pointer;
+          @include activeOpacity;
+          @include activeScale;
+          position: relative;
+
+          .redDot {
+            position: absolute;
+            right: 0;
+            top: 0;
+            background-color: #FF403A;
+            border-radius: 100%;
+            width: 0.5rem;
+            height: 0.5rem;
+          }
+        }
+
+      }
+
+      .weekMissions {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex: 1;
+
+        .col {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0.2rem;
+
+          p {
+            color: #3D4451;
+            font-size: 1.2rem;
+            font-weight: 600;
+          }
+
+          .blackDot {
+            position: absolute;
+            bottom: -1rem;
+            background-color: #3D4451;
+            border-radius: 100%;
+            width: 0.5rem;
+            height: 0.5rem;
+          }
         }
       }
     }
