@@ -25,7 +25,7 @@ export default function WithdrawConfirmPage() {
 
         <div className={style.items}>
           <div className={style.name}>
-            <Image src="/images/mallow.snack.svg" alt="No Image" width={24} height={24} />
+            <Image src="/images/snack.gray.svg" alt="No Image" width={24} height={24} />
             <div>마시멜로우</div>
           </div>
           <div className={style.count}>342개</div>

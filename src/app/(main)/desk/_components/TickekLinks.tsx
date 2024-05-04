@@ -20,7 +20,7 @@ export default function TicketLinks() {
     <div className={style.container}>
       <div className={style.link}>
         <div>
-          <Image src="/images/mallow.snack.svg" alt="No Image" width={26} height={26} />
+          <Image src="/images/snack.gray.svg" alt="No Image" width={26} height={26} />
           <div>마시멜로우</div>
         </div>
         <div onClick={() => router.push('/my/mallow')}>
