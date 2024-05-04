@@ -5,35 +5,12 @@ import Image from 'next/image';
 import { CSSTransition } from 'react-transition-group';
 import ModalBackdrop from '@/app/signup/@modal/identify/_components/ModalBackdrop';
 import { useModalStore } from '@/store/modal';
-import { useMutation } from '@tanstack/react-query';
 import cx from 'classnames';
 import { useToastStore } from '@/store/toast';
 
 export default function NicknameChangeModal() {
   const { isShowNicknameChangeModal, showNicknameChangeModal } = useModalStore();
   const { openToast } = useToastStore();
-  // const validateNicknamMutation = useMutation({
-  //   async mutationFn(data: { nickname: string }) {
-  //     const { accessToken, vendor, idToken } = data;
-  //     return fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/signin`, {
-  //       method: 'POST',
-  //       headers: { 'Content-Type': 'application/json' },
-  //       body: JSON.stringify({ accessToken: accessToken, vendor: vendor }),
-  //     });
-  //   },
-  //   async onSuccess(response: any) {
-  //     const result = await response.json();
-  //     // await update({ id: result.data.accountId });
-  //     // cookies().set('accountId', result.data.accountId )
-  //     // cookies().get('accountId');
-  //   },
-  //
-  //   onError: (error: string) => {
-  //     console.error(error);
-  //     alert('업로드 중 에러가 발생했습니다.');
-  //   },
-  //   onSettled() {},
-  // });
 
   const onClicksubmit = useCallback((e) => {
     e.preventDefault();

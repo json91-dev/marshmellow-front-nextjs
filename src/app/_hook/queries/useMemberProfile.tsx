@@ -4,6 +4,7 @@ import { getSession } from 'next-auth/react';
 const getMemberProfile = async () => {
   const session = await getSession();
   if (!session) throw new Error('Not logged in');
+  // console.log(session?.accessToken);
 
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/member/me/profile`, {
     method: 'GET',

@@ -7,8 +7,8 @@ import React, { useEffect } from 'react';
 import HorizontalLine from '@/app/my/_components/HorizontalLine';
 import { useModalStore } from '@/store/modal';
 import { useRouter } from 'next/navigation';
-import useMember from '@/app/_hook/quries/useMember';
-import useMemberProfile from '@/app/_hook/quries/useMemberProfile';
+import useMember from '@/app/_hook/queries/useMember';
+import useMemberProfile from '@/app/_hook/queries/useMemberProfile';
 import { formatHourMinute } from '@/utils/utils';
 
 export default function myPage() {

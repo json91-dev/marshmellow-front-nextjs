@@ -2,7 +2,7 @@
 import style from './nameCard.module.scss';
 import Image from 'next/image';
 import React from 'react';
-import useMemberProfile from '@/app/_hook/quries/useMemberProfile';
+import useMemberProfile from '@/app/_hook/queries/useMemberProfile';
 import { dateStringToFormat, dateStringToFormatDiff, formatHourMinute } from '@/utils/utils';
 
 export default function NameCardIntern() {

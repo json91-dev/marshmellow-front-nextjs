@@ -6,7 +6,7 @@ import NameCardEmploy from '@/app/(main)/desk/_components/namecard/NameCardEmplo
 import NameCardIntern from '@/app/(main)/desk/_components/namecard/NameCardIntern';
 import PassCard from '@/app/(main)/desk/_components/namecard/PassCard';
 import Spinner from '@/app/login/_components/Spinner';
-import useMemberProfile from '@/app/_hook/quries/useMemberProfile';
+import useMemberProfile from '@/app/_hook/queries/useMemberProfile';
 
 export default function NameCard() {
   const { status: sessionStatus } = useSession();
