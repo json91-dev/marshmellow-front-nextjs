@@ -2,6 +2,7 @@ import style from './attendance.module.scss';
 import TopNavigation from '@/app/_components/common/TopNavigation';
 import MissionCalendar from '@/app/attendance/_components/MissionCalendar';
 import Image from 'next/image';
+import React from 'react';
 // import useBottomSheet from '@/app/_hook/useBottomSheet';
 
 export default function AttendancePage() {
@@ -12,7 +13,12 @@ export default function AttendancePage() {
       <div className={style.settingAlert}>
         <div className={style.top}>
           <div className={style.title}>출근을 놓치지 마세요</div>
-          <div className={style.toggle}>toggle</div>
+          <div className={style.toggle}>
+            <div className={style.onOffSwitchContainer}>
+              <input type="checkbox" name="onoff-switch" id="onoff-switch1" />
+              <label htmlFor="onoff-switch1"></label>
+            </div>
+          </div>
         </div>
         <div className={style.description}>출근하지 않았으면, 점심시간 30분 전에 알림을 보내드려요.</div>
       </div>
@@ -36,7 +42,9 @@ export default function AttendancePage() {
           </div>
         </div>
 
-        <MissionCalendar />
+        <div className={style.calendarContainer}>
+          <MissionCalendar />
+        </div>
       </div>
 
       <div className={style.banner}>

@@ -30,6 +30,58 @@
         color: #5C6475;
         font-size: 1.2rem;
         font-weight: 700;
+
+        .onOffSwitchContainer{
+          display:inline-block;
+          height: 30px;
+          position:relative;
+        }
+
+        .onOffSwitchContainer input[type="checkbox"]{
+          position: absolute;
+          width: 0px;
+          height: 0px;
+          overflow: hidden;
+        }
+        .onOffSwitchContainer label{
+          padding-left: 70px;
+          line-height: 30px;
+          font-size: 16px;
+        }
+
+        .onOffSwitchContainer label::after{
+          position:absolute;
+          top:3px;
+          left:4px;
+          content:'';
+          width: 24px;
+          height: 24px;
+          background: #FFFFFF !important;
+          border-radius: 100%;
+          transition: all 0.3s
+        }
+
+        .onOffSwitchContainer label::before{
+          position:absolute;
+          top:0;
+          left:0;
+          content:'';
+          width: 60px;
+          height: 30px;
+          border:1px solid #d1d1d1;
+          border-radius: 20px;
+          background: #f1f1f1;
+          box-sizing: border-box;
+        }
+
+        .onOffSwitchContainer input[type="checkbox"]:checked + label::after {
+          transform: translateX(28px);
+          background: #E5E9F2;
+        }
+
+        .onOffSwitchContainer input[type="checkbox"]:checked + label::before {
+          background: #BB4EF2;
+        }
       }
     }
   }
@@ -89,6 +141,11 @@
           }
         }
       }
+    }
+
+    .calendarContainer {
+      width: 100%;
+      margin-top: 2rem;
     }
   }
 
