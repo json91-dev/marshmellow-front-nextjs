@@ -8,10 +8,9 @@ import { useModalStore } from '@/store/modal';
 
 type Props = {
   title?: string;
-  isTitleExist?: boolean;
 };
 
-export default function TopNavigation({ title = '', isTitleExist = true }: Props) {
+export default function TopNavigation({ title = '' }: Props) {
   const router = useRouter();
   const pathname = usePathname();
   const { showAddressChangeQuitModal, showQuitInfoModal } = useModalStore();

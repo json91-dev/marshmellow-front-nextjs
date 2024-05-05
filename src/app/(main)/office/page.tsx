@@ -3,8 +3,11 @@ import style from './office.module.scss';
 import Image from 'next/image';
 import React from 'react';
 import cx from 'classnames';
+import { useRouter } from 'next/navigation';
 
 export default function OfficePage() {
+  const router = useRouter();
+
   return (
     <div className={style.officePage}>
       <div className={style.myMallowArea}>
@@ -63,7 +66,8 @@ export default function OfficePage() {
             </div>
           </div>
         </div>
-        <div className={style.attendance}>
+
+        <div className={style.attendance} onClick={() => router.push('/attendance')}>
           <div className={style.header}>
             <p className={style.name}>근태 관리</p>
             <p className={style.date}>2024.02.26 ~ 2024.03.03</p>
@@ -117,7 +121,6 @@ export default function OfficePage() {
           <Image src="/images/enjoy.guide.svg" alt="No Image" width={100} height={100} />
         </div>
       </div>
-
 
       <div className={style.timeCheckArea}>
         <div className={style.timer}>09:47:15</div>
