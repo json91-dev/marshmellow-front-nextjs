@@ -111,26 +111,25 @@ export default function OfficePage() {
             </div>
           </div>
         </div>
-        {/*<div className={style.enjoy}>*/}
-        {/*  <Image src="/images/enjoy.game.svg" alt="No Image" width={100} height={100} />*/}
-        {/*  <Image src="/images/enjoy.event.svg" alt="No Image" width={100} height={100} />*/}
-        {/*  <Image src="/images/enjoy.guide.svg" alt="No Image" width={100} height={100} />*/}
-        {/*</div>*/}
+        <div className={style.enjoy}>
+          <Image src="/images/enjoy.game.svg" alt="No Image" width={100} height={100} />
+          <Image src="/images/enjoy.event.svg" alt="No Image" width={100} height={100} />
+          <Image src="/images/enjoy.guide.svg" alt="No Image" width={100} height={100} />
+        </div>
       </div>
 
-      {/*<div className={style.timeCheckArea}>*/}
-      {/*  <div className={style.timeLeft}>*/}
-      {/*    <div className={style.timer}>09:47:15</div>*/}
-      {/*    <div className={style.timeInfo}>*/}
-      {/*      <p>*/}
-      {/*        정시출근까지 <span>12분 45초</span> 남았어요*/}
-      {/*      </p>*/}
-      {/*    </div>*/}
-      {/*  </div>*/}
-      {/*  <div className={style.rightIcon}>*/}
-      {/*    <Image src="/images/mallow.sleep.circle.svg" alt="No Image" width={100} height={100} />*/}
-      {/*  </div>*/}
-      {/*</div>*/}
+
+      <div className={style.timeCheckArea}>
+        <div className={style.timer}>09:47:15</div>
+        <div className={style.timeInfo}>
+          <p>
+            정시출근까지 <span>12분 45초</span> 남았어요
+          </p>
+        </div>
+        <div className={style.rightIcon}>
+          <Image src="/images/mallow.sleep.circle.svg" alt="No Image" width={100} height={100} />
+        </div>
+      </div>
     </div>
   );
 }
