@@ -1,0 +1,217 @@
+.bottomSheet {
+  @include z-index-vars;
+  z-index: var(--bottomSheetIndex);
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  background: white;
+  padding: 2.4rem 2rem;
+  border-top-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+
+  .topLine {
+    background-color: #CED5E4;
+    height: 0.4rem;
+    width: 3.8rem;
+    position: absolute;
+    top: 1rem;
+    left: calc(50% - 1.9em);
+    border-radius: 0.5rem;
+  }
+
+  .headInfo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+
+    .first {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #12171E;
+    }
+
+    .second {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #5C6475;
+    }
+  }
+
+  .fillMallow {
+    width: 100%;
+    margin-top: 1.6rem;
+    display: flex;
+    justify-content: space-between;
+
+    .fillCount {
+      padding: 1rem 1.2rem;
+      background-color: #F0F3FA;
+      border-radius: 0.8rem;
+
+      p {
+        font-size: 1.4rem;
+        font-weight: 500;
+        color: #5C6475;
+      }
+    }
+
+    .fillAds {
+      padding: 1rem 2.1rem;
+      background-color: #000000;
+      border-radius: 0.8rem;
+      cursor: pointer;
+      @include activeOpacity;
+      @include activeScale;
+
+      p {
+        font-size: 1.4rem;
+        font-weight: 500;
+        color: #FFFFFF;
+      }
+    }
+  }
+
+  .howToInfo {
+    margin-top: 2.4rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #1C222B;
+  }
+
+  .howToSteps {
+    width: 100%;
+    margin-top: 1.6rem;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    padding: 1.6rem 1.2rem;
+    background-color: #F9EEFF;
+    border-radius: 0.8rem;
+    gap: 0.8rem;
+
+
+    .step {
+      background-color: #EFD2FF;
+      border-radius: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0.8rem;
+      gap: 0.8rem;
+
+      div {
+        width: 2.4rem;
+        height: 2.4rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        border-radius: 100%;
+
+        color: #BB4EF2;
+        font-size: 1.4rem;
+        font-weight: 500;
+      }
+
+      p {
+        white-space: pre-wrap;
+        line-height: 2rem;
+        font-size: 1.3rem;
+        font-weight: 500;
+        color: #2E343F;
+        text-align: center;
+
+        span {
+          position: relative;
+          top: 0.5rem;
+          margin-left: 0.1rem;
+        }
+      }
+    }
+
+  }
+
+  .confirmButton {
+    width: 100%;
+    height: 4.8rem;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    color: white;
+    font-size: 1.6rem;
+    cursor: pointer;
+    margin-top: 3rem;
+
+    @include activeScale(0.99);
+    @include activeOpacity(0.8);
+  }
+
+  .horizontalLine {
+    width: calc(100% + 4rem);
+    left: -2rem;
+    height: 0.6rem;
+    background-color: #ECF0F9;
+    margin-top: 2.4rem;
+    position: relative;
+  }
+
+  .accordionInfo {
+    width: 100%;
+    margin-top: 1.6rem;
+
+    .accordionToggle {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      height: 5.6rem;
+
+      &.active {
+        img {
+          transform: rotate(-180deg);
+          //transition: all 0.5s;
+        }
+      }
+
+      p {
+        color: #1C222B;
+        font-size: 1.6rem;
+        font-weight: 500;
+      }
+    }
+
+    .accordionContent {
+      flex-direction: column;
+      gap: 0.6rem;
+      transition: all 0.5s;
+      max-height: 0;
+      display: flex;
+      overflow: hidden;
+
+      &.active {
+        max-height: 500px;
+      }
+
+      .col {
+        width: 100%;
+        display: flex;
+        gap: 0.3rem;
+
+        p {
+          color: #5C6475;
+          font-size: 1.2rem;
+          font-weight: 500;
+          line-height: 1.8rem;
+        }
+      }
+    }
+
+
+  }
+}

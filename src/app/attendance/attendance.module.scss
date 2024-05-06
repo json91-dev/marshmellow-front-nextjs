@@ -89,7 +89,9 @@
   .body {
     width: 100%;
     flex: 1;
-    padding: 2rem;
+    padding: 2rem 2rem 5.8rem 2rem;
+    overflow-y: scroll;
+    @include noScrollBar;
 
     .info {
       display: flex;
