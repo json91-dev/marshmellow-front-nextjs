@@ -110,6 +110,8 @@
       align-items: center;
       color: #5C6475;
       cursor: pointer;
+      @include activeOpacity;
+      @include activeScale;
 
       :first-child {
         color: #1C222B;
@@ -168,12 +170,15 @@
     .right {
       display: flex;
       align-items: center;
+      cursor: pointer;
+      @include activeOpacity;
+      @include activeScale;
 
       .workTimeDetail {
         display: flex;
         flex-direction: column;
         align-items: flex-end;
-        cursor: pointer;
+
 
         > :first-child {
           font-size: 1.6rem;

@@ -110,3 +110,33 @@ export function formatHourMinute(hour: number): string {
   const formattedHour = hour < 10 ? `0${hour}` : `${hour}`;
   return `${formattedHour}:00`;
 }
+
+export function phoneFomatter(num, type = 1) {
+  var formatNum = '';
+
+  if (num.length == 11) {
+    if (type == 0) {
+      formatNum = num.replace(/(\d{3})(\d{4})(\d{4})/, '$1-****-$3');
+    } else {
+      formatNum = num.replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3');
+    }
+  } else if (num.length == 8) {
+    formatNum = num.replace(/(\d{4})(\d{4})/, '$1-$2');
+  } else {
+    if (num.indexOf('02') == 0) {
+      if (type == 0) {
+        formatNum = num.replace(/(\d{2})(\d{4})(\d{4})/, '$1-****-$3');
+      } else {
+        formatNum = num.replace(/(\d{2})(\d{4})(\d{4})/, '$1-$2-$3');
+      }
+    } else {
+      if (type == 0) {
+        formatNum = num.replace(/(\d{3})(\d{3})(\d{4})/, '$1-***-$3');
+      } else {
+        formatNum = num.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3');
+      }
+    }
+  }
+
+  return formatNum;
+}

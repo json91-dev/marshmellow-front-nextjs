@@ -8,6 +8,7 @@ import useMemberProfile from '@/app/_hook/queries/useMemberProfile';
 export default function NameCardEmploy() {
   const { data: result } = useMemberProfile();
   const { createdAt, grade } = result.data;
+  const { nickname } = result.data.profile;
   const { startHour, endHour, launchTimeAt } = result.data.officeHour;
 
   return (
@@ -19,8 +20,8 @@ export default function NameCardEmploy() {
       </div>
 
       <div className={style.nickname}>
-        <div>닉네임</div>
-        <div> {'>'} </div>
+        <div>{nickname}</div>
+        <Image src="/images/arrow.right.svg" alt="No Image" width={24} height={24} />
       </div>
 
       <div className={style.detailInfo}>

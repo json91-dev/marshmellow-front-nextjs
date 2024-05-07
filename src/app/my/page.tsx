@@ -9,7 +9,7 @@ import { useModalStore } from '@/store/modal';
 import { useRouter } from 'next/navigation';
 import useMember from '@/app/_hook/queries/useMember';
 import useMemberProfile from '@/app/_hook/queries/useMemberProfile';
-import { formatHourMinute } from '@/utils/utils';
+import { formatHourMinute, phoneFomatter } from '@/utils/utils';
 
 export default function myPage() {
   const { showRankingChartModal, showNicknameChangeModal, showWorkTimeBottomSheet, showLogoutModal } = useModalStore();
@@ -28,8 +28,8 @@ export default function myPage() {
         <div className={style.nickname}>
           <div className={style.left}>닉네임</div>
           <div className={style.right} onClick={() => showNicknameChangeModal(true)}>
-            <div>{result?.data?.nickname}</div>
-            <Image src="/images/arrow.right.svg" alt="No Image" width={25} height={25} />
+            <div>{result?.data?.profile?.nickname}</div>
+            <Image src="/images/arrow.right.svg" alt="No Image" width={24} height={24} />
           </div>
         </div>
 
@@ -61,7 +61,7 @@ export default function myPage() {
                 </>
               )}
             </div>
-            <Image src="/images/arrow.right.svg" alt="No Image" width={25} height={25} />
+            <Image src="/images/arrow.right.svg" alt="No Image" width={24} height={24} />
           </div>
         </div>
 
@@ -71,28 +71,28 @@ export default function myPage() {
             <div>내 정보가 변경되었다면 본인확인을 통해 정보를 수정할 수 있습니다.</div>
           </div>
           <div className={style.right}>
-            <Image src="/images/arrow.right.svg" alt="No Image" width={25} height={25} />
+            <Image src="/images/arrow.right.svg" alt="No Image" width={24} height={24} />
           </div>
         </div>
 
         <div className={style.profileInfo}>
           <div className={style.left}>이름</div>
-          <div className={style.right}>김이름</div>
+          <div className={style.right}>{result?.data?.profile?.name}</div>
         </div>
 
         <div className={style.profileInfo}>
           <div className={style.left}>성별</div>
-          <div className={style.right}>여자</div>
+          <div className={style.right}>{result?.data?.profile?.gender}</div>
         </div>
 
         <div className={style.profileInfo}>
           <div className={style.left}>생년월일</div>
-          <div className={style.right}>1991.03.11</div>
+          <div className={style.right}>{result?.data?.profile?.birth.replaceAll('-', '.')}</div>
         </div>
 
         <div className={style.profileInfo}>
           <div className={style.left}>전화번호</div>
-          <div className={style.right}>010-0000-0000</div>
+          <div className={style.right}>{result?.data && phoneFomatter(result?.data?.profile?.phoneNumber)}</div>
         </div>
 
         <div style={{ width: '100%', display: 'flex', flexDirection: 'column' }}>
@@ -104,7 +104,7 @@ export default function myPage() {
 
           <div className={style.link} onClick={() => router.push('/my/address')}>
             <div>배송지 관리</div>
-            <Image src="/images/arrow.right.svg" alt="No Image" width={25} height={25} />
+            <Image src="/images/arrow.right.svg" alt="No Image" width={24} height={24} />
           </div>
 
           <HorizontalLine
