@@ -8,7 +8,7 @@ import Image from 'next/image';
 import SectionInfo from '@/app/signup/_components/SectionInfo';
 import cx from 'classnames';
 import { useRouter } from 'next/navigation';
-import { signOut, useSession } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 import TopNavigation from '@/app/_components/common/TopNavigation';
 import { Controller, useForm } from 'react-hook-form';
 import { useToastStore } from '@/store/toast';
@@ -36,17 +36,6 @@ type SignupRequestBody = {
     funnelId: string;
     recommender: string | null;
   };
-};
-
-const profileImageUploadApi = async (file: File) => {
-  const formData = new FormData();
-  formData.append('file', file);
-
-  return await fetch(`${process.env.NEXT_PUBLIC_API_URL}/images`, { method: 'POST', body: formData })
-    .then((response) => response.json())
-    .catch((e) => {
-      console.error(e);
-    });
 };
 
 /** 회원가입 정보 입력 페이지 **/

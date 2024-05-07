@@ -151,7 +151,7 @@
       }
     }
 
-    .message {
+    .errorMessage {
       width :100%;
       font-size: 1.4rem;
       display: flex;
@@ -159,6 +159,22 @@
       align-items: center;
       margin-top: 0.5rem;
       margin-bottom: 0.5rem;
+
+      &.success {
+        div {
+          color: #1D9C28;
+          //margin-top: 0.1rem;
+          //margin-left: 0.2rem;
+        }
+      }
+
+      &.fail {
+        div {
+          color: #DD2C27;
+          //margin-top: 0.1rem;
+          //margin-left: 0.2rem;
+        }
+      }
     }
   }
 

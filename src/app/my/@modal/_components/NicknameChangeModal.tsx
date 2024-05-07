@@ -1,24 +1,75 @@
 'use client';
 import style from './modal.module.scss';
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useState } from 'react';
 import Image from 'next/image';
 import { CSSTransition } from 'react-transition-group';
 import ModalBackdrop from '@/app/signup/@modal/identify/_components/ModalBackdrop';
 import { useModalStore } from '@/store/modal';
 import cx from 'classnames';
 import { useToastStore } from '@/store/toast';
+import { useForm } from 'react-hook-form';
+import { debounce } from '@/utils/utils';
+
+interface Inputs {
+  nickname: string;
+}
 
 export default function NicknameChangeModal() {
   const { isShowNicknameChangeModal, showNicknameChangeModal } = useModalStore();
   const { openToast } = useToastStore();
+  const [isPassNickname, setIsPassNickname] = useState(false); // 닉네임 유효성 서버 검증 여부
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+    setValue,
+    setError,
+    getValues,
+    trigger,
+    control,
+    clearErrors,
+  } = useForm<Inputs>();
 
-  const onClicksubmit = useCallback((e) => {
-    e.preventDefault();
-  }, []);
+  console.log(errors);
+  /** 닉네임 중복 확인 이후 서버 응답 처리 구현 **/
+  const onClickNicknameCheck = useCallback(async () => {
+    try {
+      const isValidate = await trigger('nickname'); // 강제로 유효성 검사 수행
+      if (isValidate) {
+        const nickname = getValues('nickname');
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/valid/nickname?nickname=${nickname}`);
 
-  const onClickNicknameDuplicated = useCallback((e) => {
-    e.preventDefault();
-  }, []);
+        if (!response.ok) {
+          const result = await response.json();
+          if (result.data === 'DUPLICATED') {
+            setError('nickname', { type: 'custom', message: '중복된 닉네임입니다.' });
+          } else {
+            setError('nickname', { type: 'custom', message: '사용할 수 없는 닉네임입니다.' });
+          }
+          return;
+        }
+
+        const result = await response.json();
+        if (result.data === 'INVALID_NAME_FORMAT') {
+          setError('nickname', { type: 'custom', message: '사용할 수 없는 닉네임입니다.' });
+        } else if (result.data === 'PASSED') {
+          clearErrors('nickname');
+          setIsPassNickname(true);
+        }
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }, [isPassNickname, errors]);
+
+  const onSubmit = async (data: Inputs) => {
+    if (!isPassNickname) {
+      setError('nickname', { type: 'custom', message: '닉네임 중복확인을 해주세요.' });
+      return;
+    }
+    console.log('submit 호출');
+    console.log(data);
+  };
 
   return (
     <>
@@ -28,19 +79,53 @@ export default function NicknameChangeModal() {
 
       <CSSTransition in={isShowNicknameChangeModal} timeout={200} unmountOnExit classNames="modal">
         <div className={cx(style.nicknameChangeModal, 'modal')}>
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className={style.title}>닉네임 변경하기</div>
             <div className={style.nicknameVaildArea}>
               <div className={style.check}>
-                <input type={'text'} placeholder={'특수문자 제외 2~8글자'} className={style.inputText} required />
-                <button onClick={onClickNicknameDuplicated} className={style.validateButton}>
+                <input
+                  type={'text'}
+                  placeholder={'특수문자 제외 2~8글자'}
+                  className={style.inputText}
+                  autoComplete={'off'}
+                  {...register('nickname', {
+                    required: '닉네임을 입력해주세요',
+                    minLength: {
+                      value: 3,
+                      message: '특수문자 제외 2~8글자를 입력해주세요', // 에러 메세지
+                    },
+                    maxLength: {
+                      value: 10,
+                      message: '특수문자 제외 2~8글자를 입력해주세요', // 에러 메세지
+                    },
+                    pattern: {
+                      value: /^[A-za-z0-9가-힣ㄱ-ㅎㅏ-ㅣ]{3,10}$/,
+                      message: '특수문자가 포함되어있습니다.', // 에러 메세지
+                    },
+                    onChange: debounce(() => {
+                      console.log('111');
+                      setIsPassNickname(false);
+                    }, 300),
+                  })}
+                />
+                <button className={style.validateButton} onClick={onClickNicknameCheck}>
                   중복 확인
                 </button>
               </div>
-              <div className={style.message}>
-                <Image src="/images/nickname.ok.svg" alt="No Image" width={20} height={20} />
-                <div>사용할 수 있는 닉네임이에요</div>
-              </div>
+
+              {errors.nickname && (
+                <div className={cx(style.errorMessage, style.fail)}>
+                  <Image src="/images/nickname.wrong.svg" alt="No Image" width={20} height={20} />
+                  <div>{errors.nickname.message}</div>
+                </div>
+              )}
+
+              {!errors.nickname && getValues('nickname') && isPassNickname ? (
+                <div className={cx(style.errorMessage, style.success)}>
+                  <Image src="/images/nickname.ok.svg" alt="No Image" width={20} height={20} />
+                  <div>사용할 수 있는 닉네임이에요</div>
+                </div>
+              ) : null}
             </div>
 
             <div className={style.description}>
@@ -48,16 +133,17 @@ export default function NicknameChangeModal() {
             </div>
 
             <button
-              onSubmit={onClicksubmit}
+              type="submit"
               className={style.confirmButton}
-              onClick={(e) => {
-                e.preventDefault();
-                showNicknameChangeModal(false);
-                openToast('내 닉네임이 변경되었어요.');
-              }}
+              // onClick={(e) => {
+              //   e.preventDefault();
+              //   showNicknameChangeModal(false);
+              //   openToast('내 닉네임이 변경되었어요.');
+              // }}
             >
               확인
             </button>
+
             <button
               className={style.cancelButton}
               onClick={(e) => {
