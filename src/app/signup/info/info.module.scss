@@ -14,21 +14,6 @@
   padding-right: 2rem;
   overflow-y: scroll;
 
-  input[type="text"] {
-    width: 100%;
-    border: 1px solid #9DA5B7;
-    padding: 1rem;
-    outline: none;
-    font-size: 16px;
-    border-radius: 0.5rem;
-    height: 4.8rem;
-
-
-    &:focus {
-      border: 1px solid black;
-    }
-  }
-
   .dateInput {
     -webkit-appearance: none;
     width: 90%;
@@ -76,7 +61,37 @@
     }
   }
 
-  .nameArea {
+  input[type="text"] {
+    width: 100%;
+    padding: 1rem;
+    outline: none;
+    font-size: 16px;
+    border-radius: 0.5rem;
+    height: 4.8rem;
+    color: #12171E;
+    border: 1px solid black;
+
+    &:disabled {
+      background-color: white;
+    }
+
+    &:placeholder-shown {
+      border: 1px solid #9DA5B7;
+    }
+
+    &::placeholder {
+      color: #ACB6CA;
+    }
+  }
+
+  .inputDisabled {
+    input[type ="text"] {
+      color: #54585C !important;
+      border: 1px solid #3D4451;
+    }
+  }
+
+  .nameArea, .phoneNumberArea {
     width: 100%;
     margin-bottom: 2rem;
   }

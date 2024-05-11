@@ -40,7 +40,7 @@ export async function fakeServerCall(data: any) {
 }
 
 // 로컬 스토리지에 값을 설정하는 함수
-export const setLocalStorage = (key, value) => {
+export const setLocalStorage = (key: string, value: string) => {
   localStorage.setItem(key, JSON.stringify(value));
 };
 
@@ -95,7 +95,9 @@ export function dateStringToFormat(dateString: string) {
 /** 현재 날짜까지 지난 시간을 반환해주는 함수 **/
 export function dateStringToFormatDiff(dateString: string) {
   const diffDate = new Date().getTime() - new Date(dateString).getTime();
-  const getDayDiffDay = (startDate, finalDate) => Math.floor((finalDate - startDate) / (1000 * 3600 * 24));
+  const getDayDiffDay = (startDate: any, finalDate: any) => {
+    return Math.floor((finalDate - startDate) / (1000 * 3600 * 24));
+  };
   const days = getDayDiffDay(new Date(dateString), new Date());
 
   const years = Math.floor(days / 365.25);
@@ -111,7 +113,7 @@ export function formatHourMinute(hour: number): string {
   return `${formattedHour}:00`;
 }
 
-export function phoneFomatter(num, type = 1) {
+export function phoneFomatter(num: string, type = 1) {
   var formatNum = '';
 
   if (num.length == 11) {

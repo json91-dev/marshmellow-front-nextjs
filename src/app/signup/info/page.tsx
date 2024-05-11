@@ -18,6 +18,7 @@ import { useSignupStore } from '@/store/signup';
 interface Inputs {
   name: string;
   gender: 'M' | 'F';
+  phoneNumber: string;
   nickname: string;
   funnelId: string;
   birth: string;
@@ -135,7 +136,7 @@ export default function SignupInfoPage() {
           gender,
           // @ts-ignore
           profileImageUrl: profileImageUrl ? profileImageUrl : session.profileImg,
-          phoneNumber: '01011111111' /** TODO: 현재 PASS 인증이 없어서 임시로 넣어둠 **/,
+          phoneNumber: '01012341234' /** TODO: 현재 PASS 인증이 없어서 임시로 넣어둠 **/,
           birth: birth.replaceAll('.', '-'),
           funnelId: parseInt(funnelId),
           recommender: recommender ? recommender : null,
@@ -186,6 +187,7 @@ export default function SignupInfoPage() {
   useEffect(() => {
     if (session?.user?.name) {
       setValue('name', session.user.name);
+      setValue('phoneNumber', '010-1234-1234');
     }
   }, [session?.user?.name]);
 
@@ -219,9 +221,14 @@ export default function SignupInfoPage() {
             </div>
           </div>
 
-          <div className={style.nameArea}>
+          <div className={cx(style.phoneNumberArea, style.inputDisabled)}>
             <div className={style.label}>이름</div>
             <input autoComplete={'off'} type="text" {...register('name')} required disabled readOnly />
+          </div>
+
+          <div className={cx(style.phoneNumberArea, style.inputDisabled)}>
+            <div className={style.label}>연락처</div>
+            <input autoComplete={'off'} type="text" {...register('phoneNumber')} required disabled readOnly />
           </div>
 
           <div className={style.nicknameArea}>

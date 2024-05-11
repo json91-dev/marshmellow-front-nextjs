@@ -90,7 +90,7 @@ export default function myPage() {
         </div>
 
         <div className={style.profileInfo}>
-          <div className={style.left}>전화번호</div>
+          <div className={style.left}>연락처</div>
           <div className={style.right}>{result?.data && phoneFomatter(result?.data?.profile?.phoneNumber)}</div>
         </div>
 
