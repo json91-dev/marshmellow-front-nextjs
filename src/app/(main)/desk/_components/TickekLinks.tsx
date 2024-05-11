@@ -4,9 +4,8 @@ import style from './ticketLink.module.scss';
 import Image from 'next/image';
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import useMember from '@/app/_hook/queries/useMember';
-import { useSession } from 'next-auth/react';
 import Spinner from '@/app/login/_components/Spinner';
+import { useMember } from '@/app/_hook/queries/member';
 
 export default function TicketLinks() {
   const router = useRouter();

@@ -7,7 +7,9 @@
   cursor: pointer;
 
   .left {
-    flex: 6;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
 
     .date {
       font-size: 1.2rem;
@@ -15,19 +17,21 @@
       color: #929DB0
     }
 
-    .content {
+    .title {
+      width: 100%;
       font-size: 1.4rem;
       color: #1C222B;
       font-weight: 400;
       margin-top: 1rem;
       line-height: 2rem;
+      word-break: break-all;
     }
   }
 
   .right {
+    margin-left: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex: 1;
   }
 }

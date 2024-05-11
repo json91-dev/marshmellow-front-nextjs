@@ -2,8 +2,8 @@
 import style from './nameCard.module.scss';
 import Image from 'next/image';
 import React from 'react';
-import useMemberProfile from '@/app/_hook/queries/useMemberProfile';
 import { dateStringToFormat, dateStringToFormatDiff, formatHourMinute } from '@/utils/utils';
+import { useMemberProfile } from '@/app/_hook/queries/member';
 
 export default function NameCardIntern() {
   const { data: result } = useMemberProfile();

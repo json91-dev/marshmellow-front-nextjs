@@ -66,11 +66,11 @@ export const {
 
     async session({ session, token, trigger, newSession }) {
       if (session) {
-        session.accessToken = token.accessToken;
-        session.refreshToken = token.refreshToken;
-        session.type = token.type;
-        session.accountId = token.accountId;
-        session.profileImg = token.profileImg;
+        session.accessToken = token.accessToken + '';
+        session.refreshToken = token.refreshToken + '';
+        session.type = token.type + '';
+        session.accountId = token.accountId + '';
+        session.profileImg = token.profileImg + '';
       }
 
       return session;

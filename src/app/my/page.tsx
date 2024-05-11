@@ -7,9 +7,8 @@ import React, { useEffect } from 'react';
 import HorizontalLine from '@/app/my/_components/HorizontalLine';
 import { useModalStore } from '@/store/modal';
 import { useRouter } from 'next/navigation';
-import useMember from '@/app/_hook/queries/useMember';
-import useMemberProfile from '@/app/_hook/queries/useMemberProfile';
 import { formatHourMinute, phoneFomatter } from '@/utils/utils';
+import { useMemberProfile } from '@/app/_hook/queries/member';
 
 export default function myPage() {
   const { showRankingChartModal, showNicknameChangeModal, showWorkTimeBottomSheet, showLogoutModal } = useModalStore();

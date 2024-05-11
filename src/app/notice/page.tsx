@@ -1,118 +1,27 @@
+'use client';
+
 import style from './notice.module.scss';
 import React from 'react';
 import NoticeItem from '@/app/notice/_components/NoticeItem';
 import TopNavigation from '@/app/_components/common/TopNavigation';
+import { useNoticeAll } from '@/app/_hook/queries/notice';
+import Spinner from '@/app/login/_components/Spinner';
 
 export default function noticePage() {
+  const { data: result, status, error } = useNoticeAll();
+
+  if (status === 'pending') {
+    return <Spinner />;
+  }
+
   return (
     <div className={style.noticePage}>
       <TopNavigation title={'공지사항'} />
       <div className={style.scrollArea}>
-        <NoticeItem
-          dateString={'2023. 05. 01'}
-          content={'공지사항입니다. 공지공지 제목이 두 줄이면 이렇게 두줄로 내려갑니다. 움파룸파 둠비두두 움파룸파둠담'}
-        />
-        <NoticeItem
-          dateString={'2023. 05. 01'}
-          content={'공지사항입니다. 공지공지 제목이 두 줄이면 이렇게 두줄로 내려갑니다. 움파룸파 둠비두두 움파룸파둠담'}
-        />
-        <NoticeItem
-          dateString={'2023. 05. 01'}
-          content={'공지사항입니다. 공지공지 제목이 두 줄이면 이렇게 두줄로 내려갑니다. 움파룸파 둠비두두 움파룸파둠담'}
-        />
-        <NoticeItem
-          dateString={'2023. 05. 01'}
-          content={'공지사항입니다. 공지공지 제목이 두 줄이면 이렇게 두줄로 내려갑니다. 움파룸파 둠비두두 움파룸파둠담'}
-        />
-        <NoticeItem
-          dateString={'2023. 05. 01'}
-          content={'공지사항입니다. 공지공지 제목이 두 줄이면 이렇게 두줄로 내려갑니다. 움파룸파 둠비두두 움파룸파둠담'}
-        />
-        <NoticeItem
-          dateString={'2023. 05. 01'}
-          content={'공지사항입니다. 공지공지 제목이 두 줄이면 이렇게 두줄로 내려갑니다. 움파룸파 둠비두두 움파룸파둠담'}
-        />
-        <NoticeItem
-          dateString={'2023. 05. 01'}
-          content={'공지사항입니다. 공지공지 제목이 두 줄이면 이렇게 두줄로 내려갑니다. 움파룸파 둠비두두 움파룸파둠담'}
-        />
-        <NoticeItem
-          dateString={'2023. 05. 01'}
-          content={'공지사항입니다. 공지공지 제목이 두 줄이면 이렇게 두줄로 내려갑니다. 움파룸파 둠비두두 움파룸파둠담'}
-        />
-        <NoticeItem
-          dateString={'2023. 05. 01'}
-          content={'공지사항입니다. 공지공지 제목이 두 줄이면 이렇게 두줄로 내려갑니다. 움파룸파 둠비두두 움파룸파둠담'}
-        />
-
-        <NoticeItem
-          dateString={'2023. 05. 01'}
-          content={'공지사항입니다. 공지공지 제목이 두 줄이면 이렇게 두줄로 내려갑니다. 움파룸파 둠비두두 움파룸파둠담'}
-        />
-        <NoticeItem
-          dateString={'2023. 05. 01'}
-          content={'공지사항입니다. 공지공지 제목이 두 줄이면 이렇게 두줄로 내려갑니다. 움파룸파 둠비두두 움파룸파둠담'}
-        />
-        <NoticeItem
-          dateString={'2023. 05. 01'}
-          content={'공지사항입니다. 공지공지 제목이 두 줄이면 이렇게 두줄로 내려갑니다. 움파룸파 둠비두두 움파룸파둠담'}
-        />
-        <NoticeItem
-          dateString={'2023. 05. 01'}
-          content={'공지사항입니다. 공지공지 제목이 두 줄이면 이렇게 두줄로 내려갑니다. 움파룸파 둠비두두 움파룸파둠담'}
-        />
-        <NoticeItem
-          dateString={'2023. 05. 01'}
-          content={'공지사항입니다. 공지공지 제목이 두 줄이면 이렇게 두줄로 내려갑니다. 움파룸파 둠비두두 움파룸파둠담'}
-        />
-        <NoticeItem
-          dateString={'2023. 05. 01'}
-          content={'공지사항입니다. 공지공지 제목이 두 줄이면 이렇게 두줄로 내려갑니다. 움파룸파 둠비두두 움파룸파둠담'}
-        />
-        <NoticeItem
-          dateString={'2023. 05. 01'}
-          content={'공지사항입니다. 공지공지 제목이 두 줄이면 이렇게 두줄로 내려갑니다. 움파룸파 둠비두두 움파룸파둠담'}
-        />
-        <NoticeItem
-          dateString={'2023. 05. 01'}
-          content={'공지사항입니다. 공지공지 제목이 두 줄이면 이렇게 두줄로 내려갑니다. 움파룸파 둠비두두 움파룸파둠담'}
-        />
-        <NoticeItem
-          dateString={'2023. 05. 01'}
-          content={'공지사항입니다. 공지공지 제목이 두 줄이면 이렇게 두줄로 내려갑니다. 움파룸파 둠비두두 움파룸파둠담'}
-        />
-        <NoticeItem
-          dateString={'2023. 05. 01'}
-          content={'공지사항입니다. 공지공지 제목이 두 줄이면 이렇게 두줄로 내려갑니다. 움파룸파 둠비두두 움파룸파둠담'}
-        />
-        <NoticeItem
-          dateString={'2023. 05. 01'}
-          content={'공지사항입니다. 공지공지 제목이 두 줄이면 이렇게 두줄로 내려갑니다. 움파룸파 둠비두두 움파룸파둠담'}
-        />
-        <NoticeItem
-          dateString={'2023. 05. 01'}
-          content={'공지사항입니다. 공지공지 제목이 두 줄이면 이렇게 두줄로 내려갑니다. 움파룸파 둠비두두 움파룸파둠담'}
-        />
-        <NoticeItem
-          dateString={'2023. 05. 01'}
-          content={'공지사항입니다. 공지공지 제목이 두 줄이면 이렇게 두줄로 내려갑니다. 움파룸파 둠비두두 움파룸파둠담'}
-        />
-        <NoticeItem
-          dateString={'2023. 05. 01'}
-          content={'공지사항입니다. 공지공지 제목이 두 줄이면 이렇게 두줄로 내려갑니다. 움파룸파 둠비두두 움파룸파둠담'}
-        />
-        <NoticeItem
-          dateString={'2023. 05. 01'}
-          content={'공지사항입니다. 공지공지 제목이 두 줄이면 이렇게 두줄로 내려갑니다. 움파룸파 둠비두두 움파룸파둠담'}
-        />
-        <NoticeItem
-          dateString={'2023. 05. 01'}
-          content={'공지사항입니다. 공지공지 제목이 두 줄이면 이렇게 두줄로 내려갑니다. 움파룸파 둠비두두 움파룸파둠담'}
-        />
-        <NoticeItem
-          dateString={'2023. 05. 01'}
-          content={'공지사항입니다. 공지공지 제목이 두 줄이면 이렇게 두줄로 내려갑니다. 움파룸파 둠비두두 움파룸파둠담'}
-        />
+        {result.data.map((item: any) => {
+          const { id, title, description, createdAt, modifiedAt } = item;
+          return <NoticeItem createdAt={createdAt} title={title} id={id} />;
+        })}
       </div>
     </div>
   );
