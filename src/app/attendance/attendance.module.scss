@@ -88,66 +88,72 @@
 
   .body {
     width: 100%;
+    display: flex;
+    flex-direction: column;
     flex: 1;
-    padding: 2rem 2rem 5.8rem 2rem;
     overflow-y: scroll;
     @include noScrollBar;
 
-    .info {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
+    .calendarArea {
+      width: 100%;
+      padding: 2rem 2rem 5.8rem 2rem;
 
-      .infoText {
+      .info {
         display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        font-size: 2rem;
-        font-weight: 700;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
 
-        p {
-          color: #3B0A54;
-        }
-
-        span {
-          color: #9A36CD;
-        }
-      }
-
-      .infoDate {
-        position: relative;
-        display: flex;
-        justify-content: center;
-
-        .todayDate {
-          position: absolute;
-          width: 100%;
-          height: 70%;
-          bottom: 0;
+        .infoText {
           display: flex;
           flex-direction: column;
-          align-items: center;
+          gap: 1rem;
+          font-size: 2rem;
+          font-weight: 700;
 
-          .month {
-            color: #BB4EF2;
-            font-size: 1.4rem;
-            font-weight: 700;
+          p {
+            color: #3B0A54;
           }
 
-          .date {
-            margin-top: 0.5rem;
-            color: #1C222B;
-            font-size: 2rem;
-            font-weight: 700;
+          span {
+            color: #9A36CD;
+          }
+        }
+
+        .infoDate {
+          position: relative;
+          display: flex;
+          justify-content: center;
+
+          .todayDate {
+            position: absolute;
+            width: 100%;
+            height: 70%;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .month {
+              color: #BB4EF2;
+              font-size: 1.4rem;
+              font-weight: 700;
+            }
+
+            .date {
+              margin-top: 0.5rem;
+              color: #1C222B;
+              font-size: 2rem;
+              font-weight: 700;
+            }
           }
         }
       }
-    }
 
-    .calendarContainer {
-      width: 100%;
-      margin-top: 2rem;
+      .calendarContainer {
+        width: 100%;
+        margin-top: 2rem;
+      }
     }
   }
 
@@ -155,8 +161,6 @@
     width: 100%;
     height: 4.8rem;
     background: #D9D9D9;
-    position: absolute;
-    bottom: 0;
     display: flex;
     justify-content: center;
     align-items: center;

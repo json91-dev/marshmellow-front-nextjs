@@ -1,25 +1,13 @@
-.bottomSheet {
-  @include z-index-vars;
-  z-index: var(--bottomSheetIndex);
-  position: absolute;
+
+.bottomInfo {
   width: 100%;
-  bottom: 0;
   background: white;
   padding: 2.4rem 2rem;
   border-top-right-radius: 1rem;
   border-top-left-radius: 1rem;
   display: flex;
   flex-direction: column;
-
-  .topLine {
-    background-color: #CED5E4;
-    height: 0.4rem;
-    width: 3.8rem;
-    position: absolute;
-    top: 1rem;
-    left: calc(50% - 1.9em);
-    border-radius: 0.5rem;
-  }
+  flex: 1;
 
   .headInfo {
     width: 100%;
@@ -211,7 +199,5 @@
         }
       }
     }
-
-
   }
 }

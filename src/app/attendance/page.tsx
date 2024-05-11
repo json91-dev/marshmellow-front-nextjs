@@ -3,6 +3,7 @@ import TopNavigation from '@/app/_components/common/TopNavigation';
 import MissionCalendar from '@/app/attendance/_components/MissionCalendar';
 import Image from 'next/image';
 import React from 'react';
+import BottomInfo from '@/app/attendance/_components/BottomInfo';
 
 export default function AttendancePage() {
   return (
@@ -23,27 +24,31 @@ export default function AttendancePage() {
       </div>
 
       <div className={style.body}>
-        <div className={style.info}>
-          <div className={style.infoText}>
-            <p>
-              이번달 만근<span>하고</span>
-            </p>
-            <p>
-              마시멜로우<span>모아요!</span>
-            </p>
-          </div>
-          <div className={style.infoDate}>
-            <Image src={'/images/mallow.date.bg.svg'} width={80} height={80} alt="No Image" />
-            <div className={style.todayDate}>
-              <p className={style.month}>3월</p>
-              <p className={style.date}>10일</p>
+        <div className={style.calendarArea}>
+          <div className={style.info}>
+            <div className={style.infoText}>
+              <p>
+                이번달 만근<span>하고</span>
+              </p>
+              <p>
+                마시멜로우<span>모아요!</span>
+              </p>
             </div>
+            <div className={style.infoDate}>
+              <Image src={'/images/mallow.date.bg.svg'} width={80} height={80} alt="No Image" />
+              <div className={style.todayDate}>
+                <p className={style.month}>3월</p>
+                <p className={style.date}>10일</p>
+              </div>
+            </div>
+          </div>
+
+          <div className={style.calendarContainer}>
+            <MissionCalendar />
           </div>
         </div>
 
-        <div className={style.calendarContainer}>
-          <MissionCalendar />
-        </div>
+        <BottomInfo />
       </div>
 
       <div className={style.banner}>

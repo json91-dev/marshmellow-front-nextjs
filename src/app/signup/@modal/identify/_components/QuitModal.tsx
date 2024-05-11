@@ -27,8 +27,7 @@ export default function QuitModal() {
             className={style.secondButton}
             onClick={async () => {
               showQuitModal(false);
-              await signOut();
-              router.replace('/login');
+              await signOut({ callbackUrl: '/login' });
             }}
           >
             다음에 지원할게요

@@ -34,9 +34,6 @@ interface IdentifyModalState {
   isShowAddressChangeQuitModal: boolean;
   isShowAddressDeleteModal: boolean;
 
-  // 출석 미션 페이지
-  isShowMallowMissionBottomSheet: boolean;
-
   showAuthFailModal(isShow: boolean): void;
   showAuthSuccessModal(isShow: boolean): void;
   showQuitModal(isShow: boolean): void;
@@ -57,7 +54,6 @@ interface IdentifyModalState {
   showNicknameNotChangeByDateModal(isShow: boolean): void;
   showAddressChangeQuitModal(isShow: boolean): void;
   showAddressDeleteModal(isShow: boolean): void;
-  showMallowMissionBottomSheet(isShow: boolean): void;
   closeAll(): void;
 }
 
@@ -92,9 +88,6 @@ export const useModalStore = create(
     // 주소창 페이지
     isShowAddressChangeQuitModal: false,
     isShowAddressDeleteModal: false,
-
-    // 출석 미션 페이지
-    isShowMallowMissionBottomSheet: false,
 
     showAuthFailModal(isShow) {
       set({ isShowAuthFailModal: isShow });
@@ -173,10 +166,6 @@ export const useModalStore = create(
       set({ isShowAddressDeleteModal: isShow });
     },
 
-    showMallowMissionBottomSheet(isShow: boolean) {
-      set({ isShowMallowMissionBottomSheet: isShow });
-    },
-
     closeAll() {
       set({
         isShowAuthFailModal: false,
@@ -199,7 +188,6 @@ export const useModalStore = create(
         isShowNicknameNotChangeByDateModal: false,
         isShowAddressChangeQuitModal: false,
         isShowAddressDeleteModal: false,
-        isShowMallowMissionBottomSheet: false,
       });
     },
   })),
