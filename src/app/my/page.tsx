@@ -101,16 +101,11 @@ export default function myPage() {
             customStyle={{ position: 'relative', width: 'calc(100% + 4rem)', left: '-2rem' }}
           />
 
-          <div className={style.link} onClick={() => router.push('/my/address')}>
-            <div>배송지 관리</div>
-            <Image src="/images/arrow.right.svg" alt="No Image" width={24} height={24} />
-          </div>
-
-          <HorizontalLine
-            height={'0.2rem'}
-            color={'#EAEFF7'}
-            customStyle={{ position: 'relative', width: 'calc(100% + 4rem)', left: '-2rem' }}
-          />
+          {/** 다음 버전에 추가 예정 **/}
+          {/*<div className={style.link} onClick={() => router.push('/my/address')}>*/}
+          {/*  <div>배송지 관리</div>*/}
+          {/*  <Image src="/images/arrow.right.svg" alt="No Image" width={24} height={24} />*/}
+          {/*</div>*/}
 
           <div className={style.link} onClick={() => showLogoutModal(true)}>
             <div>로그아웃</div>

@@ -1,11 +1,26 @@
 'use client';
 import style from './nameCard.module.scss';
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { isAppleBrowser } from '@/utils/utils';
+import { signIn } from 'next-auth/react';
+import { AuthError } from 'next-auth';
 
 export default function PassCard() {
   const [isIOS, setIsIOS] = useState<boolean>(null!);
+
+  const loginKakao = useCallback(async () => {
+    try {
+      await signIn('kakao');
+    } catch (error) {
+      if (error instanceof AuthError) {
+        console.error(error);
+        return '카카오 로그인 실패';
+      }
+      throw error;
+    }
+  }, []);
+
   useEffect(() => {
     const isIOS = isAppleBrowser();
     setIsIOS(isIOS);
@@ -30,7 +45,7 @@ export default function PassCard() {
 
       <div className={style.loginButtons}>
         <div className={style.kakaoButton}>
-          <div className={style.button}>
+          <div className={style.button} onClick={() => loginKakao()}>
             <div className={style.image}>
               <Image width={18} height={18} src="/images/login.kakao.svg" alt="No Image" />
             </div>

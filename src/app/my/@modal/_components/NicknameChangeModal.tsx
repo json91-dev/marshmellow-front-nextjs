@@ -1,6 +1,6 @@
 'use client';
 import style from './modal.module.scss';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { CSSTransition } from 'react-transition-group';
 import ModalBackdrop from '@/app/signup/@modal/identify/_components/ModalBackdrop';
@@ -8,14 +8,14 @@ import { useModalStore } from '@/store/modal';
 import cx from 'classnames';
 import { useToastStore } from '@/store/toast';
 import { useForm } from 'react-hook-form';
-import { debounce } from '@/utils/utils';
+import { debounce, setLocalStorage } from '@/utils/utils';
 
 interface Inputs {
   nickname: string;
 }
 
 export default function NicknameChangeModal() {
-  const { isShowNicknameChangeModal, showNicknameChangeModal } = useModalStore();
+  const { isShowNicknameChangeModal, showNicknameChangeModal, showNicknameChangeConfirmModal } = useModalStore();
   const { openToast } = useToastStore();
   const [isPassNickname, setIsPassNickname] = useState(false); // 닉네임 유효성 서버 검증 여부
   const {
@@ -42,7 +42,7 @@ export default function NicknameChangeModal() {
         if (!response.ok) {
           const result = await response.json();
           if (result.data === 'DUPLICATED') {
-            setError('nickname', { type: 'custom', message: '중복된 닉네임입니다.' });
+            setError('nickname', { type: 'custom', message: '해당 닉네임을 다른 직원이 사용중입니다.' });
           } else {
             setError('nickname', { type: 'custom', message: '사용할 수 없는 닉네임입니다.' });
           }
@@ -62,14 +62,24 @@ export default function NicknameChangeModal() {
     }
   }, [isPassNickname, errors]);
 
+  /** 닉네임 검증 성공시 닉네임 변경 확인 모달로 이동 **/
   const onSubmit = async (data: Inputs) => {
     if (!isPassNickname) {
       setError('nickname', { type: 'custom', message: '닉네임 중복확인을 해주세요.' });
       return;
     }
-    console.log('submit 호출');
-    console.log(data);
+    setLocalStorage('nickname', data.nickname);
+    showNicknameChangeModal(false);
+    showNicknameChangeConfirmModal(true);
   };
+
+  /** 모달 닫을때 닉네임 상태 초기화 **/
+  useEffect(() => {
+    if (!isShowNicknameChangeModal) {
+      setValue('nickname', '');
+      clearErrors('nickname');
+    }
+  }, [isShowNicknameChangeModal]);
 
   return (
     <>
@@ -132,15 +142,7 @@ export default function NicknameChangeModal() {
               {'특수문자 제외 2~8글자 입력 가능\n(닉네임 변경 후 30일 이후에 변경 가능합니다.)'}
             </div>
 
-            <button
-              type="submit"
-              className={style.confirmButton}
-              // onClick={(e) => {
-              //   e.preventDefault();
-              //   showNicknameChangeModal(false);
-              //   openToast('내 닉네임이 변경되었어요.');
-              // }}
-            >
+            <button type="submit" className={style.confirmButton}>
               확인
             </button>
 

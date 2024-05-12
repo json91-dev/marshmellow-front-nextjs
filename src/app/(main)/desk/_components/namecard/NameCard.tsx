@@ -12,6 +12,8 @@ export default function NameCard() {
   const { status: sessionStatus } = useSession();
   const { data: result, status } = useMemberProfile();
 
+  console.log(sessionStatus);
+
   if (sessionStatus === 'unauthenticated') {
     return <PassCard />;
   }

@@ -97,7 +97,7 @@ export default function SignupInfoPage() {
         if (!response.ok) {
           const result = await response.json();
           if (result.data === 'DUPLICATED') {
-            setError('nickname', { type: 'custom', message: '중복된 닉네임입니다.' });
+            setError('nickname', { type: 'custom', message: '해당 닉네임을 다른 직원이 사용중입니다.' });
           } else {
             setError('nickname', { type: 'custom', message: '사용할 수 없는 닉네임입니다.' });
           }

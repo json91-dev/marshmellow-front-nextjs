@@ -25,6 +25,7 @@ export default memo(function Login() {
   useEffect(() => {
     if (status === 'authenticated') {
       const type = session.type;
+      console.log('현재 상태 : ' + type);
       if (!type) {
         console.log('타입이 존재하지 않습니다. (로그인 실패)');
         return;

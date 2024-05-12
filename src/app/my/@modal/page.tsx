@@ -8,12 +8,14 @@ import NicknameNotChangeByDateModal from '@/app/my/@modal/_components/NicknameNo
 import WorkTimeChangeModal from '@/app/my/@modal/_components/WorkTimeChangeModal';
 import WorkTimeNotChangeByTimeModal from '@/app/my/@modal/_components/WorkTimeNotChangeByTimeModal';
 import WorkTimeNotChangeByDateModal from '@/app/my/@modal/_components/WorkTimeNotChangeByDateModal';
+import NicknameChangeConfirmModal from '@/app/my/@modal/_components/NicknameChangeConfirmModal';
 
 export default function MyPageModals() {
   return (
     <>
       <RankingChartModal />
       <NicknameChangeModal />
+      <NicknameChangeConfirmModal />
       <WorkTimeBottomSheet />
       <LogoutModal />
       <NicknameNotChangeByDateModal />

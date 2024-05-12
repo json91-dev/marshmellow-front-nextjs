@@ -12,7 +12,6 @@ type Props = {
   style?: CSSProperties;
 };
 export default function KakaoLoginButton(props: Props) {
-  const router = useRouter();
   const onClickButton = useCallback(async () => {
     try {
       await signIn('kakao');

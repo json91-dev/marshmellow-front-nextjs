@@ -21,6 +21,7 @@ interface IdentifyModalState {
   isShowWorkTimeNotChangeByTimeModal: boolean;
   isShowWorkTimeNotChangeByDateModal: boolean;
   isShowWorkTimeChangeModal: boolean;
+  isShowNicknameChangeConfirmModal: boolean;
 
   // 회원 탈퇴 페이지
   isShowWithdrawConfirmModal: boolean;
@@ -54,6 +55,7 @@ interface IdentifyModalState {
   showNicknameNotChangeByDateModal(isShow: boolean): void;
   showAddressChangeQuitModal(isShow: boolean): void;
   showAddressDeleteModal(isShow: boolean): void;
+  showNicknameChangeConfirmModal(isShow: boolean): void;
   closeAll(): void;
 }
 
@@ -76,6 +78,7 @@ export const useModalStore = create(
     isShowWorkTimeNotChangeByTimeModal: false,
     isShowWorkTimeNotChangeByDateModal: false,
     isShowWorkTimeChangeModal: false,
+    isShowNicknameChangeConfirmModal: false,
 
     // 회원 탈퇴 페이지
     isShowWithdrawConfirmModal: false,
@@ -166,6 +169,10 @@ export const useModalStore = create(
       set({ isShowAddressDeleteModal: isShow });
     },
 
+    showNicknameChangeConfirmModal(isShow: boolean) {
+      set({ isShowNicknameChangeConfirmModal: isShow });
+    },
+
     closeAll() {
       set({
         isShowAuthFailModal: false,
@@ -188,6 +195,7 @@ export const useModalStore = create(
         isShowNicknameNotChangeByDateModal: false,
         isShowAddressChangeQuitModal: false,
         isShowAddressDeleteModal: false,
+        isShowNicknameChangeConfirmModal: false,
       });
     },
   })),

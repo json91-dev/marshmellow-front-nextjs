@@ -163,6 +163,7 @@
       &.success {
         div {
           color: #1D9C28;
+          margin-left: 0.3rem;
           //margin-top: 0.1rem;
           //margin-left: 0.2rem;
         }
@@ -172,7 +173,7 @@
         div {
           color: #DD2C27;
           //margin-top: 0.1rem;
-          //margin-left: 0.2rem;
+          margin-left: 0.3rem;
         }
       }
     }
@@ -188,7 +189,9 @@
   }
 }
 
+
 .logoutModal,
+.nicknameChangeConfirmModal,
 .workTimeNotChangeByDateModal,
 .workTimeNotChangeByTimeModal,
 .nicknameNotChangeByDateModal,
