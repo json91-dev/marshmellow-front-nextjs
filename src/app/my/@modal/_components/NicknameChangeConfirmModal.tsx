@@ -8,18 +8,21 @@ import cx from 'classnames';
 import { getLocalStorage } from '@/utils/utils';
 import { changeNicknameMutation } from '@/app/_hook/queries/nickname';
 import { useToastStore } from '@/store/toast';
+import { useQueryClient } from '@tanstack/react-query';
 
 export default function NicknameChangeConfirmModal() {
   const { isShowNicknameChangeConfirmModal, showNicknameChangeConfirmModal } = useModalStore();
   const nickname = getLocalStorage('nickname');
   const { mutate } = changeNicknameMutation();
   const { openToast } = useToastStore();
+  const queryClient = useQueryClient();
 
   const changeNickname = () => {
     mutate(nickname, {
       onSuccess: (data, variables, context) => {
         openToast('내 닉네임이 변경되었어요.');
         showNicknameChangeConfirmModal(false);
+        queryClient.invalidateQueries({ queryKey: ['me', 'profile'] }).then();
       },
       onError: (data, variables, context) => {
         openToast('닉네임 변경에 실패했어요.');

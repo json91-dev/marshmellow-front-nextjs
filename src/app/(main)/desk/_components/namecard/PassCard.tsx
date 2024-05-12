@@ -9,13 +9,17 @@ import { AuthError } from 'next-auth';
 export default function PassCard() {
   const [isIOS, setIsIOS] = useState<boolean>(null!);
 
-  const loginKakao = useCallback(async () => {
+  const authLogin = useCallback(async (provider: string) => {
     try {
-      await signIn('kakao');
+      if (provider === 'kakao') {
+        await signIn('kakao');
+      } else if (provider === 'google') {
+        await signIn('google');
+      }
     } catch (error) {
       if (error instanceof AuthError) {
         console.error(error);
-        return '카카오 로그인 실패';
+        return '로그인 실패';
       }
       throw error;
     }
@@ -44,8 +48,8 @@ export default function PassCard() {
       <div className={style.horizontalLine} />
 
       <div className={style.loginButtons}>
-        <div className={style.kakaoButton}>
-          <div className={style.button} onClick={() => loginKakao()}>
+        <div className={style.kakaoButton} onClick={() => authLogin('kakao')}>
+          <div className={style.button}>
             <div className={style.image}>
               <Image width={18} height={18} src="/images/login.kakao.svg" alt="No Image" />
             </div>
@@ -53,7 +57,7 @@ export default function PassCard() {
           </div>
         </div>
 
-        <div className={style.googleButton}>
+        <div className={style.googleButton} onClick={() => authLogin('google')}>
           <div className={style.button}>
             <div className={style.image}>
               <Image width={18} height={18} src="/images/login.google.svg" alt="No Image" />
