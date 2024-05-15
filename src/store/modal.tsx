@@ -56,6 +56,7 @@ interface IdentifyModalState {
   showAddressChangeQuitModal(isShow: boolean): void;
   showAddressDeleteModal(isShow: boolean): void;
   showNicknameChangeConfirmModal(isShow: boolean): void;
+
   closeAll(): void;
 }
 

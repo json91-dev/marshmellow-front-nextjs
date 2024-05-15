@@ -8,12 +8,12 @@ import HorizontalLine from '@/app/my/_components/HorizontalLine';
 import { useModalStore } from '@/store/modal';
 import { useRouter } from 'next/navigation';
 import { formatHourMinute, phoneFomatter } from '@/utils/utils';
-import { useMemberProfile } from '@/app/_hook/queries/member';
+import { useMemberProfileQuery } from '@/app/_hook/queries/member';
 
 export default function myPage() {
   const { showRankingChartModal, showNicknameChangeModal, showWorkTimeBottomSheet, showLogoutModal } = useModalStore();
   const router = useRouter();
-  const { data: result, status, error } = useMemberProfile();
+  const { data: result, status, error } = useMemberProfileQuery();
 
   return (
     <div className={style.myPage}>

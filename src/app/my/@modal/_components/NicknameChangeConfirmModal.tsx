@@ -6,14 +6,14 @@ import ModalBackdrop from '@/app/signup/@modal/identify/_components/ModalBackdro
 import { useModalStore } from '@/store/modal';
 import cx from 'classnames';
 import { getLocalStorage } from '@/utils/utils';
-import { changeNicknameMutation } from '@/app/_hook/queries/nickname';
 import { useToastStore } from '@/store/toast';
 import { useQueryClient } from '@tanstack/react-query';
+import { useChangeNicknameMutation } from '@/app/_hook/queries/member';
 
 export default function NicknameChangeConfirmModal() {
   const { isShowNicknameChangeConfirmModal, showNicknameChangeConfirmModal } = useModalStore();
   const nickname = getLocalStorage('nickname');
-  const { mutate } = changeNicknameMutation();
+  const { mutate } = useChangeNicknameMutation();
   const { openToast } = useToastStore();
   const queryClient = useQueryClient();
 

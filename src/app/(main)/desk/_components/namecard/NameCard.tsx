@@ -6,12 +6,12 @@ import NameCardEmploy from '@/app/(main)/desk/_components/namecard/NameCardEmplo
 import NameCardIntern from '@/app/(main)/desk/_components/namecard/NameCardIntern';
 import PassCard from '@/app/(main)/desk/_components/namecard/PassCard';
 import Spinner from '@/app/login/_components/Spinner';
-import { useMemberProfile } from '@/app/_hook/queries/member';
+import { useMemberProfileQuery } from '@/app/_hook/queries/member';
 import { useRouter } from 'next/navigation';
 
 export default function NameCard() {
   const { data: session, status: sessionStatus } = useSession();
-  const { data: result, status } = useMemberProfile();
+  const { data: result, status } = useMemberProfileQuery();
   const router = useRouter();
 
   useEffect(() => {

@@ -4,9 +4,20 @@ import Image from 'next/image';
 import React from 'react';
 import cx from 'classnames';
 import { useRouter } from 'next/navigation';
+import {useSession} from "next-auth/react";
+import {useModalStore} from "@/store/modal";
 
 export default function OfficePage() {
   const router = useRouter();
+  const { data: session, status: sessionStatus } = useSession();
+
+  const onClickAttendance = () => {
+    if (sessionStatus === 'authenticated') {
+      router.push('/attendance')
+    } else {
+      console.log('모달 오픈')
+    }
+  }
 
   return (
     <div className={style.officePage}>
@@ -67,7 +78,7 @@ export default function OfficePage() {
           </div>
         </div>
 
-        <div className={style.attendance} onClick={() => router.push('/attendance')}>
+        <div className={style.attendance} onClick={onClickAttendance}>
           <div className={style.header}>
             <p className={style.name}>근태 관리</p>
             <p className={style.date}>2024.02.26 ~ 2024.03.03</p>
