@@ -5,18 +5,14 @@ import Image from 'next/image';
 import React, { CSSProperties, useCallback, useEffect } from 'react';
 import { AuthError } from 'next-auth';
 import { signIn } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
 
 type Props = {
   style?: CSSProperties;
 };
 export default function GoogleLoginButton(props: Props) {
-  const router = useRouter();
-
   const onClickButton = useCallback(async () => {
     try {
       await signIn('google');
-      // router.push('/sign')
     } catch (error) {
       if (error instanceof AuthError) {
         console.error(error);

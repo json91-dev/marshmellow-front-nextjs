@@ -20,8 +20,8 @@ export const {
       clientSecret: process.env.KAKAO_CLIENT_SECRET ?? '',
     }),
     apple({
-      clientId: process.env.APPLE_ID ?? '',
-      clientSecret: process.env.APPLE_SECRET_KEY ?? '',
+      clientId: process.env.APPLE_CLIENT_ID ?? '',
+      clientSecret: process.env.APPLE_CLIENT_SECRET ?? '',
     }),
   ],
   callbacks: {

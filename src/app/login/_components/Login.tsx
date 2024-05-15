@@ -1,7 +1,7 @@
 'use client';
 
 import KakaoLoginButton from '@/app/login/_components/KakaoLoginButton';
-import { fakeServerCall, isAppleBrowser, setLocalStorage } from '@/utils/utils';
+import { fakeServerCall, isMacintosh, setLocalStorage } from '@/utils/utils';
 import AppleLoginButton from '@/app/login/_components/AppleLoginButton';
 import GoogleLoginButton from '@/app/login/_components/GoogleLoginButton';
 import React, { memo, useEffect, useRef, useState } from 'react';
@@ -12,14 +12,14 @@ import { useModalStore } from '@/store/modal';
 import style from '@/app/login/login.module.scss';
 
 export default memo(function Login() {
-  const [isIOS, setIsIOS] = useState<boolean>(null!);
+  const [isAppleOS, setIsAppleOS] = useState<boolean>(null!);
   const { data: session, status } = useSession();
 
   const router = useRouter();
 
   useEffect(() => {
-    const isIOS = isAppleBrowser();
-    setIsIOS(isIOS);
+    const isAppleOS = isMacintosh();
+    setIsAppleOS(isAppleOS);
   }, []);
 
   useEffect(() => {
@@ -43,7 +43,7 @@ export default memo(function Login() {
     }
   }, [status, session]);
 
-  if (isIOS === null) {
+  if (isAppleOS === null) {
     return (
       <>
         <KakaoLoginButton style={{ marginTop: '2rem' }} />
@@ -58,12 +58,12 @@ export default memo(function Login() {
     return (
       <>
         <KakaoLoginButton style={{ marginTop: '2rem' }} />
-        <GoogleLoginButton style={{ marginTop: '1rem' }} />
-        {/*{isIOS ? (*/}
-        {/*  <AppleLoginButton style={{ marginTop: '1rem' }} />*/}
-        {/*) : (*/}
-        {/*  <GoogleLoginButton style={{ marginTop: '1rem' }} />*/}
-        {/*)}*/}
+        {/*<GoogleLoginButton style={{ marginTop: '1rem' }} />*/}
+        {isAppleOS ? (
+          <AppleLoginButton style={{ marginTop: '1rem' }} />
+        ) : (
+          <GoogleLoginButton style={{ marginTop: '1rem' }} />
+        )}
 
         <div className={style.lookAroundButton} onClick={() => router.replace('/desk')}>
           <p>마시멜로우 둘러보기 </p>

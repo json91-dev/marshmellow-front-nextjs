@@ -2,12 +2,12 @@
 import style from './nameCard.module.scss';
 import Image from 'next/image';
 import React, { useCallback, useEffect, useState } from 'react';
-import { isAppleBrowser } from '@/utils/utils';
+import { isMacintosh } from '@/utils/utils';
 import { signIn } from 'next-auth/react';
 import { AuthError } from 'next-auth';
 
 export default function PassCard() {
-  const [isIOS, setIsIOS] = useState<boolean>(null!);
+  const [isAppleOS, setIsAppleOS] = useState<boolean>(null!);
 
   const authLogin = useCallback(async (provider: string) => {
     try {
@@ -26,8 +26,8 @@ export default function PassCard() {
   }, []);
 
   useEffect(() => {
-    const isIOS = isAppleBrowser();
-    setIsIOS(isIOS);
+    const isAppleOS = isMacintosh();
+    setIsAppleOS(isAppleOS);
   }, []);
 
   return (
@@ -57,24 +57,25 @@ export default function PassCard() {
           </div>
         </div>
 
-        <div className={style.googleButton} onClick={() => authLogin('google')}>
-          <div className={style.button}>
-            <div className={style.image}>
-              <Image width={18} height={18} src="/images/login.google.svg" alt="No Image" />
+        {isAppleOS !== null && !isAppleOS ? (
+          <div className={style.googleButton} onClick={() => authLogin('google')}>
+            <div className={style.button}>
+              <div className={style.image}>
+                <Image width={18} height={18} src="/images/login.google.svg" alt="No Image" />
+              </div>
+              <p>구글로 시작하기</p>
             </div>
-            <p>구글로 시작하기</p>
           </div>
-        </div>
-
-        {/* TODO: 애플 로그인 미구현 => 구현 이후 설정 */}
-        {/*<div className={style.appleButton}>*/}
-        {/*  <div className={style.button}>*/}
-        {/*    <div className={style.image}>*/}
-        {/*      <Image width={18} height={18} src="/images/login.apple.svg" alt="No Image" />*/}
-        {/*    </div>*/}
-        {/*    <p>Apple로 시작하기</p>*/}
-        {/*  </div>*/}
-        {/*</div>*/}
+        ) : (
+          <div className={style.appleButton} onClick={() => authLogin('apple')}>
+            <div className={style.button}>
+              <div className={style.image}>
+                <Image width={18} height={18} src="/images/login.apple.svg" alt="No Image" />
+              </div>
+              <p>Apple로 시작하기</p>
+            </div>
+          </div>
+        )}
       </div>
       <div className={style.logo} />
     </div>

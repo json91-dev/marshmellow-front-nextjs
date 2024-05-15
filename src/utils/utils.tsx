@@ -20,6 +20,14 @@ export function debounce(func: Function, delay: number) {
   };
 }
 
+export function isMacintosh() {
+  return navigator.platform.indexOf('Mac') > -1;
+}
+
+export function isWindows() {
+  return navigator.platform.indexOf('Win') > -1;
+}
+
 export const isAppleBrowser = () => {
   const userAgent = navigator.userAgent;
   return /Macintosh/.test(userAgent) || /iPhone|iPad|iPod/.test(userAgent);

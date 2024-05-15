@@ -15,16 +15,15 @@ type Props = {
 export default function AppleLoginButton(props: Props) {
   const router = useRouter();
   const onClickButton = useCallback(async () => {
-    router.push('/signup/identify');
-    // try {
-    //   await signIn('apple');
-    // } catch (error) {
-    //   if (error instanceof AuthError) {
-    //     console.error(error);
-    //     return '애플 로그인 실패';
-    //   }
-    //   throw error;
-    // }
+    try {
+      await signIn('apple');
+    } catch (error) {
+      if (error instanceof AuthError) {
+        console.error(error);
+        return '구글 로그인 실패';
+      }
+      throw error;
+    }
   }, []);
 
   return (
