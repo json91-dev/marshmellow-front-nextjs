@@ -41,23 +41,29 @@ export async function fakeServerCall(data: any) {
 
 // 로컬 스토리지에 값을 설정하는 함수
 export const setLocalStorage = (key: string, value: string) => {
-  localStorage.setItem(key, JSON.stringify(value));
+  if (typeof window !== 'undefined') {
+    localStorage.setItem(key, JSON.stringify(value));
+  }
 };
 
 // 로컬 스토리지에서 값을 가져오는 함수
 export const getLocalStorage = (key: string) => {
-  const value = localStorage.getItem(key);
-  return value ? JSON.parse(value) : null;
+  if (typeof window !== 'undefined') {
+    const value = localStorage.getItem(key);
+    return value ? JSON.parse(value) : null;
+  }
 };
 
 // localStorage에서 값을 가져오는 함수. 값이 없는 경우 기본값을 반환합니다.
 export function getLocalStorageItem(key: string, defaultValue = null) {
-  try {
-    const storedValue = localStorage.getItem(key);
-    return storedValue ? JSON.parse(storedValue) : defaultValue;
-  } catch (error) {
-    console.error('localStorage에서 값을 가져오는 중 오류가 발생했습니다:', error);
-    return defaultValue;
+  if (typeof window !== 'undefined') {
+    try {
+      const storedValue = localStorage.getItem(key);
+      return storedValue ? JSON.parse(storedValue) : defaultValue;
+    } catch (error) {
+      console.error('localStorage에서 값을 가져오는 중 오류가 발생했습니다:', error);
+      return defaultValue;
+    }
   }
 }
 
