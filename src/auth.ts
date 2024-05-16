@@ -42,10 +42,7 @@ export const {
           token.type = result.data.type;
           token.accountId = result.data.accountId;
           token.profileImg = profile?.picture;
-          return token;
-        }
-
-        if (account.provider === 'kakao') {
+        } else if (account.provider === 'kakao') {
           const response = await fetch(`${process.env.API_URL}/auth/signin`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -61,10 +58,7 @@ export const {
           token.accountId = result.data.accountId;
           // @ts-ignore
           token.profileImg = profile?.properties?.profile_image;
-          return token;
-        }
-
-        if (account.provider === 'apple') {
+        } else if (account.provider === 'apple') {
           console.log(`애플 로그인 토큰 (access_token): ${account.access_token}`);
           console.log(`애플 로그인 토큰 (id_token): ${account.id_token}`);
 
@@ -84,6 +78,8 @@ export const {
           return token;
         }
       }
+
+      return token;
     },
 
     async session({ session, token, trigger, newSession }) {
