@@ -4,9 +4,6 @@ import google from 'next-auth/providers/google'; // import 추가
 import apple from 'next-auth/providers/apple'; // import 추가
 import NextAuth from 'next-auth';
 
-console.log(process.env.APPLE_CLIENT_ID);
-console.log(process.env.APPLE_CLIENT_SECRET);
-
 export const {
   handlers: { GET, POST }, // API Routes
   auth, // 요부분이 결국 미들웨어가 되는것 체크할것 / auth 함수 호출시 내가 로그인했는지 안했는지 여부 판단 가능.

@@ -3,7 +3,7 @@
 import style from './my.module.scss';
 import TopNavigation from '@/app/my/_components/TopNavigation';
 import Image from 'next/image';
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import HorizontalLine from '@/app/my/_components/HorizontalLine';
 import { useModalStore } from '@/store/modal';
 import { useRouter } from 'next/navigation';
@@ -11,9 +11,29 @@ import { formatHourMinute, phoneFomatter } from '@/utils/utils';
 import { useMemberProfileQuery } from '@/app/_hook/queries/member';
 
 export default function myPage() {
-  const { showRankingChartModal, showNicknameChangeModal, showWorkTimeBottomSheet, showLogoutModal } = useModalStore();
+  const {
+    showRankingChartModal,
+    showNicknameChangeModal,
+    showWorkTimeBottomSheet,
+    showLogoutModal,
+    showNicknameNotChangeByDateModal,
+    setNicknameChangeRemainDays,
+  } = useModalStore();
   const router = useRouter();
   const { data: result, status, error } = useMemberProfileQuery();
+
+  const onClickNicknameChangeButton = useCallback(() => {
+    if (result?.data) {
+      const { isNicknameModifiable, nicknameModifiableRemainingDays } = result.data;
+
+      if (isNicknameModifiable) {
+        showNicknameChangeModal(true);
+      } else {
+        showNicknameNotChangeByDateModal(true);
+        setNicknameChangeRemainDays(nicknameModifiableRemainingDays);
+      }
+    }
+  }, [result]);
 
   return (
     <div className={style.myPage}>
@@ -26,7 +46,7 @@ export default function myPage() {
 
         <div className={style.nickname}>
           <div className={style.left}>닉네임</div>
-          <div className={style.right} onClick={() => showNicknameChangeModal(true)}>
+          <div className={style.right} onClick={onClickNicknameChangeButton}>
             <div>{result?.data?.profile?.nickname}</div>
             <Image src="/images/arrow.right.svg" alt="No Image" width={24} height={24} />
           </div>

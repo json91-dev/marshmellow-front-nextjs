@@ -7,7 +7,8 @@ import { useModalStore } from '@/store/modal';
 import cx from 'classnames';
 
 export default function NicknameNotChangeByDateModal() {
-  const { isShowNicknameNotChangeByDateModal, showNicknameNotChangeByDateModal } = useModalStore();
+  const { isShowNicknameNotChangeByDateModal, showNicknameNotChangeByDateModal, nicknameChangeRemainDays } =
+    useModalStore();
 
   return (
     <>
@@ -17,7 +18,7 @@ export default function NicknameNotChangeByDateModal() {
 
       <CSSTransition in={isShowNicknameNotChangeByDateModal} timeout={200} unmountOnExit classNames="modal">
         <div className={cx(style.nicknameNotChangeByDateModal, 'modal')}>
-          <p className={style.title}>{'00일 후에 변경이 가능해요.'}</p>
+          <p className={style.title}>{`${nicknameChangeRemainDays}일 후에 변경이 가능해요.`}</p>
           <p className={style.description}>{'닉네임 변경 후 30일 이후에 변경 가능해요.'}</p>
 
           <button className={style.confirmButton} onClick={() => showNicknameNotChangeByDateModal(false)}>

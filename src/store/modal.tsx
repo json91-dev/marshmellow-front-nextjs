@@ -16,6 +16,8 @@ interface IdentifyModalState {
   isShowRankingChartModal: boolean;
   isShowNicknameChangeModal: boolean;
   isShowNicknameNotChangeByDateModal: boolean;
+  nicknameChangeRemainDays: number;
+
   isShowWorkTimeBottomSheet: boolean;
   isShowLogoutModal: boolean;
   isShowWorkTimeNotChangeByTimeModal: boolean;
@@ -56,6 +58,7 @@ interface IdentifyModalState {
   showAddressChangeQuitModal(isShow: boolean): void;
   showAddressDeleteModal(isShow: boolean): void;
   showNicknameChangeConfirmModal(isShow: boolean): void;
+  setNicknameChangeRemainDays(nicknameChangeRemainDays: number): void;
 
   closeAll(): void;
 }
@@ -74,6 +77,7 @@ export const useModalStore = create(
     isShowRankingChartModal: false,
     isShowNicknameChangeModal: false,
     isShowNicknameNotChangeByDateModal: false,
+    nicknameChangeRemainDays: 0,
     isShowWorkTimeBottomSheet: false,
     isShowLogoutModal: false,
     isShowWorkTimeNotChangeByTimeModal: false,
@@ -160,6 +164,10 @@ export const useModalStore = create(
     },
     showNicknameNotChangeByDateModal(isShow: boolean) {
       set({ isShowNicknameNotChangeByDateModal: isShow });
+    },
+
+    setNicknameChangeRemainDays(nicknameChangeRemainDays: number) {
+      set({ nicknameChangeRemainDays });
     },
 
     showAddressChangeQuitModal(isShow: boolean) {
