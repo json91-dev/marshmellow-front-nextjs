@@ -74,7 +74,6 @@ export const {
           token.accountId = result.data.accountId;
           // @ts-ignore
           token.profileImg = profile?.properties?.profile_image;
-          return token;
         }
       }
 
