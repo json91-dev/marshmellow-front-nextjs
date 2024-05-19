@@ -22,6 +22,7 @@ export const {
       },
     },
   },
+  secret: process.env.NEXTAUTH_SECRET,
   providers: [
     google({
       clientId: process.env.GOOGLE_CLIENT_ID ?? '',
