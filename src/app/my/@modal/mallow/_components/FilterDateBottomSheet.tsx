@@ -5,11 +5,13 @@ import ModalBackdrop from '@/app/signup/@modal/identify/_components/ModalBackdro
 import style from './filterDateBottomSheet.module.scss';
 import React, { useCallback, useRef } from 'react';
 import useBottomSheet from '@/app/_hook/useBottomSheet';
+import { useMallowStore } from '@/store/mallow';
 
 export default function FilterDataBottomSheet() {
   const { isShowMallowFilterDateBottomSheet, showMallowFilterDateBottomSheet } = useModalStore();
   const bottomSheetRef = useRef<HTMLDivElement>(null!);
   const backDropRef = useRef<HTMLDivElement>(null!);
+  const { setHistoryFilterMonth } = useMallowStore();
 
   const { closeBottomSheet } = useBottomSheet({
     bottomSheetRef,
@@ -18,8 +20,9 @@ export default function FilterDataBottomSheet() {
     setIsShow: showMallowFilterDateBottomSheet,
   });
 
-  const onClickFilterDate = useCallback(() => {
+  const onClickFilterDate = useCallback((month: number) => {
     closeBottomSheet();
+    setHistoryFilterMonth(month);
   }, []);
 
   return (
@@ -39,12 +42,12 @@ export default function FilterDataBottomSheet() {
           <div className={style.topLine} />
           <div className={style.title}>기간</div>
           <div className={style.selectPeriod}>
-            <div onClick={onClickFilterDate} className={style.active}>
+            <div onClick={() => onClickFilterDate(1)} className={style.active}>
               1개월
             </div>
-            <div onClick={onClickFilterDate}>3개월</div>
-            <div onClick={onClickFilterDate}>6개월</div>
-            <div onClick={onClickFilterDate}>12개월</div>
+            <div onClick={() => onClickFilterDate(3)}>3개월</div>
+            <div onClick={() => onClickFilterDate(6)}>6개월</div>
+            <div onClick={() => onClickFilterDate(12)}>12개월</div>
           </div>
         </div>
       </CSSTransition>

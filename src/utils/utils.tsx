@@ -106,6 +106,18 @@ export function dateStringToFormat(dateString: string) {
   return `${year}년 ${month}월 ${day}일`;
 }
 
+export function extractHourMinute(dateString: string) {
+  return dateString.split('T')[1].split(':').slice(0, 2).join(':');
+}
+
+export function replaceAt(str: string, index: number, replacement: string) {
+  if (index < 0 || index >= str.length) {
+    throw new Error('Index out of range');
+  }
+
+  return str.substring(0, index) + replacement + str.substring(index + replacement.length);
+}
+
 /** 현재 날짜까지 지난 시간을 반환해주는 함수 **/
 export function dateStringToFormatDiff(dateString: string) {
   const diffDate = new Date().getTime() - new Date(dateString).getTime();
