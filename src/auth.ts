@@ -59,14 +59,13 @@ export const {
           // @ts-ignore
           token.profileImg = profile?.properties?.profile_image;
         } else if (account.provider === 'apple') {
+          console.log(`로그인 넘어옴??`);
+          console.log(account);
           const response = await fetch(`${process.env.API_URL}/auth/signin`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ accessToken: account.id_token, vendor: account.provider }),
           });
-
-          console.log(`애플 로그인 토큰 (access_token): ${account.access_token}`);
-          console.log(`애플 로그인 토큰 (id_token): ${account.id_token}`);
 
           const result = await response.json();
           token.accessToken = result.data.credentials.accessToken;
