@@ -10,6 +10,18 @@ export const {
   signIn, // 로그인용
 } = NextAuth({
   trustHost: true,
+  /** apple 로그인시 쿠키 설정 해줘야함 **/
+  cookies: {
+    callbackUrl: {
+      name: `__Secure-next-auth.callback-url`,
+      options: {
+        httpOnly: false,
+        sameSite: 'none',
+        path: '/',
+        secure: true,
+      },
+    },
+  },
   providers: [
     google({
       clientId: process.env.GOOGLE_CLIENT_ID ?? '',
