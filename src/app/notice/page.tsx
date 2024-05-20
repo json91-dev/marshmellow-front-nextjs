@@ -20,7 +20,7 @@ export default function noticePage() {
       <div className={style.scrollArea}>
         {result.data.map((item: any) => {
           const { id, title, description, createdAt, modifiedAt } = item;
-          return <NoticeItem createdAt={createdAt} title={title} id={id} />;
+          return <NoticeItem key={item.id} createdAt={createdAt} title={title} id={id} />;
         })}
       </div>
     </div>

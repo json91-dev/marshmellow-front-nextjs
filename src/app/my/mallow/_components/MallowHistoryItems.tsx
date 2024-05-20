@@ -49,14 +49,18 @@ export default function MallowHistoryItems() {
           return (
             <>
               {index === 0 ? (
-                <div className={style.actionDate}>{replaceAt(item.date, item.date.indexOf('.'), '\n')}</div>
+                <div key={item.date} className={style.actionDate}>
+                  {replaceAt(item.date, item.date.indexOf('.'), '\n')}
+                </div>
               ) : (
-                <div className={style.actionDate}>{item.date.substring(item.date.indexOf('.') + 1)}</div>
+                <div key={item.date} className={style.actionDate}>
+                  {item.date.substring(item.date.indexOf('.') + 1)}
+                </div>
               )}
               <div className={style.actionList}>
                 {item?.mallowItems?.map((item: any) => {
                   return (
-                    <div className={style.item}>
+                    <div key={item.createdAt} className={style.item}>
                       <div className={style.info}>
                         <div>{item.modifyReasonDescription}</div>
                         <div>{item.modifyReasonTitle}</div>

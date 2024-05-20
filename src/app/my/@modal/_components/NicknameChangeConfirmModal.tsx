@@ -23,6 +23,7 @@ export default function NicknameChangeConfirmModal() {
         openToast('내 닉네임이 변경되었어요.');
         showNicknameChangeConfirmModal(false);
         queryClient.invalidateQueries({ queryKey: ['me', 'profile'] }).then();
+        queryClient.invalidateQueries({ queryKey: ['me'] }).then();
       },
       onError: (data, variables, context) => {
         openToast('닉네임 변경에 실패했어요.');

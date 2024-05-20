@@ -19,7 +19,7 @@ export function useNotificationModalQuery(modalType: number) {
   };
 
   return useQuery({
-    queryKey: ['me', 'profile'],
+    queryKey: ['notification', 'modal', modalType],
     queryFn: getNotificationModalInfo,
     staleTime: 1000 * 20,
   });
@@ -43,7 +43,7 @@ export function useNotificationModalAllQuery() {
   };
 
   return useQuery({
-    queryKey: ['me', 'profile'],
+    queryKey: ['notification', 'modal', 'all'],
     queryFn: getNotificationModalInfoAll,
     staleTime: 1000 * 20,
   });

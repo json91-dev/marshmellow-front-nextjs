@@ -69,7 +69,7 @@ export function useMemberCurrencyQuery() {
   };
 
   return useQuery({
-    queryKey: ['me', 'profile'],
+    queryKey: ['me', 'currency'],
     queryFn: getMemberCurrency,
     staleTime: 1000 * 20,
   });
