@@ -16,6 +16,8 @@ export default function NicknameChangeConfirmModal() {
   const { mutate } = useChangeNicknameMutation();
   const { openToast } = useToastStore();
   const queryClient = useQueryClient();
+  const backdropRef = React.useRef(null);
+  const modalRef = React.useRef(null);
 
   const changeNickname = () => {
     mutate(nickname, {
@@ -34,12 +36,18 @@ export default function NicknameChangeConfirmModal() {
 
   return (
     <>
-      <CSSTransition in={isShowNicknameChangeConfirmModal} timeout={200} unmountOnExit>
-        <ModalBackdrop />
+      <CSSTransition in={isShowNicknameChangeConfirmModal} timeout={200} unmountOnExit nodeRef={backdropRef}>
+        <ModalBackdrop ref={backdropRef} />
       </CSSTransition>
 
-      <CSSTransition in={isShowNicknameChangeConfirmModal} timeout={200} unmountOnExit classNames="modal">
-        <div className={cx(style.nicknameChangeConfirmModal, 'modal')}>
+      <CSSTransition
+        in={isShowNicknameChangeConfirmModal}
+        timeout={200}
+        unmountOnExit
+        classNames="modal"
+        nodeRef={modalRef}
+      >
+        <div className={cx(style.nicknameChangeConfirmModal, 'modal')} ref={modalRef}>
           <p className={style.title}>{`${nickname} 님으로 변경하시겠어요?`}</p>
           <p className={style.description}>{'닉네임 변경 후 30일 이후에 변경 가능합니다.'}</p>
 

@@ -10,14 +10,23 @@ import { useRouter } from 'next/navigation';
 export default function addressChangeQuitModal() {
   const { isShowAddressChangeQuitModal, showAddressChangeQuitModal } = useModalStore();
   const router = useRouter();
+  const backdropRef = React.useRef(null);
+  const modalRef = React.useRef(null);
+
   return (
     <>
-      <CSSTransition in={isShowAddressChangeQuitModal} timeout={200} unmountOnExit>
-        <ModalBackdrop />
+      <CSSTransition in={isShowAddressChangeQuitModal} timeout={200} unmountOnExit nodeRef={backdropRef}>
+        <ModalBackdrop ref={backdropRef} />
       </CSSTransition>
 
-      <CSSTransition in={isShowAddressChangeQuitModal} timeout={200} unmountOnExit classNames="modal">
-        <div className={cx(style.addressChangeQuitModal, 'modal')}>
+      <CSSTransition
+        in={isShowAddressChangeQuitModal}
+        timeout={200}
+        unmountOnExit
+        classNames="modal"
+        nodeRef={modalRef}
+      >
+        <div className={cx(style.addressChangeQuitModal, 'modal')} ref={modalRef}>
           <p className={style.title}>배송지를 삭제하실건가요?</p>
           <p className={style.description}>{'해당 배송지를 삭제하면\n배송지 정보는 다시 불러올 수 없어요.'}</p>
           <button

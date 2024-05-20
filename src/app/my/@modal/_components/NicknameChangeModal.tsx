@@ -29,6 +29,8 @@ export default function NicknameChangeModal() {
     control,
     clearErrors,
   } = useForm<Inputs>();
+  const backdropRef = React.useRef(null);
+  const modalRef = React.useRef(null);
 
   console.log(errors);
   /** 닉네임 중복 확인 이후 서버 응답 처리 구현 **/
@@ -83,12 +85,12 @@ export default function NicknameChangeModal() {
 
   return (
     <>
-      <CSSTransition in={isShowNicknameChangeModal} timeout={200} unmountOnExit>
-        <ModalBackdrop />
+      <CSSTransition in={isShowNicknameChangeModal} timeout={200} unmountOnExit nodeRef={backdropRef}>
+        <ModalBackdrop ref={backdropRef} />
       </CSSTransition>
 
-      <CSSTransition in={isShowNicknameChangeModal} timeout={200} unmountOnExit classNames="modal">
-        <div className={cx(style.nicknameChangeModal, 'modal')}>
+      <CSSTransition in={isShowNicknameChangeModal} timeout={200} unmountOnExit classNames="modal" nodeRef={modalRef}>
+        <div className={cx(style.nicknameChangeModal, 'modal')} ref={modalRef}>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className={style.title}>닉네임 변경하기</div>
             <div className={style.nicknameVaildArea}>

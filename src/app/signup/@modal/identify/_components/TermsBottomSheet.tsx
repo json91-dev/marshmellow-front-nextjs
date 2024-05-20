@@ -107,7 +107,7 @@ export default function TermsBottomSheet() {
 
   return (
     <>
-      <CSSTransition in={isShowTermsBottomSheet} timeout={200} unmountOnExit>
+      <CSSTransition in={isShowTermsBottomSheet} timeout={200} unmountOnExit nodeRef={backDropRef}>
         <ModalBackdrop ref={backDropRef} />
       </CSSTransition>
 

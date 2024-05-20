@@ -10,16 +10,17 @@ import { useRouter } from 'next/navigation';
 
 export default function LogoutModal() {
   const { isShowLogoutModal, showLogoutModal } = useModalStore();
-  const router = useRouter();
+  const backdropRef = React.useRef(null);
+  const modalRef = React.useRef(null);
 
   return (
     <>
-      <CSSTransition in={isShowLogoutModal} timeout={200} unmountOnExit>
-        <ModalBackdrop />
+      <CSSTransition in={isShowLogoutModal} timeout={200} unmountOnExit nodeRef={backdropRef}>
+        <ModalBackdrop ref={backdropRef} />
       </CSSTransition>
 
-      <CSSTransition in={isShowLogoutModal} timeout={200} unmountOnExit classNames="modal">
-        <div className={cx(style.logoutModal, 'modal')}>
+      <CSSTransition in={isShowLogoutModal} timeout={200} unmountOnExit classNames="modal" nodeRef={modalRef}>
+        <div className={cx(style.logoutModal, 'modal')} ref={modalRef}>
           <p className={style.title}>로그아웃 하시겠어요?</p>
           <p className={style.description}>{'로그아웃시 로그인 화면으로 이동해요.\n다시 출근해주실거죠?'}</p>
 

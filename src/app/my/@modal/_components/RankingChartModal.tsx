@@ -8,15 +8,17 @@ import { useModalStore } from '@/store/modal';
 
 export default function RankingChartModal() {
   const { isShowRankingChartModal, showRankingChartModal } = useModalStore();
+  const backdropRef = React.useRef(null);
+  const modalRef = React.useRef(null);
 
   return (
     <>
-      <CSSTransition in={isShowRankingChartModal} timeout={200} unmountOnExit>
-        <ModalBackdrop />
+      <CSSTransition in={isShowRankingChartModal} timeout={200} unmountOnExit nodeRef={backdropRef}>
+        <ModalBackdrop ref={backdropRef} />
       </CSSTransition>
 
-      <CSSTransition in={isShowRankingChartModal} timeout={200} unmountOnExit classNames="modal">
-        <div className={style.rankingChartModal}>
+      <CSSTransition in={isShowRankingChartModal} timeout={200} unmountOnExit classNames="modal" nodeRef={modalRef}>
+        <div className={style.rankingChartModal} ref={modalRef}>
           <div className={style.inner}>
             <div className={style.title}>마시멜로우 직급표</div>
             <div className={style.header}>

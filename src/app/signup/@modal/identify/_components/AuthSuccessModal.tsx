@@ -4,16 +4,20 @@ import style from './modal.module.scss';
 import ModalBackdrop from '@/app/signup/@modal/identify/_components/ModalBackdrop';
 import { useModalStore } from '@/store/modal';
 import { CSSTransition } from 'react-transition-group';
+import React from 'react';
 export default function AuthSuccessModal() {
   const { isShowAuthSuccessModal, showAuthSuccessModal } = useModalStore();
+  const backdropRef = React.useRef(null);
+  const modalRef = React.useRef(null);
+
   return (
     <>
-      <CSSTransition in={isShowAuthSuccessModal} timeout={200} unmountOnExit>
-        <ModalBackdrop />
+      <CSSTransition in={isShowAuthSuccessModal} timeout={200} unmountOnExit nodeRef={backdropRef}>
+        <ModalBackdrop ref={backdropRef} />
       </CSSTransition>
 
-      <CSSTransition in={isShowAuthSuccessModal} timeout={200} unmountOnExit classNames="modal">
-        <div className={style.modal}>
+      <CSSTransition in={isShowAuthSuccessModal} timeout={200} unmountOnExit classNames="modal" nodeRef={modalRef}>
+        <div className={style.modal} ref={modalRef}>
           <div className={style.title}>
             본인인증이 완료되었습니다. <br />
             지원정보를 작성후 제출하시겠어요?

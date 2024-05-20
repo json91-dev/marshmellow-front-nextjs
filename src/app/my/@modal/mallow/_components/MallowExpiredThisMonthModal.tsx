@@ -10,15 +10,23 @@ import { useMemberCurrencyQuery } from '@/app/_hook/queries/member';
 export default function MallowExpiredThisMonthModal() {
   const { isShowMallowExpiredThisMonthModal, showMallowExpiredThisMonthModal } = useModalStore();
   const { data: result } = useMemberCurrencyQuery();
+  const backdropRef = React.useRef(null);
+  const modalRef = React.useRef(null);
 
   return (
     <>
-      <CSSTransition in={isShowMallowExpiredThisMonthModal} timeout={200} unmountOnExit>
-        <ModalBackdrop />
+      <CSSTransition in={isShowMallowExpiredThisMonthModal} timeout={200} unmountOnExit nodeRef={backdropRef}>
+        <ModalBackdrop ref={backdropRef} />
       </CSSTransition>
 
-      <CSSTransition in={isShowMallowExpiredThisMonthModal} timeout={200} unmountOnExit classNames="modal">
-        <div className={cx(style.mallowExpiredThisMonthModal, 'modal')}>
+      <CSSTransition
+        in={isShowMallowExpiredThisMonthModal}
+        timeout={200}
+        unmountOnExit
+        classNames="modal"
+        nodeRef={modalRef}
+      >
+        <div className={cx(style.mallowExpiredThisMonthModal, 'modal')} ref={modalRef}>
           <p className={style.title}>
             당월 소멸 예정 마시멜로우: {result?.data?.expiresThisMonthCurrencies?.marshmallowQuantity}개
           </p>

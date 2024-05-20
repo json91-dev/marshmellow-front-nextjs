@@ -8,14 +8,17 @@ import React from 'react';
 
 export default function addressDeleteModal() {
   const { isShowAddressDeleteModal, showAddressDeleteModal } = useModalStore();
+  const backdropRef = React.useRef(null);
+  const modalRef = React.useRef(null);
+
   return (
     <>
-      <CSSTransition in={isShowAddressDeleteModal} timeout={200} unmountOnExit>
-        <ModalBackdrop />
+      <CSSTransition in={isShowAddressDeleteModal} timeout={200} unmountOnExit nodeRef={backdropRef}>
+        <ModalBackdrop ref={backdropRef} />
       </CSSTransition>
 
-      <CSSTransition in={isShowAddressDeleteModal} timeout={200} unmountOnExit classNames="modal">
-        <div className={cx(style.mallowExpiredThisMonthModal, 'modal')}>
+      <CSSTransition in={isShowAddressDeleteModal} timeout={200} unmountOnExit classNames="modal" ref={modalRef}>
+        <div className={cx(style.mallowExpiredThisMonthModal, 'modal')} ref={modalRef}>
           <p className={style.title}>배송지를 삭제하실건가요?</p>
           <p className={style.description}>{'해당 배송지를 삭제하면\n배송지 정보는 다시 불러올 수 없어요.'}</p>
           <button className={style.confirmButton} onClick={() => showAddressDeleteModal(false)}>

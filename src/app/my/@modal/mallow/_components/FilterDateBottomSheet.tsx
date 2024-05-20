@@ -27,7 +27,7 @@ export default function FilterDataBottomSheet() {
 
   return (
     <>
-      <CSSTransition in={isShowMallowFilterDateBottomSheet} timeout={200} unmountOnExit>
+      <CSSTransition in={isShowMallowFilterDateBottomSheet} timeout={200} unmountOnExit nodeRef={backDropRef}>
         <ModalBackdrop ref={backDropRef} />
       </CSSTransition>
 

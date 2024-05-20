@@ -12,15 +12,23 @@ export default function WithdrawConfimCompleteModal() {
     closeAll();
     // router.push('/')
   }, []);
+  const backdropRef = React.useRef(null);
+  const modalRef = React.useRef(null);
 
   return (
     <>
-      <CSSTransition in={isShowWithdrawConfirmCompleteModal} timeout={200} unmountOnExit>
-        <ModalBackdrop />
+      <CSSTransition in={isShowWithdrawConfirmCompleteModal} timeout={200} unmountOnExit nodeRef={backdropRef}>
+        <ModalBackdrop ref={backdropRef} />
       </CSSTransition>
 
-      <CSSTransition in={isShowWithdrawConfirmCompleteModal} timeout={200} unmountOnExit classNames="modal">
-        <div className={cx(style.withdrawConfirmModal, 'modal')}>
+      <CSSTransition
+        in={isShowWithdrawConfirmCompleteModal}
+        timeout={200}
+        unmountOnExit
+        classNames="modal"
+        nodeRef={modalRef}
+      >
+        <div className={cx(style.withdrawConfirmModal, 'modal')} ref={modalRef}>
           <p className={style.title}>탈퇴처리 되었어요</p>
           <p
             className={style.description}

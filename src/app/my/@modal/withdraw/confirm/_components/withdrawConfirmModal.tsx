@@ -9,6 +9,8 @@ import cx from 'classnames';
 export default function WithdrawConfimModal() {
   const { isShowWithdrawConfirmModal, showWithdrawConfirmModal, showWithdrawConfirmCompleteModal, closeAll } =
     useModalStore();
+  const backdropRef = React.useRef(null);
+  const modalRef = React.useRef(null);
 
   const onClickWithdraw = useCallback(() => {
     showWithdrawConfirmModal(false);
@@ -21,12 +23,12 @@ export default function WithdrawConfimModal() {
 
   return (
     <>
-      <CSSTransition in={isShowWithdrawConfirmModal} timeout={200} unmountOnExit>
-        <ModalBackdrop />
+      <CSSTransition in={isShowWithdrawConfirmModal} timeout={200} unmountOnExit nodeRef={backdropRef}>
+        <ModalBackdrop ref={backdropRef} />
       </CSSTransition>
 
-      <CSSTransition in={isShowWithdrawConfirmModal} timeout={200} unmountOnExit classNames="modal">
-        <div className={cx(style.withdrawConfirmModal, 'modal')}>
+      <CSSTransition in={isShowWithdrawConfirmModal} timeout={200} unmountOnExit classNames="modal" nodeRef={modalRef}>
+        <div className={cx(style.withdrawConfirmModal, 'modal')} ref={modalRef}>
           <p className={style.title}>정말 탈퇴하실건가요?</p>
           <p className={style.description}>{`탈퇴시 모든 계정 정보가 삭제되며\n삭제된 정보는 복구할 수 없습니다.`}</p>
 
