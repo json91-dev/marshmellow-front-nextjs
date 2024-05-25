@@ -171,12 +171,29 @@
                 font-size: 1.2rem;
                 font-weight: 600;
               }
+
+              &.success {
+                background-color: #BB4EF2 !important;
+                border-color: #BB4EF2 !important;
+
+                p {
+                  color: #BB4EF2 !important;
+                }
+              }
+
+              &.failed {
+                background-color: #E5E9F2 !important;
+                border-color: #E5E9F2 !important;
+
+                p {
+                  color: #4D5564 !important;
+                }
+              }
             }
 
             &.active {
               background-color: #F5E4FF;
               border-radius: 0.6rem;
-
 
               .name {
                 color: #BB4EF2 !important;
