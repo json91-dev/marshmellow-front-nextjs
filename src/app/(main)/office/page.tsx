@@ -6,7 +6,7 @@ import cx from 'classnames';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { useModalStore } from '@/store/modal';
-import TimerCheck from '@/app/(main)/office/_components/TimerCheck';
+import TimerMissionCheck from '@/app/(main)/office/_components/TimerMissionCheck';
 import TodayMission from '@/app/(main)/office/_components/TodayMission';
 
 export default function OfficePage() {
@@ -101,7 +101,7 @@ export default function OfficePage() {
         </div>
       </div>
 
-      <TimerCheck />
+      <TimerMissionCheck />
     </div>
   );
 }

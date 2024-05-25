@@ -8,30 +8,17 @@ import useMinuteUpdater from '@/app/_hook/useMinuteUpdater';
 import { useWorkTodayQuery } from '@/app/_hook/queries/activity';
 import dayjs from 'dayjs';
 import isBetween from 'dayjs/plugin/isBetween';
-import { formatDateToTodayDate } from '@/utils/utils';
+import { formatDateToTodayDate, getWorkTimeRangeString } from '@/utils/utils';
 dayjs.extend(isBetween);
 
-const dummy = [
-  {
-    active: false,
-    quantity: 0,
-    state: 'Failed',
-    name: 'work',
-  },
-  {
-    active: true,
-    quantity: 1,
-    state: 'Soon',
-    name: 'lunch',
-  },
+type workStateType = {
+  active: boolean;
+  quantity: number;
+  state: 'Soon' | 'NotYet' | 'Complete' | 'Failed';
+  workTimeRange: string;
+  name: string;
+};
 
-  {
-    active: false,
-    quantity: 2,
-    state: 'NotYet',
-    name: 'work-end',
-  },
-];
 export default function TodayMission() {
   const { data: profileResult, isLoading: isLoadingProfile, isFetching: isFetchingProfile } = useMemberProfileQuery();
   const { data: workResult, isLoading: isLoadingWork, isFetching: isFetchingWork } = useWorkTodayQuery();
@@ -41,9 +28,9 @@ export default function TodayMission() {
     return formatDateToTodayDate(currentTimeEveryMinute);
   }, [currentTimeEveryMinute]);
 
-  const workState = useMemo(() => {
+  const workState = useMemo<workStateType[]>(() => {
     if (!workResult || !profileResult || !currentTimeEveryMinute) return [];
-    const { startHour, endHour, launchTimeAt } = profileResult.data.officeHour;
+    const { startHour, launchTimeAt, endHour } = profileResult.data.officeHour;
     const currentTime = dayjs(currentTimeEveryMinute);
 
     const midnightDate = dayjs().startOf('day').toDate();
@@ -64,25 +51,26 @@ export default function TodayMission() {
         active: isWorkActive,
         quantity: workQuantity,
         state: workState,
-        name: 'work',
+        workTimeRange: getWorkTimeRangeString(startHour),
+        name: '출근',
       },
       {
         active: isLunchActive,
         quantity: lunchQuantity,
         state: lunchState,
-        name: 'lunch',
+        workTimeRange: getWorkTimeRangeString(launchTimeAt),
+        name: '점심',
       },
 
       {
         active: isWorkEndActive,
         quantity: workEndQuantity,
         state: workEndState,
-        name: 'work-end',
+        workTimeRange: getWorkTimeRangeString(endHour),
+        name: '퇴근',
       },
     ];
   }, [workResult, profileResult, currentTimeEveryMinute]);
-
-  console.log(workState);
 
   return (
     <div className={style.todayMission}>
@@ -93,13 +81,12 @@ export default function TodayMission() {
 
       <div className={style.missionTime}>
         {workState?.map((item, index) => {
-          console.log(item);
-          const { quantity, state: missionState }: any = item;
+          const { quantity, state: missionState, workTimeRange, name } = item;
 
           return (
             <div key={index} className={cx(style.row, item.active && style.active)}>
-              <p className={style.name}>출근</p>
-              <p className={style.time}>10:00 - 10:15</p>
+              <p className={style.name}>{name}</p>
+              <p className={style.time}>{workTimeRange}</p>
               <MissionBox state={missionState} quantity={quantity} />
             </div>
           );
@@ -119,7 +106,6 @@ type missionBoxProps = {
 };
 
 function MissionBox({ state, quantity }: missionBoxProps) {
-  console.log(state, quantity);
   if (state === 'Complete' || state === 'Failed') {
     if (quantity === 0) {
       return (
