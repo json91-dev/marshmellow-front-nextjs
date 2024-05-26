@@ -352,10 +352,27 @@
       }
     }
 
-    .rightIcon {
+    .checkWorkButton {
       position: absolute;
       right: 1.3rem;
       bottom: 0;
+      pointer-events: none;
+
+      &.active {
+        @include activeOpacity();
+        @include activeScale();
+        pointer-events: all;
+        cursor: pointer;
+      }
+
+      &:hover {
+        .circle {
+          fill: #2E343F;
+        }
+      }
+      .circle {
+        fill: black;
+      }
     }
   }
 }
