@@ -7,8 +7,8 @@ import { useMemberProfileQuery } from '@/app/_hook/queries/member';
 import useMinuteUpdater from '@/app/_hook/useMinuteUpdater';
 import { useWorkTodayQuery } from '@/app/_hook/queries/activity';
 import dayjs from 'dayjs';
-import isBetween from 'dayjs/plugin/isBetween';
 import { formatDateToTodayDate, getWorkTimeRangeString } from '@/utils/utils';
+import isBetween from 'dayjs/plugin/isBetween';
 dayjs.extend(isBetween);
 
 type workStateType = {

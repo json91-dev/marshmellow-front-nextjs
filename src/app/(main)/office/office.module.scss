@@ -326,6 +326,10 @@
       color: #12171E;
       font-size: 3.2rem;
       font-weight: 700;
+
+      &.active {
+        color: #BB4EF2 !important;
+      }
     }
 
     .timeDetail {
