@@ -206,3 +206,17 @@ export function findMissionDateMatchingStart(data: any, now: Dayjs) {
   }
   return null;
 }
+
+// 주어진 날짜의 해당 주 월요일을 찾는 함수
+export function findMonday(date: Dayjs) {
+  const dayOfWeek = date.day();
+  const monday = date.subtract(dayOfWeek === 0 ? 6 : dayOfWeek - 1, 'day');
+  return monday;
+}
+
+// 주어진 날짜의 해당 주 일요일을 찾는 함수
+export function findSunday(date: Dayjs) {
+  const dayOfWeek = date.day();
+  const sunday = date.add(dayOfWeek === 0 ? 0 : 7 - dayOfWeek, 'day');
+  return sunday;
+}
