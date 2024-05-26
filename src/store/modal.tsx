@@ -4,7 +4,7 @@ import { devtools } from 'zustand/middleware';
 /** Modal store **/
 
 interface IdentifyModalState {
-  // 회원가입 페이지
+  // 회원가입 페이지 (signup)
   isShowAuthFailModal: boolean;
   isShowAuthSuccessModal: boolean;
   isShowQuitModal: boolean;
@@ -12,12 +12,11 @@ interface IdentifyModalState {
   isShowTermsBottomSheet: boolean;
   isShowQuitInfoModal: boolean;
 
-  // 마이페이지
+  // 마이페이지 (my)
   isShowRankingChartModal: boolean;
   isShowNicknameChangeModal: boolean;
   isShowNicknameNotChangeByDateModal: boolean;
   nicknameChangeRemainDays: number;
-
   isShowWorkTimeBottomSheet: boolean;
   isShowLogoutModal: boolean;
   isShowWorkTimeNotChangeByTimeModal: boolean;
@@ -25,17 +24,21 @@ interface IdentifyModalState {
   isShowWorkTimeChangeModal: boolean;
   isShowNicknameChangeConfirmModal: boolean;
 
-  // 회원 탈퇴 페이지
+  // 회원 탈퇴 페이지 (my/withdraw)
   isShowWithdrawConfirmModal: boolean;
   isShowWithdrawConfirmCompleteModal: boolean;
 
-  // 마시멜로우 확인 페이지
+  // 마시멜로우 확인 페이지 (my/mallow)
   isShowMallowFilterDateBottomSheet: boolean;
   isShowMallowExpiredThisMonthModal: boolean;
 
-  // 주소창 페이지
+  // 주소창 페이지 (my/address)
   isShowAddressChangeQuitModal: boolean;
   isShowAddressDeleteModal: boolean;
+
+  // 사무실 페이지 (office)
+  isShowOfficeNewbieSignupModal: boolean;
+  officeNewbieSignupStatus: 'work' | 'workEnd' | 'lunch';
 
   showAuthFailModal(isShow: boolean): void;
   showAuthSuccessModal(isShow: boolean): void;
@@ -59,13 +62,14 @@ interface IdentifyModalState {
   showAddressDeleteModal(isShow: boolean): void;
   showNicknameChangeConfirmModal(isShow: boolean): void;
   setNicknameChangeRemainDays(nicknameChangeRemainDays: number): void;
+  showOfficeNewbieSignupModal(isShow: boolean, status: string): void;
 
   closeAll(): void;
 }
 
 export const useModalStore = create(
   devtools<IdentifyModalState>((set) => ({
-    // 회원가입 페이지
+    // 회원가입 페이지 (signup)
     isShowAuthFailModal: false,
     isShowAuthSuccessModal: false,
     isShowQuitModal: false,
@@ -73,7 +77,7 @@ export const useModalStore = create(
     isShowExistNumberModal: false,
     isShowQuitInfoModal: false,
 
-    // 마이페이지
+    // 마이페이지 (my)
     isShowRankingChartModal: false,
     isShowNicknameChangeModal: false,
     isShowNicknameNotChangeByDateModal: false,
@@ -85,17 +89,21 @@ export const useModalStore = create(
     isShowWorkTimeChangeModal: false,
     isShowNicknameChangeConfirmModal: false,
 
-    // 회원 탈퇴 페이지
+    // 회원 탈퇴 페이지 (withdraw)
     isShowWithdrawConfirmModal: false,
     isShowWithdrawConfirmCompleteModal: false,
 
-    // 마시멜로우 확인 페이지
+    // 마시멜로우 확인 페이지 (mallow)
     isShowMallowFilterDateBottomSheet: false,
     isShowMallowExpiredThisMonthModal: false,
 
     // 주소창 페이지
     isShowAddressChangeQuitModal: false,
     isShowAddressDeleteModal: false,
+
+    // 사무실 페이지
+    isShowOfficeNewbieSignupModal: false,
+    officeNewbieSignupStatus: 'work',
 
     showAuthFailModal(isShow) {
       set({ isShowAuthFailModal: isShow });
@@ -182,6 +190,13 @@ export const useModalStore = create(
       set({ isShowNicknameChangeConfirmModal: isShow });
     },
 
+    showOfficeNewbieSignupModal(isShow: boolean, status: 'work' | 'workEnd' | 'lunch') {
+      set({
+        isShowOfficeNewbieSignupModal: isShow,
+        officeNewbieSignupStatus: status,
+      });
+    },
+
     closeAll() {
       set({
         isShowAuthFailModal: false,
@@ -205,6 +220,7 @@ export const useModalStore = create(
         isShowAddressChangeQuitModal: false,
         isShowAddressDeleteModal: false,
         isShowNicknameChangeConfirmModal: false,
+        isShowOfficeNewbieSignupModal: false,
       });
     },
   })),

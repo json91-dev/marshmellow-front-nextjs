@@ -57,6 +57,9 @@ export default function WeekAttendance() {
               {completeCount === 2 && <Image src="/images/snack.purple.light.svg" alt="No Image" width={24} height={24} />}
               {completeCount === 3 && <Image src="/images/snack.purple.svg" alt="No Image" width={24} height={24} />}
               <p>{dayString}</p>
+
+              {dayjs().day() === 0 && index === 6 && <div className={style.blackDot}></div>}
+              {index === dayjs().day() - 1 && <div className={style.blackDot}></div>}
             </div>
           );
         })}

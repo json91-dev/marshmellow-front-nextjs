@@ -5,17 +5,12 @@ import React from 'react';
 import TimerMissionCheck from '@/app/(main)/office/_components/TimerMissionCheck';
 import TodayMission from '@/app/(main)/office/_components/TodayMission';
 import WeekAttendance from '@/app/(main)/office/_components/WeekAttendance';
+import MyMallowHeader from '@/app/(main)/office/_components/MyMallowHeader';
 
 export default function OfficePage() {
   return (
     <div className={style.officePage}>
-      <div className={style.myMallowArea}>
-        <div className={style.logo}></div>
-        <div className={style.myMallow}>
-          <Image src="/images/snack.gray.svg" alt="No Image" width={24} height={24} />
-          <p>127</p>
-        </div>
-      </div>
+      <MyMallowHeader />
 
       <div className={style.body}>
         <div className={style.topCarousel}>
