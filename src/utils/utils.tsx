@@ -1,4 +1,4 @@
-import dayjs from 'dayjs';
+import dayjs, { Dayjs } from 'dayjs';
 
 export const isMobile = {
   Android: function () {
@@ -193,4 +193,16 @@ export function getWorkTimeRangeString(hour: number) {
 
   // "HH:00 ~ HH:15" 형식의 문자열을 반환
   return `${startTime.format('HH:mm')} ~ ${endTime.format('HH:mm')}`;
+}
+
+/** 근무현황 데이터에서 키값으로 객체 찾기 **/
+export function findMissionDateMatchingStart(data: any, now: Dayjs) {
+  const keys = Object.keys(data);
+
+  for (let key of keys) {
+    if (dayjs(data[key].start).isSame(now)) {
+      return data[key];
+    }
+  }
+  return null;
 }

@@ -5,10 +5,14 @@ import React, { useMemo } from 'react';
 import { useMemberProfileQuery } from '@/app/_hook/queries/member';
 import { useWorkTodayQuery } from '@/app/_hook/queries/activity';
 import useSecondUpdater from '@/app/_hook/useSecondUpdater';
-import dayjs, { Dayjs } from 'dayjs';
-import isBetween from 'dayjs/plugin/isBetween';
 import cx from 'classnames';
+import { findMissionDateMatchingStart } from '@/utils/utils';
+
+import dayjs from 'dayjs';
+import isBetween from 'dayjs/plugin/isBetween';
+import duration from 'dayjs/plugin/duration';
 dayjs.extend(isBetween);
+dayjs.extend(duration);
 
 export default function TimerMissionCheck() {
   const { data: profileResult, isLoading: isLoadingProfile, isFetching: isFetchingProfile } = useMemberProfileQuery();
@@ -16,18 +20,6 @@ export default function TimerMissionCheck() {
 
   const { time } = useSecondUpdater();
   const timerData = useMemo(() => {
-    /** 근무현황 데이터에서 키값으로 객체 찾기 **/
-    function findMatchingStart(data: any, now: Dayjs) {
-      const keys = Object.keys(data);
-
-      for (let key of keys) {
-        if (dayjs(data[key].start).isSame(now)) {
-          return data[key];
-        }
-      }
-      return null;
-    }
-
     if (!workResult) {
       return {
         status: 'idle',
@@ -49,8 +41,13 @@ export default function TimerMissionCheck() {
     });
 
     // 미션시작 시간 이후 15분 범위 찾기
-    const closestMissionTimeData = findMatchingStart(workResult.data, closestMissionTime);
-    const isMissionTime = now.isBetween(closestMissionTime, closestMissionTime.add(15, 'minute'), 'minute', '[]');
+    const closestMissionTimeData = findMissionDateMatchingStart(workResult.data, closestMissionTime);
+    const isMissionTime = now.isBetween(
+      closestMissionTime.subtract(1, 'minute'),
+      closestMissionTime.add(15, 'minute'),
+      'minute',
+      '[]',
+    );
 
     // 'Soon' | 'NotYet' | 'Complete' | 'Failed';
     let timerStatus;
@@ -82,13 +79,47 @@ export default function TimerMissionCheck() {
 
     const { workStart, launch, workEnd } = workResult.data;
     const dates = [dayjs(workStart.start), dayjs(launch.start), dayjs(workEnd.start)];
-    const filteredDates = dates.filter((date) => date.isAfter(dayjs()));
-    const nextMissionStartDate = filteredDates.sort((a, b) => a.valueOf() - b.valueOf())[0];
-    const nextMissionStartDate15MinutesAgo = nextMissionStartDate.subtract(15, 'minute');
+    // 현재 시간과 가장 가까운 미션시간 찾기
+    const now = dayjs();
+    const closestMissionTime = dates.reduce((closest, date) => {
+      const diffCurrent = Math.abs(date.diff(now));
+      const diffClosest = Math.abs(closest.diff(now));
+
+      return diffCurrent < diffClosest ? date : closest;
+    });
+
+    const isMissionTime = now.isBetween(closestMissionTime, closestMissionTime.add(15, 'minute'), 'minute', '[]');
+    const closestMissionTimeData = findMissionDateMatchingStart(workResult.data, closestMissionTime);
+    // 'Soon' | 'NotYet' | 'Complete' | 'Failed';
+    let detailTimeStatus;
+    let detailTimeString = '';
+    if (isMissionTime) {
+      detailTimeStatus = 'active';
+
+      // 만약 미션시간동안 미션완료를 했다면 상태 원래대로 복귀
+      const { state } = closestMissionTimeData;
+      if (state === 'Complete') {
+        detailTimeStatus = 'complete';
+      }
+    } else {
+      const diffInMillisSeconds = closestMissionTime.diff(now);
+      const diffDuration = dayjs.duration(diffInMillisSeconds);
+      const hour = diffDuration.hours();
+      const minute = diffDuration.minutes();
+      const seconds = diffDuration.seconds();
+
+      if (hour > 0) {
+        detailTimeString = `${hour}시간 ${minute}분 ${seconds}초`;
+      } else {
+        detailTimeString = `${minute}분 ${seconds}초`;
+      }
+
+      detailTimeStatus = 'idle';
+    }
 
     return {
-      status: 'idle', // idle, active, success
-      detailTimeString: '12분 45초',
+      status: detailTimeStatus,
+      detailTimeString: detailTimeString,
     };
   }, [workResult, time]);
 
@@ -125,15 +156,15 @@ function TimeDetail({ detailTimeData }: any) {
 
   if (status === 'active') {
     return (
-      <div className={style.timeDetail}>
+      <div className={cx(style.timeDetail, style.active)}>
         <p>지금 마시멜로우를 획득하세요!</p>
       </div>
     );
   }
 
-  if (status === 'success') {
+  if (status === 'complete') {
     return (
-      <div className={style.timeDetail}>
+      <div className={cx(style.timeDetail, style.active)}>
         <p>마시멜로우 획득 성공!</p>
       </div>
     );

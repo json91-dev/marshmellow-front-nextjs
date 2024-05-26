@@ -344,6 +344,12 @@
           font-weight: 600;
         }
       }
+
+      &.active {
+        p {
+          color: #AB2BEE
+        }
+      }
     }
 
     .rightIcon {
