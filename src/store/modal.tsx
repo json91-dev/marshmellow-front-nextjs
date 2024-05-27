@@ -38,7 +38,7 @@ interface IdentifyModalState {
 
   // 사무실 페이지 (office)
   isShowOfficeNewbieSignupModal: boolean;
-  officeNewbieSignupStatus: 'work' | 'workEnd' | 'lunch';
+  officeNewbieSignupStatus: 'work' | 'workEnd' | 'lunch' | 'idle';
 
   showAuthFailModal(isShow: boolean): void;
   showAuthSuccessModal(isShow: boolean): void;
@@ -62,7 +62,7 @@ interface IdentifyModalState {
   showAddressDeleteModal(isShow: boolean): void;
   showNicknameChangeConfirmModal(isShow: boolean): void;
   setNicknameChangeRemainDays(nicknameChangeRemainDays: number): void;
-  showOfficeNewbieSignupModal(isShow: boolean, status: string): void;
+  showOfficeNewbieSignupModal(isShow: boolean, status?: string): void;
 
   closeAll(): void;
 }
@@ -190,10 +190,10 @@ export const useModalStore = create(
       set({ isShowNicknameChangeConfirmModal: isShow });
     },
 
-    showOfficeNewbieSignupModal(isShow: boolean, status: 'work' | 'workEnd' | 'lunch') {
+    showOfficeNewbieSignupModal(isShow: boolean, status?: 'work' | 'workEnd' | 'lunch' | 'idle') {
       set({
         isShowOfficeNewbieSignupModal: isShow,
-        officeNewbieSignupStatus: status,
+        officeNewbieSignupStatus: status ? status : 'idle',
       });
     },
 

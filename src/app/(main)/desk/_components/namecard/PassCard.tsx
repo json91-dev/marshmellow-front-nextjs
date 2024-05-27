@@ -2,7 +2,7 @@
 import style from './nameCard.module.scss';
 import Image from 'next/image';
 import React, { useCallback, useEffect, useState } from 'react';
-import { isMacintosh } from '@/utils/utils';
+import { isAppleDevice } from '@/utils/utils';
 import { signIn } from 'next-auth/react';
 import { AuthError } from 'next-auth';
 
@@ -26,7 +26,7 @@ export default function PassCard() {
   }, []);
 
   useEffect(() => {
-    const isAppleOS = isMacintosh();
+    const isAppleOS = isAppleDevice();
     setIsAppleOS(isAppleOS);
   }, []);
 
@@ -56,7 +56,7 @@ export default function PassCard() {
             <p>카카오톡으로 시작하기</p>
           </div>
         </div>
-
+        톡
         {isAppleOS !== null && !isAppleOS ? (
           <div className={style.googleButton} onClick={() => authLogin('google')}>
             <div className={style.button}>

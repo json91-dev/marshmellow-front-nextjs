@@ -22,8 +22,17 @@ export function debounce(func: Function, delay: number) {
   };
 }
 
-export function isMacintosh() {
-  return navigator.platform.indexOf('Mac') > -1;
+export function isAppleDevice() {
+  // navigator.userAgent는 현재 브라우저의 User Agent 문자열을 반환합니다.
+  const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+  // iOS (iPhone, iPad, iPod) 장치인지 확인
+  const isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
+
+  // macOS 장치인지 확인
+  const isMacOS = /Macintosh|MacIntel|MacPPC|Mac68K/.test(userAgent);
+
+  return isIOS || isMacOS;
 }
 
 export function isWindows() {

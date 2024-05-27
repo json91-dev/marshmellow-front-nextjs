@@ -1,7 +1,7 @@
 'use client';
 
 import KakaoLoginButton from '@/app/login/_components/KakaoLoginButton';
-import { fakeServerCall, isMacintosh, setLocalStorage } from '@/utils/utils';
+import { fakeServerCall, isAppleDevice, setLocalStorage } from '@/utils/utils';
 import AppleLoginButton from '@/app/login/_components/AppleLoginButton';
 import GoogleLoginButton from '@/app/login/_components/GoogleLoginButton';
 import React, { memo, useEffect, useRef, useState } from 'react';
@@ -18,7 +18,7 @@ export default memo(function Login() {
   const router = useRouter();
 
   useEffect(() => {
-    const isAppleOS = isMacintosh();
+    const isAppleOS = isAppleDevice();
     setIsAppleOS(isAppleOS);
   }, []);
 
@@ -47,9 +47,7 @@ export default memo(function Login() {
     return (
       <>
         <KakaoLoginButton style={{ marginTop: '2rem' }} />
-        <div
-          style={{ marginTop: '1rem', height: '6rem', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
-        >
+        <div style={{ marginTop: '1rem', height: '6rem', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <Spinner />
         </div>
       </>
