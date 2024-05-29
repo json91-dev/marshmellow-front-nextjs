@@ -5,11 +5,22 @@ import { CSSTransition } from 'react-transition-group';
 import ModalBackdrop from '@/app/signup/@modal/identify/_components/ModalBackdrop';
 import { useModalStore } from '@/store/modal';
 import cx from 'classnames';
+import { useWorkTimeChangeMutation } from '@/app/_hook/queries/member';
 
 export default function WorkTimeChangeModal() {
-  const { isShowWorkTimeChangeModal, showWorkTimeChangeModal } = useModalStore();
+  const { isShowWorkTimeChangeModal, showWorkTimeChangeModal, workTimeId } = useModalStore();
   const backdropRef = React.useRef(null);
   const modalRef = React.useRef(null);
+  const { mutate } = useWorkTimeChangeMutation();
+  const onClickChangeWorkTime = () => {
+    mutate(workTimeId, {
+      onSuccess: () => {},
+      onError: () => {},
+      onSettled: () => {
+        showWorkTimeChangeModal(false);
+      },
+    });
+  };
 
   return (
     <>

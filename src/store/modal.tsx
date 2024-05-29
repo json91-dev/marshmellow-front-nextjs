@@ -23,6 +23,7 @@ interface IdentifyModalState {
   isShowLogoutModal: boolean;
   isShowWorkTimeNotChangeByTimeModal: boolean;
   isShowWorkTimeChangeModal: boolean;
+  workTimeId: number;
   isShowNicknameChangeConfirmModal: boolean;
 
   // 회원 탈퇴 페이지 (my/withdraw)
@@ -56,7 +57,7 @@ interface IdentifyModalState {
   showMallowFilterDateBottomSheet(isShow: boolean): void;
   showMallowExpiredThisMonthModal(isShow: boolean): void;
   showWorkTimeNotChangeByTimeModal(isShow: boolean): void;
-  showWorkTimeChangeModal(isShow: boolean): void;
+  showWorkTimeChangeModal(isShow: boolean, workTimeId?: number): void;
   showNicknameNotChangeByDateModal(isShow: boolean): void;
   showAddressChangeQuitModal(isShow: boolean): void;
   showAddressDeleteModal(isShow: boolean): void;
@@ -88,6 +89,7 @@ export const useModalStore = create(
     isShowLogoutModal: false,
     isShowWorkTimeNotChangeByTimeModal: false,
     isShowWorkTimeChangeModal: false,
+    workTimeId: 1,
     isShowNicknameChangeConfirmModal: false,
     isShowWorkTimeNotChangeByDateModal: false,
     workTimeChangeRemainDays: 0,
@@ -168,8 +170,8 @@ export const useModalStore = create(
       set({ isShowWorkTimeNotChangeByTimeModal: isShow });
     },
 
-    showWorkTimeChangeModal(isShow: boolean) {
-      set({ isShowWorkTimeChangeModal: isShow });
+    showWorkTimeChangeModal(isShow: boolean, workTimeId: number = 1) {
+      set({ isShowWorkTimeChangeModal: isShow, workTimeId });
     },
     showNicknameNotChangeByDateModal(isShow: boolean) {
       set({ isShowNicknameNotChangeByDateModal: isShow });

@@ -161,3 +161,32 @@ export function useWithdrawCancelMutation() {
     mutationFn: (nickname: string) => memberWithdrawCancel(nickname),
   });
 }
+
+export function useWorkTimeChangeMutation() {
+  const workTimeChange = async (officeHourId: number) => {
+    const session = await getSession();
+    if (!session) {
+      throw new Error('로그인이 되어있지 않음');
+    }
+
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/member/hour`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${session?.accessToken}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ modifyOfficeHourId: officeHourId }),
+      cache: 'no-store',
+    });
+
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw new Error('회원 탈퇴 철회 실패');
+    }
+  };
+
+  return useMutation({
+    mutationFn: (officeHourId: number) => workTimeChange(officeHourId),
+  });
+}

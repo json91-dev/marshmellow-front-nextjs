@@ -3,17 +3,23 @@ import style from './workTimeBottomSheet.module.scss';
 import { useModalStore } from '@/store/modal';
 import ModalBackdrop from '@/app/signup/@modal/identify/_components/ModalBackdrop';
 import { CSSTransition } from 'react-transition-group';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useMemberProfileQuery } from '@/app/_hook/queries/member';
+import useBottomSheet from '@/app/_hook/useBottomSheet';
 
 export default function WorkTimeBottomSheet() {
   const { isShowWorkTimeBottomSheet, showWorkTimeBottomSheet, showWorkTimeChangeModal } = useModalStore();
   const bottomSheetRef = useRef<HTMLDivElement>(null!);
   const backDropRef = useRef<HTMLDivElement>(null!);
-  const startY = useRef(0);
-  const isDragging = useRef(false);
   const [modifyOfficeHourId, setModifyOfficeHourId] = useState<number>(null!);
   const { data: result } = useMemberProfileQuery();
+
+  const { closeBottomSheet } = useBottomSheet({
+    bottomSheetRef,
+    backDropRef,
+    isShow: isShowWorkTimeBottomSheet,
+    setIsShow: showWorkTimeBottomSheet,
+  });
 
   useEffect(() => {
     if (result?.data && isShowWorkTimeBottomSheet) {
@@ -29,70 +35,19 @@ export default function WorkTimeBottomSheet() {
     }
   }, [result?.data, isShowWorkTimeBottomSheet]);
 
-  const onPointerDown = (e: PointerEvent) => {
-    e.stopPropagation();
-    bottomSheetRef.current.style.transition = `none`;
-    startY.current = e.clientY;
-    isDragging.current = true;
-  };
-
-  const onPointerMove = (e: PointerEvent) => {
-    e.stopPropagation();
-    if (!isDragging.current) return;
-
-    const deltaY = e.clientY - startY.current;
-    if (deltaY < 0) return;
-
-    bottomSheetRef.current.style.transform = `translateY(${deltaY}px)`;
-  };
-
-  const onPointerUp = (e: PointerEvent) => {
-    e.stopPropagation();
-    if (!isDragging.current) return;
-    isDragging.current = false;
-
-    const bottomSheetHeight = bottomSheetRef.current.offsetHeight;
-    const currentTranslateY =
-      parseInt(bottomSheetRef.current.style.transform.replace('translateY(', '').replace('px)', '')) || 0;
-
-    /** 전체 영역중 1/6 이상 움직였을때 모달창이 닫히고 이전페이지 이동 **/
-    if (Math.abs(currentTranslateY) >= bottomSheetHeight / 6) {
-      bottomSheetRef.current.style.transition = `transform 200ms ease-in-out`;
-      bottomSheetRef.current.style.transform = `translateY(${bottomSheetHeight}px`;
-      setTimeout(() => {
-        showWorkTimeBottomSheet(false);
-        // router.back();
-      }, 250);
-    } else {
-      bottomSheetRef.current.style.transition = `transform 300ms ease-in-out`;
-      bottomSheetRef.current.style.transform = `translateY(0)`;
-    }
-  };
-
   const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setModifyOfficeHourId(parseInt(e.target.value));
     // setSelectedWorkTime(e.target.value);
   };
 
-  useEffect(() => {
-    if (isShowWorkTimeBottomSheet) {
-      bottomSheetRef.current?.addEventListener('pointerdown', onPointerDown);
-      bottomSheetRef.current?.addEventListener('pointermove', onPointerMove);
-      bottomSheetRef.current?.addEventListener('pointerup', onPointerUp);
-
-      backDropRef.current.addEventListener('pointerup', () => {
-        console.log('클릭');
-        showWorkTimeBottomSheet(false);
-      });
-    }
-  }, [isShowWorkTimeBottomSheet]);
-  useEffect(() => {
-    return () => {
-      bottomSheetRef.current?.removeEventListener('pointerdown', onPointerDown);
-      bottomSheetRef.current?.removeEventListener('pointermove', onPointerDown);
-      bottomSheetRef.current?.removeEventListener('pointerup', onPointerDown);
-    };
-  }, []);
+  const onClickWorkTimeChange = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      e.stopPropagation();
+      closeBottomSheet();
+      showWorkTimeChangeModal(true, modifyOfficeHourId);
+    },
+    [modifyOfficeHourId],
+  );
 
   return (
     <>
@@ -184,14 +139,7 @@ export default function WorkTimeBottomSheet() {
               </div>
             </div>
 
-            <div
-              onClick={(e) => {
-                e.stopPropagation();
-                showWorkTimeBottomSheet(false);
-                showWorkTimeChangeModal(true);
-              }}
-              className={style.confirmButton}
-            >
+            <div onClick={onClickWorkTimeChange} className={style.confirmButton}>
               확인
             </div>
           </div>
