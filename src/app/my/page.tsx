@@ -18,9 +18,11 @@ export default function myPage() {
     showLogoutModal,
     showNicknameNotChangeByDateModal,
     setNicknameChangeRemainDays,
+    showWorkTimeNotChangeByDateModal,
+    setWorkTimeChangeRemainDays,
   } = useModalStore();
   const router = useRouter();
-  const { data: result, status, error } = useMemberProfileQuery();
+  const { data: result, isLoading, isFetching } = useMemberProfileQuery();
 
   const onClickNicknameChangeButton = useCallback(() => {
     if (result?.data) {
@@ -31,6 +33,19 @@ export default function myPage() {
       } else {
         showNicknameNotChangeByDateModal(true);
         setNicknameChangeRemainDays(nicknameModifiableRemainingDays);
+      }
+    }
+  }, [result]);
+
+  const onClickWorkTimeChange = useCallback(() => {
+    if (result?.data) {
+      const { isOfficeHourModifiable, officeHourModifiableRemainingDays } = result.data;
+
+      if (isOfficeHourModifiable) {
+        showWorkTimeBottomSheet(true);
+      } else {
+        showWorkTimeNotChangeByDateModal(true);
+        setWorkTimeChangeRemainDays(officeHourModifiableRemainingDays);
       }
     }
   }, [result]);
@@ -68,7 +83,7 @@ export default function myPage() {
 
         <div className={style.workTime}>
           <div className={style.left}>근무시간</div>
-          <div className={style.right} onClick={() => showWorkTimeBottomSheet(true)}>
+          <div className={style.right} onClick={() => onClickWorkTimeChange()}>
             <div className={style.workTimeDetail}>
               {result?.data && (
                 <>

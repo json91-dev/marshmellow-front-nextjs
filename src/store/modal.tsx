@@ -17,10 +17,11 @@ interface IdentifyModalState {
   isShowNicknameChangeModal: boolean;
   isShowNicknameNotChangeByDateModal: boolean;
   nicknameChangeRemainDays: number;
+  isShowWorkTimeNotChangeByDateModal: boolean;
+  workTimeChangeRemainDays: number;
   isShowWorkTimeBottomSheet: boolean;
   isShowLogoutModal: boolean;
   isShowWorkTimeNotChangeByTimeModal: boolean;
-  isShowWorkTimeNotChangeByDateModal: boolean;
   isShowWorkTimeChangeModal: boolean;
   isShowNicknameChangeConfirmModal: boolean;
 
@@ -55,13 +56,14 @@ interface IdentifyModalState {
   showMallowFilterDateBottomSheet(isShow: boolean): void;
   showMallowExpiredThisMonthModal(isShow: boolean): void;
   showWorkTimeNotChangeByTimeModal(isShow: boolean): void;
-  showWorkTimeNotChangeByDateModal(isShow: boolean): void;
   showWorkTimeChangeModal(isShow: boolean): void;
   showNicknameNotChangeByDateModal(isShow: boolean): void;
   showAddressChangeQuitModal(isShow: boolean): void;
   showAddressDeleteModal(isShow: boolean): void;
   showNicknameChangeConfirmModal(isShow: boolean): void;
   setNicknameChangeRemainDays(nicknameChangeRemainDays: number): void;
+  showWorkTimeNotChangeByDateModal(isShow: boolean): void;
+  setWorkTimeChangeRemainDays(workTimeRemainingDays: number): void;
   showOfficeNewbieSignupModal(isShow: boolean, status?: string): void;
 
   closeAll(): void;
@@ -85,9 +87,10 @@ export const useModalStore = create(
     isShowWorkTimeBottomSheet: false,
     isShowLogoutModal: false,
     isShowWorkTimeNotChangeByTimeModal: false,
-    isShowWorkTimeNotChangeByDateModal: false,
     isShowWorkTimeChangeModal: false,
     isShowNicknameChangeConfirmModal: false,
+    isShowWorkTimeNotChangeByDateModal: false,
+    workTimeChangeRemainDays: 0,
 
     // 회원 탈퇴 페이지 (withdraw)
     isShowWithdrawConfirmModal: false,
@@ -164,9 +167,7 @@ export const useModalStore = create(
     showWorkTimeNotChangeByTimeModal(isShow: boolean) {
       set({ isShowWorkTimeNotChangeByTimeModal: isShow });
     },
-    showWorkTimeNotChangeByDateModal(isShow: boolean) {
-      set({ isShowWorkTimeNotChangeByDateModal: isShow });
-    },
+
     showWorkTimeChangeModal(isShow: boolean) {
       set({ isShowWorkTimeChangeModal: isShow });
     },
@@ -197,6 +198,15 @@ export const useModalStore = create(
       });
     },
 
+    showWorkTimeNotChangeByDateModal(isShow: boolean) {
+      set({ isShowWorkTimeNotChangeByDateModal: isShow });
+    },
+    setWorkTimeChangeRemainDays(workTimeChangeRemainingDay: number) {
+      set({
+        workTimeChangeRemainDays: workTimeChangeRemainingDay,
+      });
+    },
+
     closeAll() {
       set({
         isShowAuthFailModal: false,
@@ -214,13 +224,13 @@ export const useModalStore = create(
         isShowMallowFilterDateBottomSheet: false,
         isShowMallowExpiredThisMonthModal: false,
         isShowWorkTimeNotChangeByTimeModal: false,
-        isShowWorkTimeNotChangeByDateModal: false,
         isShowWorkTimeChangeModal: false,
         isShowNicknameNotChangeByDateModal: false,
         isShowAddressChangeQuitModal: false,
         isShowAddressDeleteModal: false,
         isShowNicknameChangeConfirmModal: false,
         isShowOfficeNewbieSignupModal: false,
+        isShowWorkTimeNotChangeByDateModal: false,
       });
     },
   })),
