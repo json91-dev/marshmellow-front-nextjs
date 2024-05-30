@@ -4,7 +4,10 @@ import { getSession } from 'next-auth/react';
 export function useMemberQuery() {
   const getMember = async () => {
     const session = await getSession();
-    if (!session) throw new Error('로그인이 되어있지 않음');
+    if (!session) {
+      console.error('로그인이 되어있지 않음');
+      throw new Error('로그인이 되어있지 않음');
+    }
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/member/me`, {
       method: 'GET',
@@ -28,7 +31,10 @@ export function useMemberQuery() {
 export function useMemberProfileQuery() {
   const getMemberProfile = async () => {
     const session = await getSession();
-    if (!session) throw new Error('로그인이 되어있지 않음');
+    if (!session) {
+      console.error('로그인이 되어있지 않음');
+      throw new Error('로그인이 되어있지 않음');
+    }
     // console.log(session?.accessToken);
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/member/me/profile`, {
@@ -53,7 +59,10 @@ export function useMemberProfileQuery() {
 export function useMemberCurrencyQuery() {
   const getMemberCurrency = async () => {
     const session = await getSession();
-    if (!session) throw new Error('로그인이 되어있지 않음');
+    if (!session) {
+      console.error('로그인이 되어있지 않음');
+      throw new Error('로그인이 되어있지 않음');
+    }
     // console.log(session?.accessToken);
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/member/me/currency`, {
@@ -79,6 +88,7 @@ export function useChangeNicknameMutation() {
   const changeNickname = async (nickname: string) => {
     const session = await getSession();
     if (!session) {
+      console.error('로그인이 되어있지 않음');
       throw new Error('로그인이 되어있지 않음');
     }
 
@@ -108,6 +118,7 @@ export function useWithdrawMutation() {
   const memberWithdraw = async (withdrawReason: string) => {
     const session = await getSession();
     if (!session) {
+      console.error('로그인이 되어있지 않음');
       throw new Error('로그인이 되어있지 않음');
     }
 
@@ -137,6 +148,7 @@ export function useWithdrawCancelMutation() {
   const memberWithdrawCancel = async (withdrawReason: string) => {
     const session = await getSession();
     if (!session) {
+      console.error('로그인이 되어있지 않음');
       throw new Error('로그인이 되어있지 않음');
     }
 
@@ -166,6 +178,7 @@ export function useWorkTimeChangeMutation() {
   const workTimeChange = async (officeHourId: number) => {
     const session = await getSession();
     if (!session) {
+      console.error('로그인이 되어있지 않음');
       throw new Error('로그인이 되어있지 않음');
     }
 

@@ -6,7 +6,10 @@ import { filterActionType } from '@/app/my/mallow/page';
 export function useMarshmallowHistoryQuery(type: filterActionType = 'ALL', range: number) {
   const getWorkMonthly = async () => {
     const session = await getSession();
-    if (!session) throw new Error('로그인이 되어있지 않음');
+    if (!session) {
+      console.error('로그인이 되어있지 않음');
+      throw new Error('로그인이 되어있지 않음');
+    }
 
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/currency/marshmallow/history?type=${type}&range=${range}`,
@@ -34,7 +37,10 @@ export function useMarshmallowHistoryQuery(type: filterActionType = 'ALL', range
 export function useTicketHistoryQuery() {
   const getWorkMonthly = async () => {
     const session = await getSession();
-    if (!session) throw new Error('로그인이 되어있지 않음');
+    if (!session) {
+      console.error('로그인이 되어있지 않음');
+      throw new Error('로그인이 되어있지 않음');
+    }
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/currency/drawticket/history`, {
       method: 'GET',

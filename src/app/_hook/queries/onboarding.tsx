@@ -5,7 +5,10 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 export function useOnboardingCompleteMutation() {
   const onboardingComplete = async () => {
     const session = await getSession();
-    if (!session) throw new Error('로그인이 되어있지 않음');
+    if (!session) {
+      console.error('로그인이 되어있지 않음');
+      throw new Error('로그인이 되어있지 않음');
+    }
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/onboarding`, {
       method: 'POST',
@@ -28,7 +31,10 @@ export function useOnboardingCompleteMutation() {
 export function useOnboardingStatusQuery() {
   const getMember = async () => {
     const session = await getSession();
-    if (!session) throw new Error('로그인이 되어있지 않음');
+    if (!session) {
+      console.error('로그인이 되어있지 않음');
+      throw new Error('로그인이 되어있지 않음');
+    }
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/onboarding/status`, {
       method: 'GET',
@@ -53,7 +59,10 @@ export function useOnboardingStatusQuery() {
 export function useOnboardingMissionStatusQuery() {
   const getMember = async () => {
     const session = await getSession();
-    if (!session) throw new Error('로그인이 되어있지 않음');
+    if (!session) {
+      console.error('로그인이 되어있지 않음');
+      throw new Error('로그인이 되어있지 않음');
+    }
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/onboarding/status`, {
       method: 'GET',
@@ -79,6 +88,7 @@ export function useOnboardingMallowPracticeMutation() {
   const onboardingGettingMallowPractice = async () => {
     const session = await getSession();
     if (!session) {
+      console.error('로그인이 되어있지 않음');
       throw new Error('로그인이 되어있지 않음');
     }
 

@@ -5,7 +5,10 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 export function useWorkWeeklyQuery(dateString: string) {
   const getWorkWeekly = async () => {
     const session = await getSession();
-    if (!session) throw new Error('로그인이 되어있지 않음');
+    if (!session) {
+      console.error('로그인이 되어있지 않음');
+      throw new Error('로그인이 되어있지 않음');
+    }
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/activity/work/weekly?date=${dateString}`, {
       method: 'GET',
@@ -30,7 +33,10 @@ export function useWorkWeeklyQuery(dateString: string) {
 export function useWorkTodayQuery() {
   const getWorkToday = async () => {
     const session = await getSession();
-    if (!session) throw new Error('로그인이 되어있지 않음');
+    if (!session) {
+      console.error('로그인이 되어있지 않음');
+      throw new Error('로그인이 되어있지 않음');
+    }
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/activity/work/today`, {
       method: 'GET',
@@ -55,7 +61,10 @@ export function useWorkTodayQuery() {
 export function useWorkMonthlyQuery(dateString: string) {
   const getWorkMonthly = async () => {
     const session = await getSession();
-    if (!session) throw new Error('로그인이 되어있지 않음');
+    if (!session) {
+      console.error('로그인이 되어있지 않음');
+      throw new Error('로그인이 되어있지 않음');
+    }
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/activity/work/monthly?date=${dateString}`, {
       method: 'GET',
@@ -81,6 +90,7 @@ export function useWorkAttendanceMutation() {
   const work = async () => {
     const session = await getSession();
     if (!session) {
+      console.error('로그인이 되어있지 않음');
       throw new Error('로그인이 되어있지 않음');
     }
 

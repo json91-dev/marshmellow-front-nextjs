@@ -56,7 +56,6 @@ export default function PassCard() {
             <p>카카오톡으로 시작하기</p>
           </div>
         </div>
-        톡
         {isAppleOS !== null && !isAppleOS ? (
           <div className={style.googleButton} onClick={() => authLogin('google')}>
             <div className={style.button}>

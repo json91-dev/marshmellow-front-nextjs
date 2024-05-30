@@ -9,9 +9,8 @@ import { useWorkTodayQuery } from '@/app/_hook/queries/activity';
 import dayjs from 'dayjs';
 import { formatDateToTodayDate, getWorkTimeRangeString } from '@/utils/utils';
 import isBetween from 'dayjs/plugin/isBetween';
-import WeekAttendanceNotMember from '@/app/(main)/office/_components/WeekAttendanceNotMember';
-import { useSession } from 'next-auth/react';
-import TodayMissionNotMember from '@/app/(main)/office/_components/TodayMissionNotMember';
+import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
+dayjs.extend(isSameOrAfter);
 dayjs.extend(isBetween);
 
 type workStateType = {
@@ -23,22 +22,8 @@ type workStateType = {
 };
 
 /** 로그인 상태일때 Office => 오늘의 업무 화면 **/
-export default function TodayMission() {
-  const { data: profileResult, isLoading: isLoadingProfile, isFetching: isFetchingProfile } = useMemberProfileQuery();
-  const { data: workResult, isLoading: isLoadingWork, isFetching: isFetchingWork } = useWorkTodayQuery();
+export default function TodayMissionNotMember() {
   const { time: currentTimeEveryMinute } = useMinuteUpdater();
-  const { data: session, status: sessionStatus } = useSession();
-
-  if (
-    isLoadingProfile ||
-    isFetchingProfile ||
-    isLoadingWork ||
-    isFetchingWork ||
-    sessionStatus === 'unauthenticated' ||
-    sessionStatus === 'loading'
-  ) {
-    return <TodayMissionNotMember />;
-  }
 
   const todayDate = useMemo(() => {
     return formatDateToTodayDate(currentTimeEveryMinute);
@@ -46,49 +31,51 @@ export default function TodayMission() {
 
   /** 현재 시간과 서버로부터 얻어온 근무시간을 비교후 오늘의 업무 상태 반환 **/
   const workState = useMemo<workStateType[]>(() => {
-    if (!workResult || !profileResult || !currentTimeEveryMinute) return [];
-    const { startHour, launchTimeAt, endHour } = profileResult.data.officeHour;
+    if (!currentTimeEveryMinute) return [];
     const currentTime = dayjs(currentTimeEveryMinute);
-
     // 근무 시간 경계 계산
     const midnightDate = dayjs().startOf('day').toDate();
-    const workTimeFinishDate = dayjs().hour(startHour).minute(15);
-    const lunchTimeFinishDate = dayjs().hour(launchTimeAt).minute(15);
-    const workEndTimeFinishDate = dayjs().hour(endHour).minute(15);
+    const workTimeFinishDate = dayjs().hour(9).minute(15);
+    const lunchTimeFinishDate = dayjs().hour(12).minute(15);
+    const workEndTimeFinishDate = dayjs().hour(18).minute(15);
     const isWorkActive = currentTime.isBetween(midnightDate, workTimeFinishDate, 'minute', '[]');
     const isLunchActive = currentTime.isBetween(workTimeFinishDate, lunchTimeFinishDate, 'minute', '(]');
     const isWorkEndActive = currentTime.isBetween(lunchTimeFinishDate, workEndTimeFinishDate, 'minute', '(]');
 
-    const { workStart, launch, workEnd } = workResult.data;
-    const { state: workState, quantity: workQuantity } = workStart;
-    const { state: lunchState, quantity: lunchQuantity } = launch;
-    const { state: workEndState, quantity: workEndQuantity } = workEnd;
+    // 특정 시간 설정
+    const nineSixteen = dayjs().hour(9).minute(16).second(0);
+    const twelveSixteen = dayjs().hour(12).minute(16).second(0);
+    const eighteenSixteen = dayjs().hour(18).minute(16).second(0);
+
+    const isAfterOrSameNineSixteen = dayjs().isSameOrAfter(nineSixteen, 'second');
+    const isAfterOrSameTwelveSixteen = dayjs().isSameOrAfter(twelveSixteen, 'second');
+    const isAfterOrSameEighteenSixteen = dayjs().isSameOrAfter(eighteenSixteen, 'second');
 
     return [
       {
         active: isWorkActive,
-        quantity: workQuantity,
-        state: workState,
-        workTimeRange: getWorkTimeRangeString(startHour),
+        quantity: 0,
+        state: isAfterOrSameNineSixteen ? 'Failed' : 'Soon',
+        workTimeRange: '09:00 ~ 09:15',
         name: '출근',
       },
       {
         active: isLunchActive,
-        quantity: lunchQuantity,
-        state: lunchState,
-        workTimeRange: getWorkTimeRangeString(launchTimeAt),
+        quantity: 0,
+        state: isAfterOrSameTwelveSixteen ? 'Failed' : 'Soon',
+        workTimeRange: '12:00 ~ 12:15',
         name: '점심',
       },
 
       {
         active: isWorkEndActive,
-        quantity: workEndQuantity,
-        state: workEndState,
-        workTimeRange: getWorkTimeRangeString(endHour),
+        quantity: 0,
+        state: isAfterOrSameEighteenSixteen ? 'Failed' : 'Soon',
+        workTimeRange: '18:00 ~ 18:15',
         name: '퇴근',
       },
     ];
-  }, [workResult, profileResult, currentTimeEveryMinute]);
+  }, [currentTimeEveryMinute]);
 
   return (
     <div className={style.todayMission}>

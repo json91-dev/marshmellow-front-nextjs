@@ -4,7 +4,10 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 export function useNotificationModalQuery(modalType: number) {
   const getNotificationModalInfo = async () => {
     const session = await getSession();
-    if (!session) throw new Error('로그인이 되어있지 않음');
+    if (!session) {
+      console.error('로그인이 되어있지 않음');
+      throw new Error('로그인이 되어있지 않음');
+    }
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/notification/modal?modalType=${modalType}`, {
       method: 'GET',
@@ -28,7 +31,10 @@ export function useNotificationModalQuery(modalType: number) {
 export function useNotificationModalAllQuery() {
   const getNotificationModalInfoAll = async () => {
     const session = await getSession();
-    if (!session) throw new Error('로그인이 되어있지 않음');
+    if (!session) {
+      console.error('로그인이 되어있지 않음');
+      throw new Error('로그인이 되어있지 않음');
+    }
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/notification/modal/all`, {
       method: 'GET',
@@ -53,6 +59,7 @@ export function useNotificationModalReadMutation() {
   const modalRead = async (modalId: number) => {
     const session = await getSession();
     if (!session) {
+      console.error('로그인이 되어있지 않음');
       throw new Error('로그인이 되어있지 않음');
     }
 
