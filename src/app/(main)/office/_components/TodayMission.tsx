@@ -12,6 +12,7 @@ import isBetween from 'dayjs/plugin/isBetween';
 import WeekAttendanceNotMember from '@/app/(main)/office/_components/WeekAttendanceNotMember';
 import { useSession } from 'next-auth/react';
 import TodayMissionNotMember from '@/app/(main)/office/_components/TodayMissionNotMember';
+import Spinner from '@/app/login/_components/Spinner';
 dayjs.extend(isBetween);
 
 type workStateType = {
@@ -28,17 +29,6 @@ export default function TodayMission() {
   const { data: workResult, isLoading: isLoadingWork, isFetching: isFetchingWork } = useWorkTodayQuery();
   const { time: currentTimeEveryMinute } = useMinuteUpdater();
   const { data: session, status: sessionStatus } = useSession();
-
-  if (
-    isLoadingProfile ||
-    isFetchingProfile ||
-    isLoadingWork ||
-    isFetchingWork ||
-    sessionStatus === 'unauthenticated' ||
-    sessionStatus === 'loading'
-  ) {
-    return <TodayMissionNotMember />;
-  }
 
   const todayDate = useMemo(() => {
     return formatDateToTodayDate(currentTimeEveryMinute);
@@ -89,6 +79,18 @@ export default function TodayMission() {
       },
     ];
   }, [workResult, profileResult, currentTimeEveryMinute]);
+
+  if (sessionStatus === 'unauthenticated') {
+    return <TodayMissionNotMember />;
+  }
+
+  if (isLoadingProfile || isFetchingProfile || isLoadingWork || isFetchingWork || sessionStatus === 'loading') {
+    return (
+      <div className={style.todayMission}>
+        <Spinner />
+      </div>
+    );
+  }
 
   return (
     <div className={style.todayMission}>

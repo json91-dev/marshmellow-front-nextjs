@@ -9,6 +9,7 @@ import dayjs from 'dayjs';
 import { findMonday, findSunday } from '@/utils/utils';
 import { useModalStore } from '@/store/modal';
 import WeekAttendanceNotMember from '@/app/(main)/office/_components/WeekAttendanceNotMember';
+import Spinner from '@/app/login/_components/Spinner';
 
 /** 로그인 상태일때 Office => 근태관리 화면 **/
 export default function WeekAttendance() {
@@ -23,7 +24,15 @@ export default function WeekAttendance() {
     }
   };
 
-  if (isFetching || isLoading || sessionStatus === 'unauthenticated' || sessionStatus === 'loading') {
+  if (isFetching || isLoading || sessionStatus === 'loading') {
+    return (
+      <div className={style.attendance}>
+        <Spinner />
+      </div>
+    );
+  }
+
+  if (sessionStatus === 'unauthenticated') {
     return <WeekAttendanceNotMember />;
   }
 
