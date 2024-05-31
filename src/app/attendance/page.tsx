@@ -4,6 +4,7 @@ import MissionCalendar from '@/app/attendance/_components/MissionCalendar';
 import Image from 'next/image';
 import React from 'react';
 import BottomInfo from '@/app/attendance/_components/BottomInfo';
+import dayjs from 'dayjs';
 
 export default function AttendancePage() {
   return (
@@ -37,8 +38,8 @@ export default function AttendancePage() {
             <div className={style.infoDate}>
               <Image src={'/images/mallow.date.bg.svg'} width={80} height={80} alt="No Image" />
               <div className={style.todayDate}>
-                <p className={style.month}>3월</p>
-                <p className={style.date}>10일</p>
+                <p className={style.month}>{dayjs().month() + 1}월</p>
+                <p className={style.date}>{dayjs().date()}일</p>
               </div>
             </div>
           </div>

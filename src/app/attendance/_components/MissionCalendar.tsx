@@ -1,12 +1,13 @@
 'use client';
 import style from './missionCalendar.module.scss';
-import useCalendar from '@/app/_hook/useCalendar';
 import Image from 'next/image';
 import React, { useState } from 'react';
+import { getCalendarArray } from '@/utils/utils';
+import dayjs from 'dayjs';
 const DAY_LIST = ['일', '월', '화', '수', '목', '금', '토'];
 
 export default function MissionCalendar() {
-  const { setCurrentDate, currentDate, weekCalendarList } = useCalendar();
+  const weekCalendarList = getCalendarArray(dayjs().year(), dayjs().month());
   const [missionList, setMissionList] = useState(weekCalendarList);
 
   return (

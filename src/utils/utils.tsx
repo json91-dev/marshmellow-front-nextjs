@@ -229,3 +229,69 @@ export function findSunday(date: Dayjs) {
   const sunday = date.add(dayOfWeek === 0 ? 0 : 7 - dayOfWeek, 'day');
   return sunday;
 }
+
+export function getTotalDaysInMonth(date: Dayjs) {
+  const startOfMonth = date.startOf('month');
+  const startOfNextMonth = date.add(1, 'month').startOf('month');
+  return startOfNextMonth.diff(startOfMonth, 'day');
+}
+
+// 이전달 일요일부터 오늘까지의 날짜까지에 대한 트래쉬값 생성 ex) [0, 0], [0]
+export function getPrevDayTrash(date: Dayjs) {
+  const DEFAULT_TRASH_VALUE = 0;
+  const firstDayOfMonth = date.startOf('month');
+  const daysToSunday = firstDayOfMonth.day(); // dayjs에서 day()는 0 (일요일)부터 6 (토요일)까지의 요일을 반환
+
+  return Array.from({ length: Math.max(0, daysToSunday) }).map(() => DEFAULT_TRASH_VALUE);
+}
+
+// 특정 달의 캘린더 줄 수를 계산하는 함수
+const getCalendarRows = (dayjs: Dayjs) => {
+  // 주어진 dayjs 객체의 연도와 월의 첫 번째 날
+  const firstDayOfMonth = dayjs.startOf('month');
+  // 해당 달의 첫 번째 날의 요일 (0: 일요일, 1: 월요일, ... 6: 토요일)
+  const startDayOfWeek = firstDayOfMonth.day();
+  // 해당 달의 총 일수
+  const daysInMonth = firstDayOfMonth.daysInMonth();
+
+  // 달력의 총 셀 수 (첫 주 시작 전 공백 + 해당 달의 일수)
+  const totalCells = startDayOfWeek + daysInMonth;
+
+  // 달력의 총 줄 수 (7일이 한 줄이므로 나눗셈의 올림값)
+  const totalRows = Math.ceil(totalCells / 7);
+
+  return totalRows;
+};
+
+// 특정 달의 캘린더를 2차원 튜플로 반환 => ex) [[0,0,0,1,2,3,4],[5,6,7,8,9,10,11,12] ...]]
+export function getCalendarArray(year: number, month: number) {
+  const date = dayjs().year(year).month(month);
+  const CALENDER_LENGTH = getCalendarRows(date) * 7;
+  const DEFAULT_TRASH_VALUE = 0;
+  const DAY_OF_WEEK = 7;
+  const daysInMonth = getTotalDaysInMonth(date);
+  const prevDayTrash = getPrevDayTrash(date);
+
+  // 이번달에 포함된 날짜 모두 출력 ex) 1,2,3,...31
+  const currentDayList = Array.from({ length: daysInMonth }).map((_, i) => i + 1);
+
+  // 다음달에 포함될 트래쉬값 생성 ex) [0, 0, 0]
+  const nextDayList = Array.from({
+    length: CALENDER_LENGTH - currentDayList.length - prevDayTrash.length,
+  }).map(() => DEFAULT_TRASH_VALUE);
+
+  // 날짜에 대한 1차원 튜플 생성
+  const currentCalendarList = prevDayTrash.concat(currentDayList, nextDayList);
+
+  // 1차원 튜플 => 2차원 튜플
+  const weekCalendarList = currentCalendarList.reduce((acc: number[][], cur, index) => {
+    const chunkIndex = Math.floor(index / DAY_OF_WEEK);
+    if (!acc[chunkIndex]) {
+      acc[chunkIndex] = [];
+    }
+    acc[chunkIndex].push(cur);
+    return acc;
+  }, []);
+
+  return weekCalendarList;
+}
