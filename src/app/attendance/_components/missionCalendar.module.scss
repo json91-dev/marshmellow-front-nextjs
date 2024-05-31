@@ -10,7 +10,7 @@
   gap: 1.6rem;
   position: relative;
 
-  .header {
+  .monthHeader {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -19,11 +19,17 @@
     height: 2.4rem;
 
 
-    .leftButton {
+    .leftButton,  {
       position: absolute;
       left: 0.5rem;
       @include activeOpacity;
-      @include activeScale;
+      cursor: pointer;
+    }
+    .rightButton {
+      position: absolute;
+      right: 0.5rem;
+      @include activeOpacity;
+      cursor: pointer;
     }
 
     p {

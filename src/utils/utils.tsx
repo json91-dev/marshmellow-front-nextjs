@@ -264,27 +264,27 @@ const getCalendarRows = (dayjs: Dayjs) => {
 };
 
 // 특정 달의 캘린더를 2차원 튜플로 반환 => ex) [[0,0,0,1,2,3,4],[5,6,7,8,9,10,11,12] ...]]
-export function getCalendarArray(year: number, month: number) {
+export function getCalendarData(year: number, month: number) {
   const date = dayjs().year(year).month(month);
   const CALENDER_LENGTH = getCalendarRows(date) * 7;
   const DEFAULT_TRASH_VALUE = 0;
   const DAY_OF_WEEK = 7;
   const daysInMonth = getTotalDaysInMonth(date);
-  const prevDayTrash = getPrevDayTrash(date);
+  const prevDayEmptyList = getPrevDayTrash(date);
 
   // 이번달에 포함된 날짜 모두 출력 ex) 1,2,3,...31
   const currentDayList = Array.from({ length: daysInMonth }).map((_, i) => i + 1);
 
   // 다음달에 포함될 트래쉬값 생성 ex) [0, 0, 0]
-  const nextDayList = Array.from({
-    length: CALENDER_LENGTH - currentDayList.length - prevDayTrash.length,
+  const nextDayEmptyList = Array.from({
+    length: CALENDER_LENGTH - currentDayList.length - prevDayEmptyList.length,
   }).map(() => DEFAULT_TRASH_VALUE);
 
   // 날짜에 대한 1차원 튜플 생성
-  const currentCalendarList = prevDayTrash.concat(currentDayList, nextDayList);
+  const currentCalendarList = prevDayEmptyList.concat(currentDayList, nextDayEmptyList);
 
   // 1차원 튜플 => 2차원 튜플
-  const weekCalendarList = currentCalendarList.reduce((acc: number[][], cur, index) => {
+  const calendarList = currentCalendarList.reduce((acc: number[][], cur, index) => {
     const chunkIndex = Math.floor(index / DAY_OF_WEEK);
     if (!acc[chunkIndex]) {
       acc[chunkIndex] = [];
@@ -293,5 +293,5 @@ export function getCalendarArray(year: number, month: number) {
     return acc;
   }, []);
 
-  return weekCalendarList;
+  return { calendarList, prevDayEmptyList, nextDayEmptyList };
 }
