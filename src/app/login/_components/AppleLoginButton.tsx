@@ -29,9 +29,7 @@ export default function AppleLoginButton(props: Props) {
   return (
     <div className={style.container} style={props.style} onClick={onClickButton}>
       <div className={style.button}>
-        <div className={style.image}>
-          <Image src="/images/login.apple.svg" alt="No Image" fill objectFit="contain" />
-        </div>
+        <Image src="/images/login.apple.svg" alt={'No Image'} width={21} height={21} style={{ marginBottom: '2px' }} />
         <p>Apple로 시작하기</p>
       </div>
     </div>

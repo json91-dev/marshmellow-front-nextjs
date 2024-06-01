@@ -147,14 +147,14 @@ export default function TermsBottomSheet() {
                   <div>
                     <div>개인정보 수집 이용동의</div>
                     <div className={style.image}>
-                      <Image src="/images/arrow.right.svg" alt="No Image" fill objectFit="contain" />
+                      <Image src="/images/arrow.right.svg" alt="No Image" width={24} height={24} />
                     </div>
                   </div>
 
                   <div>
                     <div>서비스 이용 약관 동의</div>
                     <div className={style.image}>
-                      <Image src="/images/arrow.right.svg" alt="No Image" fill objectFit="contain" />
+                      <Image src="/images/arrow.right.svg" alt="No Image" width={24} height={24} />
                     </div>
                   </div>
                 </div>

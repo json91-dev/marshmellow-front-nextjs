@@ -15,13 +15,10 @@ import Spinner from '@/app/login/_components/Spinner';
 export default function WeekAttendance() {
   const router = useRouter();
   const { data: session, status: sessionStatus } = useSession();
+  const { showOfficeNewbieSignupModal } = useModalStore();
   const { data: workWeeklyResult, isFetching, isLoading, isError } = useWorkWeeklyQuery(dayjs().format('YYYY-MM-DD'));
   const onClickAttendance = () => {
-    if (sessionStatus === 'authenticated') {
-      router.push('/attendance');
-    } else {
-      console.log('모달 오픈');
-    }
+    router.push('/attendance');
   };
 
   if (isFetching || isLoading || sessionStatus === 'loading') {

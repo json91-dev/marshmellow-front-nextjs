@@ -23,9 +23,7 @@ export default function IdentifyCheck() {
     <div className={cx(style.container, !isRunningPASS && style.bgGray)}>
       {!isRunningPASS && (
         <>
-          <div className={style.image}>
-            <Image src="/images/mallow.work.svg" alt="No Image" fill objectFit="contain" />
-          </div>
+          <Image src="/images/mallow.work.svg" alt="No Image" width={132} height={124} />
           <div className={style.description}>입사지원을 위해 최초 1회 본인인증이 필요합니다.</div>
           <ConfirmButton
             onClick={onClickStartPASS}
@@ -39,11 +37,7 @@ export default function IdentifyCheck() {
         <>
           <div className={style.title}>현재 인증이 진행중입니다.</div>
           <div className={style.description}>통신사 앱에서 인증 후, 아래 [확인]버튼을 꼭 누르세요.</div>
-          <ConfirmButton
-            onClick={onClickConfirmPASS}
-            text={'확인'}
-            customStyle={{ fontSize: '1.3rem', width: '80%' }}
-          />
+          <ConfirmButton onClick={onClickConfirmPASS} text={'확인'} customStyle={{ fontSize: '1.3rem', width: '80%' }} />
         </>
       )}
     </div>

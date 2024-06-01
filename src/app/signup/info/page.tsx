@@ -211,8 +211,8 @@ export default function SignupInfoPage() {
             />
             <div className={style.image} onClick={() => document.getElementById('profileInput')?.click()}>
               <>
-                {!profileImageUrl && <Image src="/images/mallow.image.svg" alt="No Image" fill objectFit="contain" />}
-                {profileImageUrl && <Image src={profileImageUrl} alt="No Image" fill objectFit="contain" />}
+                {!profileImageUrl && <Image src="/images/mallow.image.svg" alt="No Image" width={80} height={80} />}
+                {profileImageUrl && <Image src={profileImageUrl} alt="No Image" width={80} height={80} />}
               </>
             </div>
             <div className={style.info}>
@@ -357,7 +357,7 @@ export default function SignupInfoPage() {
                 <option value={3}>기타</option>
               </select>
               <div className={style.image}>
-                <Image src="/images/arrow.bottom.svg" alt="No Image" fill objectFit="contain" />
+                <Image src="/images/arrow.bottom.svg" alt="No Image" fill />
               </div>
             </div>
           </div>

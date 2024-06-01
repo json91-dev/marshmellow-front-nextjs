@@ -30,6 +30,8 @@ html, body {
   background-image: linear-gradient(to bottom, #EDF0F9 60%, #D5DBE8 40%);
   background-repeat: no-repeat; /* 배경 이미지가 반복되지 않도록 설정 */
   touch-action: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: auto;
 }
 ol, ul {
   list-style: none;

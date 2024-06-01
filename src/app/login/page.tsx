@@ -9,9 +9,7 @@ export default function LoginPage() {
       <div className={style.titleSection}>
         <h2>{'오늘도 열심히 일한 당신! 혜택을 누리고 즐겨라!'}</h2>
         <h1>{'직장인들의 달달한 간식 \n 마시멜로우'}</h1>
-        <div className={style.image}>
-          <Image src="/images/main.image.svg" alt="No Image" fill objectFit="contain" />
-        </div>
+        <Image src="/images/main.image.svg" alt="No Image" width={218} height={212} style={{ marginTop: '1.5rem' }} />
       </div>
 
       <div className={style.bottomLoginSection}>

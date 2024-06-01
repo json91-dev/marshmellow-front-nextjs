@@ -10,8 +10,9 @@ import React from 'react';
 export default function WeekAttendanceNotMember() {
   const { showOfficeNewbieSignupModal } = useModalStore();
   const onClickAttendance = () => {
-    // TODO:
+    showOfficeNewbieSignupModal(true);
   };
+
   const now = dayjs();
   const mondayTime = findMonday(now);
   const sundayTime = findSunday(now);

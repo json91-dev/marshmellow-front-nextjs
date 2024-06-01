@@ -25,9 +25,7 @@ export default function KakaoLoginButton(props: Props) {
   return (
     <div className={style.container} style={props.style} onClick={onClickButton}>
       <div className={style.button}>
-        <div className={style.image}>
-          <Image src="/images/login.kakao.svg" alt="No Image" fill objectFit="contain" />
-        </div>
+        <Image src="/images/login.kakao.svg" alt="No Image" width={20} height={20} />
         <p>카카오톡으로 시작하기</p>
       </div>
     </div>

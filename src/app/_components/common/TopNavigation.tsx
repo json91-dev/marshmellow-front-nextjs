@@ -32,7 +32,7 @@ export default function TopNavigation({ title = '' }: Props) {
   return (
     <div className={style.container}>
       <div className={style.leftIcon} onClick={onClickBackButton}>
-        <Image src="/images/arrow.left.svg" alt="No Image" fill objectFit="contain" />
+        <Image src="/images/arrow.left.svg" alt="No Image" width={24} height={24} />
       </div>
       {title ? <p>{title}</p> : <p></p>}
       <div className={style.leftIcon}></div>
