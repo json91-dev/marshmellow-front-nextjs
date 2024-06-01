@@ -8,16 +8,22 @@
 
   z-index: var(--modalIndex);
   width: 30rem;
-  padding: 3.6rem 1.6rem 2.4rem;
+  padding: 2.4rem 1.6rem 2.4rem;
   border: 1px solid black;
   border-radius: 1rem;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
 
 .officeNewbieSignupModal {
   @include modal;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   .title {
     font-size: 1.8rem;
@@ -25,18 +31,27 @@
     color: #12171E;
   }
 
+  .characterImg {
+    margin-top: 1rem;
+  }
+
   .description {
     font-size: 1.4rem;
     font-weight: 500;
     line-height: 2rem;
     color: #3D4451;
+    margin-top: 1rem;
+    text-align: center;
+    white-space: pre-wrap;
   }
 
-  .nextApplyButton {
+  .laterButton {
     @include activeScale();
     @include activeOpacity();
     color: #5C6475;
     font-size: 1.4rem;
+    margin-top: 1.8rem;
+    cursor: pointer;
   }
 
   .loginButtons {
@@ -59,7 +74,7 @@
         display: flex;
         justify-content: center;
         background-color: #FFE611;
-        border-radius: 1rem;
+        border-radius: 0.6rem;
         align-items: center;
         flex-direction: row;
         @include activeScale;
@@ -90,7 +105,7 @@
         display: flex;
         justify-content: center;
         background-color: white;
-        border-radius: 1rem;
+        border-radius: 0.6rem;
         align-items: center;
         flex-direction: row;
         border: 1px solid #D4DBE9;
@@ -122,7 +137,7 @@
         display: flex;
         justify-content: center;
         background-color: white;
-        border-radius: 1rem;
+        border-radius: 0.6rem;
         align-items: center;
         flex-direction: row;
         border: 1px solid #D4DBE9;

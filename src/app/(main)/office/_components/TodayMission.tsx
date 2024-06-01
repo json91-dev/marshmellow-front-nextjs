@@ -9,9 +9,9 @@ import { useWorkTodayQuery } from '@/app/_hook/queries/activity';
 import dayjs from 'dayjs';
 import { formatDateToTodayDate, getWorkTimeRangeString } from '@/utils/utils';
 import isBetween from 'dayjs/plugin/isBetween';
-import WeekAttendanceNotMember from '@/app/(main)/office/_components/WeekAttendanceNotMember';
+import WeekAttendanceGuest from '@/app/(main)/office/_components/guest/WeekAttendanceGuest';
 import { useSession } from 'next-auth/react';
-import TodayMissionNotMember from '@/app/(main)/office/_components/TodayMissionNotMember';
+import TodayMissionGuest from '@/app/(main)/office/_components/guest/TodayMissionGuest';
 import Spinner from '@/app/login/_components/Spinner';
 dayjs.extend(isBetween);
 
@@ -81,7 +81,7 @@ export default function TodayMission() {
   }, [workResult, profileResult, currentTimeEveryMinute]);
 
   if (sessionStatus === 'unauthenticated') {
-    return <TodayMissionNotMember />;
+    return <TodayMissionGuest />;
   }
 
   if (isLoadingProfile || isFetchingProfile || isLoadingWork || isFetchingWork || sessionStatus === 'loading') {

@@ -22,7 +22,7 @@ type workStateType = {
 };
 
 /** 로그인 상태일때 Office => 오늘의 업무 화면 **/
-export default function TodayMissionNotMember() {
+export default function TodayMissionGuest() {
   const { time: currentTimeEveryMinute } = useMinuteUpdater();
 
   const todayDate = useMemo(() => {

@@ -9,12 +9,14 @@ import { signIn } from 'next-auth/react';
 import Image from 'next/image';
 import { AuthError } from 'next-auth';
 import { isAppleDevice } from '@/utils/utils';
+import { useRouter } from 'next/navigation';
 
 export default function OfficeNewbieSignupModal() {
   const { isShowOfficeNewbieSignupModal, showOfficeNewbieSignupModal, officeNewbieSignupStatus } = useModalStore();
   const backdropRef = React.useRef(null);
   const modalRef = React.useRef(null);
   const [isAppleOS, setIsAppleOS] = useState<boolean>(null!);
+  const router = useRouter();
 
   const authLogin = useCallback(async (provider: string) => {
     try {
@@ -31,6 +33,14 @@ export default function OfficeNewbieSignupModal() {
       throw error;
     }
   }, []);
+
+  const onClickLaterButton = useCallback(() => {
+    if (officeNewbieSignupStatus === 'idle') {
+      router.push('/attendance');
+    }
+
+    showOfficeNewbieSignupModal(false);
+  }, [officeNewbieSignupStatus]);
 
   useEffect(() => {
     const isAppleOS = isAppleDevice();
@@ -49,11 +59,11 @@ export default function OfficeNewbieSignupModal() {
             {officeNewbieSignupStatus === 'work' && <>{`취준생님의 회사 출근 체험 성공!`}</>}
             {officeNewbieSignupStatus === 'workEnd' && <>{`취준생님의 구내 식당 점심 체험 성공!`}</>}
             {officeNewbieSignupStatus === 'lunch' && <>{`취준생님의 회사 퇴근 체험 성공!`}</>}
-            {officeNewbieSignupStatus === 'idle' && (
-              <>{`마시멜로우에 빠르게 입사 지원하고\n열심히 일한 나의 출근 기록을 남겨보세요.`}</>
-            )}
+            {officeNewbieSignupStatus === 'idle' && <>{`입사 후 근태 관리를 할 수 있어요!`}</>}
           </div>
-          <Image src="/images/mallow.happy.svg" alt="No Image" width={72} height={72} />
+          <div className={style.characterImg}>
+            <Image src="/images/mallow.happy.svg" alt="No Image" width={72} height={72} />
+          </div>
           <div className={style.description}>
             {officeNewbieSignupStatus === 'idle' ? (
               <>{`마시멜로우에 빠르게 입사 지원하고\n열심히 일한 나의 출근 기록을 남겨보세요.`}</>
@@ -93,7 +103,7 @@ export default function OfficeNewbieSignupModal() {
             )}
           </div>
 
-          <div className={style.nextApplyButton} onClick={() => showOfficeNewbieSignupModal(false)}>
+          <div className={style.laterButton} onClick={onClickLaterButton}>
             {officeNewbieSignupStatus === 'idle' ? <p>다음에 지원하기</p> : <p>마시멜로우 다음에 받기</p>}
           </div>
         </div>
