@@ -4,6 +4,10 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import { getCalendarData } from '@/utils/utils';
 import dayjs from 'dayjs';
+import TodayMissionGuest from '@/app/(main)/office/_components/guest/TodayMissionGuest';
+import Spinner from '@/app/login/_components/Spinner';
+import { useSession } from 'next-auth/react';
+import MissionCalendarGuest from '@/app/attendance/_components/guest/MissionCalendarGuest';
 const DAY_LIST = ['일', '월', '화', '수', '목', '금', '토'];
 
 export default function MissionCalendar() {
@@ -11,11 +15,16 @@ export default function MissionCalendar() {
   const [year, setYear] = useState(dayjs().year());
   const { calendarList: calendarData, prevDayEmptyList, nextDayEmptyList } = getCalendarData(year, month);
   const [calendarList, setCalendarList] = useState(calendarData);
+  const { data: session, status: sessionStatus } = useSession();
 
   useEffect(() => {
     const { calendarList: calendarData, prevDayEmptyList, nextDayEmptyList } = getCalendarData(year, month);
     setCalendarList(calendarData);
   }, [month, year]);
+
+  if (sessionStatus === 'unauthenticated') {
+    return <MissionCalendarGuest />;
+  }
 
   return (
     <div className={style.missionCalendar}>

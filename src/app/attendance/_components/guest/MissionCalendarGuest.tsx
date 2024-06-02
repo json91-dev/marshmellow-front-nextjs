@@ -6,7 +6,7 @@ import { getCalendarData } from '@/utils/utils';
 import dayjs from 'dayjs';
 const DAY_LIST = ['일', '월', '화', '수', '목', '금', '토'];
 
-export default function MissionCalendar() {
+export default function MissionCalendarGuest() {
   const [month, setMonth] = useState(dayjs().month());
   const [year, setYear] = useState(dayjs().year());
   const { calendarList: calendarData, prevDayEmptyList, nextDayEmptyList } = getCalendarData(year, month);
@@ -26,6 +26,7 @@ export default function MissionCalendar() {
             return <p key={day}>{day}</p>;
           })}
         </div>
+
         <div className={style.calendar}>
           {calendarList?.map((week) => {
             return (
@@ -34,6 +35,7 @@ export default function MissionCalendar() {
                   return (
                     <div key={day + index} className={style.dayItem}>
                       <p>{day !== 0 && day}</p>
+                      {dayjs().month() === month && dayjs().date() === day && <div className={style.dot} />}
                     </div>
                   );
                 })}

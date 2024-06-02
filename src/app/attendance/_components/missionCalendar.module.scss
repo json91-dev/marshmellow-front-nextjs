@@ -62,13 +62,14 @@
       display: flex;
       flex-direction: column;
       margin-top: 1rem;
-      gap: 1.2rem;
+      gap: 2rem;
 
       .week {
         display: flex;
         justify-content: space-between;
 
         .dayItem {
+          position: relative;;
           text-align: center;
           flex: 1;
           display: flex;
@@ -81,6 +82,15 @@
             color: #3D4451;
             font-size: 1.4rem;
             font-weight: 600;
+          }
+
+          .dot {
+            position: absolute;
+            width: 0.6rem;
+            height: 0.6rem;
+            background: #BB4EF2;
+            border-radius: 100%;
+            bottom: -0.6rem;
           }
         }
       }
