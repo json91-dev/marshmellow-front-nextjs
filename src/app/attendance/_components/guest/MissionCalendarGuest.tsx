@@ -38,7 +38,7 @@ export default function MissionCalendarGuest() {
 
                   return (
                     <div key={date + index} className={style.dateItem}>
-                      <p className={cx(isBeforeToday && style.beforeToday)}>{date !== 0 && date}</p>
+                      <p className={cx(isBeforeToday && style.gray)}>{date !== 0 && date}</p>
                       {dayjs().month() === month && dayjs().date() === date && <div className={style.dot} />}
                     </div>
                   );
@@ -57,12 +57,12 @@ export default function MissionCalendarGuest() {
 
             <div className={style.missionItem}>
               <Image src="/images/snack.purple.light.svg" alt="No Image" width={24} height={24} />
-              <p>업무 1개 완수</p>
+              <p>업무 2개 완수</p>
             </div>
 
             <div className={style.missionItem}>
               <Image src="/images/snack.purple.svg" alt="No Image" width={24} height={24} />
-              <p>업무 1개 완수</p>
+              <p>업무 3개 완수</p>
             </div>
           </div>
         </div>

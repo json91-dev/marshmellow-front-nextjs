@@ -3,32 +3,57 @@ import style from './missionCalendar.module.scss';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import { getCalendarData } from '@/utils/utils';
-import dayjs from 'dayjs';
-import TodayMissionGuest from '@/app/(main)/office/_components/guest/TodayMissionGuest';
+import dayjs, { Dayjs } from 'dayjs';
+import isBetween from 'dayjs/plugin/isBetween';
+dayjs.extend(isBetween);
 import Spinner from '@/app/login/_components/Spinner';
 import { useSession } from 'next-auth/react';
 import MissionCalendarGuest from '@/app/attendance/_components/guest/MissionCalendarGuest';
 import { useWorkMonthlyQuery } from '@/app/_hook/queries/activity';
+import { useMemberProfileQuery } from '@/app/_hook/queries/member';
 const DAY_LIST = ['일', '월', '화', '수', '목', '금', '토'];
 
+type calendarItem = {
+  today: boolean;
+  completeCount: number; // 0,1,2
+  name: string; // "1"
+  date: string; // "2024-05-01"
+  isFilled: boolean;
+};
+
+type calendarList = (calendarItem | 0)[][];
+
 export default function MissionCalendar() {
-  const [month, setMonth] = useState(dayjs().month());
-  const [year, setYear] = useState(dayjs().year());
-  const { calendarList: calendarData, prevDayEmptyList, nextDayEmptyList } = getCalendarData(year, month);
-  const [calendarList, setCalendarList] = useState(calendarData);
-  const { data: workMonthlyResult, isLoading, isFetching } = useWorkMonthlyQuery(dayjs().format('YYYY-MM-DD'));
-  const { data: session, status: sessionStatus } = useSession();
+  const [date, setDate] = useState(dayjs());
+  const [calendarList, setCalendarList] = useState<calendarList>([[]]);
+  const { data: workMonthlyResult, isLoading, isFetching } = useWorkMonthlyQuery(date.format('YYYY-MM-DD'));
+  const { data: profileResult, isLoading: isLoadingProfile, isFetching: isFetchingProfile } = useMemberProfileQuery();
+  const { status: sessionStatus } = useSession();
 
   useEffect(() => {
-    const { calendarList: calendarData, prevDayEmptyList, nextDayEmptyList } = getCalendarData(year, month);
-    setCalendarList(calendarData);
-  }, [month, year]);
+    const { calendarList: calendarData, prevDayEmptyList, nextDayEmptyList } = getCalendarData(date.year(), date.month());
+    if (workMonthlyResult) {
+      const { works } = workMonthlyResult.data;
+      // 날짜를 키로 하는 객체 맵 만들기
+      const worksObjectMap = works.reduce((map: any, obj: calendarItem) => {
+        map[obj.name] = obj;
+        return map;
+      }, {});
+
+      // 2차원 배열을 순회하며 객체로 대체
+      const combinedCalendarData: calendarList = calendarData.map((week) =>
+        week.map((day) => (day === 0 ? 0 : worksObjectMap[String(day)] || day)),
+      );
+
+      setCalendarList(combinedCalendarData);
+    }
+  }, [date, workMonthlyResult]);
 
   if (sessionStatus === 'unauthenticated') {
     return <MissionCalendarGuest />;
   }
 
-  if (isLoading || isFetching) {
+  if (isLoading || isFetching || isLoadingProfile || isFetchingProfile) {
     return (
       <div className={style.missionCalendar}>
         <Spinner />
@@ -36,9 +61,11 @@ export default function MissionCalendar() {
     );
   }
 
+  const memberStartDate = dayjs(profileResult.data.createdAt);
+
   return (
     <div className={style.missionCalendar}>
-      <MonthHeader month={month} setMonth={setMonth} />
+      <MonthHeader date={date} setDate={setDate} />
       <div className={style.body}>
         <div className={style.days}>
           {DAY_LIST.map((day) => {
@@ -48,64 +75,119 @@ export default function MissionCalendar() {
         <div className={style.calendar}>
           {calendarList?.map((week, index) => {
             return (
-              <div key={week[0]} className={style.week}>
-                {week.map((day, index) => {
-                  return (
-                    <div key={day + index} className={style.dateItem}>
-                      <p>{day !== 0 && day}</p>
-                      {dayjs().month() === month && dayjs().date() === day && <div className={style.dot} />}
-                    </div>
-                  );
+              <div key={index} className={style.week}>
+                {week.map((item, index) => {
+                  if (item === 0) {
+                    return <div key={item + index} className={style.dateItem} />;
+                  }
+
+                  return <CalendarMallowItem item={item} memberStartDate={memberStartDate} />;
                 })}
               </div>
             );
           })}
         </div>
+      </div>
+      <MissionInfo />
+    </div>
+  );
+}
 
-        <div className={style.missionInfo}>
-          <div className={style.missions}>
-            <div className={style.missionItem}>
-              <Image src="/images/snack.gray.svg" alt="No Image" width={24} height={24} />
-              <p>업무 1개 완수</p>
-            </div>
+/** 상단 날짜 선택 **/
+function MonthHeader({ date, setDate }: { date: Dayjs; setDate: any }) {
+  const currentMonth = dayjs().month(); // dayjs는 월을 0부터 시작하기 때문에 +1 해줍니다.
+  const minMonth = currentMonth - 3;
+  const maxMonth = currentMonth;
+  const showPreviousButton = minMonth < date.month();
+  const showNextButton = date.month() < maxMonth;
 
-            <div className={style.missionItem}>
-              <Image src="/images/snack.purple.light.svg" alt="No Image" width={24} height={24} />
-              <p>업무 1개 완수</p>
-            </div>
+  /** TODO: 추후 1월, 2월, 3월에 에러 발생 예정. **/
+  return (
+    <div className={style.monthHeader}>
+      {showPreviousButton && (
+        <div className={style.leftButton} onClick={() => setDate(date.subtract(1, 'month'))}>
+          <Image src="/images/arrow.calendar.left.svg" alt="No Image" width={24} height={24} />
+        </div>
+      )}
+      <p>{date.month() + 1}월</p>
+      {showNextButton && (
+        <div className={style.rightButton} onClick={() => setDate(date.add(1, 'month'))}>
+          <Image src="/images/arrow.calendar.right.svg" alt="No Image" width={24} height={24} />
+        </div>
+      )}
+    </div>
+  );
+}
 
-            <div className={style.missionItem}>
-              <Image src="/images/snack.purple.svg" alt="No Image" width={24} height={24} />
-              <p>업무 1개 완수</p>
-            </div>
-          </div>
+/** 하단 미션 정보 표기 **/
+function MissionInfo() {
+  return (
+    <div className={style.missionInfo}>
+      <div className={style.missions}>
+        <div className={style.missionItem}>
+          <Image src="/images/snack.gray.svg" alt="No Image" width={24} height={24} />
+          <p>업무 1개 완수</p>
+        </div>
+
+        <div className={style.missionItem}>
+          <Image src="/images/snack.purple.light.svg" alt="No Image" width={24} height={24} />
+          <p>업무 2개 완수</p>
+        </div>
+
+        <div className={style.missionItem}>
+          <Image src="/images/snack.purple.svg" alt="No Image" width={24} height={24} />
+          <p>업무 3개 완수</p>
         </div>
       </div>
     </div>
   );
 }
 
-function MonthHeader({ month, setMonth }: { month: number; setMonth: any }) {
-  const currentMonth = dayjs().month(); // dayjs는 월을 0부터 시작하기 때문에 +1 해줍니다.
-  const minMonth = currentMonth - 3;
-  const maxMonth = currentMonth;
-  const showPreviousButton = minMonth < month;
-  const showNextButton = month < maxMonth;
+function CalendarMallowItem({ item, memberStartDate }: { item: calendarItem; memberStartDate: Dayjs }) {
+  // console.log(memberStartDate.format());
+  const isBeforeMemberStart = dayjs(item.date).isBefore(memberStartDate, 'day');
+  const isBetweenTodayAndMemberStart = dayjs(item.date).isBetween(memberStartDate, dayjs(), 'day', '[)');
+  const isToday = dayjs().isSame(dayjs(item.date), 'day');
+  const isAfterToday = dayjs(item.date).isAfter(dayjs(), 'day');
 
-  /** TODO: 추후 1월, 2월, 3월에 에러 발생 예정. **/
+  if (item.completeCount > 0) {
+    return (
+      <div key={item.date} className={style.dateItem}>
+        {item.completeCount === 1 && <Image src="/images/snack.gray.svg" alt="No Image" width={28} height={28} />}
+        {item.completeCount === 2 && <Image src="/images/snack.purple.light.svg" alt="No Image" width={28} height={28} />}
+        {item.completeCount === 3 && <Image src="/images/snack.purple.svg" alt="No Image" width={28} height={28} />}
+        {item.today && <div className={style.dot} />}
+      </div>
+    );
+  }
+
   return (
-    <div className={style.monthHeader}>
-      {showPreviousButton && (
-        <div className={style.leftButton} onClick={() => setMonth(month - 1)}>
-          <Image src="/images/arrow.calendar.left.svg" alt="No Image" width={24} height={24} />
+    <div key={item.date} className={style.dateItem}>
+      {isBeforeMemberStart && (
+        <div>
+          <p className={style.gray}>{item.name}</p>
         </div>
       )}
-      <p>{month + 1}월</p>
-      {showNextButton && (
-        <div className={style.rightButton} onClick={() => setMonth(month + 1)}>
-          <Image src="/images/arrow.calendar.right.svg" alt="No Image" width={24} height={24} />
+
+      {isBetweenTodayAndMemberStart && (
+        <div className={style.missionFail}>
+          <p>{item.name}</p>
         </div>
       )}
+
+      {isToday && (
+        <div>
+          <p>{item.name}</p>
+        </div>
+      )}
+
+      {isAfterToday && (
+        <div>
+          <p>{item.name}</p>
+        </div>
+      )}
+
+      {item.today && <div className={style.dot} />}
     </div>
   );
 }

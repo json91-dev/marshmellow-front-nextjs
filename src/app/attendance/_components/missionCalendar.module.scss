@@ -76,6 +76,32 @@
           align-items: center;
           height: 3.2rem;
 
+
+          .missionFail {
+            position: relative;
+            border: 1px solid #929DB0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #F0F3FA;
+            width: 3.8rem;
+            height: 3.8rem;
+            border-radius:100%;
+            box-shadow: 0px 2px 2px 0px #00000040;
+            cursor: pointer;
+
+            &::after {
+              content: '';
+              position: absolute;
+              width: 1.2rem;
+              height: 1.2rem;
+              right: 0;
+              top: 0;
+              background-color: #FF403A;
+              border-radius: 100%;
+            }
+          }
+
           p {
             //color: #BCC5D5;
             color: #3D4451;
@@ -83,9 +109,11 @@
             font-weight: 600;
           }
 
-          p.beforeToday {
+          p.gray {
             color : #BCC5D5;
           }
+
+
 
           .dot {
             position: absolute;
