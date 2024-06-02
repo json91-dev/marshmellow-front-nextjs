@@ -246,9 +246,9 @@ export function getPrevDayTrash(date: Dayjs) {
 }
 
 // 특정 달의 캘린더 줄 수를 계산하는 함수
-const getCalendarRows = (dayjs: Dayjs) => {
-  // 주어진 dayjs 객체의 연도와 월의 첫 번째 날
-  const firstDayOfMonth = dayjs.startOf('month');
+const getCalendarRows = (date: Dayjs) => {
+  // 주어진 date 객체의 연도와 월의 첫 번째 날
+  const firstDayOfMonth = date.startOf('month');
   // 해당 달의 첫 번째 날의 요일 (0: 일요일, 1: 월요일, ... 6: 토요일)
   const startDayOfWeek = firstDayOfMonth.day();
   // 해당 달의 총 일수
@@ -266,7 +266,7 @@ const getCalendarRows = (dayjs: Dayjs) => {
 // 특정 달의 캘린더를 2차원 튜플로 반환 => ex) [[0,0,0,1,2,3,4],[5,6,7,8,9,10,11,12] ...]]
 export function getCalendarData(year: number, month: number) {
   const date = dayjs().year(year).month(month);
-  const CALENDER_LENGTH = getCalendarRows(date) * 7;
+  const CALENDER_LENGTH = getCalendarRows(date) * 7; // 총 캘린더의 칸수
   const DEFAULT_TRASH_VALUE = 0;
   const DAY_OF_WEEK = 7;
   const daysInMonth = getTotalDaysInMonth(date);

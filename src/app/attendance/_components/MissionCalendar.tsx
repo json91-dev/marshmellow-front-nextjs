@@ -8,6 +8,7 @@ import TodayMissionGuest from '@/app/(main)/office/_components/guest/TodayMissio
 import Spinner from '@/app/login/_components/Spinner';
 import { useSession } from 'next-auth/react';
 import MissionCalendarGuest from '@/app/attendance/_components/guest/MissionCalendarGuest';
+import { useWorkMonthlyQuery } from '@/app/_hook/queries/activity';
 const DAY_LIST = ['일', '월', '화', '수', '목', '금', '토'];
 
 export default function MissionCalendar() {
@@ -15,6 +16,7 @@ export default function MissionCalendar() {
   const [year, setYear] = useState(dayjs().year());
   const { calendarList: calendarData, prevDayEmptyList, nextDayEmptyList } = getCalendarData(year, month);
   const [calendarList, setCalendarList] = useState(calendarData);
+  const { data: workMonthlyResult, isLoading, isFetching } = useWorkMonthlyQuery(dayjs().format('YYYY-MM-DD'));
   const { data: session, status: sessionStatus } = useSession();
 
   useEffect(() => {
@@ -24,6 +26,14 @@ export default function MissionCalendar() {
 
   if (sessionStatus === 'unauthenticated') {
     return <MissionCalendarGuest />;
+  }
+
+  if (isLoading || isFetching) {
+    return (
+      <div className={style.missionCalendar}>
+        <Spinner />
+      </div>
+    );
   }
 
   return (
@@ -36,7 +46,7 @@ export default function MissionCalendar() {
           })}
         </div>
         <div className={style.calendar}>
-          {calendarList?.map((week) => {
+          {calendarList?.map((week, index) => {
             return (
               <div key={week[0]} className={style.week}>
                 {week.map((day, index) => {
