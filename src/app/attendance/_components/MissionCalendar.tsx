@@ -41,8 +41,9 @@ export default function MissionCalendar() {
               <div key={week[0]} className={style.week}>
                 {week.map((day, index) => {
                   return (
-                    <div key={day + index} className={style.dayItem}>
+                    <div key={day + index} className={style.dateItem}>
                       <p>{day !== 0 && day}</p>
+                      {dayjs().month() === month && dayjs().date() === day && <div className={style.dot} />}
                     </div>
                   );
                 })}

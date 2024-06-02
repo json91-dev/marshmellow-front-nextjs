@@ -68,7 +68,7 @@
         display: flex;
         justify-content: space-between;
 
-        .dayItem {
+        .dateItem {
           position: relative;;
           text-align: center;
           flex: 1;
@@ -82,6 +82,10 @@
             color: #3D4451;
             font-size: 1.4rem;
             font-weight: 600;
+          }
+
+          p.beforeToday {
+            color : #BCC5D5;
           }
 
           .dot {

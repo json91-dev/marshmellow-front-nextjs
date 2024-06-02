@@ -4,6 +4,7 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import { getCalendarData } from '@/utils/utils';
 import dayjs from 'dayjs';
+import cx from 'classnames';
 const DAY_LIST = ['일', '월', '화', '수', '목', '금', '토'];
 
 export default function MissionCalendarGuest() {
@@ -31,11 +32,14 @@ export default function MissionCalendarGuest() {
           {calendarList?.map((week) => {
             return (
               <div key={week[0]} className={style.week}>
-                {week.map((day, index) => {
+                {week.map((date, index) => {
+                  const comparedDate = dayjs().year(year).month(month).date(date);
+                  const isBeforeToday = comparedDate.isBefore(dayjs(), 'day');
+
                   return (
-                    <div key={day + index} className={style.dayItem}>
-                      <p>{day !== 0 && day}</p>
-                      {dayjs().month() === month && dayjs().date() === day && <div className={style.dot} />}
+                    <div key={date + index} className={style.dateItem}>
+                      <p className={cx(isBeforeToday && style.beforeToday)}>{date !== 0 && date}</p>
+                      {dayjs().month() === month && dayjs().date() === date && <div className={style.dot} />}
                     </div>
                   );
                 })}
