@@ -267,7 +267,7 @@ function MissionCheckButton({ missionCheckButtonData }: any) {
   if (status === 'idle' || status === 'complete') {
     return (
       <div className={style.checkWorkButton}>
-        <Image src="/images/mallow.sleep.circle.svg" alt="No Image" width={100} height={100} />
+        <Image src="/images/mallow.sleep.circle.png" alt="No Image" width={100} height={100} />
       </div>
     );
   }
