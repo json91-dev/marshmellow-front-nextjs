@@ -106,6 +106,7 @@ export function useWorkAttendanceMutation() {
     if (response.ok) {
       return response.json();
     } else {
+      // const error = await response.json();
       throw new Error('출석 체크 실패');
     }
   };
