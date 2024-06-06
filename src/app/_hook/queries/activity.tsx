@@ -106,7 +106,7 @@ export function useWorkAttendanceMutation() {
     if (response.ok) {
       return response.json();
     } else {
-      throw new Error('회원 탈퇴 철회 실패');
+      throw new Error('출석 체크 실패');
     }
   };
 

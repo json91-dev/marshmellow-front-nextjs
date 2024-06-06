@@ -11,6 +11,12 @@ interface IdentifyModalState {
   isShowExistNumberModal: boolean;
   isShowTermsBottomSheet: boolean;
   isShowQuitInfoModal: boolean;
+  showAuthFailModal(isShow: boolean): void;
+  showAuthSuccessModal(isShow: boolean): void;
+  showQuitModal(isShow: boolean): void;
+  showExistNumberModal(isShow: boolean): void;
+  showTermsBottomSheet(isShow: boolean): void;
+  showQuitInfoModal(isShow: boolean): void;
 
   // 마이페이지 (my)
   isShowRankingChartModal: boolean;
@@ -25,47 +31,43 @@ interface IdentifyModalState {
   isShowWorkTimeChangeModal: boolean;
   workTimeId: number;
   isShowNicknameChangeConfirmModal: boolean;
-
-  // 회원 탈퇴 페이지 (my/withdraw)
-  isShowWithdrawConfirmModal: boolean;
-  isShowWithdrawConfirmCompleteModal: boolean;
-
-  // 마시멜로우 확인 페이지 (my/mallow)
-  isShowMallowFilterDateBottomSheet: boolean;
-  isShowMallowExpiredThisMonthModal: boolean;
-
-  // 주소창 페이지 (my/address)
-  isShowAddressChangeQuitModal: boolean;
-  isShowAddressDeleteModal: boolean;
-
-  // 사무실 페이지 (office)
-  isShowOfficeNewbieSignupModal: boolean;
-  officeNewbieSignupStatus: 'work' | 'workEnd' | 'lunch' | 'idle';
-
-  showAuthFailModal(isShow: boolean): void;
-  showAuthSuccessModal(isShow: boolean): void;
-  showQuitModal(isShow: boolean): void;
-  showExistNumberModal(isShow: boolean): void;
-  showTermsBottomSheet(isShow: boolean): void;
-  showQuitInfoModal(isShow: boolean): void;
   showRankingChartModal(isShow: boolean): void;
   showNicknameChangeModal(isShow: boolean): void;
   showWorkTimeBottomSheet(isShow: boolean): void;
   showLogoutModal(isShow: boolean): void;
-  showWithdrawConfirmModal(isShow: boolean): void;
-  showWithdrawConfirmCompleteModal(isShow: boolean): void;
-  showMallowFilterDateBottomSheet(isShow: boolean): void;
-  showMallowExpiredThisMonthModal(isShow: boolean): void;
   showWorkTimeNotChangeByTimeModal(isShow: boolean): void;
   showWorkTimeChangeModal(isShow: boolean, workTimeId?: number): void;
   showNicknameNotChangeByDateModal(isShow: boolean): void;
-  showAddressChangeQuitModal(isShow: boolean): void;
-  showAddressDeleteModal(isShow: boolean): void;
   showNicknameChangeConfirmModal(isShow: boolean): void;
   setNicknameChangeRemainDays(nicknameChangeRemainDays: number): void;
   showWorkTimeNotChangeByDateModal(isShow: boolean): void;
   setWorkTimeChangeRemainDays(workTimeRemainingDays: number): void;
+
+  // 회원 탈퇴 페이지 (my/withdraw)
+  isShowWithdrawConfirmModal: boolean;
+  showWithdrawConfirmModal(isShow: boolean): void;
+  isShowWithdrawConfirmCompleteModal: boolean;
+  showWithdrawConfirmCompleteModal(isShow: boolean): void;
+
+  // 마시멜로우 확인 페이지 (my/mallow)
+  isShowMallowFilterDateBottomSheet: boolean;
+  showMallowFilterDateBottomSheet(isShow: boolean): void;
+  isShowMallowExpiredThisMonthModal: boolean;
+  showMallowExpiredThisMonthModal(isShow: boolean): void;
+
+  // 주소창 페이지 (my/address)
+  isShowAddressChangeQuitModal: boolean;
+  showAddressChangeQuitModal(isShow: boolean): void;
+  isShowAddressDeleteModal: boolean;
+  showAddressDeleteModal(isShow: boolean): void;
+
+  // 사무실 페이지 (office)
+  isShowOfficeNewbieSignupModal: boolean;
+  officeNewbieSignupStatus: 'work' | 'workEnd' | 'lunch' | 'idle';
   showOfficeNewbieSignupModal(isShow: boolean, status?: string): void;
+  isShowAttendanceCheckModal: boolean;
+  isAttendanceCheckInOneMinute: boolean;
+  showAttendanceCheckModal(isShow: boolean, isCheckOneMinute?: boolean): void;
 
   closeAll(): void;
 }
@@ -109,6 +111,15 @@ export const useModalStore = create(
     // 사무실 페이지
     isShowOfficeNewbieSignupModal: false,
     officeNewbieSignupStatus: 'work',
+
+    isShowAttendanceCheckModal: false,
+    isAttendanceCheckInOneMinute: false,
+    showAttendanceCheckModal(isShow, isCheckInOneMinute = false) {
+      set({
+        isShowAttendanceCheckModal: isShow,
+        isAttendanceCheckInOneMinute: isCheckInOneMinute,
+      });
+    },
 
     showAuthFailModal(isShow) {
       set({ isShowAuthFailModal: isShow });

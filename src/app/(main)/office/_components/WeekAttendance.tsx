@@ -37,12 +37,16 @@ export default function WeekAttendance() {
   const mondayTime = findMonday(now);
   const sundayTime = findSunday(now);
   const daysArray = ['월', '화', '수', '목', '금', '토', '일'];
+
+  console.log(isError);
   const weekMissionData = workWeeklyResult.data.map((item: any, index: any) => {
     return {
       ...item,
       dayString: daysArray[index],
     };
   });
+
+  console.log(weekMissionData);
 
   return (
     <div className={style.attendance} onClick={onClickAttendance}>

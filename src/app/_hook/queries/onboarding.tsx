@@ -104,7 +104,7 @@ export function useOnboardingMallowPracticeMutation() {
     if (response.ok) {
       return response.json();
     } else {
-      throw new Error('회원 탈퇴 철회 실패');
+      throw new Error('온보딩 첫 출근 미션 요청 실패');
     }
   };
 

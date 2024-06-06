@@ -1,9 +1,9 @@
 'use client';
 import style from '@/app/(main)/office/office.module.scss';
 import Image from 'next/image';
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { useMemberProfileQuery } from '@/app/_hook/queries/member';
-import { useWorkTodayQuery } from '@/app/_hook/queries/activity';
+import { useWorkAttendanceMutation, useWorkTodayQuery } from '@/app/_hook/queries/activity';
 import useSecondUpdater from '@/app/_hook/useSecondUpdater';
 import cx from 'classnames';
 import { findMissionDateMatchingStart } from '@/utils/utils';
@@ -11,6 +11,8 @@ import { findMissionDateMatchingStart } from '@/utils/utils';
 import dayjs from 'dayjs';
 import isBetween from 'dayjs/plugin/isBetween';
 import duration from 'dayjs/plugin/duration';
+import { useModalStore } from '@/store/modal';
+import { useClick } from '@floating-ui/react';
 dayjs.extend(isBetween);
 dayjs.extend(duration);
 
@@ -194,6 +196,7 @@ export default function TimerMissionCheck() {
     });
 
     const isMissionTime = now.isBetween(closestMissionTime, closestMissionTime.add(15, 'minute'), 'minute', '[]');
+    const isMissionTimeInOneMinute = now.isBetween(closestMissionTime, closestMissionTime.add(1, 'minute'), 'second', '[]');
     const closestMissionTimeData = findMissionDateMatchingStart(workResult.data, closestMissionTime);
     // 'Soon' | 'NotYet' | 'Complete' | 'Failed';
     let checkButtonStatus;
@@ -210,6 +213,7 @@ export default function TimerMissionCheck() {
 
     return {
       status: checkButtonStatus,
+      isMissionTimeInOneMinute: isMissionTimeInOneMinute,
     };
   }, [time, workResult]);
 
@@ -221,6 +225,8 @@ export default function TimerMissionCheck() {
     </div>
   );
 }
+
+/** 타이머의 시간  **/
 function TimerTime({ timerData }: any) {
   const { status, timerTimeString } = timerData;
 
@@ -231,6 +237,7 @@ function TimerTime({ timerData }: any) {
   }
 }
 
+/** 타이머 하단 정보 **/
 function RemainingTimeInfo({ remainingTimeData }: any) {
   const { status, remainingTimeString } = remainingTimeData;
 
@@ -261,8 +268,17 @@ function RemainingTimeInfo({ remainingTimeData }: any) {
   }
 }
 
+/** 미션 체크 버튼 **/
 function MissionCheckButton({ missionCheckButtonData }: any) {
-  const { status } = missionCheckButtonData;
+  const { status, isMissionTimeInOneMinute } = missionCheckButtonData;
+  const { showAttendanceCheckModal } = useModalStore();
+  const onClickAttendance = useCallback(() => {
+    if (isMissionTimeInOneMinute) {
+      showAttendanceCheckModal(true, true);
+    } else {
+      showAttendanceCheckModal(true, false);
+    }
+  }, [isMissionTimeInOneMinute]);
 
   if (status === 'idle' || status === 'complete') {
     return (
@@ -274,7 +290,7 @@ function MissionCheckButton({ missionCheckButtonData }: any) {
 
   if (status === 'active') {
     return (
-      <div className={style.checkWorkButton}>
+      <div className={cx(style.checkWorkButton, style.active)} onClick={onClickAttendance}>
         <CheckActiveButtonSVG circleBgClassName={style.circle} />
       </div>
     );
