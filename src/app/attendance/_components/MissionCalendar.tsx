@@ -30,6 +30,7 @@ export default function MissionCalendar() {
   const { data: profileResult, isLoading: isLoadingProfile, isFetching: isFetchingProfile } = useMemberProfileQuery();
   const { status: sessionStatus } = useSession();
 
+  /** Calendar 화면을 그리기 위한 데이터를 생성 **/
   useEffect(() => {
     const { calendarList: calendarData, prevDayEmptyList, nextDayEmptyList } = getCalendarData(date.year(), date.month());
     if (workMonthlyResult) {
@@ -66,22 +67,22 @@ export default function MissionCalendar() {
   return (
     <div className={style.missionCalendar}>
       <MonthHeader date={date} setDate={setDate} />
-      <div className={style.body}>
+      <div className={style.calendarBody}>
         <div className={style.days}>
           {DAY_LIST.map((day) => {
             return <p key={day}>{day}</p>;
           })}
         </div>
-        <div className={style.calendar}>
-          {calendarList?.map((week, index) => {
+        <div className={style.dates}>
+          {calendarList?.map((week, weekIndex) => {
             return (
-              <div key={index} className={style.week}>
-                {week.map((item, index) => {
+              <div className={style.week} key={weekIndex}>
+                {week.map((item, dayIndex) => {
                   if (item === 0) {
-                    return <div key={item + index} className={style.dateItem} />;
+                    return <div key={`empty-${weekIndex}-${dayIndex}`} className={style.dateItem} />;
                   }
 
-                  return <CalendarMallowItem item={item} memberStartDate={memberStartDate} />;
+                  return <CalendarMallowItem key={item.date} item={item} memberStartDate={memberStartDate} />;
                 })}
               </div>
             );
@@ -144,7 +145,6 @@ function MissionInfo() {
 }
 
 function CalendarMallowItem({ item, memberStartDate }: { item: calendarItem; memberStartDate: Dayjs }) {
-  // console.log(memberStartDate.format());
   const isBeforeMemberStart = dayjs(item.date).isBefore(memberStartDate, 'day');
   const isBetweenTodayAndMemberStart = dayjs(item.date).isBetween(memberStartDate, dayjs(), 'day', '[)');
   const isToday = dayjs().isSame(dayjs(item.date), 'day');

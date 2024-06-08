@@ -69,6 +69,14 @@ interface IdentifyModalState {
   isAttendanceCheckInOneMinute: boolean;
   showAttendanceCheckModal(isShow: boolean, isCheckOneMinute?: boolean): void;
 
+  // 캘린더 출석체크 페이지 (/attendance)
+  isShowFulfillAttendanceCompleteModal: boolean;
+  showFulfillAttendanceCompleteModal(isShow: boolean): void;
+  isShowFulfillAttendanceDateSelectModal: boolean;
+  showFulfillAttendanceDateSelectModal(isShow: boolean): void;
+  isShowFulfillAttendanceNoDayModal: boolean;
+  showFulfillAttendanceNoDayModal(isShow: boolean): void;
+
   closeAll(): void;
 }
 
@@ -76,41 +84,118 @@ export const useModalStore = create(
   devtools<IdentifyModalState>((set) => ({
     // 회원가입 페이지 (signup)
     isShowAuthFailModal: false,
+    showAuthFailModal(isShow) {
+      set({ isShowAuthFailModal: isShow });
+    },
     isShowAuthSuccessModal: false,
+    showAuthSuccessModal(isShow) {
+      set({ isShowAuthSuccessModal: isShow });
+    },
     isShowQuitModal: false,
+    showQuitModal(isShow) {
+      set({ isShowQuitModal: isShow });
+    },
     isShowTermsBottomSheet: false,
+    showTermsBottomSheet(isShow) {
+      set({ isShowTermsBottomSheet: isShow });
+    },
     isShowExistNumberModal: false,
+    showExistNumberModal(isShow) {
+      set({ isShowExistNumberModal: isShow });
+    },
     isShowQuitInfoModal: false,
+    showQuitInfoModal(isShow) {
+      set({ isShowQuitInfoModal: isShow });
+    },
 
     // 마이페이지 (my)
     isShowRankingChartModal: false,
+    showRankingChartModal(isShow) {
+      set({ isShowRankingChartModal: isShow });
+    },
     isShowNicknameChangeModal: false,
+    showNicknameChangeModal(isShow) {
+      set({ isShowNicknameChangeModal: isShow });
+    },
     isShowNicknameNotChangeByDateModal: false,
-    nicknameChangeRemainDays: 0,
+    showNicknameNotChangeByDateModal(isShow: boolean) {
+      set({ isShowNicknameNotChangeByDateModal: isShow });
+    },
     isShowWorkTimeBottomSheet: false,
+    showWorkTimeBottomSheet(isShow) {
+      set({ isShowWorkTimeBottomSheet: isShow });
+    },
     isShowLogoutModal: false,
+    showLogoutModal(isShow: boolean) {
+      set({ isShowLogoutModal: isShow });
+    },
     isShowWorkTimeNotChangeByTimeModal: false,
+    showWorkTimeNotChangeByTimeModal(isShow: boolean) {
+      set({ isShowWorkTimeNotChangeByTimeModal: isShow });
+    },
     isShowWorkTimeChangeModal: false,
     workTimeId: 1,
+    showWorkTimeChangeModal(isShow: boolean, workTimeId: number = 1) {
+      set({ isShowWorkTimeChangeModal: isShow, workTimeId });
+    },
     isShowNicknameChangeConfirmModal: false,
+    showNicknameChangeConfirmModal(isShow: boolean) {
+      set({ isShowNicknameChangeConfirmModal: isShow });
+    },
     isShowWorkTimeNotChangeByDateModal: false,
+    showWorkTimeNotChangeByDateModal(isShow: boolean) {
+      set({ isShowWorkTimeNotChangeByDateModal: isShow });
+    },
     workTimeChangeRemainDays: 0,
+    setWorkTimeChangeRemainDays(workTimeChangeRemainingDay: number) {
+      set({
+        workTimeChangeRemainDays: workTimeChangeRemainingDay,
+      });
+    },
+    nicknameChangeRemainDays: 0,
+    setNicknameChangeRemainDays(nicknameChangeRemainDays: number) {
+      set({ nicknameChangeRemainDays });
+    },
 
     // 회원 탈퇴 페이지 (withdraw)
     isShowWithdrawConfirmModal: false,
+    showWithdrawConfirmModal(isShow) {
+      set({ isShowWithdrawConfirmModal: isShow });
+    },
     isShowWithdrawConfirmCompleteModal: false,
+    showWithdrawConfirmCompleteModal(isShow) {
+      set({ isShowWithdrawConfirmCompleteModal: isShow });
+    },
 
     // 마시멜로우 확인 페이지 (mallow)
     isShowMallowFilterDateBottomSheet: false,
+    showMallowFilterDateBottomSheet(isShow) {
+      set({ isShowMallowFilterDateBottomSheet: isShow });
+    },
     isShowMallowExpiredThisMonthModal: false,
+    showMallowExpiredThisMonthModal(isShow) {
+      set({ isShowMallowExpiredThisMonthModal: isShow });
+    },
 
     // 주소창 페이지
     isShowAddressChangeQuitModal: false,
+    showAddressChangeQuitModal(isShow: boolean) {
+      set({ isShowAddressChangeQuitModal: isShow });
+    },
     isShowAddressDeleteModal: false,
+    showAddressDeleteModal(isShow: boolean) {
+      set({ isShowAddressDeleteModal: isShow });
+    },
 
     // 사무실 페이지
     isShowOfficeNewbieSignupModal: false,
     officeNewbieSignupStatus: 'work',
+    showOfficeNewbieSignupModal(isShow: boolean, status?: 'work' | 'workEnd' | 'lunch' | 'idle') {
+      set({
+        isShowOfficeNewbieSignupModal: isShow,
+        officeNewbieSignupStatus: status ? status : 'idle',
+      });
+    },
 
     isShowAttendanceCheckModal: false,
     isAttendanceCheckInOneMinute: false,
@@ -121,103 +206,18 @@ export const useModalStore = create(
       });
     },
 
-    showAuthFailModal(isShow) {
-      set({ isShowAuthFailModal: isShow });
+    // 캘린더 출근 페이지 (attendance)
+    isShowFulfillAttendanceCompleteModal: false,
+    showFulfillAttendanceCompleteModal(isShow: boolean) {
+      set({ isShowFulfillAttendanceCompleteModal: isShow });
     },
-
-    showAuthSuccessModal(isShow) {
-      set({ isShowAuthSuccessModal: isShow });
+    isShowFulfillAttendanceDateSelectModal: false,
+    showFulfillAttendanceDateSelectModal(isShow: boolean) {
+      set({ isShowFulfillAttendanceDateSelectModal: isShow });
     },
-
-    showQuitModal(isShow) {
-      set({ isShowQuitModal: isShow });
-    },
-
-    showTermsBottomSheet(isShow) {
-      set({ isShowTermsBottomSheet: isShow });
-    },
-
-    showExistNumberModal(isShow) {
-      set({ isShowExistNumberModal: isShow });
-    },
-
-    showQuitInfoModal(isShow) {
-      set({ isShowQuitInfoModal: isShow });
-    },
-
-    showRankingChartModal(isShow) {
-      set({ isShowRankingChartModal: isShow });
-    },
-
-    showNicknameChangeModal(isShow) {
-      set({ isShowNicknameChangeModal: isShow });
-    },
-
-    showWorkTimeBottomSheet(isShow) {
-      set({ isShowWorkTimeBottomSheet: isShow });
-    },
-
-    showLogoutModal(isShow: boolean) {
-      set({ isShowLogoutModal: isShow });
-    },
-
-    showWithdrawConfirmModal(isShow) {
-      set({ isShowWithdrawConfirmModal: isShow });
-    },
-
-    showWithdrawConfirmCompleteModal(isShow) {
-      set({ isShowWithdrawConfirmCompleteModal: isShow });
-    },
-
-    showMallowFilterDateBottomSheet(isShow) {
-      set({ isShowMallowFilterDateBottomSheet: isShow });
-    },
-
-    showMallowExpiredThisMonthModal(isShow) {
-      set({ isShowMallowExpiredThisMonthModal: isShow });
-    },
-
-    showWorkTimeNotChangeByTimeModal(isShow: boolean) {
-      set({ isShowWorkTimeNotChangeByTimeModal: isShow });
-    },
-
-    showWorkTimeChangeModal(isShow: boolean, workTimeId: number = 1) {
-      set({ isShowWorkTimeChangeModal: isShow, workTimeId });
-    },
-    showNicknameNotChangeByDateModal(isShow: boolean) {
-      set({ isShowNicknameNotChangeByDateModal: isShow });
-    },
-
-    setNicknameChangeRemainDays(nicknameChangeRemainDays: number) {
-      set({ nicknameChangeRemainDays });
-    },
-
-    showAddressChangeQuitModal(isShow: boolean) {
-      set({ isShowAddressChangeQuitModal: isShow });
-    },
-
-    showAddressDeleteModal(isShow: boolean) {
-      set({ isShowAddressDeleteModal: isShow });
-    },
-
-    showNicknameChangeConfirmModal(isShow: boolean) {
-      set({ isShowNicknameChangeConfirmModal: isShow });
-    },
-
-    showOfficeNewbieSignupModal(isShow: boolean, status?: 'work' | 'workEnd' | 'lunch' | 'idle') {
-      set({
-        isShowOfficeNewbieSignupModal: isShow,
-        officeNewbieSignupStatus: status ? status : 'idle',
-      });
-    },
-
-    showWorkTimeNotChangeByDateModal(isShow: boolean) {
-      set({ isShowWorkTimeNotChangeByDateModal: isShow });
-    },
-    setWorkTimeChangeRemainDays(workTimeChangeRemainingDay: number) {
-      set({
-        workTimeChangeRemainDays: workTimeChangeRemainingDay,
-      });
+    isShowFulfillAttendanceNoDayModal: false,
+    showFulfillAttendanceNoDayModal(isShow: boolean) {
+      set({ isShowFulfillAttendanceNoDayModal: isShow });
     },
 
     closeAll() {
@@ -244,6 +244,9 @@ export const useModalStore = create(
         isShowNicknameChangeConfirmModal: false,
         isShowOfficeNewbieSignupModal: false,
         isShowWorkTimeNotChangeByDateModal: false,
+        isShowFulfillAttendanceCompleteModal: false,
+        isShowFulfillAttendanceDateSelectModal: false,
+        isShowFulfillAttendanceNoDayModal: false,
       });
     },
   })),

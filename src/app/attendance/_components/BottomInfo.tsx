@@ -2,6 +2,9 @@
 import style from './bottomInfo.module.scss';
 import Image from 'next/image';
 import React, { useCallback, useRef } from 'react';
+import { useWorkMonthlyQuery } from '@/app/_hook/queries/activity';
+import dayjs from 'dayjs';
+import { useModalStore } from '@/store/modal';
 
 export default function BottomInfo() {
   const accordionContentRef = useRef<HTMLDivElement>(null!);
@@ -22,19 +25,7 @@ export default function BottomInfo() {
 
   return (
     <div className={style.bottomInfo}>
-      <div className={style.headInfo}>
-        <p className={style.first}>이번달 결근한 날이 있다면?</p>
-        <p className={style.second}>최대 4일까지 마시멜로우로 출근 일수를 채울 수 있어요!</p>
-      </div>
-
-      <div className={style.fillMallow}>
-        <div className={style.fillCount}>
-          <p>보충일수: 0/4</p>
-        </div>
-        <div className={style.fillAds}>
-          <p>광고보고 출근 보충</p>
-        </div>
-      </div>
+      <FulfillAttendance />
 
       <p className={style.howToInfo}>참여방법</p>
       <div className={style.howToSteps}>
@@ -102,8 +93,7 @@ export default function BottomInfo() {
           <div className={style.col}>
             <p>•</p>
             <p>
-              출근 보충 사용 시 오늘의 업무를 3개 모두 완수한 것으로 처리되며, 해당 날짜에 대한 출근 보충은 1회만
-              가능합니다.
+              출근 보충 사용 시 오늘의 업무를 3개 모두 완수한 것으로 처리되며, 해당 날짜에 대한 출근 보충은 1회만 가능합니다.
             </p>
           </div>
           <div className={style.col}>
@@ -113,8 +103,7 @@ export default function BottomInfo() {
           <div className={style.col}>
             <p>•</p>
             <p>
-              부적절한 방법으로 이벤트에 참여한 경우, 적립된 마시멜로우는 회수되며 추후 이벤트 참여에 제한될 수
-              있습니다.
+              부적절한 방법으로 이벤트에 참여한 경우, 적립된 마시멜로우는 회수되며 추후 이벤트 참여에 제한될 수 있습니다.
             </p>
           </div>
           <div className={style.col}>
@@ -124,12 +113,37 @@ export default function BottomInfo() {
           <div className={style.col}>
             <p>•</p>
             <p>
-              해당 월 마시멜로우를 클릭해 획득하지 않으면 다음 달로 넘어갈 때 이전 달 마시멜로우를 다시 획득할 수
-              없습니다.
+              해당 월 마시멜로우를 클릭해 획득하지 않으면 다음 달로 넘어갈 때 이전 달 마시멜로우를 다시 획득할 수 없습니다.
             </p>
           </div>
         </div>
       </div>
     </div>
+  );
+}
+
+function FulfillAttendance() {
+  const { data: workMonthlyResult, isLoading, isFetching } = useWorkMonthlyQuery(dayjs().format('YYYY-MM-DD'));
+  const { showFulfillAttendanceDateSelectModal } = useModalStore();
+  const onClickFillAds = useCallback(() => {
+    showFulfillAttendanceDateSelectModal(true);
+  }, []);
+
+  return (
+    <>
+      <div className={style.headInfo}>
+        <p className={style.first}>이번달 결근한 날이 있다면?</p>
+        <p className={style.second}>최대 4일까지 마시멜로우로 출근 일수를 채울 수 있어요!</p>
+      </div>
+
+      <div className={style.fillMallow}>
+        <div className={style.fillCount}>
+          <p>보충일수: {workMonthlyResult?.data?.maxFillCount ? workMonthlyResult?.data?.maxFillCount : 0}/4</p>
+        </div>
+        <div className={style.fillAds} onClick={onClickFillAds}>
+          <p>광고보고 출근 보충</p>
+        </div>
+      </div>
+    </>
   );
 }
