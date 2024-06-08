@@ -1,7 +1,7 @@
 'use client';
 import style from './modal.module.scss';
 import { useModalStore } from '@/store/modal';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import ModalBackdrop from '@/app/signup/@modal/identify/_components/ModalBackdrop';
 import cx from 'classnames';
@@ -122,6 +122,7 @@ function CalendarMallowItem({ item, memberStartDate }: { item: calendarItem; mem
   const isBetweenTodayAndMemberStart = dayjs(item.date).isBetween(memberStartDate, dayjs(), 'day', '[)');
   const isToday = dayjs().isSame(dayjs(item.date), 'day');
   const isAfterToday = dayjs(item.date).isAfter(dayjs(), 'day');
+  const { showFulfillAttendanceDateCheckModal, showFulfillAttendanceDateSelectModal } = useModalStore();
 
   if (item.completeCount > 0) {
     return (
@@ -134,6 +135,11 @@ function CalendarMallowItem({ item, memberStartDate }: { item: calendarItem; mem
     );
   }
 
+  const onClickMissionFailed = useCallback((dateString: string) => {
+    showFulfillAttendanceDateSelectModal(false);
+    showFulfillAttendanceDateCheckModal(true, dateString);
+  }, []);
+
   return (
     <div key={item.date} className={style.dateItem}>
       {isBeforeMemberStart && (
@@ -143,7 +149,7 @@ function CalendarMallowItem({ item, memberStartDate }: { item: calendarItem; mem
       )}
 
       {isBetweenTodayAndMemberStart && (
-        <div className={style.missionFail}>
+        <div className={style.missionFail} onClick={() => onClickMissionFailed(item.date)}>
           <p>{item.name}</p>
         </div>
       )}

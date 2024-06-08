@@ -6,41 +6,41 @@ import { devtools } from 'zustand/middleware';
 interface IdentifyModalState {
   // 회원가입 페이지 (signup)
   isShowAuthFailModal: boolean;
-  isShowAuthSuccessModal: boolean;
-  isShowQuitModal: boolean;
-  isShowExistNumberModal: boolean;
-  isShowTermsBottomSheet: boolean;
-  isShowQuitInfoModal: boolean;
   showAuthFailModal(isShow: boolean): void;
+  isShowAuthSuccessModal: boolean;
   showAuthSuccessModal(isShow: boolean): void;
+  isShowQuitModal: boolean;
   showQuitModal(isShow: boolean): void;
+  isShowExistNumberModal: boolean;
   showExistNumberModal(isShow: boolean): void;
+  isShowTermsBottomSheet: boolean;
   showTermsBottomSheet(isShow: boolean): void;
+  isShowQuitInfoModal: boolean;
   showQuitInfoModal(isShow: boolean): void;
 
   // 마이페이지 (my)
   isShowRankingChartModal: boolean;
+  showRankingChartModal(isShow: boolean): void;
   isShowNicknameChangeModal: boolean;
-  isShowNicknameNotChangeByDateModal: boolean;
-  nicknameChangeRemainDays: number;
-  isShowWorkTimeNotChangeByDateModal: boolean;
-  workTimeChangeRemainDays: number;
+  showNicknameChangeModal(isShow: boolean): void;
   isShowWorkTimeBottomSheet: boolean;
+  showWorkTimeBottomSheet(isShow: boolean): void;
   isShowLogoutModal: boolean;
+  showLogoutModal(isShow: boolean): void;
   isShowWorkTimeNotChangeByTimeModal: boolean;
+  showWorkTimeNotChangeByTimeModal(isShow: boolean): void;
   isShowWorkTimeChangeModal: boolean;
   workTimeId: number;
-  isShowNicknameChangeConfirmModal: boolean;
-  showRankingChartModal(isShow: boolean): void;
-  showNicknameChangeModal(isShow: boolean): void;
-  showWorkTimeBottomSheet(isShow: boolean): void;
-  showLogoutModal(isShow: boolean): void;
-  showWorkTimeNotChangeByTimeModal(isShow: boolean): void;
   showWorkTimeChangeModal(isShow: boolean, workTimeId?: number): void;
+  isShowNicknameNotChangeByDateModal: boolean;
   showNicknameNotChangeByDateModal(isShow: boolean): void;
+  isShowNicknameChangeConfirmModal: boolean;
   showNicknameChangeConfirmModal(isShow: boolean): void;
+  nicknameChangeRemainDays: number;
   setNicknameChangeRemainDays(nicknameChangeRemainDays: number): void;
+  isShowWorkTimeNotChangeByDateModal: boolean;
   showWorkTimeNotChangeByDateModal(isShow: boolean): void;
+  workTimeChangeRemainDays: number;
   setWorkTimeChangeRemainDays(workTimeRemainingDays: number): void;
 
   // 회원 탈퇴 페이지 (my/withdraw)
@@ -76,6 +76,9 @@ interface IdentifyModalState {
   showFulfillAttendanceDateSelectModal(isShow: boolean): void;
   isShowFulfillAttendanceNoDayModal: boolean;
   showFulfillAttendanceNoDayModal(isShow: boolean): void;
+  isShowFulfillAttendanceDateCheckModal: boolean;
+  fulfillAttendanceCheckedDateString: string;
+  showFulfillAttendanceDateCheckModal(isShow: boolean, checkedDateString?: string): void;
 
   closeAll(): void;
 }
@@ -218,6 +221,11 @@ export const useModalStore = create(
     isShowFulfillAttendanceNoDayModal: false,
     showFulfillAttendanceNoDayModal(isShow: boolean) {
       set({ isShowFulfillAttendanceNoDayModal: isShow });
+    },
+    fulfillAttendanceCheckedDateString: '',
+    isShowFulfillAttendanceDateCheckModal: false,
+    showFulfillAttendanceDateCheckModal(isShow: boolean, checkedDateString: string = '') {
+      set({ isShowFulfillAttendanceDateCheckModal: isShow, fulfillAttendanceCheckedDateString: checkedDateString });
     },
 
     closeAll() {
