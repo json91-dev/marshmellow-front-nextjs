@@ -1,7 +1,7 @@
 'use client';
 import style from './missionCalendar.module.scss';
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { getCalendarData } from '@/utils/utils';
 import dayjs, { Dayjs } from 'dayjs';
 import isBetween from 'dayjs/plugin/isBetween';
@@ -11,6 +11,8 @@ import { useSession } from 'next-auth/react';
 import MissionCalendarGuest from '@/app/attendance/_components/guest/MissionCalendarGuest';
 import { useWorkMonthlyQuery } from '@/app/_hook/queries/activity';
 import { useMemberProfileQuery } from '@/app/_hook/queries/member';
+import { useModalStore } from '@/store/modal';
+import { useToastStore } from '@/store/toast';
 const DAY_LIST = ['일', '월', '화', '수', '목', '금', '토'];
 
 type calendarItem = {
@@ -149,6 +151,17 @@ function CalendarMallowItem({ item, memberStartDate }: { item: calendarItem; mem
   const isBetweenTodayAndMemberStart = dayjs(item.date).isBetween(memberStartDate, dayjs(), 'day', '[)');
   const isToday = dayjs().isSame(dayjs(item.date), 'day');
   const isAfterToday = dayjs(item.date).isAfter(dayjs(), 'day');
+  const { showFulfillAttendanceDateCheckModal } = useModalStore();
+  const { openToast } = useToastStore();
+
+  const onClickMissionFailed = useCallback((dateString: string) => {
+    const isDateThisMonth = dayjs(dateString).isSame(dayjs(), 'month');
+    if (isDateThisMonth) {
+      showFulfillAttendanceDateCheckModal(true, dateString);
+    } else {
+      openToast('현재 달에만 출근을 보충할 수 있습니다.');
+    }
+  }, []);
 
   if (item.completeCount > 0) {
     return (
@@ -170,7 +183,7 @@ function CalendarMallowItem({ item, memberStartDate }: { item: calendarItem; mem
       )}
 
       {isBetweenTodayAndMemberStart && (
-        <div className={style.missionFail}>
+        <div className={style.missionFail} onClick={() => onClickMissionFailed(item.date)}>
           <p>{item.name}</p>
         </div>
       )}
