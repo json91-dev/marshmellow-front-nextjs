@@ -225,7 +225,12 @@ export const useModalStore = create(
     fulfillAttendanceCheckedDateString: '',
     isShowFulfillAttendanceDateCheckModal: false,
     showFulfillAttendanceDateCheckModal(isShow: boolean, checkedDateString: string = '') {
-      set({ isShowFulfillAttendanceDateCheckModal: isShow, fulfillAttendanceCheckedDateString: checkedDateString });
+      // if (checkedDateString === '') checkedDateString = fulfillAttendanceCheckedDateString
+      set((state) => ({
+        isShowFulfillAttendanceDateCheckModal: isShow,
+        fulfillAttendanceCheckedDateString:
+          checkedDateString === '' ? state.fulfillAttendanceCheckedDateString : checkedDateString,
+      }));
     },
 
     closeAll() {

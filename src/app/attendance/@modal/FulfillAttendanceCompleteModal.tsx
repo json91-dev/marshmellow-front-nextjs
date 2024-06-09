@@ -25,7 +25,7 @@ export default function FulfillAttendanceCompleteModal() {
   return (
     <>
       <CSSTransition in={isShowFulfillAttendanceCompleteModal} timeout={200} unmountOnExit nodeRef={backdropRef}>
-        <ModalBackdrop ref={backdropRef} />
+        <ModalBackdrop ref={backdropRef} onClick={onClickConfirm} />
       </CSSTransition>
 
       <CSSTransition

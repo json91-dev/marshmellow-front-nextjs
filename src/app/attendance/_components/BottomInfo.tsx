@@ -122,6 +122,7 @@ export default function BottomInfo() {
   );
 }
 
+/** 근태관리 하단 출근 보충 일수 화면 **/
 function FulfillAttendance() {
   const { data: workMonthlyResult, isLoading, isFetching } = useWorkMonthlyQuery(dayjs().format('YYYY-MM-DD'));
   const { showFulfillAttendanceDateSelectModal } = useModalStore();
