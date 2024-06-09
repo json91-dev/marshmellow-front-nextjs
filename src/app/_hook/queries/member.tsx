@@ -140,7 +140,7 @@ export function useWithdrawMutation() {
   };
 
   return useMutation({
-    mutationFn: (nickname: string) => memberWithdraw(nickname),
+    mutationFn: (reason: string) => memberWithdraw(reason),
   });
 }
 

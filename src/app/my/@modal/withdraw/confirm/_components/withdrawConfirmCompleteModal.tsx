@@ -5,12 +5,13 @@ import { CSSTransition } from 'react-transition-group';
 import ModalBackdrop from '@/app/signup/@modal/identify/_components/ModalBackdrop';
 import { useModalStore } from '@/store/modal';
 import cx from 'classnames';
+import { signOut } from 'next-auth/react';
 
 export default function WithdrawConfimCompleteModal() {
   const { isShowWithdrawConfirmCompleteModal, closeAll } = useModalStore();
-  const onClickConfirm = useCallback(() => {
+  const onClickConfirm = useCallback(async () => {
     closeAll();
-    // router.push('/')
+    await signOut({ callbackUrl: '/login' });
   }, []);
   const backdropRef = React.useRef(null);
   const modalRef = React.useRef(null);
