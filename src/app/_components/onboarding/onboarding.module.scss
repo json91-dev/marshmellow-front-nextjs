@@ -7,6 +7,8 @@
   justify-content: center;
   align-items: center;
   background: white;
+  position: relative;
+  pointer-events: all;
 
   .xButton {
     position: absolute;

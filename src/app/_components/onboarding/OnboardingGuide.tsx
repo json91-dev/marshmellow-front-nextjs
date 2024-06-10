@@ -47,19 +47,54 @@ export default function OnboardingGuide() {
       <div className={style.body}>
         <div className={style.cartoonArea}>
           {currentCartoonPage === 1 && (
-            <Image className={style.fadeIn} src="/images/onboarding.1.png" alt={'No Image'} fill />
+            <Image
+              className={style.fadeIn}
+              src="/images/onboarding.1.png"
+              alt={'No Image'}
+              placeholder={'blur'}
+              fill
+              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
+            />
           )}
           {currentCartoonPage === 2 && (
-            <Image className={style.fadeIn} src="/images/onboarding.2.png" alt={'No Image'} fill />
+            <Image
+              className={style.fadeIn}
+              src="/images/onboarding.2.png"
+              alt={'No Image'}
+              placeholder={'blur'}
+              fill
+              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
+            />
           )}
           {currentCartoonPage === 3 && (
-            <Image className={style.fadeIn} src="/images/onboarding.3.png" alt={'No Image'} fill />
+            <Image
+              className={style.fadeIn}
+              src="/images/onboarding.3.png"
+              alt={'No Image'}
+              placeholder={'blur'}
+              fill
+              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
+            />
           )}
           {currentCartoonPage === 4 && (
-            <Image className={style.fadeIn} src="/images/onboarding.4.png" alt={'No Image'} fill />
+            <Image
+              className={style.fadeIn}
+              src="/images/onboarding.4.png"
+              alt={'No Image'}
+              placeholder={'blur'}
+              fill
+              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
+            />
           )}
           {currentCartoonPage === 5 && (
-            <Image className={style.fadeIn} src="/images/onboarding.5.png" alt={'No Image'} fill />
+            <Image
+              className={style.fadeIn}
+              src="/images/onboarding.5.png"
+              alt={'No Image'}
+              placeholder={'blur'}
+              fill
+              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
+            />
           )}
         </div>
 
