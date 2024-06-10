@@ -30,7 +30,7 @@ export default function SignupSubmitCompletePage() {
         </div>
       </div>
 
-      <div className={style.confirmButton} onClick={() => router.push('/desk')}>
+      <div className={style.confirmButton} onClick={() => window.location.replace('/desk')}>
         채용 결과 보기
       </div>
     </div>

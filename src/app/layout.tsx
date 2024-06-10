@@ -15,6 +15,7 @@ type Props = {
   children: React.ReactNode;
 };
 import localFont from 'next/font/local';
+import OnboardingGuideModal from '@/app/_components/onboarding/OnboardingGuideModal';
 const pretendard = localFont({ src: '../font/PretendardVariable.woff2' });
 
 export default function RootLayout({ children }: Props) {
@@ -28,6 +29,8 @@ export default function RootLayout({ children }: Props) {
               <div className={style.content}>
                 {children}
                 <Toast />
+                <div id={'onboarding-guide-modal'} />
+                <OnboardingGuideModal />
               </div>
               <div className={style.rightZone}></div>
             </div>

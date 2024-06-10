@@ -59,7 +59,7 @@ export async function fakeServerCall(data: any) {
 }
 
 // 로컬 스토리지에 값을 설정하는 함수
-export const setLocalStorage = (key: string, value: string) => {
+export const setLocalStorage = (key: string, value: any) => {
   if (typeof window !== 'undefined') {
     localStorage.setItem(key, JSON.stringify(value));
   }
