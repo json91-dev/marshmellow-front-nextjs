@@ -21,14 +21,14 @@ export default function MissionCalendarGuest() {
   return (
     <div className={style.missionCalendar}>
       <MonthHeader month={month} setMonth={setMonth} />
-      <div className={style.body}>
+      <div className={style.calendarBody}>
         <div className={style.days}>
           {DAY_LIST.map((day) => {
             return <p key={day}>{day}</p>;
           })}
         </div>
 
-        <div className={style.calendar}>
+        <div className={style.dates}>
           {calendarList?.map((week) => {
             return (
               <div key={week[0]} className={style.week}>
