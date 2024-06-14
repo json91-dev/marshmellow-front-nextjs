@@ -47,7 +47,6 @@
     background-color: #F0F3FA;
     padding: 1.5rem 1.6rem;
     border-radius: 0.8rem;
-    margin-bottom: 1.5rem;
     margin-top: 1.6rem;
 
     >:nth-child(2),
@@ -124,13 +123,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     color: white;
     font-size: 1.6rem;
     cursor: pointer;
-    margin-top: 3rem;
+    margin-top: 1.6rem;
+    margin-bottom: 2.4rem;
+    padding: 1.8rem;
 
     @include activeScale(0.99);
     @include activeOpacity(0.8);
+
   }
 }

@@ -110,9 +110,9 @@ export default function WorkTimeBottomSheet() {
               </div>
 
               <div className={style.info}>
-                <div>정시출근: 08:00 ~ 08:15</div>
-                <div>점심시간: 11:00 ~ 11:15</div>
-                <div>정시퇴근: 15:00 ~ 15:15</div>
+                <div>정시출근: 09:00 ~ 09:15</div>
+                <div>점심시간: 12:00 ~ 12:15</div>
+                <div>정시퇴근: 16:00 ~ 16:15</div>
               </div>
             </div>
 
@@ -133,15 +133,15 @@ export default function WorkTimeBottomSheet() {
               </div>
 
               <div className={style.info}>
-                <div>정시출근: 08:00 ~ 08:15</div>
-                <div>점심시간: 11:00 ~ 11:15</div>
-                <div>정시퇴근: 15:00 ~ 15:15</div>
+                <div>정시출근: 10:00 ~ 10:15</div>
+                <div>점심시간: 13:00 ~ 13:15</div>
+                <div>정시퇴근: 17:00 ~ 17:15</div>
               </div>
             </div>
+          </div>
 
-            <div onClick={onClickWorkTimeChange} className={style.confirmButton}>
-              확인
-            </div>
+          <div onClick={onClickWorkTimeChange} className={style.confirmButton}>
+            확인
           </div>
         </div>
       </CSSTransition>

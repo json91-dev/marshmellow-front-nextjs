@@ -2,7 +2,7 @@ import Image from 'next/image';
 import React from 'react';
 import style from '../time-setting.module.scss';
 
-export default function Welcome() {
+export default function Welcome({ setStep }: any) {
   return (
     <div className={style.welcome}>
       <div className={style.headerTitle}>합격을 축하드려요! 🎉</div>
@@ -36,7 +36,7 @@ export default function Welcome() {
         <div>정시퇴근</div>
       </div>
 
-      <div className={style.bottomArrow}>
+      <div className={style.bottomArrow} onClick={() => setStep(2)}>
         <Image src="/images/arrow.right.white.svg" alt="No Image" width={64} height={64} />
       </div>
     </div>
