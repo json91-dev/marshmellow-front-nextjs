@@ -359,6 +359,8 @@
       right: 1.3rem;
       bottom: 0;
       pointer-events: none;
+      border: 1rem solid white;
+      border-radius: 100%;
 
       &.active {
         @include activeOpacity();
