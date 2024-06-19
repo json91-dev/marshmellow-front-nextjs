@@ -6,10 +6,10 @@ import dayjs from 'dayjs';
 import { findMonday, findSunday, formatDateToTodayDate } from '@/utils/utils';
 
 type Prop = {
-  step: number;
+  setStep: Function;
 };
 
-export default function Tutorial1({ step }: Prop) {
+export default function Tutorial1({ setStep }: Prop) {
   return (
     <>
       <div className={cx(style.tutorial, style.dim)}>
@@ -26,7 +26,7 @@ export default function Tutorial1({ step }: Prop) {
               <div className={style.name}>{`홍길동`}</div>
               <Image src="/images/mallow.happy.v2.svg" alt="No Image" width={120} height={102} />
             </div>
-            <TodayMission step={step} />
+            <TodayMission />
           </div>
           <WeekAttendance />
 
@@ -39,6 +39,7 @@ export default function Tutorial1({ step }: Prop) {
       </div>
 
       <TimerMissionCheck />
+      <TutorialMessageBox setStep={setStep} />
     </>
   );
 }
@@ -49,13 +50,13 @@ function MyMallowHeader() {
       <div className={style.logo}></div>
       <div className={style.myMallow}>
         <Image src="/images/snack.gray.svg" alt="No Image" width={24} height={24} />
-        <p>0</p>
+        <p>다음</p>
       </div>
     </div>
   );
 }
 
-function TodayMission({ step }) {
+function TodayMission() {
   return (
     <div className={style.todayMission}>
       <div className={style.header}>
@@ -147,6 +148,7 @@ function WeekAttendance() {
   );
 }
 
+/** 하단 타이머 **/
 function TimerMissionCheck() {
   return (
     <div className={cx(style.timeCheckArea, style.focus)}>
@@ -158,6 +160,17 @@ function TimerMissionCheck() {
       </div>
       <div className={style.checkWorkButton}>
         <Image src="/images/mallow.sleep.circle.png" alt="No Image" width={100} height={100} />
+      </div>
+    </div>
+  );
+}
+
+function TutorialMessageBox({ setStep }: any) {
+  return (
+    <div className={style.tutorialMessageBoxContainer}>
+      <div className={style.tutorialMessageBox}>
+        <p>{'지금 첫 출근을 해볼까요?\n짜잔! 제가 출근시간 1초 전으로 왔어요.'}</p>
+        <button onClick={() => setStep(2)}>다음</button>
       </div>
     </div>
   );

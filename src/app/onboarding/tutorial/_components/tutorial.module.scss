@@ -340,9 +340,10 @@
     position: absolute;
     right: 1.3rem;
     bottom: 0;
-    pointer-events: none;
+    //pointer-events: none;
     border: 1rem solid white;
     border-radius: 100%;
+    pointer-events: all;
 
     &.active {
       @include activeOpacity();
@@ -371,6 +372,7 @@
   border-bottom: 1px solid #E5E9F2;
   background-color: white;
 
+
   .logo {
     width: 10rem;
     height: 2.4rem;
@@ -391,4 +393,78 @@
   }
 }
 
+.guideFinger {
+  position: absolute;
+  z-index: 1000;
+  pointer-events: none;
+  animation: moveFinger 0.9s infinite;
+  will-change: transform;
+  transform: translateX(-1.5rem) translateY(1.5rem);
 
+  &.tutorial2 {
+    bottom: -3rem;
+    right: 8.5rem;
+  }
+
+  @keyframes moveFinger {
+    100% {
+      transform: translateX(0rem) translateY(0rem);
+    }
+  }
+}
+
+.tutorialMessageBoxContainer {
+  width: 100%;
+  position: absolute;
+  bottom: 15rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .tutorialMessageBox {
+    display: flex;
+    white-space: pre-wrap;
+    align-items: center;
+    gap: 1.2rem;
+    background: white;
+    border-radius: 0.8rem;
+    padding: 1.4rem;
+    z-index: 10;
+    justify-content: space-between;
+
+    &:before {
+      content: "";
+      position: absolute;
+      bottom: -5.2em; /* Adjust this value to position the arrow correctly */
+      left: 50%;
+      transform: translateX(-50%);
+      border: 3em solid transparent;
+      border-top: 4.5em solid white;
+      z-index: 0;
+    }
+
+    p {
+      font-size: 1.4rem;
+      line-height: 2rem;
+      color: #1C222B;
+      font-weight: 700;
+    }
+
+    button {
+      @include activeOpacity;
+      @include activeScale;
+      background: black;
+      color: white;
+      font-weight: 500;
+      font-size: 1.2rem;
+      padding: 0.6rem 0.85rem;
+      border-radius: 0.6rem;
+    }
+  }
+
+  .inner {
+
+  }
+
+
+}
