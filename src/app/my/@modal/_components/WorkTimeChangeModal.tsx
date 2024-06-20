@@ -7,17 +7,22 @@ import { useModalStore } from '@/store/modal';
 import cx from 'classnames';
 import { useWorkTimeChangeMutation } from '@/app/_hook/queries/member';
 import { useToastStore } from '@/store/toast';
+import { useQueryClient } from '@tanstack/react-query';
 
 export default function WorkTimeChangeModal() {
   const { isShowWorkTimeChangeModal, showWorkTimeChangeModal, workTimeId } = useModalStore();
   const backdropRef = React.useRef(null);
   const modalRef = React.useRef(null);
   const { mutate } = useWorkTimeChangeMutation();
+  const queryClient = useQueryClient();
   const { openToast } = useToastStore();
+
   const onClickChangeWorkTime = () => {
     mutate(workTimeId, {
       onSuccess: () => {
         openToast('내 근무시간이 변경되었어요.');
+        queryClient.invalidateQueries({ queryKey: ['work', 'today'] }).then();
+        queryClient.invalidateQueries({ queryKey: ['me', 'profile'] }).then();
       },
       onError: () => {
         openToast('근무시간 변경에 실패했어요.');

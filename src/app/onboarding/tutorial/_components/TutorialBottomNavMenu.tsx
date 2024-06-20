@@ -6,14 +6,14 @@ import React from 'react';
 import cx from 'classnames';
 
 type Props = {
-  step: number;
+  tutorialStep: number;
 };
 
-export default function TutorialBottomNavMenu({ step }: Props) {
+export default function TutorialBottomNavMenu({ tutorialStep }: Props) {
   return (
     <div className={cx(style.tutorialNav, style.dim)}>
       <li>
-        <div className={cx(step === 7 && style.selected)}>
+        <div className={cx(tutorialStep === 7 && style.selected)}>
           <div className={style.image}>
             <Image src="/images/bottom.tab.pantry.svg" alt="No Image" width={24} height={24} />
           </div>

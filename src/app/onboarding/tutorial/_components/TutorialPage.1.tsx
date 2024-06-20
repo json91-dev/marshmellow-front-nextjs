@@ -6,10 +6,10 @@ import dayjs from 'dayjs';
 import { findMonday, findSunday, formatDateToTodayDate } from '@/utils/utils';
 
 type Prop = {
-  setStep: Function;
+  setTutorialStep: Function;
 };
 
-export default function Tutorial1({ setStep }: Prop) {
+export default function Tutorial1({ setTutorialStep }: Prop) {
   return (
     <>
       <div className={cx(style.tutorial, style.dim)}>
@@ -39,7 +39,7 @@ export default function Tutorial1({ setStep }: Prop) {
       </div>
 
       <TimerMissionCheck />
-      <TutorialMessageBox setStep={setStep} />
+      <TutorialMessageBox setTutorialStep={setTutorialStep} />
     </>
   );
 }
@@ -50,7 +50,7 @@ function MyMallowHeader() {
       <div className={style.logo}></div>
       <div className={style.myMallow}>
         <Image src="/images/snack.gray.svg" alt="No Image" width={24} height={24} />
-        <p>다음</p>
+        <p>0</p>
       </div>
     </div>
   );
@@ -165,12 +165,12 @@ function TimerMissionCheck() {
   );
 }
 
-function TutorialMessageBox({ setStep }: any) {
+function TutorialMessageBox({ setTutorialStep }: any) {
   return (
     <div className={style.tutorialMessageBoxContainer}>
       <div className={style.tutorialMessageBox}>
         <p>{'지금 첫 출근을 해볼까요?\n짜잔! 제가 출근시간 1초 전으로 왔어요.'}</p>
-        <button onClick={() => setStep(2)}>다음</button>
+        <button onClick={() => setTutorialStep(2)}>다음</button>
       </div>
     </div>
   );

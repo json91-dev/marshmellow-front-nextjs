@@ -340,14 +340,15 @@
     position: absolute;
     right: 1.3rem;
     bottom: 0;
-    //pointer-events: none;
     border: 1rem solid white;
     border-radius: 100%;
     pointer-events: all;
+    //@include activeOpacity;
+    img {
+      @include activeOpacity;
+    }
 
     &.active {
-      @include activeOpacity();
-      @include activeScale();
       pointer-events: all;
       cursor: pointer;
     }
@@ -406,6 +407,11 @@
     right: 8.5rem;
   }
 
+  &.tutorial3 {
+    left: 7.3rem;
+    bottom: -3.7rem;
+  }
+
   @keyframes moveFinger {
     100% {
       transform: translateX(0rem) translateY(0rem);
@@ -420,6 +426,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  pointer-events: all;
 
   .tutorialMessageBox {
     display: flex;
@@ -435,11 +442,11 @@
     &:before {
       content: "";
       position: absolute;
-      bottom: -5.2em; /* Adjust this value to position the arrow correctly */
+      bottom: -3.2em; /* Adjust this value to position the arrow correctly */
       left: 50%;
       transform: translateX(-50%);
-      border: 3em solid transparent;
-      border-top: 4.5em solid white;
+      border: 1.3em solid transparent;
+      border-top: 2em solid white;
       z-index: 0;
     }
 
@@ -464,6 +471,112 @@
 
   .inner {
 
+  }
+
+}
+
+.missionCompleteMessageAndModal {
+  position: absolute;
+  width: 30rem;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+
+  .topTitle {
+    font-size: 2.4rem;
+    line-height: 3.2rem;
+    color: white;
+  }
+
+  .tutorialMessageBox {
+    margin-top: 1rem;
+    position:relative;
+    display: flex;
+    white-space: pre-wrap;
+    align-items: center;
+    gap: 1.2rem;
+    background: white;
+    border-radius: 0.8rem;
+    padding: 1.4rem;
+    z-index: 10;
+    justify-content: space-between;
+
+    &:before {
+      content: "";
+      position: absolute;
+      bottom: -3.2em; /* Adjust this value to position the arrow correctly */
+      left: 50%;
+      transform: translateX(-50%);
+      border: 1.3em solid transparent;
+      border-top: 2em solid white;
+      z-index: 0;
+    }
+
+    p {
+      font-size: 1.4rem;
+      line-height: 2rem;
+      color: #1C222B;
+      font-weight: 700;
+
+      span {
+        color: #BB4EF2;
+      }
+    }
+  }
+
+  .missionCompleteModal {
+    width: 100%;
+    padding: 2.4rem 1.6rem 1.6rem 1.6rem;
+    background-color: #F5E4FF;
+    border-radius: 2rem;
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .headTitle {
+      font-size: 1.8rem;
+      line-height: 2rem;
+      color: #12171E;
+      font-weight: 700;
+
+      span {
+        color: #BB4EF2;
+      }
+    }
+
+    .description {
+      margin-top: 1.6rem;
+      color: #3D4451;
+      font-size: 1.4rem;
+      font-weight: 500;
+    }
+
+    .mallowImage {
+      margin-top: 1.2rem;
+    }
+
+    .confirmButton {
+      width: 100%;
+      height: 4.8rem;
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 0.8rem;
+      color: white;
+      font-size: 1.6rem;
+      margin-top: 2.4rem;
+      font-weight: 500;
+      cursor: pointer;
+
+      @include activeScale(0.99);
+      @include activeOpacity(0.8);
+    }
   }
 
 

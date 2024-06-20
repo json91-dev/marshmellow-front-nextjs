@@ -17,4 +17,5 @@
   height: calc(100% - var(--mainLayoutBottomNavHeight));
   top: 0;
   position: absolute;
+  pointer-events: none;
 }

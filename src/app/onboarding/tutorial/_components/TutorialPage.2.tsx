@@ -1,16 +1,17 @@
 import style from './tutorial.module.scss';
 import Image from 'next/image';
-import React from 'react';
+import React, { useCallback } from 'react';
 import cx from 'classnames';
 import dayjs from 'dayjs';
 import { findMonday, findSunday, formatDateToTodayDate } from '@/utils/utils';
 import { CheckActiveButtonSVG } from '@/app/(main)/office/_components/TimerMissionCheck';
+import { useRouter } from 'next/navigation';
 
 type Prop = {
-  setStep: Function;
+  setTutorialStep: Function;
 };
 
-export default function Tutorial1({ setStep }: Prop) {
+export default function Tutorial1({ setTutorialStep }: Prop) {
   return (
     <>
       <div className={cx(style.tutorial, style.dim)}>
@@ -39,8 +40,8 @@ export default function Tutorial1({ setStep }: Prop) {
         </div>
       </div>
 
-      <TimerMissionCheck />
-      <TutorialMessageBox setStep={setStep} />
+      <TimerMissionCheck setTutorialStep={setTutorialStep} />
+      <TutorialMessageBox />
       <GuideFinger />
     </>
   );
@@ -52,7 +53,7 @@ function MyMallowHeader() {
       <div className={style.logo}></div>
       <div className={style.myMallow}>
         <Image src="/images/snack.gray.svg" alt="No Image" width={24} height={24} />
-        <p>다음</p>
+        <p>0</p>
       </div>
     </div>
   );
@@ -151,7 +152,7 @@ function WeekAttendance() {
 }
 
 /** 하단 타이머 **/
-function TimerMissionCheck() {
+function TimerMissionCheck({ setTutorialStep }: any) {
   return (
     <div className={cx(style.timeCheckArea, style.focus)}>
       <div className={style.timerTime}>09:00:00</div>
@@ -160,15 +161,14 @@ function TimerMissionCheck() {
           <span>지금 마시멜로우를 획득하세요!</span>
         </p>
       </div>
-      <div className={style.checkWorkButton}>
+      <div className={style.checkWorkButton} onClick={() => setTutorialStep(3)}>
         <Image src="/images/mallow.black.happy.svg" alt="No Image" width={100} height={100} />
-        {/*<CheckActiveButtonSVG />*/}
       </div>
     </div>
   );
 }
 
-function TutorialMessageBox({ setStep }: any) {
+function TutorialMessageBox() {
   return (
     <div className={style.tutorialMessageBoxContainer}>
       <div className={style.tutorialMessageBox}>

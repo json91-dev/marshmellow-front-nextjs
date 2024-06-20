@@ -183,7 +183,7 @@ export function useWorkTimeChangeMutation() {
     }
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/member/hour`, {
-      method: 'DELETE',
+      method: 'PUT',
       headers: {
         Authorization: `Bearer ${session?.accessToken}`,
         'Content-Type': 'application/json',

@@ -6,11 +6,11 @@ import Welcome from '@/app/onboarding/worktime-setting/_components/Welcome';
 import WorkTimeSetting from '@/app/onboarding/worktime-setting/_components/WorkTimeSetting';
 
 export default function OnBoardingPage() {
-  const [step, setStep] = useState(1);
+  const [step, setTutorialStep] = useState(1);
 
   return (
     <div className={style.worktimeSettingPage}>
-      {step === 1 && <Welcome setStep={setStep} />}
+      {step === 1 && <Welcome setTutorialStep={setTutorialStep} />}
       {step === 2 && <WorkTimeSetting />}
     </div>
   );
