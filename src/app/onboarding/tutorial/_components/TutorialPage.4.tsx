@@ -60,10 +60,10 @@ export default function Tutorial3({ setTutorialStep }: Prop) {
             <Image src="/images/enjoy.guide.svg" alt="No Image" width={100} height={100} />
           </div>
         </div>
-        <TimerMissionCheck setTutorialStep={setTutorialStep} />
+        <TimerMissionCheck />
       </div>
       <TodayAreaFocus />
-      <TutorialMessageBox />
+      <TutorialMessageBox setTutorialStep={setTutorialStep} />
     </>
   );
 }
@@ -109,6 +109,7 @@ function MissionBox({ state, quantity }: any) {
   }
 }
 
+/** 근태관리 화면 **/
 function WeekAttendance() {
   const now = dayjs();
   const mondayTime = findMonday(now);
@@ -127,14 +128,13 @@ function WeekAttendance() {
 
       <div className={style.weekMissions}>
         {daysArray.map((item, index) => {
+          const dayIndex = dayjs().day() === 0 ? 6 : dayjs().day() - 1;
+
           return (
             <div className={style.col}>
               <Image src="/images/snack.gray.light.svg" alt="No Image" width={24} height={24} />
               <p>{item}</p>
-              {/*일요일*/}
-              {dayjs().day() === 0 && index === 6 && <div className={style.blackDot}></div>}
-              {/*월 ~ 토요일*/}
-              {index === dayjs().day() - 1 && <div className={style.blackDot}></div>}
+              {index === dayIndex && <div className={style.blackDot}></div>}
             </div>
           );
         })}
@@ -144,7 +144,7 @@ function WeekAttendance() {
 }
 
 /** 하단 타이머 **/
-function TimerMissionCheck({ setTutorialStep }: any) {
+function TimerMissionCheck() {
   return (
     <div className={style.timeCheckArea}>
       <div className={style.timerTime}>09:00:00</div>
@@ -156,14 +156,6 @@ function TimerMissionCheck({ setTutorialStep }: any) {
       <div className={style.checkWorkButton} style={{ pointerEvents: 'none' }}>
         <Image src="/images/mallow.black.happy.svg" alt="No Image" width={100} height={100} />
       </div>
-    </div>
-  );
-}
-
-function GuideFinger() {
-  return (
-    <div className={cx(style.guideFinger, style.tutorial3)}>
-      <Image src="/images/guide.finger.svg" alt="No Image" width={79} height={84} />
     </div>
   );
 }
@@ -204,12 +196,12 @@ function TodayAreaFocus() {
   );
 }
 
-function TutorialMessageBox() {
+function TutorialMessageBox({ setTutorialStep }: any) {
   return (
     <div className={cx(style.tutorialMessageBoxContainer, style.tutorial4)}>
       <div className={style.tutorialMessageBox}>
         <p>{'출근 업무를 무사히 완료했어요. 오늘의 업무 현황은 여기서 쉽게 확인 가능해요'}</p>
-        <button>다음</button>
+        <button onClick={() => setTutorialStep(5)}>다음</button>
       </div>
     </div>
   );

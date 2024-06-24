@@ -59,6 +59,7 @@ export default function WeekAttendance() {
       <div className={style.weekMissions}>
         {weekMissionData.map((item: any, index: any) => {
           const { completeCount, dayString } = item;
+          const dayIndex = dayjs().day() === 0 ? 6 : dayjs().day() - 1;
 
           return (
             <div className={style.col}>
@@ -68,8 +69,7 @@ export default function WeekAttendance() {
               {completeCount === 3 && <Image src="/images/snack.purple.svg" alt="No Image" width={24} height={24} />}
               <p>{dayString}</p>
 
-              {dayjs().day() === 0 && index === 6 && <div className={style.blackDot}></div>}
-              {index === dayjs().day() - 1 && <div className={style.blackDot}></div>}
+              {index === dayIndex && <div className={style.blackDot}></div>}
             </div>
           );
         })}

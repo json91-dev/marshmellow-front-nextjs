@@ -218,6 +218,14 @@
   @include activeOpacity();
   @include activeScale();
 
+  &.focus {
+    position: absolute;
+    width: calc(100% - 4rem);
+    left: 2rem;
+    top: 33.5rem;
+
+  }
+
 
   .header {
     display: flex;
@@ -471,11 +479,10 @@
   }
 
   &.tutorial4 {
-    max-width: 31rem;
-    right: 2rem;
     top: 40rem;
 
     .tutorialMessageBox {
+      width: calc(100% - 4rem);
       &:before {
         content: "";
         position: absolute;
@@ -486,9 +493,27 @@
         z-index: 0;
         bottom: 100%;
       }
+    }
+  }
 
-      p {
-        word-break: normal !important;
+  &.tutorial5 {
+    right: 2rem;
+    top: 28.5rem;
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    .tutorialMessageBox {
+      width: calc(100% - 8rem);
+      &:before {
+        content: "";
+        position: absolute;
+        bottom: -3.2em; /* Adjust this value to position the arrow correctly */
+        left: 25%;
+        transform: translateX(-50%);
+        border: 1.3em solid transparent;
+        border-top: 2em solid white;
+        z-index: 0;
       }
     }
   }
@@ -497,7 +522,7 @@
     display: flex;
     white-space: pre-wrap;
     align-items: center;
-    gap: 1.2rem;
+    gap: 1rem;
     background: white;
     border-radius: 0.8rem;
     padding: 1.4rem;
@@ -511,6 +536,7 @@
       line-height: 2rem;
       color: #1C222B;
       font-weight: 700;
+      word-break: normal;
     }
 
     button {
