@@ -16,9 +16,6 @@
     padding-right: 2rem;
     padding-bottom: 2rem;
     overflow-y: scroll;
-
-
-
   }
 }
 
@@ -52,7 +49,6 @@
   width: 100%;
   margin-top: 1.6rem;
   gap: 0.5rem;
-
 
   .myIcon {
     display: flex;
@@ -107,8 +103,6 @@
       }
     }
 
-
-
     .missionTime {
       display: flex;
       flex-direction: column;
@@ -157,7 +151,7 @@
             border-color: #BB4EF2 !important;
 
             p {
-              color: #BB4EF2 !important;
+              color: white !important;
             }
           }
 
@@ -192,10 +186,24 @@
           }
         }
       }
-
     }
   }
+
+
+  &.focus {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 5000;
+    pointer-events: all;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-top: 18.6rem;
+  }
 }
+
+
+
 
 .attendance {
   width: 100%;
@@ -422,11 +430,68 @@
 .tutorialMessageBoxContainer {
   width: 100%;
   position: absolute;
-  bottom: 15rem;
   display: flex;
   justify-content: center;
   align-items: center;
   pointer-events: all;
+
+
+  &.tutorial1 {
+    bottom: 17rem;
+
+    .tutorialMessageBox {
+      &:before {
+        content: "";
+        position: absolute;
+        bottom: -3.2em; /* Adjust this value to position the arrow correctly */
+        left: 50%;
+        transform: translateX(-50%);
+        border: 1.3em solid transparent;
+        border-top: 2em solid white;
+        z-index: 0;
+      }
+    }
+  }
+
+  &.tutorial2 {
+    bottom: 17rem;
+
+    .tutorialMessageBox {
+      &:before {
+        content: "";
+        position: absolute;
+        bottom: -3.2em; /* Adjust this value to position the arrow correctly */
+        left: 50%;
+        transform: translateX(-50%);
+        border: 1.3em solid transparent;
+        border-top: 2em solid white;
+        z-index: 0;
+      }
+    }
+  }
+
+  &.tutorial4 {
+    max-width: 31rem;
+    right: 2rem;
+    top: 40rem;
+
+    .tutorialMessageBox {
+      &:before {
+        content: "";
+        position: absolute;
+        left: 65%;
+        transform: translateX(-50%);
+        border: 1.3em solid transparent;
+        border-bottom: 2em solid white;
+        z-index: 0;
+        bottom: 100%;
+      }
+
+      p {
+        word-break: normal !important;
+      }
+    }
+  }
 
   .tutorialMessageBox {
     display: flex;
@@ -438,17 +503,8 @@
     padding: 1.4rem;
     z-index: 10;
     justify-content: space-between;
+    position: absolute;
 
-    &:before {
-      content: "";
-      position: absolute;
-      bottom: -3.2em; /* Adjust this value to position the arrow correctly */
-      left: 50%;
-      transform: translateX(-50%);
-      border: 1.3em solid transparent;
-      border-top: 2em solid white;
-      z-index: 0;
-    }
 
     p {
       font-size: 1.4rem;
@@ -580,4 +636,8 @@
   }
 
 
+
 }
+
+
+

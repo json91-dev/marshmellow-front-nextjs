@@ -70,17 +70,17 @@ function TodayMission() {
       <div className={style.missionTime}>
         <div className={cx(style.row, cx(style.active))}>
           <p className={style.name}>출근</p>
-          <p className={style.time}>10:00 ~ 10:15</p>
+          <p className={style.time}>09:00 ~ 09:15</p>
           <MissionBox state={'Soon'} quantity={0} />
         </div>
         <div className={cx(style.row)}>
           <p className={style.name}>점심</p>
-          <p className={style.time}>13:00 ~ 13:15</p>
+          <p className={style.time}>12:00 ~ 12:15</p>
           <MissionBox state={'NotYet'} quantity={0} />
         </div>
         <div className={cx(style.row)}>
           <p className={style.name}>퇴근</p>
-          <p className={style.time}>19:00 ~ 19:15</p>
+          <p className={style.time}>18:00 ~ 18:15</p>
           <MissionBox state={'NotYet'} quantity={0} />
         </div>
       </div>
@@ -170,7 +170,7 @@ function TimerMissionCheck({ setTutorialStep }: any) {
 
 function TutorialMessageBox() {
   return (
-    <div className={style.tutorialMessageBoxContainer}>
+    <div className={cx(style.tutorialMessageBoxContainer, style.tutorial2)}>
       <div className={style.tutorialMessageBox}>
         <p>{'출근시간이에요! 15분이 지나기 전에 ‘버튼’을 눌러주세요!'}</p>
       </div>

@@ -36,10 +36,10 @@ export default function Tutorial3({ setTutorialStep }: Prop) {
             <Image src="/images/enjoy.guide.svg" alt="No Image" width={100} height={100} />
           </div>
         </div>
-        <TimerMissionCheck setTutorialStep={setTutorialStep} />
+        <TimerMissionCheck />
       </div>
 
-      <MissionCompleteMessageAndModal />
+      <MissionCompleteMessageAndModal setTutorialStep={setTutorialStep} />
     </>
   );
 }
@@ -67,17 +67,17 @@ function TodayMission() {
       <div className={style.missionTime}>
         <div className={cx(style.row, cx(style.active))}>
           <p className={style.name}>출근</p>
-          <p className={style.time}>10:00 ~ 10:15</p>
+          <p className={style.time}>09:00 ~ 09:15</p>
           <MissionBox state={'Soon'} quantity={0} />
         </div>
         <div className={cx(style.row)}>
           <p className={style.name}>점심</p>
-          <p className={style.time}>13:00 ~ 13:15</p>
+          <p className={style.time}>12:00 ~ 12:15</p>
           <MissionBox state={'NotYet'} quantity={0} />
         </div>
         <div className={cx(style.row)}>
           <p className={style.name}>퇴근</p>
-          <p className={style.time}>19:00 ~ 19:15</p>
+          <p className={style.time}>18:00 ~ 18:15</p>
           <MissionBox state={'NotYet'} quantity={0} />
         </div>
       </div>
@@ -149,7 +149,7 @@ function WeekAttendance() {
 }
 
 /** 하단 타이머 **/
-function TimerMissionCheck({ setTutorialStep }: any) {
+function TimerMissionCheck() {
   return (
     <div className={cx(style.timeCheckArea, style.focus)}>
       <div className={style.timerTime}>09:00:00</div>
@@ -173,7 +173,7 @@ function GuideFinger() {
   );
 }
 
-function MissionCompleteMessageAndModal() {
+function MissionCompleteMessageAndModal({ setTutorialStep }: any) {
   return (
     <div className={style.missionCompleteMessageAndModal}>
       <GuideFinger />
@@ -193,8 +193,10 @@ function MissionCompleteMessageAndModal() {
         <div className={style.mallowImage}>
           <Image src="/images/mallow.happy.pink.svg" alt="No Image" width={72} height={72} />
         </div>
-        <p className={style.description}>출근 보상으로 마시멜로우 2개를 받았어요!</p>
-        <button className={style.confirmButton}>확인</button>
+        <p className={style.description}>업무 보상으로 마시멜로우 2개를 받았어요!</p>
+        <button className={style.confirmButton} style={{ pointerEvents: 'all' }} onClick={() => setTutorialStep(4)}>
+          확인
+        </button>
       </div>
     </div>
   );
