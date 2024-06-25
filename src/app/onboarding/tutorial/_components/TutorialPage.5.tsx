@@ -1,6 +1,6 @@
 import style from './tutorial.module.scss';
 import Image from 'next/image';
-import React, { useCallback } from 'react';
+import React from 'react';
 import cx from 'classnames';
 import dayjs from 'dayjs';
 import { findMonday, findSunday, formatDateToTodayDate } from '@/utils/utils';
@@ -40,7 +40,7 @@ export default function Tutorial5({ setTutorialStep }: Prop) {
         </div>
         <TimerMissionCheck />
       </div>
-      <TutorialMessageBox />
+      <TutorialMessageBox setTutorialStep={setTutorialStep} />
       <WeekAttendanceFocus />
     </>
   );
@@ -55,12 +55,12 @@ function TodayMission() {
       </div>
 
       <div className={style.missionTime}>
-        <div className={cx(style.row, cx(style.active))}>
+        <div className={cx(style.row)}>
           <p className={style.name}>출근</p>
           <p className={style.time}>09:00 ~ 09:15</p>
-          <MissionBox state={'Soon'} quantity={0} />
+          <MissionBox state={'Complete'} quantity={1} />
         </div>
-        <div className={cx(style.row)}>
+        <div className={cx(style.row, cx(style.active))}>
           <p className={style.name}>점심</p>
           <p className={style.time}>12:00 ~ 12:15</p>
           <MissionBox state={'NotYet'} quantity={0} />
@@ -203,12 +203,12 @@ function TimerMissionCheck() {
   );
 }
 
-function TutorialMessageBox() {
+function TutorialMessageBox({ setTutorialStep }: any) {
   return (
     <div className={cx(style.tutorialMessageBoxContainer, style.tutorial5)}>
       <div className={style.tutorialMessageBox}>
         <p>{'회사 생활에 중요한 근태! 내 근태 현황을 확인하고 그에 따른 보상도 받을 수 있어요.'}</p>
-        <button>다음</button>
+        <button onClick={() => setTutorialStep(6)}>다음</button>
       </div>
     </div>
   );

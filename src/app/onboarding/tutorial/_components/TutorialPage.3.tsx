@@ -1,6 +1,6 @@
 import style from './tutorial.module.scss';
 import Image from 'next/image';
-import React, { useCallback } from 'react';
+import React from 'react';
 import cx from 'classnames';
 import dayjs from 'dayjs';
 import { findMonday, findSunday, formatDateToTodayDate } from '@/utils/utils';

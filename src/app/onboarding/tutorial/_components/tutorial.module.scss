@@ -302,6 +302,13 @@
   flex-direction: row;
   justify-content: space-around;
 
+  &.focus {
+    position: absolute;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    top: 46.5rem;
+  }
+
   img {
     @include activeOpacity;
     @include activeScale;
@@ -482,7 +489,6 @@
     top: 40rem;
 
     .tutorialMessageBox {
-      width: calc(100% - 4rem);
       &:before {
         content: "";
         position: absolute;
@@ -518,6 +524,26 @@
     }
   }
 
+  &.tutorial6 {
+    top: 38rem;
+
+    .tutorialMessageBox {
+      top: 0;
+      left: 2rem;
+      width: calc(100% - 10rem);
+      &:before {
+        content: "";
+        position: absolute;
+        bottom: -3.2em; /* Adjust this value to position the arrow correctly */
+        left: 6.3rem;
+        transform: translateX(-50%);
+        border: 1.3em solid transparent;
+        border-top: 2em solid white;
+        z-index: 0;
+      }
+    }
+  }
+
   .tutorialMessageBox {
     display: flex;
     white-space: pre-wrap;
@@ -529,7 +555,6 @@
     z-index: 10;
     justify-content: space-between;
     position: absolute;
-
 
     p {
       font-size: 1.4rem;
@@ -548,6 +573,7 @@
       font-size: 1.2rem;
       padding: 0.6rem 0.85rem;
       border-radius: 0.6rem;
+      cursor: pointer;
     }
   }
 
@@ -660,10 +686,8 @@
       @include activeOpacity(0.8);
     }
   }
-
-
-
 }
+
 
 
 

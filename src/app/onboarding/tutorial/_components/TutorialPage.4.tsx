@@ -1,6 +1,6 @@
 import style from './tutorial.module.scss';
 import Image from 'next/image';
-import React, { useCallback } from 'react';
+import React from 'react';
 import cx from 'classnames';
 import dayjs from 'dayjs';
 import { findMonday, findSunday, formatDateToTodayDate } from '@/utils/utils';
@@ -200,7 +200,7 @@ function TutorialMessageBox({ setTutorialStep }: any) {
   return (
     <div className={cx(style.tutorialMessageBoxContainer, style.tutorial4)}>
       <div className={style.tutorialMessageBox}>
-        <p>{'출근 업무를 무사히 완료했어요. 오늘의 업무 현황은 여기서 쉽게 확인 가능해요'}</p>
+        <p>{'출근 업무를 무사히 완료했어요.\n오늘의 업무 현황은 여기서 쉽게 확인 가능해요.'}</p>
         <button onClick={() => setTutorialStep(5)}>다음</button>
       </div>
     </div>
