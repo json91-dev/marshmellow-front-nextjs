@@ -544,6 +544,26 @@
     }
   }
 
+  &.tutorial7 {
+    bottom: 11.5rem;
+
+    .tutorialMessageBox {
+      top: 0;
+      left: 1.4rem;
+      width: calc(100% - 8rem);
+      &:before {
+        content: "";
+        position: absolute;
+        bottom: -3.2em; /* Adjust this value to position the arrow correctly */
+        left: 5.7rem;
+        transform: translateX(-50%);
+        border: 1.3em solid transparent;
+        border-top: 2em solid white;
+        z-index: 0;
+      }
+    }
+  }
+
   .tutorialMessageBox {
     display: flex;
     white-space: pre-wrap;

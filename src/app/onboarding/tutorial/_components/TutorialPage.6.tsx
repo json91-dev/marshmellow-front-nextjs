@@ -40,7 +40,7 @@ export default function Tutorial6({ setTutorialStep }: Prop) {
         </div>
         <TimerMissionCheck />
       </div>
-      <TutorialMessageBox />
+      <TutorialMessageBox setTutorialStep={setTutorialStep} />
       <EnjoyFocus />
     </>
   );
@@ -178,14 +178,14 @@ function TimerMissionCheck() {
   );
 }
 
-function TutorialMessageBox() {
+function TutorialMessageBox({ setTutorialStep }: any) {
   return (
     <div className={cx(style.tutorialMessageBoxContainer, style.tutorial6)}>
       <div className={style.tutorialMessageBox}>
         <p>
           <p>{'얻은 마시멜로우를 사용할수 있는 곳이에요.\n레크레이션 컨텐츠는 비정기적으로 바뀌어요.'}</p>
         </p>
-        <button>다음</button>
+        <button onClick={() => setTutorialStep(7)}>다음</button>
       </div>
     </div>
   );
