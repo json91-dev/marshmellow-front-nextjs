@@ -29,7 +29,7 @@ export function useOnboardingCompleteMutation() {
 
 /** 온보딩 상태 조회 **/
 export function useOnboardingStatusQuery() {
-  const getMember = async () => {
+  const getOnboardingStatus = async () => {
     const session = await getSession();
     if (!session) {
       console.error('로그인이 되어있지 않음');
@@ -50,7 +50,7 @@ export function useOnboardingStatusQuery() {
 
   return useQuery({
     queryKey: ['onboarding'],
-    queryFn: getMember,
+    queryFn: getOnboardingStatus,
     staleTime: 1000 * 20,
   });
 }
