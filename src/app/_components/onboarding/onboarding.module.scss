@@ -29,16 +29,17 @@
     flex-direction: column;
 
     .cartoonArea {
-      width: 100%;
-      height: auto;
+      /** 레이아웃 시프트 막기 **/
+      @include sizes;
+      width: var(--rootLayoutChildrenWidth);
+      height: calc(var(--rootLayoutChildrenWidth) * 0.8);
 
       img {
         position: relative !important;
         width: 100%;
-        object-fit: contain;
-        height: auto;
+        height: 100%;
+        object-fit: fill;
       }
-
     }
 
     .infoArea {
