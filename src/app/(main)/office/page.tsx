@@ -6,8 +6,12 @@ import TimerMissionCheck from '@/app/(main)/office/_components/TimerMissionCheck
 import TodayMission from '@/app/(main)/office/_components/TodayMission';
 import WeekAttendance from '@/app/(main)/office/_components/WeekAttendance';
 import MyMallowHeader from '@/app/(main)/office/_components/MyMallowHeader';
+import { useMemberProfileQuery } from '@/app/_hook/queries/member';
+import EnjoyItems from '@/app/(main)/office/_components/EnjoyItems';
 
 export default function OfficePage() {
+  const { data: result, status } = useMemberProfileQuery();
+
   return (
     <div className={style.officePage}>
       <MyMallowHeader />
@@ -20,19 +24,15 @@ export default function OfficePage() {
         </div>
         <div className={style.todayArea}>
           <div className={style.myIcon}>
-            <div className={style.nameRank}>{`인턴\n`}</div>
-            <div className={style.name}>{`홍길동`}</div>
+            <div className={style.nameRank}>{`${result?.data?.grade}\n`}</div>
+            <div className={style.name}>{`${result?.data?.profile?.name}`}</div>
             <Image src="/images/mallow.happy.v2.svg" alt="No Image" width={120} height={102} />
           </div>
           <TodayMission />
         </div>
         <WeekAttendance />
 
-        <div className={style.enjoy}>
-          <Image src="/images/enjoy.game.svg" alt="No Image" width={100} height={100} />
-          <Image src="/images/enjoy.event.svg" alt="No Image" width={100} height={100} />
-          <Image src="/images/enjoy.guide.svg" alt="No Image" width={100} height={100} />
-        </div>
+        <EnjoyItems />
       </div>
 
       <TimerMissionCheck />

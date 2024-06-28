@@ -2,20 +2,28 @@
 
 import style from './topNavigation.module.scss';
 import Image from 'next/image';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { useModalStore } from '@/store/modal';
 
 type Props = {
   title?: string;
+  path?: string;
 };
 
-export default function TopNavigation({ title = '' }: Props) {
+export default function TopNavigation({ title = '', path = '' }: Props) {
   const router = useRouter();
   const pathname = usePathname();
   const { showAddressChangeQuitModal, showQuitInfoModal } = useModalStore();
 
-  const onClickBackButton = () => {
+  const onClickBackButton = useCallback(() => {
+    // 경로 입력시 해당 경로로 replace
+    if (path) {
+      router.replace(path);
+      return;
+    }
+
+    // 바로 경로 입력 안하고 모달창 처리해야하는 경우
     if (pathname === '/my/address/add' || pathname === '/my/address/edit') {
       showAddressChangeQuitModal(true);
       return;
@@ -27,7 +35,7 @@ export default function TopNavigation({ title = '' }: Props) {
     }
 
     router.back();
-  };
+  }, [pathname, path]);
 
   return (
     <div className={style.container}>

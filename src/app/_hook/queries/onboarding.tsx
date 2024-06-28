@@ -1,5 +1,6 @@
 import { getSession } from 'next-auth/react';
 import { useMutation, useQuery } from '@tanstack/react-query';
+import { OnboardingResponse } from '@/app/_hook/types/onboarding';
 
 /** 온보딩 완료시 완료 상태 변경 **/
 export function useOnboardingCompleteMutation() {
@@ -29,7 +30,7 @@ export function useOnboardingCompleteMutation() {
 
 /** 온보딩 상태 조회 **/
 export function useOnboardingStatusQuery() {
-  const getOnboardingStatus = async () => {
+  const getOnboardingStatus = async (): Promise<OnboardingResponse> => {
     const session = await getSession();
     if (!session) {
       console.error('로그인이 되어있지 않음');

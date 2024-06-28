@@ -8,7 +8,7 @@ import { MissionCards } from '@/app/onboarding/mission/_components/MissionCards'
 export default function missionPage() {
   return (
     <div className={style.missionPage}>
-      <TopNavigation title={'두근두근 첫 적응 미션'} />
+      <TopNavigation title={'두근두근 첫 적응 미션'} path={'/office'} />
       <div className={style.missionInner}>
         <div className={style.timerBox}>
           <div className={style.timerInfo}>

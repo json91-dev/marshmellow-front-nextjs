@@ -6,7 +6,6 @@ import { useMemberCurrencyQuery } from '@/app/_hook/queries/member';
 
 export default function MyMallowHeader() {
   const { data: currencyResult, isLoading, isFetching } = useMemberCurrencyQuery();
-  console.log(currencyResult);
 
   return (
     <div className={style.myMallowArea}>
