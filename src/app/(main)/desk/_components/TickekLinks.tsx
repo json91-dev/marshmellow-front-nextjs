@@ -5,11 +5,11 @@ import Image from 'next/image';
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import Spinner from '@/app/login/_components/Spinner';
-import { useMemberQuery } from '@/app/_hook/queries/member';
+import { useMemberMeQuery } from '@/app/_hook/queries/member';
 
 export default function TicketLinks() {
   const router = useRouter();
-  const { data: result, status, error } = useMemberQuery();
+  const { data: result, status, error } = useMemberMeQuery();
 
   if (status === 'pending') {
     return <Spinner />;

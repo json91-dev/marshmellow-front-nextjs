@@ -72,7 +72,7 @@ export default function myPage() {
             <div>직급</div>
             <Image
               onClick={() => showRankingChartModal(true)}
-              src="/images/coachmark.svg"
+              src="/images/question.mark.svg"
               alt="No Image"
               width={18}
               height={18}

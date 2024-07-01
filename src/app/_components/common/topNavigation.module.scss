@@ -17,18 +17,43 @@
   flex-shrink: 0;
   width: 100%;
 
-  p {
+  & > p {
     font-size: 1.8rem;
     font-weight: 700;
     color: #2E343F;
+    flex: 1;
+    text-align: center;
   }
 
   .leftIcon {
     width: 3rem;
     height: 3rem;
     position:relative;
+    flex: 1;
 
     @include activeOpacity;
     @include activeScale;
+  }
+
+  .empty {
+    flex: 1;
+    width: 5rem;
+    height: 3rem;
+    position:relative;
+  }
+
+  .rightMallow {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.4rem;
+
+    p {
+      color: #4D5564;
+      font-weight:600;
+      font-size: 1.4rem;
+      line-height: 2rem;
+    }
   }
 }
