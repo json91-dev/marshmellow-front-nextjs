@@ -47,5 +47,14 @@
       background-color: #D9D9D9;
       flex-shrink: 0;
     }
+
+    .luckyDrawLink {
+      width: 36rem;
+      height: 10rem;
+      position: relative;
+      @include activeOpacity;
+      @include activeScale;
+      cursor: pointer;
+    }
   }
 }
