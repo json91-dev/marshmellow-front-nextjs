@@ -3,6 +3,8 @@ import Image from 'next/image';
 import React from 'react';
 import style from './luckdraw.module.scss';
 import TopNavigationWithMallow from '@/app/_components/common/TopNavigationWithMallow';
+import FeverGauge from '@/app/recreation/luckydraw/_components/FeverGauge';
+import LuckDrawCards from '@/app/recreation/luckydraw/_components/LuckDrawCards';
 
 export default function luckDrawPage() {
   return (
@@ -20,23 +22,26 @@ export default function luckDrawPage() {
           <p>피버 게이지</p>
           <Image src="/images/question.mark.svg" alt="No Image" width={24} height={24} />
         </div>
-        <div className={style.feverGauge} />
+        <FeverGauge percentage={50} />
       </div>
 
-      <p>뽑기를 클릭해 뽑아보세요 (0/5)</p>
-      <div>뽑기 영역</div>
-      <div>
-        <Image src="/images/luckydraw.howto.text.svg" alt="No Image" width={24} height={24} />
-        <Image src="/images/luckydraw.howto.card.png" alt="No Image" width={24} height={24} />
-      </div>
+      <div className={style.main}>
+        <p className={style.pickupInfo}>뽑기를 클릭해 뽑아보세요 (0/5)</p>
 
-      <div>
-        <Image src="/images/luckydraw.prize.text.svg" alt="No Image" width={24} height={24} />
-        <p></p>
-        <Image src="/images/luckydraw.prize.card.png" alt="No Image" width={24} height={24} />
-      </div>
+        <LuckDrawCards />
+        <div className={style.luckyDrawProduct}>
+          <Image src="/images/luckydraw.howto.text.svg" alt="No Image" width={24} height={24} />
+          <Image src="/images/luckydraw.howto.card.png" alt="No Image" width={24} height={24} />
+        </div>
 
-      <div></div>
+        <div className={style.luckyDrawHowto}>
+          <Image src="/images/luckydraw.prize.text.svg" alt="No Image" width={24} height={24} />
+          <p></p>
+          <Image src="/images/luckydraw.prize.card.png" alt="No Image" width={24} height={24} />
+        </div>
+
+        <div></div>
+      </div>
     </div>
   );
 }

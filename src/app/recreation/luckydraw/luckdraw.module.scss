@@ -1,6 +1,7 @@
 .luckyDrawPage {
   width: 100%;
   height: 100%;
+  background-color: #FDECF5;
 
   .header {
     width: 100%;
@@ -40,6 +41,20 @@
       height: 2rem;
       background: white;
       border-radius: 1rem;
+      overflow: hidden;
+      position: relative;
+
+      .fill {
+        width: 50%;
+        height: 100%;
+        background: #BB4EF2;
+        border-radius: 1rem 0 0 1rem;
+        transition: width 0.5s ease-in-out;
+
+        &.full {
+          border-radius: 1rem; /* 100%일 때 전체를 둥글게 */
+        }
+      }
     }
 
     .feverGaugeLabel {
@@ -60,5 +75,79 @@
     }
 
 
+  }
+
+  .main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3.2rem;
+
+    .pickupInfo {
+
+    }
+
+    .luckyDrawProduct {
+
+    }
+
+    .luckyDrawHowto {
+
+    }
+  }
+}
+
+
+.luckyDrawCards {
+  width: 90%;
+  border: 1px solid red;
+  overflow-x: hidden;
+
+  .carousel {
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 3rem;
+    position: relative;
+
+    .carouselInner {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+
+      .carouselItem {
+        min-width: 100%;
+        height: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f0f0f0;
+        font-size: 2rem;
+      }
+    }
+
+    .carouselDots {
+      position: absolute;
+      bottom: 0.5rem;
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+      height: 2rem;
+      width: 100%;
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: 2px solid purple;
+        margin: 0 5px;
+        cursor: pointer;
+
+        &.active {
+          background-color: purple;
+        }
+      }
+    }
   }
 }
