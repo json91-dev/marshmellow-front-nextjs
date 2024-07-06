@@ -2,8 +2,10 @@
 import style from '@/app/recreation/luckydraw/luckdraw.module.scss';
 import React, { PointerEventHandler, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import cx from 'classnames';
+import { dummyLuckyDrawCardsData, LuckyDrawCard } from '@/constraints';
+import Image from 'next/image';
 
-export default function LuckDrawCards() {
+export default function LuckDrawCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [startX, setStartX] = useState(0);
   const [currentTranslate, setCurrentTranslate] = useState(0);
@@ -20,6 +22,7 @@ export default function LuckDrawCards() {
   const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
     if (startX === 0) return;
     const moveX = e.clientX - startX;
+    ``;
     carouselRef.current.style.transform = `translateX(${currentTranslate + (moveX / carouselItemWidthRef.current) * 100}%)`;
   };
 
@@ -51,20 +54,6 @@ export default function LuckDrawCards() {
     console.log(carouselItemWidthRef.current);
   }, []);
 
-  const handleNext = () => {
-    // if (currentIndex === 0) {
-    //   // 첫 번째 페이지에서 이전 페이지로 넘어갈 때
-    //   setCurrentIndex(totalSlides - 1); // 마지막 페이지로 이동
-    //   setCurrentTranslate(-(totalSlides - 1) * slideWidth); // 마지막 페이지 위치로 돌아가기
-    // } else {
-    //   setCurrentIndex((prevIndex) => prevIndex - 1);
-    // }
-  };
-
-  const handlePrev = () => {
-    // setCurrentIndex((prevIndex) => (prevIndex === 0 ? totalSlides - 1 : prevIndex - 1));
-  };
-
   const handleDotClick = (index: number) => {
     setCurrentIndex(index);
   };
@@ -80,14 +69,19 @@ export default function LuckDrawCards() {
     >
       <div className={style.carouselContainer}>
         <div ref={carouselRef} className={style.carousel} style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
-          {[...Array(totalSlides)].map((_, index) => (
-            <div key={index} className={style.carouselItem}>
-              Slide {index + 1}
+          {dummyLuckyDrawCardsData.map((cardsItem, index) => (
+            <div className={style.carouselItem}>
+              <LuckyDrawCards
+                cardsItem={cardsItem}
+                handlePointerDown={handlePointerDown}
+                handlePointerMove={handlePointerMove}
+                handlePointerUp={handlePointerUp}
+              />
             </div>
           ))}
         </div>
         <div className={style.carouselDots}>
-          {[...Array(totalSlides)].map((_, index) => (
+          {[...Array(dummyLuckyDrawCardsData.length)].map((_, index) => (
             <span
               key={index}
               className={cx(style.dot, index === currentIndex ? style.active : '')}
@@ -96,6 +90,38 @@ export default function LuckDrawCards() {
           ))}
         </div>
       </div>
+    </div>
+  );
+}
+
+type LuckyDrawCardsPropsType = {
+  cardsItem: LuckyDrawCard[];
+  handlePointerDown: any;
+  handlePointerMove: any;
+  handlePointerUp: any;
+};
+
+function LuckyDrawCards({ cardsItem, handlePointerDown, handlePointerMove, handlePointerUp }: LuckyDrawCardsPropsType) {
+  return (
+    <div className={style.drawCards}>
+      {cardsItem.map((item) => {
+        if (item.status === 'default') {
+          const isOdd = Math.floor((item.id - 1) / 5) % 2 === 1;
+
+          return (
+            <div
+              className={style.cardItem}
+              onPointerDown={handlePointerDown}
+              onPointerMove={handlePointerMove}
+              onPointerUp={handlePointerUp}
+              key={item.id}
+            >
+              {isOdd && <Image src="/images/luckydraw.card.normal.1.png" alt="No Image" width={56} height={56} />}
+              {!isOdd && <Image src="/images/luckydraw.card.normal.2.png" alt="No Image" width={56} height={56} />}
+            </div>
+          );
+        }
+      })}
     </div>
   );
 }

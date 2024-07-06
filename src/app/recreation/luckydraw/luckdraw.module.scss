@@ -2,111 +2,124 @@
   width: 100%;
   height: 100%;
   background-color: #FDECF5;
+  display: flex;
+  flex-direction: column;
 
-  .header {
+
+  .inner {
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: url("/images/luckydraw.header.bg.svg");
-    background-size: cover;
-    flex-direction: column;
-    padding: 1.6rem;
-    gap: 1.2rem;
+    height: 100%;
 
-    .pickupCount {
-      background-color: #FF4193;
+    .header {
+      width: 100%;
       display: flex;
-      justify-content: center;
       align-items: center;
-      padding: 0.4rem 1.4rem;
-      border-radius: 1.4rem;
-      margin-bottom: -0.5rem;
+      justify-content: center;
+      background: url("/images/luckydraw.header.bg.svg");
+      background-size: cover;
+      flex-direction: column;
+      padding: 1.6rem;
+      gap: 1.2rem;
 
-      p {
-        color: white;
-        font-weight: 600;
-        font-size: 1.4rem;
-      }
-    }
+      .pickupCount {
+        background-color: #FF4193;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.4rem 1.4rem;
+        border-radius: 1.4rem;
+        margin-bottom: -0.5rem;
 
-    .prizeImg {
-      width: 28rem;
-      height: 34rem;
-      position: relative;
-    }
-
-    .feverGauge {
-      width: 28rem;
-      height: 2rem;
-      background: white;
-      border-radius: 1rem;
-      overflow: hidden;
-      position: relative;
-
-      .fill {
-        width: 50%;
-        height: 100%;
-        background: #BB4EF2;
-        border-radius: 1rem 0 0 1rem;
-        transition: width 0.5s ease-in-out;
-
-        &.full {
-          border-radius: 1rem; /* 100%일 때 전체를 둥글게 */
+        p {
+          color: white;
+          font-weight: 600;
+          font-size: 1.4rem;
         }
       }
+
+      .prizeImg {
+        width: 28rem;
+        height: 34rem;
+        position: relative;
+      }
+
+      .feverGauge {
+        width: 28rem;
+        height: 2rem;
+        background: white;
+        border-radius: 1rem;
+        overflow: hidden;
+        position: relative;
+
+        .fill {
+          width: 50%;
+          height: 100%;
+          background: #BB4EF2;
+          border-radius: 1rem 0 0 1rem;
+          transition: width 0.5s ease-in-out;
+
+          &.full {
+            border-radius: 1rem; /* 100%일 때 전체를 둥글게 */
+          }
+        }
+      }
+
+      .feverGaugeLabel {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+
+        p {
+          color: #1C222B;
+          font-weight: 700;
+          font-size: 1.4rem;
+          line-height: 2rem;
+        }
+
+        img {
+          cursor: pointer;
+        }
+      }
+
+
     }
 
-    .feverGaugeLabel {
+    .main {
+      width: 100%;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 0.6rem;
+      margin-top: 3.2rem;
+      overflow-x: clip;
 
-      p {
-        color: #1C222B;
-        font-weight: 700;
-        font-size: 1.4rem;
-        line-height: 2rem;
+
+      .pickupInfo {
+
       }
 
-      img {
-        cursor: pointer;
+      .luckyDrawProduct {
+
+      }
+
+      .luckyDrawHowto {
+
       }
     }
-
-
   }
 
-  .main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 3.2rem;
 
-    .pickupInfo {
-
-    }
-
-    .luckyDrawProduct {
-
-    }
-
-    .luckyDrawHowto {
-
-    }
-  }
 }
 
 
 .luckyDrawCards {
-  width: 100%;
+  width: 95%;
   display: flex;
   align-items: center;
   flex-direction: column;
+  position: relative;
 
   .carouselContainer {
     width: 90%;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     padding-bottom: 3rem;
@@ -114,14 +127,14 @@
 
     .carousel {
       display: flex;
+
+      // 해당 아이템들이 가로로 배치
       .carouselItem {
         min-width: 100%;
-        height: 300px;
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: #f0f0f0;
-        font-size: 2rem;
+        padding: 1.6rem 1.4rem;
       }
     }
 
@@ -147,5 +160,23 @@
         }
       }
     }
+  }
+}
+
+
+.drawCards {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  gap: 0.4rem;
+  background-color: #f0f0f0;
+  padding: 1.6rem 1.4rem;
+  border-radius: 1.6rem;
+  pointer-events: none;
+
+  .cardItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

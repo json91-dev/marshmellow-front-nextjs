@@ -13,6 +13,7 @@
   user-select: none; /* 비표준 브라우저를 위한 기본 값 */
   word-break: keep-all;
   -webkit-tap-highlight-color : transparent;
+  -webkit-user-drag: none;
 }
 
 /* HTML5 display-role reset for older browsers */
