@@ -1,0 +1,47 @@
+.feverGauge {
+  width: 28rem;
+  height: 2rem;
+  background: white;
+  border-radius: 1rem;
+  overflow: hidden;
+  position: relative;
+
+  .feverCount {
+    color:#5C6475;
+    font-size: 1.2rem;
+    font-weight: 400;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+  }
+
+  .fill {
+    width: 50%;
+    height: 100%;
+    background: #BB4EF2;
+    border-radius: 1rem 0 0 1rem;
+    transition: width 0.5s ease-in-out;
+
+    &.full {
+      border-radius: 1rem; /* 100%일 때 전체를 둥글게 */
+    }
+  }
+}
+
+.feverGaugeLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  p {
+    color: #1C222B;
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 2rem;
+  }
+
+  img {
+    cursor: pointer;
+  }
+}

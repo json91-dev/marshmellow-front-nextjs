@@ -1,9 +1,11 @@
 'use client';
-import style from '@/app/recreation/luckydraw/luckdraw.module.scss';
+// import style from '@/app/recreation/luckydraw/luckdraw.module.scss';
+import style from './luckydrawCarousel.module.scss';
 import React, { PointerEventHandler, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import cx from 'classnames';
 import { dummyLuckyDrawCardsData, LuckyDrawCard } from '@/constraints';
 import Image from 'next/image';
+import { isMobile } from '@/utils/utils';
 
 export default function LuckDrawCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -11,24 +13,28 @@ export default function LuckDrawCarousel() {
   const [currentTranslate, setCurrentTranslate] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null!);
   const carouselItemWidthRef = useRef<number>(null!);
-
-  const totalSlides = 5; // 전체 슬라이드 수
+  const luckyDrawCardsRef = useRef<HTMLDivElement>(null!);
+  const totalSlides = 6; // 전체 슬라이드 수
 
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    console.log('포인터 다운');
     setStartX(e.clientX);
     setCurrentTranslate(-currentIndex * 100); // 현재 변환 값을 백분율로 저장
   };
 
   const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    console.log('포인터 무브');
     if (startX === 0) return;
     const moveX = e.clientX - startX;
-    ``;
+
     carouselRef.current.style.transform = `translateX(${currentTranslate + (moveX / carouselItemWidthRef.current) * 100}%)`;
   };
 
   const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+    console.log('포인터 업');
     if (startX === 0) return;
     const moveX = e.clientX - startX;
+    console.log(moveX);
     const threshold = carouselItemWidthRef.current / 4; // 임계값을 필요에 따라 조정합니다
 
     if (moveX > threshold && currentIndex > 0) {
@@ -62,10 +68,9 @@ export default function LuckDrawCarousel() {
 
   return (
     <div
+      ref={luckyDrawCardsRef}
       className={style.luckyDrawCards}
-      onPointerDown={handlePointerDown}
-      onPointerMove={handlePointerMove}
-      onPointerUp={handlePointerUp}
+      onPointerLeave={isMobile.any() ? () => {} : handlePointerUp}
     >
       <div className={style.carouselContainer}>
         <div ref={carouselRef} className={style.carousel} style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
@@ -103,7 +108,12 @@ type LuckyDrawCardsPropsType = {
 
 function LuckyDrawCards({ cardsItem, handlePointerDown, handlePointerMove, handlePointerUp }: LuckyDrawCardsPropsType) {
   return (
-    <div className={style.drawCards}>
+    <div
+      className={style.drawCards}
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={handlePointerUp}
+    >
       {cardsItem.map((item) => {
         if (item.status === 'default') {
           const isOdd = Math.floor((item.id - 1) / 5) % 2 === 1;

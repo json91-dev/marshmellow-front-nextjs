@@ -1,16 +1,16 @@
-import TopNavigation from '@/app/_components/common/TopNavigation';
 import Image from 'next/image';
 import React from 'react';
 import style from './luckdraw.module.scss';
 import TopNavigationWithMallow from '@/app/_components/common/TopNavigationWithMallow';
 import FeverGauge from '@/app/recreation/luckydraw/_components/FeverGauge';
 import LuckDrawCarousel from '@/app/recreation/luckydraw/_components/LuckDrawCarousel';
+import AccordionInfo from '@/app/recreation/luckydraw/_components/AccordionInfo';
 
 export default function luckDrawPage() {
   return (
     <div className={style.luckyDrawPage}>
       <TopNavigationWithMallow title={'행운의 뽑기'} path={'/recreation'} />
-      <div className={style.inner}>
+      <div className={style.inner} id={'scrollArea'}>
         <div className={style.header}>
           <div className={style.pickupCount}>
             <p>1번째 뽑기판</p>
@@ -19,11 +19,8 @@ export default function luckDrawPage() {
           <div className={style.prizeImg}>
             <Image src="/images/luckydraw.header.card.png" alt="No Image" fill />
           </div>
-          <div className={style.feverGaugeLabel}>
-            <p>피버 게이지</p>
-            <Image src="/images/question.mark.svg" alt="No Image" width={24} height={24} />
-          </div>
-          <FeverGauge percentage={50} />
+
+          <FeverGauge percentage={10} />
         </div>
 
         <div className={style.main}>
@@ -31,17 +28,17 @@ export default function luckDrawPage() {
 
           <LuckDrawCarousel />
           <div className={style.luckyDrawProduct}>
-            <Image src="/images/luckydraw.howto.text.svg" alt="No Image" width={24} height={24} />
-            <Image src="/images/luckydraw.howto.card.png" alt="No Image" width={24} height={24} />
+            <Image src="/images/luckydraw.prize.text.svg" alt="No Image" width={131} height={30} />
+            <Image src="/images/luckydraw.prize.card.png" alt="No Image" width={320} height={510} />
           </div>
 
           <div className={style.luckyDrawHowto}>
-            <Image src="/images/luckydraw.prize.text.svg" alt="No Image" width={24} height={24} />
-            <p></p>
-            <Image src="/images/luckydraw.prize.card.png" alt="No Image" width={24} height={24} />
+            <Image src="/images/luckydraw.howto.text.svg" alt="No Image" width={79} height={30} />
+            <p>{'마시멜로우 직원분들이라면\n누구나 마시멜로우를 이용해 뽑기가 가능해요!'}</p>
+            <Image src="/images/luckydraw.howto.card.png" alt="No Image" width={320} height={316} />
           </div>
 
-          <div></div>
+          <AccordionInfo />
         </div>
       </div>
     </div>

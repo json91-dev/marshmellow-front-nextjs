@@ -6,12 +6,12 @@ import Link from 'next/link';
 
 export default function RecreationPage() {
   return (
-    <div className={style.recrationPage}>
+    <div className={style.recreationPage}>
       <TopNavigationWithMallow title={'레크레이션'} path={'/recreation'} />
       <div className={style.main}>
         <div className={style.bg}></div>
         <div className={style.title}>
-          <p>{`마세멜로우로\n참여하고 선물 받으세요!`}</p>
+          <p>{`마시멜로우로\n참여하고 선물 받으세요!`}</p>
         </div>
         <div className={style.recreationImage}>
           <Image src="/images/recreation.header.svg" alt="No Image" width={360} height={151} />

@@ -14,6 +14,7 @@
   word-break: keep-all;
   -webkit-tap-highlight-color : transparent;
   -webkit-user-drag: none;
+  -webkit-touch-callout:none;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -33,6 +34,7 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: auto;
   line-height:1.4;
+  overscroll-behavior: none;
 }
 ol, ul {
   list-style: none;
