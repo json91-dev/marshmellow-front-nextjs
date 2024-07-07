@@ -80,6 +80,18 @@ interface IdentifyModalState {
   fulfillAttendanceCheckedDateString: string;
   showFulfillAttendanceDateCheckModal(isShow: boolean, checkedDateString?: string): void;
 
+  // 레크레이션 뽑기 페이지 (/recreation/luckydraw)
+  isShowFeverGuideModal: boolean;
+  showFeverGuideModal(isShow: boolean): void;
+  isShowLuckyDrawErrorModal: boolean;
+  luckyDrawErrorType: 'MALLOW_NOT_ENOUGH' | 'DRAW_COUNT_EXCEED' | null;
+  showLuckyDrawErrorModal(isShow: boolean, errorType: 'MALLOW_NOT_ENOUGH' | 'DRAW_COUNT_EXCEED' | null): void;
+  isShowLuckyDrawWinningCheckModal: boolean;
+  luckyDrawWinningCheckType: 'VIOLET' | 'PURPLE' | null;
+  showLuckyDrawWinningCheckModal(isShow: boolean, type: 'VIOLET' | 'PURPLE' | ''): void;
+  isShowLuckyDrawPickUpModal: boolean;
+  showLuckDrawPickUpModal(isShow: boolean): void;
+
   closeAll(): void;
 }
 
@@ -233,6 +245,45 @@ export const useModalStore = create(
       }));
     },
 
+    // 레크레이션 뽑기 페이지
+    isShowFeverGuideModal: false,
+    showFeverGuideModal(isShow: boolean) {
+      set({ isShowFeverGuideModal: isShow });
+    },
+    isShowLuckyDrawErrorModal: false,
+    luckyDrawErrorType: null,
+    showLuckyDrawErrorModal(isShow: boolean, errorType: 'MALLOW_NOT_ENOUGH' | 'DRAW_COUNT_EXCEED' | null) {
+      if (errorType === null) {
+        set({
+          isShowLuckyDrawErrorModal: isShow,
+        });
+
+        // Layout shift 방지
+        setTimeout(() => {
+          set({
+            luckyDrawErrorType: null,
+          });
+        }, 1000);
+      } else {
+        set({
+          isShowLuckyDrawErrorModal: isShow,
+          luckyDrawErrorType: errorType,
+        });
+      }
+    },
+    isShowLuckyDrawWinningCheckModal: false,
+    luckyDrawWinningCheckType: null,
+    showLuckyDrawWinningCheckModal(isShow: boolean, type: 'VIOLET' | 'PURPLE') {
+      set({
+        isShowLuckyDrawWinningCheckModal: isShow,
+        luckyDrawWinningCheckType: type,
+      });
+    },
+    isShowLuckyDrawPickUpModal: false,
+    showLuckDrawPickUpModal(isShow: boolean) {
+      set({ isShowLuckyDrawPickUpModal: isShow });
+    },
+
     closeAll() {
       set({
         isShowAuthFailModal: false,
@@ -260,6 +311,10 @@ export const useModalStore = create(
         isShowFulfillAttendanceCompleteModal: false,
         isShowFulfillAttendanceDateSelectModal: false,
         isShowFulfillAttendanceNoDayModal: false,
+        isShowFeverGuideModal: false,
+        isShowLuckyDrawErrorModal: false,
+        isShowLuckyDrawWinningCheckModal: false,
+        isShowLuckyDrawPickUpModal: false,
       });
     },
   })),

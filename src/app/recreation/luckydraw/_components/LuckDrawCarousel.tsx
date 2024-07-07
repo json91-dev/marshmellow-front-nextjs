@@ -1,11 +1,12 @@
 'use client';
 // import style from '@/app/recreation/luckydraw/luckdraw.module.scss';
 import style from './luckydrawCarousel.module.scss';
-import React, { PointerEventHandler, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, { PointerEventHandler, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import cx from 'classnames';
 import { dummyLuckyDrawCardsData, LuckyDrawCard } from '@/constraints';
 import Image from 'next/image';
 import { isMobile } from '@/utils/utils';
+import { useModalStore } from '@/store/modal';
 
 export default function LuckDrawCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -17,13 +18,11 @@ export default function LuckDrawCarousel() {
   const totalSlides = 6; // 전체 슬라이드 수
 
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
-    console.log('포인터 다운');
     setStartX(e.clientX);
     setCurrentTranslate(-currentIndex * 100); // 현재 변환 값을 백분율로 저장
   };
 
   const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    console.log('포인터 무브');
     if (startX === 0) return;
     const moveX = e.clientX - startX;
 
@@ -31,10 +30,8 @@ export default function LuckDrawCarousel() {
   };
 
   const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
-    console.log('포인터 업');
     if (startX === 0) return;
     const moveX = e.clientX - startX;
-    console.log(moveX);
     const threshold = carouselItemWidthRef.current / 4; // 임계값을 필요에 따라 조정합니다
 
     if (moveX > threshold && currentIndex > 0) {
@@ -57,14 +54,11 @@ export default function LuckDrawCarousel() {
 
   useLayoutEffect(() => {
     carouselItemWidthRef.current = carouselRef.current.children[0].clientWidth;
-    console.log(carouselItemWidthRef.current);
   }, []);
 
   const handleDotClick = (index: number) => {
     setCurrentIndex(index);
   };
-
-  useEffect(() => {}, []);
 
   return (
     <div
@@ -107,6 +101,13 @@ type LuckyDrawCardsPropsType = {
 };
 
 function LuckyDrawCards({ cardsItem, handlePointerDown, handlePointerMove, handlePointerUp }: LuckyDrawCardsPropsType) {
+  const { showLuckyDrawErrorModal, showLuckDrawPickUpModal, showFeverGuideModal } = useModalStore();
+
+  const onDrawCardClick = useCallback(() => {
+    // showLuckyDrawErrorModal(true, 'DRAW_COUNT_EXCEED');
+    showLuckDrawPickUpModal(true);
+  }, []);
+
   return (
     <div
       className={style.drawCards}
@@ -124,6 +125,7 @@ function LuckyDrawCards({ cardsItem, handlePointerDown, handlePointerMove, handl
               onPointerDown={handlePointerDown}
               onPointerMove={handlePointerMove}
               onPointerUp={handlePointerUp}
+              onClick={onDrawCardClick}
               key={item.id}
             >
               {isOdd && <Image src="/images/luckydraw.card.normal.1.png" alt="No Image" width={56} height={56} />}
