@@ -69,7 +69,7 @@ export default function LuckDrawCarousel() {
       <div className={style.carouselContainer}>
         <div ref={carouselRef} className={style.carousel} style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
           {dummyLuckyDrawCardsData.map((cardsItem, index) => (
-            <div className={style.carouselItem}>
+            <div className={style.carouselItem} key={cardsItem[index].id}>
               <LuckyDrawCards
                 cardsItem={cardsItem}
                 handlePointerDown={handlePointerDown}
@@ -101,11 +101,13 @@ type LuckyDrawCardsPropsType = {
 };
 
 function LuckyDrawCards({ cardsItem, handlePointerDown, handlePointerMove, handlePointerUp }: LuckyDrawCardsPropsType) {
-  const { showLuckyDrawErrorModal, showLuckDrawPickUpModal, showFeverGuideModal } = useModalStore();
+  const { showLuckyDrawErrorModal, showLuckyDrawPickUpModal, showFeverGuideModal, setLuckyDrawWinningCheckType } =
+    useModalStore();
 
-  const onDrawCardClick = useCallback(() => {
+  const onDrawCardClick = useCallback((isOdd: boolean) => {
     // showLuckyDrawErrorModal(true, 'DRAW_COUNT_EXCEED');
-    showLuckDrawPickUpModal(true);
+    isOdd ? setLuckyDrawWinningCheckType('VIOLET') : setLuckyDrawWinningCheckType('PURPLE');
+    showLuckyDrawPickUpModal(true);
   }, []);
 
   return (
@@ -125,11 +127,26 @@ function LuckyDrawCards({ cardsItem, handlePointerDown, handlePointerMove, handl
               onPointerDown={handlePointerDown}
               onPointerMove={handlePointerMove}
               onPointerUp={handlePointerUp}
-              onClick={onDrawCardClick}
               key={item.id}
             >
-              {isOdd && <Image src="/images/luckydraw.card.normal.1.png" alt="No Image" width={56} height={56} />}
-              {!isOdd && <Image src="/images/luckydraw.card.normal.2.png" alt="No Image" width={56} height={56} />}
+              {isOdd && (
+                <Image
+                  onClick={() => onDrawCardClick(isOdd)}
+                  src="/images/luckydraw.card.violet.png"
+                  alt="No Image"
+                  width={56}
+                  height={56}
+                />
+              )}
+              {!isOdd && (
+                <Image
+                  onClick={() => onDrawCardClick(isOdd)}
+                  src="/images/luckydraw.card.purple.png"
+                  alt="No Image"
+                  width={56}
+                  height={56}
+                />
+              )}
             </div>
           );
         }

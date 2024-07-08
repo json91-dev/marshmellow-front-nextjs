@@ -93,6 +93,46 @@
   }
 }
 
+.luckyDrawWinningCheckModal {
+  width: 30rem !important;
+  @include modal;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  padding: 3.2rem 0 6.6rem 0;
+
+  .secondText {
+    display: flex;
+    color: #12171E;
+    line-height: 2.8rem;
+    font-size: 2rem;
+    white-space: pre-wrap;
+    font-weight: 700;
+    text-align: center;
+
+    & > :nth-child(2) {
+      width: 1rem;
+      display: flex;
+    }
+  }
+
+  p {
+    color: #12171E;
+    line-height: 2.8rem;
+    font-size: 2rem;
+    white-space: pre-wrap;
+    font-weight: 700;
+    text-align: center;
+
+  }
+
+  img {
+    margin-top: 3rem;
+  }
+}
+
 
 .confirmButton {
   width: 100%;

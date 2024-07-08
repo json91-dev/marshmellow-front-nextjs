@@ -7,7 +7,7 @@ import ModalBackdrop from '@/app/signup/@modal/identify/_components/ModalBackdro
 import cx from 'classnames';
 
 export default function LuckyDrawPickUpModal() {
-  const { isShowLuckyDrawPickUpModal, showLuckDrawPickUpModal } = useModalStore();
+  const { isShowLuckyDrawPickUpModal, showLuckyDrawPickUpModal, showLuckyDrawWinningCheckModal } = useModalStore();
   const backdropRef = React.useRef(null);
   const modalRef = React.useRef(null);
 
@@ -20,8 +20,16 @@ export default function LuckyDrawPickUpModal() {
       <CSSTransition in={isShowLuckyDrawPickUpModal} timeout={200} unmountOnExit classNames="modal" nodeRef={modalRef}>
         <div className={cx(style.luckyDrawPickUpModal, 'modal')} ref={modalRef}>
           <p>{`마시멜로우 3개를 사용해\n선택한 뽑기를 뽑으시겠어요?`}</p>
-          <button className={style.confirmButton}>뽑기</button>
-          <button className={style.cancelButton} onClick={() => showLuckDrawPickUpModal(false)}>
+          <button
+            className={style.confirmButton}
+            onClick={() => {
+              showLuckyDrawPickUpModal(false);
+              showLuckyDrawWinningCheckModal(true);
+            }}
+          >
+            뽑기
+          </button>
+          <button className={style.cancelButton} onClick={() => showLuckyDrawPickUpModal(false)}>
             다음에 하기
           </button>
         </div>

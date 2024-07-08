@@ -82,25 +82,34 @@ export default function OfficeNewbieSignupModal() {
               </div>
             </div>
 
-            {isAppleOS !== null && !isAppleOS ? (
-              <div className={style.googleButton} onClick={() => authLogin('google')}>
-                <div className={style.button}>
-                  <div className={style.image}>
-                    <Image width={18} height={18} src="/images/login.google.svg" alt="No Image" />
-                  </div>
-                  <p>구글로 시작하기</p>
+            <div className={style.googleButton} onClick={() => authLogin('google')}>
+              <div className={style.button}>
+                <div className={style.image}>
+                  <Image width={18} height={18} src="/images/login.google.svg" alt="No Image" />
                 </div>
+                <p>구글로 시작하기</p>
               </div>
-            ) : (
-              <div className={style.appleButton} onClick={() => authLogin('apple')}>
-                <div className={style.button}>
-                  <div className={style.image}>
-                    <Image width={18} height={18} src="/images/login.apple.svg" alt="No Image" />
-                  </div>
-                  <p>Apple로 시작하기</p>
-                </div>
-              </div>
-            )}
+            </div>
+
+            {/*{isAppleOS !== null && !isAppleOS ? (*/}
+            {/*  <div className={style.googleButton} onClick={() => authLogin('google')}>*/}
+            {/*    <div className={style.button}>*/}
+            {/*      <div className={style.image}>*/}
+            {/*        <Image width={18} height={18} src="/images/login.google.svg" alt="No Image" />*/}
+            {/*      </div>*/}
+            {/*      <p>구글로 시작하기</p>*/}
+            {/*    </div>*/}
+            {/*  </div>*/}
+            {/*) : (*/}
+            {/*  <div className={style.appleButton} onClick={() => authLogin('apple')}>*/}
+            {/*    <div className={style.button}>*/}
+            {/*      <div className={style.image}>*/}
+            {/*        <Image width={18} height={18} src="/images/login.apple.svg" alt="No Image" />*/}
+            {/*      </div>*/}
+            {/*      <p>Apple로 시작하기</p>*/}
+            {/*    </div>*/}
+            {/*  </div>*/}
+            {/*)}*/}
           </div>
 
           <div className={style.laterButton} onClick={onClickLaterButton}>

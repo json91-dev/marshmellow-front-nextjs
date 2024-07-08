@@ -88,9 +88,10 @@ interface IdentifyModalState {
   showLuckyDrawErrorModal(isShow: boolean, errorType: 'MALLOW_NOT_ENOUGH' | 'DRAW_COUNT_EXCEED' | null): void;
   isShowLuckyDrawWinningCheckModal: boolean;
   luckyDrawWinningCheckType: 'VIOLET' | 'PURPLE' | null;
-  showLuckyDrawWinningCheckModal(isShow: boolean, type: 'VIOLET' | 'PURPLE' | ''): void;
+  showLuckyDrawWinningCheckModal(isShow: boolean): void;
+  setLuckyDrawWinningCheckType(type: 'VIOLET' | 'PURPLE' | ''): void;
   isShowLuckyDrawPickUpModal: boolean;
-  showLuckDrawPickUpModal(isShow: boolean): void;
+  showLuckyDrawPickUpModal(isShow: boolean): void;
 
   closeAll(): void;
 }
@@ -273,14 +274,18 @@ export const useModalStore = create(
     },
     isShowLuckyDrawWinningCheckModal: false,
     luckyDrawWinningCheckType: null,
-    showLuckyDrawWinningCheckModal(isShow: boolean, type: 'VIOLET' | 'PURPLE') {
+    showLuckyDrawWinningCheckModal(isShow: boolean) {
       set({
         isShowLuckyDrawWinningCheckModal: isShow,
+      });
+    },
+    setLuckyDrawWinningCheckType(type: 'VIOLET' | 'PURPLE') {
+      set({
         luckyDrawWinningCheckType: type,
       });
     },
     isShowLuckyDrawPickUpModal: false,
-    showLuckDrawPickUpModal(isShow: boolean) {
+    showLuckyDrawPickUpModal(isShow: boolean) {
       set({ isShowLuckyDrawPickUpModal: isShow });
     },
 
