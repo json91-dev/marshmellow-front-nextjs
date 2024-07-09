@@ -33,8 +33,11 @@ html, body {
   touch-action: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: auto;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
   line-height:1.4;
   overscroll-behavior: none;
+
 }
 ol, ul {
   list-style: none;
