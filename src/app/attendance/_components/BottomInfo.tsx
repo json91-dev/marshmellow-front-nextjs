@@ -1,3 +1,4 @@
+'use client';
 import style from './bottomInfo.module.scss';
 import Image from 'next/image';
 import React, { useCallback, useRef } from 'react';

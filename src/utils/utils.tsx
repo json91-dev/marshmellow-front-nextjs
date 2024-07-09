@@ -2,13 +2,19 @@ import dayjs, { Dayjs } from 'dayjs';
 
 export const isMobile = {
   Android: function () {
-    return navigator.userAgent.match(/Android/i);
+    if (typeof window !== 'undefined') {
+      return navigator.userAgent.match(/Android/i);
+    }
   },
   iOS: function () {
-    return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    if (typeof window !== 'undefined') {
+      return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    }
   },
   any: function () {
-    return isMobile.Android() || isMobile.iOS();
+    if (typeof window !== 'undefined') {
+      return isMobile.Android() || isMobile.iOS();
+    }
   },
 };
 export function debounce(func: Function, delay: number) {
