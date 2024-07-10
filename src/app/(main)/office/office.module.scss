@@ -93,7 +93,7 @@
           margin-top: 0.2rem;
           white-space: pre-wrap;
           flex-direction: column;
-          font-weight: 700;
+          font-weight: bold;
           font-size: 1.1rem;
           color: #2E343F;
           text-shadow: 0 0 2px white;
@@ -117,7 +117,7 @@
             color: #1C222B;
           .title {
             font-size: 1.6rem;
-            font-weight: 700;
+            font-weight: bold;
           }
 
           .date {
@@ -238,7 +238,7 @@
         .name {
           color: #1C222B;
           font-size: 1.6rem;
-          font-weight: 700;
+          font-weight: bold;
         }
 
         .date {
@@ -328,7 +328,7 @@
     .timerTime {
       color: #12171E;
       font-size: 3.2rem;
-      font-weight: 700;
+      font-weight: bold;
 
       &.active {
         color: #BB4EF2 !important;

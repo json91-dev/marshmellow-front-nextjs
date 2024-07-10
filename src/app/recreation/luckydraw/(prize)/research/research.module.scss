@@ -1,5 +1,5 @@
 
-.luckyDrawFailurePage {
+.luckyDrawResearchPage {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,28 +7,7 @@
   width: 100%;
   height: 100%;
 
-  .title {
-    color: #1C222B;
-    font-size: 2rem;
-    font-weight: bold;
-    line-height: 3rem;
-    text-align:center;
-    white-space: pre-wrap;
-  }
 
-  .failureImg {
-    position: relative;
-    width: 10.8rem;
-    height: 11.2rem;
-    margin-top: 2.4rem;
-  }
-
-  .researchImg {
-    position: absolute;
-    bottom: 1.6rem;
-    width: 90%;
-    height: 16rem;
-  }
 }
 
 .confirmButton {

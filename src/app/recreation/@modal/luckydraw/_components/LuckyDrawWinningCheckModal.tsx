@@ -6,6 +6,7 @@ import { CSSTransition } from 'react-transition-group';
 import ModalBackdrop from '@/app/signup/@modal/identify/_components/ModalBackdrop';
 import cx from 'classnames';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 export default function LuckyDrawWinningCheckModal() {
   const { isShowLuckyDrawWinningCheckModal, showLuckyDrawWinningCheckModal, luckyDrawWinningCheckType } = useModalStore();
@@ -13,6 +14,7 @@ export default function LuckyDrawWinningCheckModal() {
   const modalRef = React.useRef(null);
   const dotsRef = useRef<HTMLDivElement>(null!);
   const intervalRef = useRef<NodeJS.Timeout>(null!);
+  const router = useRouter();
 
   useEffect(() => {
     clearInterval(intervalRef.current);
@@ -28,8 +30,13 @@ export default function LuckyDrawWinningCheckModal() {
       }, 500);
 
       setTimeout(() => {
-        showLuckyDrawWinningCheckModal(false);
-      }, 5000);
+        if (Math.random() >= 0.5) {
+          showLuckyDrawWinningCheckModal(false);
+        } else {
+          showLuckyDrawWinningCheckModal(false);
+          router.push('/recreation/luckydraw/failure');
+        }
+      }, 2500);
     }
     return () => {
       clearInterval(intervalRef.current);

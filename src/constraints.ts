@@ -22,6 +22,22 @@ export type LuckyDrawCard = {
 
 export type LuckyDrawCardsItem = LuckyDrawCard[][];
 
+export const dummyLuckyDrawResearchItems = [
+  { id: 1, name: '태블릿' },
+  { id: 2, name: '태블릿' },
+  { id: 3, name: '태블릿' },
+  { id: 4, name: '태블릿' },
+  { id: 5, name: '태블릿' },
+  { id: 6, name: '태블릿' },
+  { id: 7, name: '태블릿' },
+  { id: 8, name: '태블릿' },
+  { id: 9, name: '태블릿' },
+  { id: 10, name: '태블릿' },
+  { id: 11, name: '태블릿' },
+  { id: 12, name: '태블릿' },
+  { id: 13, name: '기타' },
+];
+
 export const dummyLuckyDrawCardsData: LuckyDrawCardsItem = [
   [
     {
