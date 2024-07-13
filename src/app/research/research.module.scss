@@ -90,72 +90,78 @@
       gap: 1.4rem;
       border-radius: 0.8rem;
 
-      .radioWrapperLabel {
-        user-select: none;
-        position:relative;
-        align-self: flex-start;
+      .radioWrapper {
+        width: 100%;
         display: flex;
-        align-items: center;
-        justify-content: center;
+        flex-direction: column ;
 
-
-        input[type="radio"] {
-          -webkit-appearance: none; // 웹킷 브라우저에서 기본 스타일 제거
-          -moz-appearance: none; // 모질라 브라우저에서 기본 스타일 제거
-          width: 2.4rem;
-          height: 2.4rem;
-          border-radius: 50%;
-          border: 1px solid #ACB6CA;
-          background-color: white;
+        .radioLabel {
+          user-select: none;
+          position:relative;
+          align-self: flex-start;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           cursor: pointer;
+
+
+          input[type="radio"] {
+            -webkit-appearance: none; // 웹킷 브라우저에서 기본 스타일 제거
+            -moz-appearance: none; // 모질라 브라우저에서 기본 스타일 제거
+            width: 2.4rem;
+            height: 2.4rem;
+            border-radius: 50%;
+            border: 1px solid #ACB6CA;
+            background-color: white;
+            cursor: pointer;
+          }
+
+          input[type="radio"]:checked {
+            border: 3px solid #BB4EF2;
+            background-color: white;
+            padding: 3px;
+            cursor: pointer;
+          }
+
+          input[type="radio"]:checked ~ .radioInnerCircle {
+            position: absolute;
+            top: 50%;
+            left: calc(1.2rem);
+            transform: translate(-50%, -50%);
+            background: #BB4EF2;
+            width: 1.3rem;
+            height: 1.3rem;
+            border-radius: 50%;
+          }
+
+          p {
+            margin-left: 1.2rem;
+            color: #1C222B;
+            font-size: 1.4rem;
+            line-height: 2rem;
+            font-weight: 400;
+          }
         }
 
-        input[type="radio"]:checked {
-          border: 3px solid #BB4EF2;
-          background-color: white;
-          padding: 3px;
-          cursor: pointer;
-        }
+        .textInputWrapper {
+          input[type="text"] {
+            border-top: transparent;
+            border-left: transparent;
+            border-right: transparent;
+            border-bottom: 1px solid #ACB6CA;
 
-        input[type="radio"]:checked ~ .radioInnerCircle {
-          position: absolute;
-          top: 50%;
-          left: calc(1.2rem);
-          transform: translate(-50%, -50%);
-          background: #BB4EF2;
-          width: 1.3rem;
-          height: 1.3rem;
-          border-radius: 50%;
-        }
+            font-size: 1.6rem;
+            height: 4.8rem;
+            padding-left: 1.2rem;
+            width: 100%;
+            outline: none;
 
-        p {
-          margin-left: 1.2rem;
-          color: #1C222B;
-          font-size: 1.4rem;
-          line-height: 2rem;
-          font-weight: 400;
-        }
-      }
-
-      .textInputWrapper {
-        input[type="text"] {
-          border-top: transparent;
-          border-left: transparent;
-          border-right: transparent;
-          border-bottom: 1px solid #ACB6CA;
-
-          font-size: 1.6rem;
-          height: 4.8rem;
-          padding-left: 1.2rem;
-          width: 100%;
-          outline: none;
-
-          &:focus {
-            border-bottom: 1px solid black;
+            &:focus {
+              border-bottom: 1px solid black;
+            }
           }
         }
       }
-
     }
   }
 }
@@ -172,18 +178,23 @@
   width: 100%;
   height: 4.8rem;
   max-width: 32rem;
-  background-color: black;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 0.8rem;
-  color: white;
   font-size: 1.6rem;
   line-height: 2.4rem;
   font-weight: 500;
   margin-top: 3rem;
-  cursor: pointer;
   flex-shrink: 0;
+  background-color: #D4DBE9;
+  color: white;
+
+  &.active {
+    cursor: pointer;
+    background-color: black;
+    color: white;
+  }
 
   @include activeScale(0.99);
   @include activeOpacity(0.8);

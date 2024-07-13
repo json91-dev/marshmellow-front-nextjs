@@ -1,8 +1,23 @@
+'use client';
 import style from './research.module.scss';
 import { dummyLuckyDrawResearchItems } from '@/constraints';
 import React from 'react';
+import { useForm } from 'react-hook-form';
+import cx from 'classnames';
+import { useRouter } from 'next/navigation';
 
 export default function LuckyDrawResearchPage() {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+  const router = useRouter();
+
+  const onSubmit = (data: { optionRadio: number }) => {};
+  const selectedValue = watch('optionRadio');
+
   return (
     <div className={style.luckyDrawResearchPage}>
       <p className={style.title}>행운의 뽑기 경품 투표</p>
@@ -22,13 +37,12 @@ export default function LuckyDrawResearchPage() {
           <p>1개 선택</p>
         </div>
 
-        <div className={style.selectArea}>
+        <form className={style.selectArea}>
           {dummyLuckyDrawResearchItems.map((item, index) => {
             return (
-              <>
-                <label className={style.radioWrapperLabel} key={item.id}>
-                  {/*<rad></rad>/*/}
-                  <input type="radio" name={'research'} value={2} />
+              <div className={style.radioWrapper} key={item.id}>
+                <label className={style.radioLabel}>
+                  <input type="radio" value={item.id} {...register('optionRadio', { required: true })} />
                   <span className={style.radioInnerCircle}></span>
                   <p>{item.name}</p>
                 </label>
@@ -37,15 +51,17 @@ export default function LuckyDrawResearchPage() {
                     <input type={'text'} placeholder={'ex) 호캉스 떠나고 싶어요.'} />
                   </div>
                 )}
-              </>
+              </div>
             );
           })}
-        </div>
+        </form>
       </div>
 
       <div className={style.horizontalLine}></div>
 
-      <button className={style.confirmButton}>제출하기</button>
+      <button onClick={handleSubmit(onSubmit)} className={cx(style.confirmButton, selectedValue && style.active)}>
+        제출하기
+      </button>
       <button className={style.cancelButton}>다음에 하기</button>
     </div>
   );

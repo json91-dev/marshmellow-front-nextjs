@@ -29,14 +29,14 @@ export const dummyLuckyDrawResearchItems = [
   { id: 4, name: '의자' },
   { id: 5, name: '커피머신' },
   { id: 6, name: '공기청정기' },
-  { id: 6, name: '배달음식' },
-  { id: 7, name: '옷' },
-  { id: 8, name: '텀블러' },
-  { id: 9, name: '마우스' },
-  { id: 10, name: '키보드' },
-  { id: 11, name: '안마기' },
-  { id: 12, name: '태블릿' },
-  { id: 13, name: '기타' },
+  { id: 7, name: '배달음식' },
+  { id: 8, name: '옷' },
+  { id: 9, name: '텀블러' },
+  { id: 10, name: '마우스' },
+  { id: 11, name: '키보드' },
+  { id: 12, name: '안마기' },
+  { id: 13, name: '태블릿' },
+  { id: 14, name: '기타' },
 ];
 
 export const dummyLuckyDrawCardsData: LuckyDrawCardsItem = [
