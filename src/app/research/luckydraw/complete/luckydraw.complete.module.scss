@@ -1,0 +1,237 @@
+
+.luckyDrawResearchCompletePage {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  padding-top: 1.4rem;
+  justify-content: flex-start;
+  height: 100%;
+  overflow: auto;
+
+
+  .scrollArea {
+    width: 100%;
+    height: 80%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .title {
+      font-weight: bold;
+      font-size: 1.8rem;
+      line-height: 2.4rem;
+      color: #2E343F;
+      text-align: center;
+      padding: 1.4rem;
+    }
+
+    .description {
+      white-space: pre-wrap;
+      font-weight: bold;
+      font-size: 2rem;
+      line-height: 3rem;
+      color: #1C222B;
+      text-align: center;
+      margin-top: 2.6rem;
+    }
+
+    .checkInfo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 1.6rem;
+
+      .messageBox {
+        background: white;
+        border-radius: 1.6rem;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        margin-bottom: 2rem;
+        border: 1.5px solid black;
+        padding: 1rem 5.5rem;
+
+        p {
+          color: black;
+          font-size: 1.6rem;
+          line-height: 2.8rem;
+          font-weight: bold;
+          white-space: pre-wrap;
+          text-align: center;
+        }
+
+        &:before {
+          content: "";
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          border: solid transparent;
+          border-top-color: #1C222B;
+          border-width: 8px 5px 5px 5px;
+          height: 0;
+          width: 0;
+          bottom: -14px; /* Adjust this value to position the arrow correctly */
+          z-index: 0;
+        }
+
+        &:after {
+          content: "";
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          border: solid transparent;
+          border-top-color: white;
+          border-width: 8px 5px 5px 5px;
+          height: 0;
+          width: 0;
+          bottom: -11px; /* Adjust this value to position the arrow correctly */
+          z-index: 0;
+        }
+      }
+
+      .checkPhoneNumber {
+        font-size: 1.4rem;
+        line-height: 2rem;
+        margin-top: 2.4rem;
+        color: #1C222B;
+        text-align: center;
+        white-space: pre-wrap;
+      }
+    }
+
+    .phoneInfo {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      padding-left: 2rem;
+      margin-top: 2.4rem;
+
+      & > p:nth-child(1) {
+        color: #1C222B;
+        font-weight: bold;
+        font-size: 1.4rem;
+        line-height: 2rem;
+      }
+
+      & > p:nth-child(2) {
+        color: #5C6475;
+        font-size: 1.2rem;
+        line-height: 1.6rem;
+        font-weight: 400;
+        margin-top: 0.5rem;
+      }
+    }
+
+    .phoneInput {
+      display: flex;
+      padding: 0 2rem;
+      width: 100%;
+      margin-top: 1.2rem;
+      justify-content: space-between;
+      align-items: center;
+
+      input[type="text"] {
+        border-radius: 0.6rem;
+        border: 1px solid transparent;
+        font-size: 1.6rem;
+        height: 4.8rem;
+        width: 50%;
+        outline: none;
+        padding: 0;
+        letter-spacing: 0.05rem;
+        color: #1C222B;
+
+
+        &:focus {
+          border: 1px solid transparent;
+        }
+      }
+
+      button {
+        cursor: pointer;
+        border: 1px solid #ACB6CA;
+        padding: 0.4rem 1.6rem;
+        border-radius: 0.6rem;
+        height: 3.6rem;
+
+        p {
+          color: black;
+          font-size: 1.4rem;
+          font-weight: 500;
+          margin: 0;
+        }
+      }
+    }
+
+  }
+
+  .buttonArea {
+    width: 100%;
+    height: 17.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .horizontalLine {
+      height: 1px;
+      width: 100%;
+      background-color: #E5E9F2;
+      margin-top: 2.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .confirmButton {
+      width: 100%;
+      height: 4.8rem;
+      max-width: 32rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 0.8rem;
+      font-size: 1.6rem;
+      line-height: 2.4rem;
+      font-weight: 500;
+      margin-top: 1.2rem;
+      flex-shrink: 0;
+      background-color: #D4DBE9;
+      color: white;
+      pointer-events: none;
+
+      &.active {
+        cursor: pointer;
+        pointer-events: all;
+        background-color: black;
+        color: white;
+      }
+
+      @include activeScale(0.99);
+      @include activeOpacity(0.8);
+    }
+
+
+    .cancelButton {
+      cursor: pointer;
+      width: 100%;
+      height: 4.8rem;
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 0.5rem;
+      color: black;
+      font-size: 1.6rem;
+      flex-shrink: 0;
+      margin-top: 0.8rem;
+      margin-bottom: 1.6rem;
+      line-height: 2.4rem;
+      font-weight: 500;
+
+      @include activeScale(0.99);
+      @include activeOpacity(0.8);
+    }
+  }
+
+}
+

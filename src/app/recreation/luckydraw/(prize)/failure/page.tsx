@@ -15,7 +15,7 @@ export default function LuckyDrawFailurePage() {
       </Link>
 
       <div className={style.researchImg}>
-        <Link href="/research?type=luckydraw">
+        <Link href="/research/luckydraw">
           <Image
             src="/images/luckydraw.research.starbucks.png"
             alt="No Image"
