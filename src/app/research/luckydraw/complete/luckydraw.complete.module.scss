@@ -195,16 +195,10 @@
       font-weight: 500;
       margin-top: 1.2rem;
       flex-shrink: 0;
-      background-color: #D4DBE9;
+      background-color: black;
       color: white;
-      pointer-events: none;
-
-      &.active {
-        cursor: pointer;
-        pointer-events: all;
-        background-color: black;
-        color: white;
-      }
+      cursor: pointer;
+      
 
       @include activeScale(0.99);
       @include activeOpacity(0.8);

@@ -93,6 +93,9 @@ interface IdentifyModalState {
   isShowLuckyDrawPickUpModal: boolean;
   showLuckyDrawPickUpModal(isShow: boolean): void;
 
+  // 리서치 페이지 (/research)
+  isShowLuckyDrawResearchCompleteModal: boolean;
+  showLuckyDrawResearchCompleteModal(isShow: boolean): void;
   closeAll(): void;
 }
 
@@ -288,6 +291,10 @@ export const useModalStore = create(
     showLuckyDrawPickUpModal(isShow: boolean) {
       set({ isShowLuckyDrawPickUpModal: isShow });
     },
+    isShowLuckyDrawResearchCompleteModal: false,
+    showLuckyDrawResearchCompleteModal(isShow: boolean) {
+      set({ isShowLuckyDrawResearchCompleteModal: isShow });
+    },
 
     closeAll() {
       set({
@@ -320,6 +327,7 @@ export const useModalStore = create(
         isShowLuckyDrawErrorModal: false,
         isShowLuckyDrawWinningCheckModal: false,
         isShowLuckyDrawPickUpModal: false,
+        isShowLuckyDrawResearchCompleteModal: false,
       });
     },
   })),

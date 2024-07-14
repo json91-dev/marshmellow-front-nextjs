@@ -1,8 +1,22 @@
+'use client';
 import style from './luckydraw.complete.module.scss';
 import Image from 'next/image';
 import React from 'react';
+import { useForm } from 'react-hook-form';
+import { useToastStore } from '@/store/toast';
+import { useModalStore } from '@/store/modal';
+import { useRouter } from 'next/navigation';
 
 export default function LuckyDrawResearchCompletePage() {
+  const { openToast } = useToastStore();
+  const { showLuckyDrawResearchCompleteModal } = useModalStore();
+  const router = useRouter();
+  const { control, register } = useForm({
+    defaultValues: {
+      phoneNumber: '010-xxxx-xxxx', // 미리 지정된 값
+    },
+  });
+
   return (
     <div className={style.luckyDrawResearchCompletePage}>
       <div className={style.scrollArea}>
@@ -24,8 +38,8 @@ export default function LuckyDrawResearchCompletePage() {
         </div>
 
         <div className={style.phoneInput}>
-          <input type={'text'} placeholder={'010-xxxx-xxxx'} />
-          <button>
+          <input type={'text'} {...register('phoneNumber')} placeholder={'010-xxxx-xxxx'} readOnly />
+          <button onClick={() => openToast('PASS 인증 화면 이동')}>
             <p>변경하기</p>
           </button>
         </div>
@@ -33,8 +47,12 @@ export default function LuckyDrawResearchCompletePage() {
 
       <div className={style.buttonArea}>
         <div className={style.horizontalLine}></div>
-        <div className={style.confirmButton}>확인</div>
-        <div className={style.cancelButton}>이벤트 참여안하기</div>
+        <button onClick={() => showLuckyDrawResearchCompleteModal(true)} className={style.confirmButton}>
+          확인
+        </button>
+        <button onClick={() => router.push('/recreation/luckydraw')} className={style.cancelButton}>
+          이벤트 참여안하기
+        </button>
       </div>
     </div>
   );

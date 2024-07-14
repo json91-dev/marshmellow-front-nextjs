@@ -1,0 +1,103 @@
+@mixin modal() {
+  @include modalBoxShadow;
+  @include z-index-vars;
+  @include sizes;
+  position: absolute;
+  background: white;
+  z-index: var(--modalIndex);
+  width: 30rem;
+  padding: 2.4rem 1.6rem;
+  border: 1px solid black;
+  border-radius: 2rem;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.luckyDrawResearchCompleteModal {
+  @include modal;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .title {
+    color: #12171E;
+    font-weight: bold;
+    line-height: 2.8rem;
+    font-size: 1.8rem;
+  }
+
+  .phoneInfoBox {
+    width: 100%;
+    padding: 1rem;
+    background-color: #F0F3FA;
+    border-radius: 0.6rem;
+    margin-top: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+    & > p:nth-child(1) {
+      color: #12171E;
+      font-weight: bold;
+      line-height: 2rem;
+      font-size: 1.4rem;
+    }
+
+    & > p:nth-child(2) {
+      color: #12171E;
+      font-weight: 400;
+      line-height: 2.4rem;
+      font-size: 1.6rem;
+      margin-top: 0.8rem;
+    }
+  }
+
+
+  .confirmButton {
+    width: 100%;
+    height: 4rem;
+    max-width: 32rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.8rem;
+    font-size: 1.4rem;
+    line-height: 2rem;
+    font-weight: 500;
+    margin-top: 2.4rem;
+    flex-shrink: 0;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+
+
+    @include activeScale(0.99);
+    @include activeOpacity(0.8);
+  }
+
+
+  .cancelButton {
+    cursor: pointer;
+    width: 100%;
+    height: 4rem;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    color: black;
+    font-size: 1.4rem;
+    line-height: 2rem;
+    flex-shrink: 0;
+    margin-top: 0.8rem;
+    font-weight: 500;
+
+    @include activeScale(0.99);
+    @include activeOpacity(0.8);
+  }
+}
