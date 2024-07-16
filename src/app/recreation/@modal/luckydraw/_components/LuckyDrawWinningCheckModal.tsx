@@ -30,11 +30,16 @@ export default function LuckyDrawWinningCheckModal() {
       }, 500);
 
       setTimeout(() => {
-        if (Math.random() >= 0.5) {
+        const randomValue = Math.random();
+
+        if (randomValue < 0.33) {
           showLuckyDrawWinningCheckModal(false);
-        } else {
+        } else if (randomValue < 0.66) {
           showLuckyDrawWinningCheckModal(false);
           router.push('/recreation/luckydraw/failure');
+        } else {
+          showLuckyDrawWinningCheckModal(false);
+          router.push('/recreation/luckydraw/winner/marshmallow');
         }
       }, 2500);
     }
