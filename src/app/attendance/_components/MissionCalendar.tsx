@@ -64,7 +64,7 @@ export default function MissionCalendar() {
     );
   }
 
-  const memberStartDate = dayjs(profileResult.data.createdAt);
+  const memberStartDate = dayjs(profileResult?.data.createdAt);
 
   return (
     <div className={style.missionCalendar}>

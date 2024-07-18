@@ -64,7 +64,10 @@ export default function LuckyDrawResearchPage() {
       <div className={style.buttonArea}>
         <div className={style.horizontalLine}></div>
 
-        <button onClick={handleSubmit(onSubmit)} className={cx(style.confirmButton, selectedValue && style.active)}>
+        <button
+          onClick={handleSubmit(() => onSubmit({ optionRadio: selectedValue }))}
+          className={cx(style.confirmButton, selectedValue && style.active)}
+        >
           제출하기
         </button>
         <button className={style.cancelButton}>다음에 하기</button>
