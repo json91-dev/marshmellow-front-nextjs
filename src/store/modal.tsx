@@ -80,7 +80,7 @@ interface IdentifyModalState {
   fulfillAttendanceCheckedDateString: string;
   showFulfillAttendanceDateCheckModal(isShow: boolean, checkedDateString?: string): void;
 
-  // 레크레이션 뽑기 페이지 (/recreation/luckydraw)
+  // 레크레이션 럭키드로우 페이지 (/recreation/luckydraw)
   isShowFeverGuideModal: boolean;
   showFeverGuideModal(isShow: boolean): void;
   isShowLuckyDrawErrorModal: boolean;
@@ -93,10 +93,13 @@ interface IdentifyModalState {
   isShowLuckyDrawPickUpModal: boolean;
   showLuckyDrawPickUpModal(isShow: boolean): void;
 
+  // 레크레이션 럭키드로우 보상 페이지 (/recreation/luckydraw/winner/prize)
+  isShowLuckyDrawWinnerPrizePhoneCheckModal: boolean;
+  showLuckyDrawWinnerPrizePhoneCheckModal(isShow: boolean): void;
+
   // 리서치 페이지 (/research)
   isShowLuckyDrawResearchCompleteModal: boolean;
   showLuckyDrawResearchCompleteModal(isShow: boolean): void;
-  closeAll(): void;
 }
 
 export const useModalStore = create(
@@ -249,7 +252,7 @@ export const useModalStore = create(
       }));
     },
 
-    // 레크레이션 뽑기 페이지
+    // 레크레이션 럭키드로우 페이지
     isShowFeverGuideModal: false,
     showFeverGuideModal(isShow: boolean) {
       set({ isShowFeverGuideModal: isShow });
@@ -291,44 +294,17 @@ export const useModalStore = create(
     showLuckyDrawPickUpModal(isShow: boolean) {
       set({ isShowLuckyDrawPickUpModal: isShow });
     },
+
+    // 레크레이션 럭키드로우 보상 페이지 (/recreation/luckydraw/winner/prize)
+    isShowLuckyDrawWinnerPrizePhoneCheckModal: false,
+    showLuckyDrawWinnerPrizePhoneCheckModal(isShow: boolean) {
+      set({ isShowLuckyDrawWinnerPrizePhoneCheckModal: isShow });
+    },
+
+    // 리서치 페이지 (/research)
     isShowLuckyDrawResearchCompleteModal: false,
     showLuckyDrawResearchCompleteModal(isShow: boolean) {
       set({ isShowLuckyDrawResearchCompleteModal: isShow });
-    },
-
-    closeAll() {
-      set({
-        isShowAuthFailModal: false,
-        isShowTermsBottomSheet: false,
-        isShowAuthSuccessModal: false,
-        isShowExistNumberModal: false,
-        isShowQuitModal: false,
-        isShowQuitInfoModal: false,
-        isShowRankingChartModal: false,
-        isShowNicknameChangeModal: false,
-        isShowWorkTimeBottomSheet: false,
-        isShowLogoutModal: false,
-        isShowWithdrawConfirmModal: false,
-        isShowWithdrawConfirmCompleteModal: false,
-        isShowMallowFilterDateBottomSheet: false,
-        isShowMallowExpiredThisMonthModal: false,
-        isShowWorkTimeNotChangeByTimeModal: false,
-        isShowWorkTimeChangeModal: false,
-        isShowNicknameNotChangeByDateModal: false,
-        isShowAddressChangeQuitModal: false,
-        isShowAddressDeleteModal: false,
-        isShowNicknameChangeConfirmModal: false,
-        isShowOfficeNewbieSignupModal: false,
-        isShowWorkTimeNotChangeByDateModal: false,
-        isShowFulfillAttendanceCompleteModal: false,
-        isShowFulfillAttendanceDateSelectModal: false,
-        isShowFulfillAttendanceNoDayModal: false,
-        isShowFeverGuideModal: false,
-        isShowLuckyDrawErrorModal: false,
-        isShowLuckyDrawWinningCheckModal: false,
-        isShowLuckyDrawPickUpModal: false,
-        isShowLuckyDrawResearchCompleteModal: false,
-      });
     },
   })),
 );

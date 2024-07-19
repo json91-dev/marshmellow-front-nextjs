@@ -8,9 +8,9 @@ import cx from 'classnames';
 import { signOut } from 'next-auth/react';
 
 export default function WithdrawConfimCompleteModal() {
-  const { isShowWithdrawConfirmCompleteModal, closeAll } = useModalStore();
+  const { isShowWithdrawConfirmCompleteModal, showWithdrawConfirmCompleteModal } = useModalStore();
   const onClickConfirm = useCallback(async () => {
-    closeAll();
+    showWithdrawConfirmCompleteModal(false);
     await signOut({ callbackUrl: '/login' });
   }, []);
   const backdropRef = React.useRef(null);

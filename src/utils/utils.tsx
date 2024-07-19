@@ -30,10 +30,10 @@ export function debounce(func: Function, delay: number) {
 
 export function isAppleDevice() {
   // navigator.userAgent는 현재 브라우저의 User Agent 문자열을 반환합니다.
-  const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  const userAgent = navigator.userAgent;
 
   // iOS (iPhone, iPad, iPod) 장치인지 확인
-  const isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
+  const isIOS = /iPad|iPhone|iPod/.test(userAgent);
 
   // macOS 장치인지 확인
   const isMacOS = /Macintosh|MacIntel|MacPPC|Mac68K/.test(userAgent);

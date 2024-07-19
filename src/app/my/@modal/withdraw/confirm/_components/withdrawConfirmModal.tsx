@@ -9,8 +9,7 @@ import { getLocalStorage } from '@/utils/utils';
 import { useWithdrawMutation } from '@/app/_hook/queries/member';
 
 export default function WithdrawConfimModal() {
-  const { isShowWithdrawConfirmModal, showWithdrawConfirmModal, showWithdrawConfirmCompleteModal, closeAll } =
-    useModalStore();
+  const { isShowWithdrawConfirmModal, showWithdrawConfirmModal, showWithdrawConfirmCompleteModal } = useModalStore();
   const backdropRef = React.useRef(null);
   const modalRef = React.useRef(null);
   const { mutate } = useWithdrawMutation();
@@ -28,7 +27,7 @@ export default function WithdrawConfimModal() {
   }, []);
 
   const onClickCancel = useCallback(() => {
-    closeAll();
+    showWithdrawConfirmModal(false);
   }, []);
 
   return (
