@@ -301,3 +301,9 @@ export function getCalendarData(year: number, month: number) {
 
   return { calendarList, prevDayEmptyList, nextDayEmptyList };
 }
+
+export function isNumeric(str: string) {
+  // Number로 변환한 값이 NaN인지 아닌지 확인
+  const num = Number(str);
+  return !isNaN(num) && typeof num === 'number';
+}

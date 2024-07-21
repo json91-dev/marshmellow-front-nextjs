@@ -1,70 +1,36 @@
 'use client';
-import Image from 'next/image';
 import style from './prize.module.scss';
-import { useRouter } from 'next/navigation';
-import Confetti from 'react-confetti';
+import { useRouter, useSearchParams } from 'next/navigation';
 import React, { useEffect, useRef, useState } from 'react';
-import cx from 'classnames';
-import { useToastStore } from '@/store/toast';
+import PrizeStepDefault from '@/app/recreation/luckydraw/winner/prize/_components/PrizeStepDefault';
+import { isNumeric } from '@/utils/utils';
+import PrizeStep2 from '@/app/recreation/luckydraw/winner/prize/_components/PrizeStep2';
 
 export default function LuckyDrawWinnerMarshmallow() {
-  const router = useRouter();
   const mallowPageRef = useRef<HTMLDivElement>(null!);
-  const [mallowPageClientWidthHeight, setMallowPageClientWidthHeight] = useState<{ width: number; height: number }>(null!);
-  const randomPrize = useRef<number>(null!);
-  const { openToast } = useToastStore();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const step = searchParams.get('step');
 
   useEffect(() => {
-    setMallowPageClientWidthHeight({
-      width: mallowPageRef.current?.clientWidth,
-      height: mallowPageRef.current?.clientHeight,
-    });
+    if (step && (!isNumeric(step) || parseInt(step) !== 2)) {
+      router.replace('/recreation/luckydraw/winner/prize');
+    }
+  }, [step, router]);
 
-    randomPrize.current = Math.floor(Math.random() * 3 + 1);
-  }, []);
-  return (
-    <div ref={mallowPageRef} className={cx(style.winnerPrizePage, randomPrize.current === 1 && style.fistPrize)}>
-      <div className={style.confetti}>
-        {mallowPageClientWidthHeight && (
-          <Confetti
-            numberOfPieces={60}
-            width={mallowPageClientWidthHeight.width}
-            height={mallowPageClientWidthHeight.height}
-          />
-        )}
+  if (!step) {
+    return (
+      <div ref={mallowPageRef} className={style.winnerPrizePage}>
+        <PrizeStepDefault />
       </div>
+    );
+  }
 
-      <div className={style.main}>
-        <div className={style.warning}>
-          <p>{'0000.00.00 까지 수령정보를 입력해주세요.\n기간 내 정보 미제출 시 경품수령이 불가합니다.'}</p>
-        </div>
-        <p className={style.title}>{randomPrize.current}등 당첨!</p>
-        <div className={style.prize}></div>
-        <p className={style.info}>{'[경품 이름]\n두줄인경우'}</p>
-        <p className={style.detail}>
-          {'당첨 안내 문자를 받을 연락처를 확인해주세요.\n(본인인증 완료한 연락처로만 가능합니다.)'}
-        </p>
-
-        <div className={style.phoneInfo}>
-          <p>연락처</p>
-          <p>인증된 연락처가 변경된 경우 본인인증 후 변경이 가능해요.</p>
-        </div>
-
-        <div className={style.phone}>
-          <p className={style.number}>010-0000-0000</p>
-          <div className={style.changeButton} onClick={() => openToast('PASS 본인인증 이동')}>
-            <p>변경하기</p>
-          </div>
-        </div>
+  if (isNumeric(step) && parseInt(step) === 2) {
+    return (
+      <div ref={mallowPageRef} className={style.winnerPrizePage}>
+        <PrizeStep2 />
       </div>
-
-      <button onClick={() => router.push('/recreation/luckydraw')} className={style.confirmButton}>
-        확인
-      </button>
-    </div>
-  );
-}
-
-function MallowPrizeBox({ count }: { count: number }) {
-  return <div className={style.mallowPrizeBox}></div>;
+    );
+  }
 }

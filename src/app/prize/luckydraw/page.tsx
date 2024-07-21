@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import Confetti from 'react-confetti';
 import React, { useEffect, useRef, useState } from 'react';
 import cx from 'classnames';
-export default function LuckyDrawWinnerMarshmallow() {
+export default function LuckyDrawPrizePage() {
   const router = useRouter();
   const mallowPageRef = useRef<HTMLDivElement>(null!);
   const [mallowPageClientWidthHeight, setMallowPageClientWidthHeight] = useState<{ width: number; height: number }>(null!);
@@ -43,7 +43,7 @@ export default function LuckyDrawWinnerMarshmallow() {
 
         <div className={style.taxDeliveryLinks}>
           {randomPrize < 3 && (
-            <div className={cx(style.link, style.idle)}>
+            <div className={cx(style.link, style.idle)} onClick={() => router.push('/prize/luckydraw/tax')}>
               <p className={style.name}>제세공과금 정보 입력하기</p>
               <div className={style.rightInput}>
                 <div className={style.status}>
@@ -53,7 +53,7 @@ export default function LuckyDrawWinnerMarshmallow() {
               </div>
             </div>
           )}
-          <div className={cx(style.link, style.idle)}>
+          <div className={cx(style.link, style.idle)} onClick={() => router.push('/prize/luckydraw/address')}>
             <p className={style.name}>배송정보 입력하기</p>
             <div className={style.rightInput}>
               <div className={cx(style.status, style.idle)}>
@@ -71,8 +71,4 @@ export default function LuckyDrawWinnerMarshmallow() {
       </button>
     </div>
   );
-}
-
-function MallowPrizeBox({ count }: { count: number }) {
-  return <div className={style.mallowPrizeBox}></div>;
 }

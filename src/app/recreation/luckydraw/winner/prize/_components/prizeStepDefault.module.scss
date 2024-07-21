@@ -1,0 +1,181 @@
+.prizeStepDefault {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: relative;
+
+  &.fistPrize {
+    background-color: #F5E4FF;
+
+    .warning {
+      background-color: #F9EEFF !important;
+    }
+
+    .title {
+      color: #BB4EF2 !important;
+    }
+
+    .info {
+      color: #BB4EF2 !important;
+    }
+  }
+
+
+  .main {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+    .warning {
+      top: 6.8rem;
+      background-color: #F0F3FA;
+      width: 90%;
+      max-width: 36rem;
+      border-radius: 0.4rem;
+
+      p {
+        text-align: center;
+        white-space: pre-wrap;
+        color: #FF403A;
+        font-weight: 500;
+        line-height: 2rem;
+        font-size: 1.4rem;
+        padding: 0.6rem 3.2rem;
+      }
+    }
+
+    .title {
+      font-weight: bold;
+      font-size: 2rem;
+      line-height: 3rem;
+      color: #1C222B;
+      margin-top: 1.6rem;
+    }
+
+    .prize {
+      margin-top: 1rem;
+      width: 15rem;
+      height: 15rem;
+      background-color: #E5E9F2;
+      border-radius: 0.8rem;
+    }
+
+    .info {
+      margin-top: 1.6rem;
+      font-weight: bold;
+      font-size: 1.8rem;
+      line-height: 2.8rem;
+      color: #1C222B;
+      white-space: pre-wrap;
+    }
+
+    .detail {
+      font-weight: 500;
+      font-size: 1.4rem;
+      line-height: 2rem;
+      color: #1C222B;
+      white-space: pre-wrap;
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .phoneInfo {
+      width: 100%;
+      padding: 0 2rem;
+      margin-top: 2.4rem;
+
+      & > p:nth-child(1) {
+        font-weight: 700;
+        font-size: 1.4rem;
+        line-height: 2rem;
+        color: #1C222B;
+      }
+
+      & > p:nth-child(2) {
+        font-weight: 400;
+        font-size: 1.4rem;
+        line-height: 2rem;
+        color: #5C6475;
+      }
+    }
+
+    .phone {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 2rem;
+      width: 100%;
+      margin-top: 1.2rem;
+      align-items: center;
+
+      .number {
+        font-weight: 400;
+        font-size: 1.6rem;
+        line-height: 2.4rem;
+        color: #1C222B;
+      }
+
+      .changeButton {
+        background-color: white;
+        padding: 0.8rem 1.6rem;
+        border: 1px solid #ACB6CA;
+        border-radius: 0.6rem;
+        @include activeOpacity;
+        @include activeScale;
+        cursor: pointer;
+
+        p {
+          font-weight: 500;
+          font-size: 1.4rem;
+          line-height: 2rem;
+          color: black;
+        }
+      }
+    }
+
+  }
+
+  .confetti {
+    position: absolute;
+    pointer-events: none;
+    //top: 50%;
+    //transform: translateY(-50%);
+    width: 100%;
+    height: 100%;
+  }
+
+
+  .confirmButton {
+    width: 90%;
+    height: 4.8rem;
+    //max-width: 32rem;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.8rem;
+    color: white;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    font-weight: 500;
+    margin-top: 3rem;
+    cursor: pointer;
+    position: absolute;
+    left: 5%;
+    bottom: 5%;
+
+    @media (min-height: 1000px) {
+      bottom: 15%;
+    }
+
+
+    @include activeScale(0.99);
+    @include activeOpacity(0.8);
+  }
+}
+
+
+
