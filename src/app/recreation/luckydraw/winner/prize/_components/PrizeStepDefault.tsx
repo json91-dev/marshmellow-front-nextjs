@@ -5,6 +5,7 @@ import Confetti from 'react-confetti';
 import React, { useEffect, useRef, useState } from 'react';
 import cx from 'classnames';
 import { useToastStore } from '@/store/toast';
+import { useModalStore } from '@/store/modal';
 
 export default function PrizeStepDefault() {
   const router = useRouter();
@@ -12,7 +13,7 @@ export default function PrizeStepDefault() {
   const [mallowPageClientWidthHeight, setMallowPageClientWidthHeight] = useState<{ width: number; height: number }>(null!);
   const randomPrize = useRef<number>(null!);
   const { openToast } = useToastStore();
-
+  const { showLuckyDrawWinnerPrizePhoneCheckModal } = useModalStore();
   useEffect(() => {
     setMallowPageClientWidthHeight({
       width: mallowPageRef.current?.clientWidth,
@@ -57,13 +58,9 @@ export default function PrizeStepDefault() {
         </div>
       </div>
 
-      <button onClick={() => router.push('/recreation/luckydraw/winner/prize?step=2')} className={style.confirmButton}>
+      <button onClick={() => showLuckyDrawWinnerPrizePhoneCheckModal(true)} className={style.confirmButton}>
         확인
       </button>
     </div>
   );
-}
-
-function MallowPrizeBox({ count }: { count: number }) {
-  return <div className={style.mallowPrizeBox}></div>;
 }
