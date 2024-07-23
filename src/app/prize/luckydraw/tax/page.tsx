@@ -5,6 +5,7 @@ import React, { useEffect } from 'react';
 import TaxStepDefault from '@/app/prize/luckydraw/tax/_components/TaxStepDefault';
 import TopNavigation from '@/app/_components/common/TopNavigation';
 import cx from 'classnames';
+import TaxStep2 from '@/app/prize/luckydraw/tax/_components/TaxStep2';
 
 export default function LuckyDrawWinnerMarshmallow() {
   const router = useRouter();
@@ -27,10 +28,10 @@ export default function LuckyDrawWinnerMarshmallow() {
   return (
     <div className={style.luckyDrawPrizeTaxPage}>
       <TopNavigation title={'제세공과금 정보 입력'} />
-      <TaxStepIndicator />
+      {step ? <TaxStepIndicator currentStep={parseFloat(step)} /> : <TaxStepIndicator currentStep={1} />}
 
       {!step && <TaxStepDefault />}
-      {/*{step === '2' && <p>2</p>}*/}
+      {step === '2' && <TaxStep2 />}
       {/*{step === '3' && <p>2</p>}*/}
       {/*{step === '4' && <p>4</p>}*/}
     </div>

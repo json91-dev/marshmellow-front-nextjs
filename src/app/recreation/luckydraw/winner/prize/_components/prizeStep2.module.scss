@@ -75,11 +75,9 @@
     cursor: pointer;
     position: absolute;
     left: 5%;
-    bottom: 5%;
+    bottom: 2.4rem;
 
-    @media (min-height: 1000px) {
-      bottom: 15%;
-    }
+
 
 
     @include activeScale(0.99);

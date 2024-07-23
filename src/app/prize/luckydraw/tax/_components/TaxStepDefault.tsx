@@ -1,15 +1,22 @@
 'use client';
-import style from './taxStep.module.scss';
-import React from 'react';
+import style from './TaxStepDetault.module.scss';
+import buttonStyle from './Button.module.scss';
+import React, { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
+import cx from 'classnames';
+import { useRouter } from 'next/navigation';
 
 export default function TaxStepDefault() {
   const {
     register,
-    handleSubmit,
     watch,
     formState: { errors },
   } = useForm();
+  const selectedValue = watch('optionRadio');
+  const router = useRouter();
+  const onClickButton = useCallback(() => {
+    router.push('/prize/luckydraw/tax?step=2');
+  }, []);
 
   return (
     <div className={style.taxStepDefault}>
@@ -23,7 +30,7 @@ export default function TaxStepDefault() {
       <div className={style.select}>
         <div className={style.radioWrapper}>
           <label className={style.radioLabel}>
-            <input type="radio" {...register('optionRadio', { required: true })} />
+            <input value={0} type="radio" {...register('optionRadio', { required: true })} />
             <span className={style.radioInnerCircle}></span>
             <p>확인했어요.</p>
           </label>
@@ -31,7 +38,7 @@ export default function TaxStepDefault() {
 
         <div className={style.radioWrapper}>
           <label className={style.radioLabel}>
-            <input type="radio" {...register('optionRadio', { required: true })} />
+            <input value={1} type="radio" {...register('optionRadio', { required: true })} />
             <span className={style.radioInnerCircle}></span>
             <p>제세공과금 부담하지 않을래요</p>
           </label>
@@ -39,8 +46,8 @@ export default function TaxStepDefault() {
         </div>
       </div>
 
-      <div className={style.buttonsArea}>
-        <div className={style.confirmButton}>저장 후 다음</div>
+      <div className={buttonStyle.buttonsArea} onClick={onClickButton}>
+        <div className={cx(buttonStyle.confirmButton, selectedValue === '0' && buttonStyle.active)}>저장 후 다음</div>
       </div>
     </div>
   );

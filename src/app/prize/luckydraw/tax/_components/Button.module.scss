@@ -1,0 +1,48 @@
+.buttonsArea {
+  position: absolute;
+  width: 90%;
+  left: 5%;
+  display: flex;
+  bottom: 2.4rem;
+  gap: 1.6rem;
+
+  .confirmButton {
+    flex-grow: 3;
+    height: 4.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    font-size: 1.6rem;
+    font-weight: 500;
+    cursor: pointer;
+    background-color: #D4DBE9;
+    color: white;
+    pointer-events: none;
+
+    @include activeScale(0.99);
+    @include activeOpacity(0.8);
+
+    &.active {
+      background-color: black;
+      pointer-events: all;
+    }
+  }
+
+  .prevButton {
+    flex-grow: 1;
+    border: 1px solid #ACB6CA;
+    border-radius: 0.5rem;
+    height: 4.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    line-height: 2.4rem;
+    font-size: 1.6rem;
+    font-weight: 500;
+    cursor: pointer;
+    @include activeScale(0.99);
+    @include activeOpacity(0.8);
+  }
+}
