@@ -5,20 +5,99 @@
   padding: 0 2rem;
   position: relative;
 
-  input[type="checkbox"] {
-    appearance: none;
-    width: 2rem;
-    height: 2rem;
-    border: 1.5px solid gainsboro;
-    border-radius: 0.35rem;
 
-    &:checked {
-      border-color: transparent;
-      background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e");
-      background-size: 100% 100%;
-      background-position: 50%;
-      background-repeat: no-repeat;
-      background-color: #BB4EF2;
+  .checkBoxContainer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+
+    input[type="checkbox"] {
+      appearance: none;
+      width: 2rem;
+      height: 2rem;
+      border: 1.5px solid gainsboro;
+      border-radius: 0.35rem;
+
+      &:checked {
+        border-color: transparent;
+        background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e");
+        background-size: 100% 100%;
+        background-position: 50%;
+        background-repeat: no-repeat;
+        background-color: #BB4EF2;
+      }
+    }
+
+    p {
+      font-size: 1.4rem;
+      color: #1C222B;
+      font-weight: 400;
+      line-height: 2rem;
+    }
+  }
+
+
+  .headInfoBox {
+    background-color: #F0F3FA;
+    padding: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    p {
+      color: #5C6475;
+      font-size: 1.6rem;
+      font-weight: 500;
+      line-height: 2rem;
+    }
+  }
+
+  .taxInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    margin-top: 1.6rem;
+
+    p {
+      color: #5C6475;
+      font-weight: 500;
+      white-space: pre-wrap;
+      font-size: 1.4rem;
+      line-height: 2rem;
+    }
+
+    & > p:nth-child(1) {
+      span {
+        font-weight: bold;
+      }
+    }
+
+    & > p:nth-child(2) {
+      span {
+        color: #FF403A;
+        font-weight: bold;
+      }
+    }
+
+    & > p:nth-child(3) {
+      font-weight: bold;
+    }
+  }
+
+  .account {
+    margin-top: 1.6rem;
+    border: 1px solid #BCC5D5;
+    padding: 0.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    p {
+      color: #5C6475;
+      font-weight: 500;
+      font-size: 1.4rem;
+      line-height: 2rem;
     }
   }
 }
