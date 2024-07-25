@@ -1,0 +1,77 @@
+.taxStep3 {
+  width: 100%;
+  flex-grow: 1;
+  margin-top: 1.6rem;
+  padding: 0 2rem;
+  position: relative;
+
+  .headInfoBox {
+    background-color: #F0F3FA;
+    padding: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.4rem;
+
+    p {
+      color: #5C6475;
+      font-size: 1.6rem;
+      font-weight: 500;
+      line-height: 2rem;
+    }
+  }
+
+  .taxInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    margin-top: 1.6rem;
+
+    p {
+      color: #5C6475;
+      font-weight: 500;
+      white-space: pre-wrap;
+      font-size: 1.4rem;
+      line-height: 2rem;
+
+      & > span:nth-child(1) {
+        color: #FF403A;
+        font-weight: bold;
+      }
+
+      & > span:nth-child(2) {
+        font-weight: bold;
+        line-height: 2.3rem;
+      }
+    }
+  }
+
+  .fileInputArea {
+    margin-top: 1.6rem;
+    padding: 1.6rem;
+    border: 1px solid #ACB6CA;
+
+    p {
+      color: #1C222B;
+      font-weight: 500;
+      font-size: 1.4rem;
+      line-height: 2rem;
+    }
+
+    .fileInputBox {
+      margin-top: 1.2rem;
+      width: 8.8rem;
+      height: 8.8rem;
+      border: 1px solid #ACB6CA;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 0.4rem;
+      border-radius: 0.6rem;
+      cursor: pointer;
+    }
+
+  }
+}

@@ -6,6 +6,7 @@ import TaxStepDefault from '@/app/prize/luckydraw/tax/_components/TaxStepDefault
 import TopNavigation from '@/app/_components/common/TopNavigation';
 import cx from 'classnames';
 import TaxStep2 from '@/app/prize/luckydraw/tax/_components/TaxStep2';
+import TaxStep3 from '@/app/prize/luckydraw/tax/_components/TaxStep3';
 
 export default function LuckyDrawWinnerMarshmallow() {
   const router = useRouter();
@@ -32,7 +33,7 @@ export default function LuckyDrawWinnerMarshmallow() {
 
       {!step && <TaxStepDefault />}
       {step === '2' && <TaxStep2 />}
-      {/*{step === '3' && <p>2</p>}*/}
+      {step === '3' && <TaxStep3 />}
       {/*{step === '4' && <p>4</p>}*/}
     </div>
   );

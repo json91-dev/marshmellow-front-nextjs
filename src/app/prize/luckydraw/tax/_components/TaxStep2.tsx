@@ -16,7 +16,7 @@ export default function TaxStep2() {
 
   const router = useRouter();
   const onClickButton = useCallback(() => {
-    router.push('/prize/luckydraw/tax?step=2');
+    router.push('/prize/luckydraw/tax?step=3');
   }, []);
 
   return (
@@ -56,7 +56,9 @@ export default function TaxStep2() {
 
       <div className={buttonStyle.buttonsArea}>
         <div className={buttonStyle.prevButton}>이전</div>
-        <div className={cx(buttonStyle.confirmButton, depositChecked && buttonStyle.active)}>확인</div>
+        <div onClick={onClickButton} className={cx(buttonStyle.confirmButton, depositChecked && buttonStyle.active)}>
+          저장 후 다음
+        </div>
       </div>
     </div>
   );
