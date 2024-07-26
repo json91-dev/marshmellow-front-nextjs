@@ -2,7 +2,7 @@
 
 import style from './modal.module.scss';
 import ModalBackdrop from '@/app/signup/@modal/identify/_components/ModalBackdrop';
-import { useModalStore } from '@/store/modal';
+import useModalStore from '@/store/modalStore';
 import { CSSTransition } from 'react-transition-group';
 import React from 'react';
 export default function AuthSuccessModal() {

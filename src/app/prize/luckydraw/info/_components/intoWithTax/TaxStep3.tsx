@@ -3,7 +3,7 @@ import React, { useCallback, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import style from './TaxStep3.module.scss';
-import buttonStyle from './Button.module.scss';
+import buttonStyle from '../Button.module.scss';
 import cx from 'classnames';
 import Image from 'next/image';
 
@@ -18,9 +18,9 @@ export default function TaxStep3() {
 
   const router = useRouter();
   const onClickButton = useCallback(() => {
-    router.push('/prize/luckydraw/tax?step=3');
+    router.push('/prize/luckydraw/info?step=3');
   }, []);
-  const hiddenInputRef = useRef<HTMLInputElement>(null!);
+  const hiddenInputRef = useRef<any>(null!);
   const { ref: registerRef, ...rest } = register('imageFileInput');
   const handleDivClick = () => {
     if (hiddenInputRef.current) {
@@ -28,7 +28,7 @@ export default function TaxStep3() {
     }
   };
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: any) => {
     console.log('Form data:', data);
   };
 

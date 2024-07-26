@@ -5,7 +5,7 @@ import TopNavigation from '@/app/my/_components/TopNavigation';
 import Image from 'next/image';
 import React, { useCallback, useEffect } from 'react';
 import HorizontalLine from '@/app/my/_components/HorizontalLine';
-import { useModalStore } from '@/store/modal';
+import useModalStore from '@/store/modalStore';
 import { useRouter } from 'next/navigation';
 import { formatHourMinute, phoneFomatter } from '@/utils/utils';
 import { useMemberProfileQuery } from '@/app/_hook/queries/member';

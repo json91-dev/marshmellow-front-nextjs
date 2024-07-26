@@ -4,7 +4,7 @@ import style from '@/app/my/mallow/marshmallow.module.scss';
 import { extractHourMinute, replaceAt } from '@/utils/utils';
 import React, { useMemo } from 'react';
 import { useMarshmallowHistoryQuery } from '@/app/_hook/queries/currency';
-import { useMallowStore } from '@/store/mallow';
+import useMallowHistoryStore from '@/store/mallowHistoryStore';
 
 export default function MallowHistoryItems() {
   const { history } = useMallowStore();

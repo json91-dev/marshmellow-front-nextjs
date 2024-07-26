@@ -4,7 +4,7 @@ import style from './address.module.scss';
 import TopNavigation from '@/app/_components/common/TopNavigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useModalStore } from '@/store/modal';
+import useModalStore from '@/store/modalStore';
 import { useRouter } from 'next/navigation';
 
 export default function AddressPage() {

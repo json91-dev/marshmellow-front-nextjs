@@ -4,7 +4,7 @@ import style from '@/app/my/mallow/marshmallow.module.scss';
 import cx from 'classnames';
 import React from 'react';
 import { MallowStateType } from '@/app/my/mallow/page';
-import { useMallowStore } from '@/store/mallow';
+import useMallowHistoryStore from '@/store/mallowHistoryStore';
 
 export default function FilterState() {
   const { history, setHistoryFilterState } = useMallowStore();

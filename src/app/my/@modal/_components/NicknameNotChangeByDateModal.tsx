@@ -3,12 +3,11 @@ import style from './modal.module.scss';
 import React from 'react';
 import { CSSTransition } from 'react-transition-group';
 import ModalBackdrop from '@/app/signup/@modal/identify/_components/ModalBackdrop';
-import { useModalStore } from '@/store/modal';
+import useModalStore from '@/store/modalStore';
 import cx from 'classnames';
 
 export default function NicknameNotChangeByDateModal() {
-  const { isShowNicknameNotChangeByDateModal, showNicknameNotChangeByDateModal, nicknameChangeRemainDays } =
-    useModalStore();
+  const { isShowNicknameNotChangeByDateModal, showNicknameNotChangeByDateModal, nicknameChangeRemainDays } = useModalStore();
   const backdropRef = React.useRef(null);
   const modalRef = React.useRef(null);
 

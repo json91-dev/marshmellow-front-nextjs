@@ -3,8 +3,8 @@ import style from './luckydraw.complete.module.scss';
 import Image from 'next/image';
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useToastStore } from '@/store/toast';
-import { useModalStore } from '@/store/modal';
+import useToastStore from '@/store/toastStore';
+import useModalStore from '@/store/modalStore';
 import { useRouter } from 'next/navigation';
 
 export default function LuckyDrawResearchCompletePage() {

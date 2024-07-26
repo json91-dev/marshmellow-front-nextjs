@@ -3,13 +3,13 @@ import style from './marshmallow.module.scss';
 import Image from 'next/image';
 import React, { useMemo, useState } from 'react';
 import cx from 'classnames';
-import { useModalStore } from '@/store/modal';
+import useModalStore from '@/store/modalStore';
 import TopNavigation from '@/app/_components/common/TopNavigation';
 import { useMarshmallowHistoryQuery } from '@/app/_hook/queries/currency';
 import Spinner from '@/app/login/_components/Spinner';
 import { extractHourMinute } from '@/utils/utils';
 import FilterState from '@/app/my/mallow/_components/FilterState';
-import { useMallowStore } from '@/store/mallow';
+import useMallowHistoryStore from '@/store/mallowHistoryStore';
 import { useMemberCurrencyQuery } from '@/app/_hook/queries/member';
 import MallowHistoryItems from '@/app/my/mallow/_components/MallowHistoryItems';
 

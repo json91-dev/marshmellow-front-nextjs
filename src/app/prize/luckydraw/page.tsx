@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import style from './prize.module.scss';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Confetti from 'react-confetti';
 import React, { useEffect, useRef, useState } from 'react';
 import cx from 'classnames';
@@ -10,6 +10,7 @@ export default function LuckyDrawPrizePage() {
   const mallowPageRef = useRef<HTMLDivElement>(null!);
   const [mallowPageClientWidthHeight, setMallowPageClientWidthHeight] = useState<{ width: number; height: number }>(null!);
   const randomPrize = Math.floor(Math.random() * 3 + 1);
+  const searchParams = useSearchParams();
 
   useEffect(() => {
     setMallowPageClientWidthHeight({

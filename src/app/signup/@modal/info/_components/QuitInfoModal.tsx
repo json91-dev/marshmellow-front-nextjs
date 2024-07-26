@@ -2,7 +2,7 @@
 import style from './modal.module.scss';
 import ModalBackdrop from '@/app/signup/@modal/identify/_components/ModalBackdrop';
 import { CSSTransition } from 'react-transition-group';
-import { useModalStore } from '@/store/modal';
+import useModalStore from '@/store/modalStore';
 import cx from 'classnames';
 import { useRouter } from 'next/navigation';
 import { signOut } from 'next-auth/react';

@@ -2,7 +2,7 @@
 import style from './toast.module.scss';
 import cx from 'classnames';
 import { useEffect, useRef } from 'react';
-import { useToastStore } from '@/store/toast';
+import useToastStore from '@/store/toastStore';
 
 export default function Toast() {
   const { message, closeToast, isOpen } = useToastStore();

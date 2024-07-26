@@ -5,7 +5,7 @@ import Image from 'next/image';
 import ConfirmButton from '@/app/signup/_components/ConfirmButton';
 import React, { useCallback, useState } from 'react';
 import cx from 'classnames';
-import { useModalStore } from '@/store/modal';
+import useModalStore from '@/store/modalStore';
 
 export default function IdentifyCheck() {
   const [isRunningPASS, setIsRunningPASS] = useState(false);

@@ -1,11 +1,11 @@
 'use client';
-import { useModalStore } from '@/store/modal';
+import useModalStore from '@/store/modalStore';
 import { CSSTransition } from 'react-transition-group';
 import ModalBackdrop from '@/app/signup/@modal/identify/_components/ModalBackdrop';
 import style from './filterDateBottomSheet.module.scss';
 import React, { useCallback, useRef } from 'react';
 import useBottomSheet from '@/app/_hook/useBottomSheet';
-import { useMallowStore } from '@/store/mallow';
+import useMallowHistoryStore from '@/store/mallowHistoryStore';
 
 export default function FilterDataBottomSheet() {
   const { isShowMallowFilterDateBottomSheet, showMallowFilterDateBottomSheet } = useModalStore();

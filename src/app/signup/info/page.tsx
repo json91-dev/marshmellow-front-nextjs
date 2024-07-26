@@ -11,9 +11,9 @@ import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import TopNavigation from '@/app/_components/common/TopNavigation';
 import { Controller, useForm } from 'react-hook-form';
-import { useToastStore } from '@/store/toast';
+import useToastStore from '@/store/toastStore';
 import { debounce, getBirthNumberWithDot } from '@/utils/utils';
-import { useSignupStore } from '@/store/signup';
+import useSignupStore from '@/store/signUpStore';
 
 interface Inputs {
   name: string;

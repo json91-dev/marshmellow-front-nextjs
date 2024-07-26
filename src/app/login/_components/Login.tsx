@@ -8,7 +8,7 @@ import React, { memo, useEffect, useRef, useState } from 'react';
 import Spinner from '@/app/login/_components/Spinner';
 import { useSession, signOut, getCsrfToken } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import { useModalStore } from '@/store/modal';
+import useModalStore from '@/store/modalStore';
 import style from '@/app/login/login.module.scss';
 
 export default memo(function Login() {

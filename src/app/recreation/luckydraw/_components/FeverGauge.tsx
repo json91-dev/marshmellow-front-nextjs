@@ -3,7 +3,7 @@ import style from './feverGauge.module.scss';
 import React from 'react';
 import cx from 'classnames';
 import Image from 'next/image';
-import { useModalStore } from '@/store/modal';
+import useModalStore from '@/store/modalStore';
 
 type props = {
   percentage: number;

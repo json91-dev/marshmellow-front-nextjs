@@ -2,11 +2,12 @@
 import style from './tax.module.scss';
 import { useRouter, useSearchParams } from 'next/navigation';
 import React, { useEffect } from 'react';
-import TaxStepDefault from '@/app/prize/luckydraw/tax/_components/TaxStepDefault';
+import TaxStepDefault from '@/app/prize/luckydraw/info/_components/intoWithTax/TaxStepDefault';
 import TopNavigation from '@/app/_components/common/TopNavigation';
 import cx from 'classnames';
-import TaxStep2 from '@/app/prize/luckydraw/tax/_components/TaxStep2';
-import TaxStep3 from '@/app/prize/luckydraw/tax/_components/TaxStep3';
+import TaxStep2 from '@/app/prize/luckydraw/info/_components/intoWithTax/TaxStep2';
+import TaxStep3 from '@/app/prize/luckydraw/info/_components/intoWithTax/TaxStep3';
+import TaxStep4 from '@/app/prize/luckydraw/info/_components/intoWithTax/TaxStep4';
 
 export default function LuckyDrawWinnerMarshmallow() {
   const router = useRouter();
@@ -34,7 +35,7 @@ export default function LuckyDrawWinnerMarshmallow() {
       {!step && <TaxStepDefault />}
       {step === '2' && <TaxStep2 />}
       {step === '3' && <TaxStep3 />}
-      {/*{step === '4' && <p>4</p>}*/}
+      {step === '4' && <TaxStep4 />}
     </div>
   );
 }

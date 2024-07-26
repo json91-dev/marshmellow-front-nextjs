@@ -2,7 +2,7 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import style from './submitInfoBody.module.scss';
-import { useSignupStore } from '@/store/signup';
+import useSignupStore from '@/store/signUpStore';
 
 export default function () {
   const router = useRouter();

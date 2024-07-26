@@ -4,7 +4,7 @@ import Image from 'next/image';
 import React, { useCallback, useRef } from 'react';
 import { useWorkMonthlyQuery } from '@/app/_hook/queries/activity';
 import dayjs from 'dayjs';
-import { useModalStore } from '@/store/modal';
+import useModalStore from '@/store/modalStore';
 
 export default function BottomInfo() {
   const accordionContentRef = useRef<HTMLDivElement>(null!);

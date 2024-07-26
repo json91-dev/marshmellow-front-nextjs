@@ -7,7 +7,7 @@ import { useSession } from 'next-auth/react';
 import { useWorkWeeklyQuery } from '@/app/_hook/queries/activity';
 import dayjs from 'dayjs';
 import { findMonday, findSunday } from '@/utils/utils';
-import { useModalStore } from '@/store/modal';
+import useModalStore from '@/store/modalStore';
 import WeekAttendanceGuest from '@/app/(main)/office/_components/guest/WeekAttendanceGuest';
 import Spinner from '@/app/login/_components/Spinner';
 

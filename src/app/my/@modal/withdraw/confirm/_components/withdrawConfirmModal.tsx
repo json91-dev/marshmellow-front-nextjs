@@ -3,7 +3,7 @@ import style from './modal.module.scss';
 import React, { useCallback } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import ModalBackdrop from '@/app/signup/@modal/identify/_components/ModalBackdrop';
-import { useModalStore } from '@/store/modal';
+import useModalStore from '@/store/modalStore';
 import cx from 'classnames';
 import { getLocalStorage } from '@/utils/utils';
 import { useWithdrawMutation } from '@/app/_hook/queries/member';

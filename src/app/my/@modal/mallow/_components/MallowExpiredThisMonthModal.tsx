@@ -4,7 +4,7 @@ import ModalBackdrop from '@/app/signup/@modal/identify/_components/ModalBackdro
 import cx from 'classnames';
 import style from './modal.module.scss';
 import React from 'react';
-import { useModalStore } from '@/store/modal';
+import useModalStore from '@/store/modalStore';
 import { useMemberCurrencyQuery } from '@/app/_hook/queries/member';
 
 export default function MallowExpiredThisMonthModal() {

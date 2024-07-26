@@ -13,7 +13,7 @@ interface MallowState {
   setHistoryFilterMonth(month: number): void;
 }
 
-export const useMallowStore = create(
+export const useMallowHistoryStore = create(
   devtools<MallowState>((set) => ({
     history: {
       filterState: 'ALL',
@@ -39,3 +39,5 @@ export const useMallowStore = create(
     },
   })),
 );
+
+export default useMallowHistoryStore;

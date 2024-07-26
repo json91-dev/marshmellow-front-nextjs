@@ -38,3 +38,5 @@ export const useSignupStore = create(
     },
   ),
 );
+
+export default useSignupStore;

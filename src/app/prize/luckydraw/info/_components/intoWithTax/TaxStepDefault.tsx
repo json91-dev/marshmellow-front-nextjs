@@ -1,6 +1,6 @@
 'use client';
 import style from './TaxStepDetault.module.scss';
-import buttonStyle from './Button.module.scss';
+import buttonStyle from '../Button.module.scss';
 import React, { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import cx from 'classnames';
@@ -15,7 +15,7 @@ export default function TaxStepDefault() {
   const selectedValue = watch('optionRadio');
   const router = useRouter();
   const onClickButton = useCallback(() => {
-    router.push('/prize/luckydraw/tax?step=2');
+    router.push('/prize/luckydraw/info?step=2');
   }, []);
 
   return (

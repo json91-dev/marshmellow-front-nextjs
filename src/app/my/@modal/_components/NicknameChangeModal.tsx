@@ -4,9 +4,9 @@ import React, { useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { CSSTransition } from 'react-transition-group';
 import ModalBackdrop from '@/app/signup/@modal/identify/_components/ModalBackdrop';
-import { useModalStore } from '@/store/modal';
+import useModalStore from '@/store/modalStore';
 import cx from 'classnames';
-import { useToastStore } from '@/store/toast';
+import useToastStore from '@/store/toastStore';
 import { useForm } from 'react-hook-form';
 import { debounce, setLocalStorage } from '@/utils/utils';
 

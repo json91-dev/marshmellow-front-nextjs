@@ -308,3 +308,5 @@ export const useModalStore = create(
     },
   })),
 );
+
+export default useModalStore;

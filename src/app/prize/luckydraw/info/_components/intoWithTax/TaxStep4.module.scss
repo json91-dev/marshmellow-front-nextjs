@@ -1,0 +1,61 @@
+.taxStep4 {
+  width: 100%;
+  flex-grow: 1;
+  margin-top: 1.6rem;
+  padding: 0 2rem;
+  position: relative;
+
+  .headInfoBox {
+    background-color: #F0F3FA;
+    padding: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.4rem;
+
+    p {
+      color: #5C6475;
+      font-size: 1.6rem;
+      font-weight: 500;
+      line-height: 2rem;
+    }
+  }
+
+  .emailInfo {
+    margin-top: 1.6rem;
+
+    & > p:nth-child(1) {
+      font-weight: bold;
+      font-size: 1.4rem;
+      color: #1C222B;
+      line-height: 2rem;
+    }
+
+    & > p:nth-child(2) {
+      margin-top: 0.4rem;
+      font-weight: 500;
+      font-size: 1.4rem;
+      color: #5C6475;
+      line-height: 2rem;
+    }
+  }
+
+  .emailInputArea {
+    margin-top: 1.6rem;
+
+    input[type="text"] {
+      border-radius: 0.6rem;
+      border: 1px solid #ACB6CA;
+      font-size: 1.6rem;
+      height: 4.8rem;
+      padding-left: 1.2rem;
+      width: 100%;
+      outline: none;
+
+      &:focus {
+        border: 1px solid #3D4451;
+      }
+    }
+  }
+
+}

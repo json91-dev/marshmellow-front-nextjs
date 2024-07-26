@@ -1,6 +1,6 @@
 'use client';
 import style from './workTimeBottomSheet.module.scss';
-import { useModalStore } from '@/store/modal';
+import useModalStore from '@/store/modalStore';
 import ModalBackdrop from '@/app/signup/@modal/identify/_components/ModalBackdrop';
 import { CSSTransition } from 'react-transition-group';
 import React, { useCallback, useEffect, useRef, useState } from 'react';

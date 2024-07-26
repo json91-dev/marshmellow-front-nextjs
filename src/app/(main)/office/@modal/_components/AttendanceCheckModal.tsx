@@ -1,13 +1,13 @@
 'use client';
 import style from './modal.module.scss';
-import { useModalStore } from '@/store/modal';
+import useModalStore from '@/store/modalStore';
 import React, { useCallback } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import ModalBackdrop from '@/app/signup/@modal/identify/_components/ModalBackdrop';
 import cx from 'classnames';
 import Image from 'next/image';
 import { useWorkAttendanceMutation } from '@/app/_hook/queries/activity';
-import { useToastStore } from '@/store/toast';
+import useToastStore from '@/store/toastStore';
 import { useQueryClient } from '@tanstack/react-query';
 import dayjs from 'dayjs';
 

@@ -1,5 +1,5 @@
 'use client';
-import { useModalStore } from '@/store/modal';
+import useModalStore from '@/store/modalStore';
 import dayjs from 'dayjs';
 import { findMonday, findSunday } from '@/utils/utils';
 import style from '@/app/(main)/office/office.module.scss';

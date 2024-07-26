@@ -1,12 +1,12 @@
 'use client';
 import style from './modal.module.scss';
-import { useModalStore } from '@/store/modal';
+import useModalStore from '@/store/modalStore';
 import React, { useCallback } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import ModalBackdrop from '@/app/signup/@modal/identify/_components/ModalBackdrop';
 import cx from 'classnames';
 import { useRouter } from 'next/navigation';
-import { useToastStore } from '@/store/toast';
+import useToastStore from '@/store/toastStore';
 
 export default function LuckyDrawResearchCompleteModal() {
   const { showLuckyDrawResearchCompleteModal, isShowLuckyDrawResearchCompleteModal } = useModalStore();

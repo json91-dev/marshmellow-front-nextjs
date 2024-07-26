@@ -4,7 +4,7 @@ import style from './topNavigation.module.scss';
 import Image from 'next/image';
 import React, { useCallback } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import { useModalStore } from '@/store/modal';
+import useModalStore from '@/store/modalStore';
 
 type Props = {
   title?: string;

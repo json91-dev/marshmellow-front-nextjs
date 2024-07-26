@@ -11,7 +11,7 @@ import { findMissionDateMatchingStart } from '@/utils/utils';
 import dayjs from 'dayjs';
 import isBetween from 'dayjs/plugin/isBetween';
 import duration from 'dayjs/plugin/duration';
-import { useModalStore } from '@/store/modal';
+import useModalStore from '@/store/modalStore';
 import { useClick } from '@floating-ui/react';
 dayjs.extend(isBetween);
 dayjs.extend(duration);

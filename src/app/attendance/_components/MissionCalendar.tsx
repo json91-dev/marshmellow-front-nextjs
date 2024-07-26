@@ -11,8 +11,8 @@ import { useSession } from 'next-auth/react';
 import MissionCalendarGuest from '@/app/attendance/_components/guest/MissionCalendarGuest';
 import { useWorkMonthlyQuery } from '@/app/_hook/queries/activity';
 import { useMemberProfileQuery } from '@/app/_hook/queries/member';
-import { useModalStore } from '@/store/modal';
-import { useToastStore } from '@/store/toast';
+import useModalStore from '@/store/modalStore';
+import useToastStore from '@/store/toastStore';
 const DAY_LIST = ['일', '월', '화', '수', '목', '금', '토'];
 
 type calendarItem = {

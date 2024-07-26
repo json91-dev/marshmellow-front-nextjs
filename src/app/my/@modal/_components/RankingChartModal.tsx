@@ -4,7 +4,7 @@ import style from './modal.module.scss';
 import Image from 'next/image';
 import HorizontalLine from '@/app/my/_components/HorizontalLine';
 import React from 'react';
-import { useModalStore } from '@/store/modal';
+import useModalStore from '@/store/modalStore';
 
 export default function RankingChartModal() {
   const { isShowRankingChartModal, showRankingChartModal } = useModalStore();

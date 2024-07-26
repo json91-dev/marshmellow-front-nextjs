@@ -6,7 +6,7 @@ import cx from 'classnames';
 import { dummyLuckyDrawCardsData, LuckyDrawCard } from '@/constraints';
 import Image from 'next/image';
 import { isMobile } from '@/utils/utils';
-import { useModalStore } from '@/store/modal';
+import useModalStore from '@/store/modalStore';
 
 export default function LuckDrawCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);

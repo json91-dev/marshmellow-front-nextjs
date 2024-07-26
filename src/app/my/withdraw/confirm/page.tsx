@@ -6,7 +6,7 @@ import Image from 'next/image';
 import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import cx from 'classnames';
 import Checkbox from '@/app/_components/common/Checkbox';
-import { useModalStore } from '@/store/modal';
+import useModalStore from '@/store/modalStore';
 import { useMemberCurrencyQuery } from '@/app/_hook/queries/member';
 
 export default function WithdrawConfirmPage() {

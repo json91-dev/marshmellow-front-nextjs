@@ -4,8 +4,8 @@ import { useRouter } from 'next/navigation';
 import Confetti from 'react-confetti';
 import React, { useEffect, useRef, useState } from 'react';
 import cx from 'classnames';
-import { useToastStore } from '@/store/toast';
-import { useModalStore } from '@/store/modal';
+import useToastStore from '@/store/toastStore';
+import useModalStore from '@/store/modalStore';
 
 export default function PrizeStepDefault() {
   const router = useRouter();
