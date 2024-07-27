@@ -9,8 +9,12 @@ export default function LuckyDrawPrizePage() {
   const router = useRouter();
   const mallowPageRef = useRef<HTMLDivElement>(null!);
   const [mallowPageClientWidthHeight, setMallowPageClientWidthHeight] = useState<{ width: number; height: number }>(null!);
-  const randomPrize = Math.floor(Math.random() * 3 + 1);
+  const randomPrize = useRef(1);
   const searchParams = useSearchParams();
+
+  useEffect(() => {
+    randomPrize.current = Math.floor(Math.random() * 3 + 1);
+  }, []);
 
   useEffect(() => {
     setMallowPageClientWidthHeight({
@@ -38,13 +42,13 @@ export default function LuckyDrawPrizePage() {
         <div className={style.warning}>
           <p>{'0000.00.00 까지 수령정보를 입력해주세요.\n기간 내 정보 미제출 시 경품수령이 불가합니다.'}</p>
         </div>
-        <p className={style.title}>{randomPrize}등 당첨!</p>
+        <p className={style.title}>{randomPrize.current}등 당첨!</p>
         <div className={style.prize}></div>
         <p className={style.info}>{'[경품 이름]\n두줄인경우'}</p>
 
         <div className={style.taxDeliveryLinks}>
-          {randomPrize < 3 && (
-            <div className={cx(style.link, style.idle)} onClick={() => router.push('/prize/luckydraw/tax')}>
+          {randomPrize.current < 3 && (
+            <div className={cx(style.link, style.idle)} onClick={() => router.push('/prize/luckydraw/tax/info')}>
               <p className={style.name}>제세공과금 정보 입력하기</p>
               <div className={style.rightInput}>
                 <div className={style.status}>

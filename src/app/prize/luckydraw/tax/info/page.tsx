@@ -2,12 +2,13 @@
 import style from './tax.module.scss';
 import { useRouter, useSearchParams } from 'next/navigation';
 import React, { useEffect } from 'react';
-import TaxStepDefault from '@/app/prize/luckydraw/info/_components/intoWithTax/TaxStepDefault';
+import Step1 from '@/app/prize/luckydraw/tax/info/_components/Step1';
 import TopNavigation from '@/app/_components/common/TopNavigation';
 import cx from 'classnames';
-import TaxStep2 from '@/app/prize/luckydraw/info/_components/intoWithTax/TaxStep2';
-import TaxStep3 from '@/app/prize/luckydraw/info/_components/intoWithTax/TaxStep3';
-import TaxStep4 from '@/app/prize/luckydraw/info/_components/intoWithTax/TaxStep4';
+import Step2 from '@/app/prize/luckydraw/tax/info/_components/Step2';
+import Step3 from '@/app/prize/luckydraw/tax/info/_components/Step3';
+import Step4 from '@/app/prize/luckydraw/tax/info/_components/Step4';
+import Step5 from '@/app/prize/luckydraw/tax/info/_components/Step5';
 
 export default function LuckyDrawWinnerMarshmallow() {
   const router = useRouter();
@@ -19,7 +20,7 @@ export default function LuckyDrawWinnerMarshmallow() {
       return;
     }
 
-    const validSteps = [2, 3, 4];
+    const validSteps = [2, 3, 4, 5];
     const stepNumber = parseFloat(step); // step을 숫자로 변환
 
     if (!validSteps.includes(stepNumber)) {
@@ -29,13 +30,18 @@ export default function LuckyDrawWinnerMarshmallow() {
 
   return (
     <div className={style.luckyDrawPrizeTaxPage}>
-      <TopNavigation title={'제세공과금 정보 입력'} />
+      {step ? (
+        <TopNavigation title={parseFloat(step) !== 5 ? '제세공과금 정보 입력' : '배송정보 입력'} />
+      ) : (
+        <TopNavigation title={'제세공과금 정보 입력'} />
+      )}
       {step ? <TaxStepIndicator currentStep={parseFloat(step)} /> : <TaxStepIndicator currentStep={1} />}
 
-      {!step && <TaxStepDefault />}
-      {step === '2' && <TaxStep2 />}
-      {step === '3' && <TaxStep3 />}
-      {step === '4' && <TaxStep4 />}
+      {!step && <Step1 />}
+      {step === '2' && <Step2 />}
+      {step === '3' && <Step3 />}
+      {step === '4' && <Step4 />}
+      {step === '5' && <Step5 />}
     </div>
   );
 }

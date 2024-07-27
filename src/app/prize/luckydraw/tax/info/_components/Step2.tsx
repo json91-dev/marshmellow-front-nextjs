@@ -2,11 +2,11 @@
 import React, { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
-import style from './TaxStep2.module.scss';
-import buttonStyle from '../Button.module.scss';
+import style from './Step2.module.scss';
+import buttonStyle from './Button.module.scss';
 import cx from 'classnames';
 
-export default function TaxStep2() {
+export default function Step2() {
   const {
     register,
     watch,
@@ -16,7 +16,7 @@ export default function TaxStep2() {
 
   const router = useRouter();
   const onClickButton = useCallback(() => {
-    router.push('/prize/luckydraw/info?step=3');
+    router.push('/prize/luckydraw/tax/info?step=3');
   }, []);
 
   return (

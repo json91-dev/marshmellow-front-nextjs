@@ -1,12 +1,12 @@
 'use client';
 import React, { useCallback } from 'react';
 import { useRouter } from 'next/navigation';
-import style from './TaxStep4.module.scss';
+import style from './Step4.module.scss';
 import { useForm } from 'react-hook-form';
-import buttonStyle from '../Button.module.scss';
+import buttonStyle from './Button.module.scss';
 import cx from 'classnames';
 
-export default function TaxStep4() {
+export default function Step4() {
   const router = useRouter();
   const { register, handleSubmit } = useForm();
   const onSubmit = (data: any) => {
@@ -14,7 +14,7 @@ export default function TaxStep4() {
   };
 
   const onClickButton = useCallback(() => {
-    router.push('/prize/luckydraw/info?step=3');
+    router.push('/prize/luckydraw/tax/info?step=5');
   }, []);
 
   return (
