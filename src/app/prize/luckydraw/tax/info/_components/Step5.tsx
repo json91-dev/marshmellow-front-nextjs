@@ -1,18 +1,19 @@
 'use client';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import style from './Step5.module.scss';
 import { useForm } from 'react-hook-form';
 import buttonStyle from './Button.module.scss';
 import cx from 'classnames';
 import Image from 'next/image';
-import DaumPostcodeEmbed from 'react-daum-postcode';
+import DaumPostcodeEmbed, { Address } from 'react-daum-postcode';
 
 export default function Step5() {
   const router = useRouter();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, setValue, watch } = useForm();
   const [isAddressSearchVisible, setIsAddressSearchVisible] = useState(false);
-  const [isAddressSelected, setIsAddressSelected] = useState(false);
+  const [addressData, setAddressData] = useState<Address | null>(null!);
+  const detailAddress = watch('detailAddress');
 
   const onSubmit = (data: any) => {
     console.log('Form data:', data);
@@ -22,22 +23,32 @@ export default function Step5() {
     router.push('/prize/luckydraw/tax/info?step=3');
   }, []);
 
-  const handleComplete = (data) => {
-    let fullAddress = data.address;
-    let extraAddress = '';
+  /** 다음 지도 API 에서 주소 선택 이후 호출되는 콜백 **/
+  const handleAddressSearchComplete = useCallback(
+    (data: Address) => {
+      setAddressData(data);
+      setIsAddressSearchVisible(false);
+    },
+    [addressData, isAddressSearchVisible],
+  );
 
-    if (data.addressType === 'R') {
-      if (data.bname !== '') {
-        extraAddress += data.bname;
-      }
-      if (data.buildingName !== '') {
-        extraAddress += extraAddress !== '' ? `, ${data.buildingName}` : data.buildingName;
-      }
-      fullAddress += extraAddress !== '' ? ` (${extraAddress})` : '';
+  /** 주소 검색 버튼 클릭시 기존 주소 초기화 **/
+  const onSearchButtonClick = useCallback(() => {
+    setIsAddressSearchVisible(true);
+    setAddressData(null);
+  }, [addressData, isAddressSearchVisible]);
+
+  /** 주소 변경 처리 **/
+  useEffect(() => {
+    if (addressData) {
+      setValue('address', addressData.address);
+      setValue('zonecode', addressData.zonecode);
+    } else {
+      setValue('address', '');
+      setValue('zonecode', '');
+      setValue('detailAddress', '');
     }
-
-    console.log(fullAddress); // e.g. '서울 성동구 왕십리로2길 20 (성수동1가)'
-  };
+  }, [addressData]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={style.addressStep5}>
@@ -77,13 +88,13 @@ export default function Step5() {
 
       <div className={style.addressInputArea}>
         <div className={style.search}>
-          <input type="text" {...register('email')} placeholder={'주소를 검색해 주세요.'} />
-          <button onClick={() => setIsAddressSearchVisible(true)}>주소 검색</button>
+          <input readOnly disabled type="text" {...register('zonecode')} placeholder={'주소를 검색해 주세요.'} />
+          <button onClick={onSearchButtonClick}>주소 검색</button>
         </div>
-        {isAddressSelected && (
+        {addressData && (
           <>
-            <input type="text" {...register('email')} />
-            <input type="text" {...register('email')} placeholder={'사는 곳 동,호수를 입력해 주세요.'} />
+            <input readOnly type="text" {...register('address')} />
+            <input type="text" {...register('detailAddress')} placeholder={'사는 곳 동,호수를 입력해 주세요.'} />
           </>
         )}
       </div>
@@ -95,14 +106,14 @@ export default function Step5() {
           </div>
           <DaumPostcodeEmbed
             scriptUrl={'https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js'}
-            onComplete={handleComplete}
+            onComplete={handleAddressSearchComplete}
             style={{ flexGrow: 1 }}
           />
         </div>
       )}
 
       <div className={buttonStyle.buttonsArea}>
-        <div onClick={onClickButton} className={cx(buttonStyle.confirmButton, 1 == 1 && buttonStyle.active)}>
+        <div onClick={onClickButton} className={cx(buttonStyle.confirmButton, detailAddress && buttonStyle.active)}>
           저장 후 입력 정보 화인
         </div>
       </div>
