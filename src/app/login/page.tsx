@@ -1,4 +1,4 @@
-import style from './login.module.scss';
+import style from './page.module.scss';
 import React from 'react';
 import Image from 'next/image';
 import Login from '@/app/login/_components/Login';

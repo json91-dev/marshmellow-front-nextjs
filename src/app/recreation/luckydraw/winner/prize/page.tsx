@@ -1,5 +1,5 @@
 'use client';
-import style from './prize.module.scss';
+import style from './page.module.scss';
 import { useRouter, useSearchParams } from 'next/navigation';
 import React, { useEffect, useRef, useState } from 'react';
 import PrizeStepDefault from '@/app/recreation/luckydraw/winner/prize/_components/PrizeStepDefault';

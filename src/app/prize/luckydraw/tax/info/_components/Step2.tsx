@@ -1,10 +1,11 @@
 'use client';
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import style from './Step2.module.scss';
 import buttonStyle from './Button.module.scss';
 import cx from 'classnames';
+import useLuckyDrawStore from '@/store/luckydrawStore';
 
 export default function Step2() {
   const {
@@ -13,10 +14,16 @@ export default function Step2() {
     formState: { errors },
   } = useForm();
   const depositChecked = watch('deposit');
+  const { setTaxInfo } = useLuckyDrawStore();
 
   const router = useRouter();
   const onClickButton = useCallback(() => {
     router.push('/prize/luckydraw/tax/info?step=3');
+    setTaxInfo({ isTransferTax: true });
+  }, []);
+
+  useEffect(() => {
+    setTaxInfo({ currentStep: 2 });
   }, []);
 
   return (

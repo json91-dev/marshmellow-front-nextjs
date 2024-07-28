@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import style from './prize.module.scss';
+import style from './page.module.scss';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Confetti from 'react-confetti';
 import React, { useEffect, useRef, useState } from 'react';
@@ -10,11 +10,10 @@ export default function LuckyDrawPrizePage() {
   const mallowPageRef = useRef<HTMLDivElement>(null!);
   const [mallowPageClientWidthHeight, setMallowPageClientWidthHeight] = useState<{ width: number; height: number }>(null!);
   const randomPrize = useRef(1);
-  const searchParams = useSearchParams();
-
-  useEffect(() => {
-    randomPrize.current = Math.floor(Math.random() * 3 + 1);
-  }, []);
+  // const searchParams = useSearchParams();
+  // useEffect(() => {
+  //   randomPrize.current = Math.floor(Math.random() * 3 + 1);
+  // }, []);
 
   useEffect(() => {
     setMallowPageClientWidthHeight({
@@ -58,7 +57,7 @@ export default function LuckyDrawPrizePage() {
               </div>
             </div>
           )}
-          <div className={cx(style.link, style.idle)} onClick={() => router.push('/prize/luckydraw/address')}>
+          <div className={cx(style.link, style.idle)} onClick={() => router.push('/prize/luckydraw/tax/info')}>
             <p className={style.name}>배송정보 입력하기</p>
             <div className={style.rightInput}>
               <div className={cx(style.status, style.idle)}>

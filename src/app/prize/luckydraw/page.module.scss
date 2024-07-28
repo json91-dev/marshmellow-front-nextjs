@@ -76,6 +76,12 @@
         @include activeOpacity;
         @include activeScale;
 
+        // 임시
+        &:nth-child(2) {
+          opacity: 0.5;
+          pointer-events: none;
+        }
+
 
         &.idle {
           .status {
@@ -175,11 +181,7 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 5%;
-
-    @media (min-height: 1000px) {
-      bottom: 15%;
-    }
+    bottom: 2.4rem;
 
 
     @include activeScale(0.99);

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import style from '../time-setting.module.scss';
+import style from '../page.module.scss';
 
 export default function Welcome({ setTutorialStep }: any) {
   return (

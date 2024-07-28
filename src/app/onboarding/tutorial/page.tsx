@@ -1,5 +1,5 @@
 'use client';
-import style from './tutorial.module.scss';
+import style from './page.module.scss';
 import React, { useState } from 'react';
 import TutorialBottomNavMenu from '@/app/onboarding/tutorial/_components/TutorialBottomNavMenu';
 import Tutorial1 from '@/app/onboarding/tutorial/_components/TutorialPage.1';

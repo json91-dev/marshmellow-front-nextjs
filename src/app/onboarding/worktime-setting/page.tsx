@@ -1,6 +1,6 @@
 'use client';
 
-import style from './time-setting.module.scss';
+import style from './page.module.scss';
 import React, { useState } from 'react';
 import Welcome from '@/app/onboarding/worktime-setting/_components/Welcome';
 import WorkTimeSetting from '@/app/onboarding/worktime-setting/_components/WorkTimeSetting';

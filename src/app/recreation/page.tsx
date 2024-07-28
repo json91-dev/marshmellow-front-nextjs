@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import style from './recreation.module.scss';
+import style from './page.module.scss';
 import TopNavigationWithMallow from '@/app/_components/common/TopNavigationWithMallow';
 import Link from 'next/link';
 

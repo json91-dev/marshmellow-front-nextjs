@@ -1,6 +1,6 @@
 'use client';
 
-import style from './withdraw.module.scss';
+import style from './page.module.scss';
 import React, { useCallback, useRef, useState } from 'react';
 import { debounce, getLocalStorage, setLocalStorage } from '@/utils/utils';
 import TopNavigation from '@/app/_components/common/TopNavigation';

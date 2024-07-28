@@ -1,6 +1,6 @@
 'use client';
 
-import style from '@/app/my/mallow/marshmallow.module.scss';
+import style from '@/app/my/mallow/page.module.scss';
 import cx from 'classnames';
 import React from 'react';
 import { MallowStateType } from '@/app/my/mallow/page';

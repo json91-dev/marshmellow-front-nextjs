@@ -1,40 +1,48 @@
 import { create } from 'zustand';
-import { devtools } from 'zustand/middleware';
-import { MallowStateType } from '@/app/my/mallow/page';
+import { devtools, persist, createJSONStorage } from 'zustand/middleware';
 
 /** Modal store **/
 interface InitialState {
   taxInfo: {
     isAgreeToTax: boolean;
     isTransferTax: boolean;
-    certificationImgFile: File | null;
+    identificationCardImg: File | null;
     email: string | null;
     address: string | null;
+    currentStep: number;
   };
+  setTaxInfo(updatedTaxInfo: Partial<InitialState['taxInfo']>): void;
 }
 
 export const useLuckyDrawStore = create(
-  devtools<InitialState>((set) => ({
-    taxInfo: {
-      isAgreeToTax: false,
-      isTransferTax: false,
-      certificationImgFile: null,
-      email: '',
-      address: '',
-    },
+  persist(
+    devtools<InitialState>((set) => ({
+      taxInfo: {
+        isAgreeToTax: false,
+        isTransferTax: false,
+        identificationCardImg: null,
+        email: '',
+        address: '',
+        currentStep: -1,
+      },
 
-    info: {
-      address: '',
-    },
+      info: {
+        address: '',
+      },
 
-    setTaxInfo: (updatedTaxInfo: Partial<InitialState['taxInfo']>) =>
-      set((state) => ({
-        taxInfo: {
-          ...state.taxInfo,
-          ...updatedTaxInfo,
-        },
-      })),
-  })),
+      setTaxInfo: (updatedTaxInfo: Partial<InitialState['taxInfo']>) =>
+        set((state) => ({
+          taxInfo: {
+            ...state.taxInfo,
+            ...updatedTaxInfo,
+          },
+        })),
+    })),
+    {
+      name: 'luckydraw',
+      storage: createJSONStorage(() => localStorage),
+    },
+  ),
 );
 
 export default useLuckyDrawStore;

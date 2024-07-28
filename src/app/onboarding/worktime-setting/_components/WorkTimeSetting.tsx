@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import style from '../time-setting.module.scss';
+import style from '../page.module.scss';
 
 export default function WorkTimeSetting() {
   const [modifyOfficeHourId, setModifyOfficeHourId] = useState<number>(1);

@@ -1,11 +1,12 @@
 'use client';
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import style from './Step3.module.scss';
 import buttonStyle from './Button.module.scss';
 import cx from 'classnames';
 import Image from 'next/image';
+import useLuckyDrawStore from '@/store/luckydrawStore';
 
 export default function Step3() {
   const {
@@ -15,6 +16,7 @@ export default function Step3() {
     handleSubmit,
   } = useForm();
   const depositChecked = watch('deposit');
+  const { setTaxInfo } = useLuckyDrawStore();
 
   const router = useRouter();
   const onClickButton = useCallback(() => {
@@ -31,6 +33,10 @@ export default function Step3() {
   const onSubmit = (data: any) => {
     console.log('Form data:', data);
   };
+
+  useEffect(() => {
+    setTaxInfo({ currentStep: 3 });
+  }, []);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={style.taxStep3}>

@@ -7,7 +7,6 @@ import buttonStyle from './Button.module.scss';
 import cx from 'classnames';
 import Image from 'next/image';
 import DaumPostcodeEmbed, { Address } from 'react-daum-postcode';
-import useLuckyDrawStore from '@/store/luckydrawStore';
 
 export default function Step5() {
   const router = useRouter();
@@ -15,7 +14,6 @@ export default function Step5() {
   const [isAddressSearchVisible, setIsAddressSearchVisible] = useState(false);
   const [addressData, setAddressData] = useState<Address | null>(null!);
   const detailAddress = watch('detailAddress');
-  const { setTaxInfo } = useLuckyDrawStore();
 
   const onSubmit = (data: any) => {
     console.log('Form data:', data);
@@ -39,10 +37,6 @@ export default function Step5() {
     setIsAddressSearchVisible(true);
     setAddressData(null);
   }, [addressData, isAddressSearchVisible]);
-
-  useEffect(() => {
-    setTaxInfo({ currentStep: 5 });
-  }, []);
 
   /** 주소 변경 처리 **/
   useEffect(() => {

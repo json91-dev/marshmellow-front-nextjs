@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import style from './luckdraw.module.scss';
+import style from './page.module.scss';
 import TopNavigationWithMallow from '@/app/_components/common/TopNavigationWithMallow';
 import FeverGauge from '@/app/recreation/luckydraw/_components/FeverGauge';
 import LuckDrawCarousel from '@/app/recreation/luckydraw/_components/LuckDrawCarousel';

@@ -1,6 +1,6 @@
 'use client';
 import Spinner from '@/app/login/_components/Spinner';
-import style from '@/app/my/mallow/marshmallow.module.scss';
+import style from '@/app/my/mallow/page.module.scss';
 import { extractHourMinute, replaceAt } from '@/utils/utils';
 import React, { useMemo } from 'react';
 import { useMarshmallowHistoryQuery } from '@/app/_hook/queries/currency';

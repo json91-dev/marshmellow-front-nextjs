@@ -1,6 +1,6 @@
 'use client';
 
-import style from './my.module.scss';
+import style from './page.module.scss';
 import TopNavigation from '@/app/my/_components/TopNavigation';
 import Image from 'next/image';
 import React, { useCallback, useEffect } from 'react';

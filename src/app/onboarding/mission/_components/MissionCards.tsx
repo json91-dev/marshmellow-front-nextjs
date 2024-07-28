@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import style from '../mission.module.scss';
+import style from '../page.module.scss';
 
 export function MissionCards() {
   return (

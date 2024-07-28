@@ -1,7 +1,7 @@
 import TopNavigation from '@/app/_components/common/TopNavigation';
 import Image from 'next/image';
 import React from 'react';
-import style from './mission.module.scss';
+import style from './page.module.scss';
 import { MissionIcons } from '@/app/onboarding/mission/_components/MissionIcons';
 import { MissionCards } from '@/app/onboarding/mission/_components/MissionCards';
 

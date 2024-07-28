@@ -1,20 +1,26 @@
 'use client';
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import style from './Step4.module.scss';
 import { useForm } from 'react-hook-form';
 import buttonStyle from './Button.module.scss';
 import cx from 'classnames';
+import useLuckyDrawStore from '@/store/luckydrawStore';
 
 export default function Step4() {
   const router = useRouter();
   const { register, handleSubmit } = useForm();
+  const { setTaxInfo } = useLuckyDrawStore();
   const onSubmit = (data: any) => {
     console.log('Form data:', data);
   };
 
   const onClickButton = useCallback(() => {
     router.push('/prize/luckydraw/tax/info?step=5');
+  }, []);
+
+  useEffect(() => {
+    setTaxInfo({ currentStep: 4 });
   }, []);
 
   return (

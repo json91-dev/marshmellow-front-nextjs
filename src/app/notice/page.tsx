@@ -1,6 +1,6 @@
 'use client';
 
-import style from './notice.module.scss';
+import style from './page.module.scss';
 import React from 'react';
 import NoticeItem from '@/app/notice/_components/NoticeItem';
 import TopNavigation from '@/app/_components/common/TopNavigation';

@@ -1,5 +1,5 @@
 'use client';
-import style from './notification-setting.module.scss';
+import style from './page.module.scss';
 import React, { ChangeEvent, useState } from 'react';
 import Image from 'next/image';
 import Checkbox from '@/app/_components/common/Checkbox';

@@ -1,5 +1,5 @@
 'use client';
-import style from './addressAdd.module.scss';
+import style from './page.module.scss';
 import TopNavigation from '@/app/_components/common/TopNavigation';
 import Checkbox from '@/app/_components/common/Checkbox';
 import Image from 'next/image';

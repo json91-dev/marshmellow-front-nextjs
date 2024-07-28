@@ -1,4 +1,4 @@
-import style from './attendance.module.scss';
+import style from './page.module.scss';
 import TopNavigation from '@/app/_components/common/TopNavigation';
 import MissionCalendar from '@/app/attendance/_components/MissionCalendar';
 import Image from 'next/image';

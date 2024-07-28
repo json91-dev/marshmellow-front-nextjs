@@ -1,6 +1,6 @@
 'use client';
 
-import style from './address.module.scss';
+import style from './page.module.scss';
 import TopNavigation from '@/app/_components/common/TopNavigation';
 import Image from 'next/image';
 import Link from 'next/link';

@@ -10,7 +10,7 @@ import Step3 from '@/app/prize/luckydraw/tax/info/_components/Step3';
 import Step4 from '@/app/prize/luckydraw/tax/info/_components/Step4';
 import Step5 from '@/app/prize/luckydraw/tax/info/_components/Step5';
 
-export default function LuckyDrawWinnerMarshmallow() {
+export default function LuckyDrawTaxInfo() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const step = searchParams.get('step');
@@ -20,24 +20,29 @@ export default function LuckyDrawWinnerMarshmallow() {
       return;
     }
 
-    const validSteps = [2, 3, 4, 5];
+    const validSteps = [1, 2, 3, 4, 5];
     const stepNumber = parseFloat(step); // step을 숫자로 변환
 
     if (!validSteps.includes(stepNumber)) {
-      router.replace('/prize/luckydraw/tax');
+      router.replace('/prize/luckydraw/tax/info');
     }
   }, [step, router]);
 
   return (
     <div className={style.luckyDrawPrizeTaxPage}>
       {step ? (
-        <TopNavigation title={parseFloat(step) !== 5 ? '제세공과금 정보 입력' : '배송정보 입력'} />
+        <>
+          <TopNavigation title={parseFloat(step) !== 5 ? '제세공과금 정보 입력' : '배송정보 입력'} />
+          <TaxStepIndicator currentStep={parseFloat(step)} />
+        </>
       ) : (
-        <TopNavigation title={'제세공과금 정보 입력'} />
+        <>
+          <TopNavigation title={'제세공과금 정보 입력'} />
+          <TaxStepIndicator currentStep={1} />
+          <Step1 />
+        </>
       )}
-      {step ? <TaxStepIndicator currentStep={parseFloat(step)} /> : <TaxStepIndicator currentStep={1} />}
-
-      {!step && <Step1 />}
+      {step === '1' && <Step1 />}
       {step === '2' && <Step2 />}
       {step === '3' && <Step3 />}
       {step === '4' && <Step4 />}

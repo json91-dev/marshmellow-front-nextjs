@@ -1,6 +1,6 @@
 'use client';
 
-import style from './withdrawConfirm.module.scss';
+import style from './page.module.scss';
 import TopNavigation from '@/app/_components/common/TopNavigation';
 import Image from 'next/image';
 import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';

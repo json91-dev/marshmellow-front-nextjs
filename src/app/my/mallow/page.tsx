@@ -1,5 +1,5 @@
 'use client';
-import style from './marshmallow.module.scss';
+import style from './page.module.scss';
 import Image from 'next/image';
 import React, { useMemo, useState } from 'react';
 import cx from 'classnames';
