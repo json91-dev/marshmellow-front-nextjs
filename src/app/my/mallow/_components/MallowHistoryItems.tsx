@@ -7,7 +7,7 @@ import { useMarshmallowHistoryQuery } from '@/app/_hook/queries/currency';
 import useMallowHistoryStore from '@/store/mallowHistoryStore';
 
 export default function MallowHistoryItems() {
-  const { history } = useMallowStore();
+  const { history } = useMallowHistoryStore();
   const { data: result, status } = useMarshmallowHistoryQuery(history.filterState, history.filterMonth);
 
   const groupDateMallowList = useMemo(() => {

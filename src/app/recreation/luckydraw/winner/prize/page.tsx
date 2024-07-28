@@ -1,12 +1,20 @@
 'use client';
 import style from './page.module.scss';
 import { useRouter, useSearchParams } from 'next/navigation';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { Suspense, useEffect, useRef, useState } from 'react';
 import PrizeStepDefault from '@/app/recreation/luckydraw/winner/prize/_components/PrizeStepDefault';
 import { isNumeric } from '@/utils/utils';
 import PrizeStep2 from '@/app/recreation/luckydraw/winner/prize/_components/PrizeStep2';
 
-export default function LuckyDrawWinnerMarshmallow() {
+export default function LuckyDrawWinnerMarshmallowPage() {
+  return (
+    <Suspense>
+      <LuckyDrawWinnerMarshmallowContent />
+    </Suspense>
+  );
+}
+
+function LuckyDrawWinnerMarshmallowContent() {
   const mallowPageRef = useRef<HTMLDivElement>(null!);
   const router = useRouter();
   const searchParams = useSearchParams();

@@ -11,7 +11,7 @@ export default function FilterDataBottomSheet() {
   const { isShowMallowFilterDateBottomSheet, showMallowFilterDateBottomSheet } = useModalStore();
   const bottomSheetRef = useRef<HTMLDivElement>(null!);
   const backDropRef = useRef<HTMLDivElement>(null!);
-  const { setHistoryFilterMonth } = useMallowStore();
+  const { setHistoryFilterMonth } = useMallowHistoryStore();
 
   const { closeBottomSheet } = useBottomSheet({
     bottomSheetRef,

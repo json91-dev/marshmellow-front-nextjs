@@ -1,7 +1,7 @@
 'use client';
 import style from './modal.module.scss';
 import useModalStore from '@/store/modalStore';
-import React, { useCallback } from 'react';
+import React from 'react';
 import { CSSTransition } from 'react-transition-group';
 import ModalBackdrop from '@/app/signup/@modal/identify/_components/ModalBackdrop';
 import cx from 'classnames';

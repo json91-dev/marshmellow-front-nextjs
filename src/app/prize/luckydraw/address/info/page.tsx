@@ -1,14 +1,14 @@
 'use client';
 import style from './page.module.scss';
-import { useRouter, useSearchParams } from 'next/navigation';
+// import { useRouter, useSearchParams } from 'next/navigation';
 import React, { useEffect } from 'react';
 import TopNavigation from '@/app/_components/common/TopNavigation';
 import cx from 'classnames';
 import Step5 from '@/app/prize/luckydraw/tax/info/_components/Step5';
 
 export default function LuckyDrawAddressInfo() {
-  const searchParams = useSearchParams();
-  const mode = searchParams.get('mode');
+  // const searchParams = useSearchParams();
+  // const mode = searchParams.get('mode');
 
   return (
     <div className={style.luckyDrawPrizeTaxPage}>

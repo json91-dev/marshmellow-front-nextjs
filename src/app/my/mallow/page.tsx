@@ -17,7 +17,7 @@ export type MallowStateType = 'ALL' | 'GAIN' | 'USE' | 'EXPIRED';
 
 export default function MarshmallowPage() {
   const { showMallowFilterDateBottomSheet, showMallowExpiredThisMonthModal } = useModalStore();
-  const { history } = useMallowStore();
+  const { history } = useMallowHistoryStore();
   const { data: currencyResult } = useMemberCurrencyQuery();
 
   return (

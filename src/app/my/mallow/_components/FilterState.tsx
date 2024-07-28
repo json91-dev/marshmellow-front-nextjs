@@ -7,7 +7,7 @@ import { MallowStateType } from '@/app/my/mallow/page';
 import useMallowHistoryStore from '@/store/mallowHistoryStore';
 
 export default function FilterState() {
-  const { history, setHistoryFilterState } = useMallowStore();
+  const { history, setHistoryFilterState } = useMallowHistoryStore();
 
   // 액션을 클릭할 때 호출되는 함수
   const handleActionClick = (action: MallowStateType) => {
