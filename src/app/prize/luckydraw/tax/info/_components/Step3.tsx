@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import style from './Step3.module.scss';
-import buttonStyle from './Button.module.scss';
+import buttonStyle from '../../../../../_style/Button.module.scss';
 import cx from 'classnames';
 import Image from 'next/image';
 import useLuckyDrawStore from '@/store/luckydrawStore';
@@ -11,16 +11,14 @@ import useLuckyDrawStore from '@/store/luckydrawStore';
 export default function Step3() {
   const {
     register,
-    watch,
     formState: { errors },
     handleSubmit,
   } = useForm();
-  const depositChecked = watch('deposit');
   const { setTaxInfo } = useLuckyDrawStore();
 
   const router = useRouter();
   const onClickButton = useCallback(() => {
-    router.push('/prize/luckydraw/tax/info?step=3');
+    router.push('/prize/luckydraw/tax/info?step=4');
   }, []);
   const hiddenInputRef = useRef<any>(null!);
   const { ref: registerRef, ...rest } = register('imageFileInput');
@@ -56,8 +54,10 @@ export default function Step3() {
       </div>
 
       <div className={buttonStyle.buttonsArea}>
-        <div className={buttonStyle.prevButton}>이전</div>
-        <div onClick={onClickButton} className={cx(buttonStyle.confirmButton, depositChecked && buttonStyle.active)}>
+        <div className={buttonStyle.prevButton} onClick={() => router.back()}>
+          이전
+        </div>
+        <div onClick={onClickButton} className={cx(buttonStyle.confirmButton, 1 === 1 && buttonStyle.active)}>
           저장 후 다음
         </div>
       </div>

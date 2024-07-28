@@ -3,7 +3,7 @@ import React, { useCallback, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import style from './Step2.module.scss';
-import buttonStyle from './Button.module.scss';
+import buttonStyle from '../../../../../_style/Button.module.scss';
 import cx from 'classnames';
 import useLuckyDrawStore from '@/store/luckydrawStore';
 
@@ -62,7 +62,9 @@ export default function Step2() {
       </div>
 
       <div className={buttonStyle.buttonsArea}>
-        <div className={buttonStyle.prevButton}>이전</div>
+        <div className={buttonStyle.prevButton} onClick={() => router.back()}>
+          이전
+        </div>
         <div onClick={onClickButton} className={cx(buttonStyle.confirmButton, depositChecked && buttonStyle.active)}>
           저장 후 다음
         </div>

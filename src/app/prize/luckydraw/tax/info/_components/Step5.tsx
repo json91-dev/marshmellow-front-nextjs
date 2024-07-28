@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import style from './Step5.module.scss';
 import { useForm } from 'react-hook-form';
-import buttonStyle from './Button.module.scss';
+import buttonStyle from '../../../../../_style/Button.module.scss';
 import cx from 'classnames';
 import Image from 'next/image';
 import DaumPostcodeEmbed, { Address } from 'react-daum-postcode';
@@ -22,7 +22,7 @@ export default function Step5() {
   };
 
   const onClickButton = useCallback(() => {
-    router.push('/prize/luckydraw/tax/info?step=3');
+    router.push('/prize/luckydraw/tax/info/complete');
   }, []);
 
   /** 다음 지도 API 에서 주소 선택 이후 호출되는 콜백 **/
@@ -120,7 +120,7 @@ export default function Step5() {
 
       <div className={buttonStyle.buttonsArea}>
         <div onClick={onClickButton} className={cx(buttonStyle.confirmButton, detailAddress && buttonStyle.active)}>
-          저장 후 입력 정보 화인
+          저장 후 입력 정보 확인
         </div>
       </div>
     </form>

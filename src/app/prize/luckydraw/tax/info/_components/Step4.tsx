@@ -3,13 +3,14 @@ import React, { useCallback, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import style from './Step4.module.scss';
 import { useForm } from 'react-hook-form';
-import buttonStyle from './Button.module.scss';
+import buttonStyle from '../../../../../_style/Button.module.scss';
 import cx from 'classnames';
 import useLuckyDrawStore from '@/store/luckydrawStore';
 
 export default function Step4() {
   const router = useRouter();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, watch } = useForm();
+  const emailValue = watch('email');
   const { setTaxInfo } = useLuckyDrawStore();
   const onSubmit = (data: any) => {
     console.log('Form data:', data);
@@ -37,8 +38,10 @@ export default function Step4() {
       </div>
 
       <div className={buttonStyle.buttonsArea}>
-        <div className={buttonStyle.prevButton}>이전</div>
-        <div onClick={onClickButton} className={cx(buttonStyle.confirmButton, 1 == 1 && buttonStyle.active)}>
+        <div className={buttonStyle.prevButton} onClick={() => router.back()}>
+          이전
+        </div>
+        <div onClick={onClickButton} className={cx(buttonStyle.confirmButton, emailValue && buttonStyle.active)}>
           저장 후 다음
         </div>
       </div>

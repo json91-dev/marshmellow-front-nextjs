@@ -2,7 +2,7 @@ import style from './page.module.scss';
 import TopNavigation from '@/app/_components/common/TopNavigation';
 import Image from 'next/image';
 import React from 'react';
-import buttonStyle from '@/app/prize/luckydraw/tax/info/_components/Button.module.scss';
+import buttonStyle from '@/app/_style/Button.module.scss';
 import cx from 'classnames';
 
 export default function taxInfoCompletePage() {

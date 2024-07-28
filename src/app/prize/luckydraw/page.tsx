@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import Confetti from 'react-confetti';
 import React, { useEffect, useRef, useState } from 'react';
 import cx from 'classnames';
+import buttonStyle from '@/app/_style/Button.module.scss';
 export default function LuckyDrawPrizePage() {
   const router = useRouter();
   const mallowPageRef = useRef<HTMLDivElement>(null!);
@@ -70,9 +71,14 @@ export default function LuckyDrawPrizePage() {
         </div>
       </div>
 
-      <button onClick={() => router.push('/recreation/luckydraw')} className={style.confirmButton}>
-        입력 정보 확인
-      </button>
+      <div className={buttonStyle.buttonsArea}>
+        <div
+          onClick={() => router.push('/recreation/luckydraw')}
+          className={cx(buttonStyle.confirmButton, 1 !== 1 && buttonStyle.active)}
+        >
+          입력 정보 확인
+        </div>
+      </div>
     </div>
   );
 }

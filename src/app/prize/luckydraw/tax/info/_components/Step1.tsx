@@ -1,6 +1,6 @@
 'use client';
 import style from './Step1.module.scss';
-import buttonStyle from './Button.module.scss';
+import buttonStyle from '../../../../../_style/Button.module.scss';
 import React, { useCallback, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import cx from 'classnames';
