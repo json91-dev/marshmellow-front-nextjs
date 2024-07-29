@@ -1,5 +1,5 @@
 'use client';
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import style from './Step3.module.scss';
@@ -7,12 +7,14 @@ import buttonStyle from '../../../../../_style/Button.module.scss';
 import cx from 'classnames';
 import Image from 'next/image';
 import useLuckyDrawStore from '@/store/luckydrawStore';
+import { getBase64 } from '@/utils/utils';
 
 export default function Step3() {
   const {
     register,
     formState: { errors },
     handleSubmit,
+    watch,
   } = useForm();
   const { setTaxInfo } = useLuckyDrawStore();
 
@@ -21,7 +23,11 @@ export default function Step3() {
     router.push('/prize/luckydraw/tax/info?step=4');
   }, []);
   const hiddenInputRef = useRef<any>(null!);
-  const { ref: registerRef, ...rest } = register('imageFileInput');
+  const { ref: registerRef, ...rest } = register('idCardImg');
+  const idCardImgFile = watch('idCardImg');
+  const [fileUrl, setFileUrl] = useState(null!);
+  const [fileType, setFileType] = useState(null!);
+
   const handleDivClick = () => {
     if (hiddenInputRef.current) {
       hiddenInputRef.current.click();
@@ -35,6 +41,23 @@ export default function Step3() {
   useEffect(() => {
     setTaxInfo({ currentStep: 3 });
   }, []);
+
+  useEffect(() => {
+    if (!idCardImgFile) return;
+
+    (async () => {
+      if (idCardImgFile.length > 0) {
+        const file = idCardImgFile[0];
+        if (file) {
+          const base64 = await getBase64(file);
+          setFileUrl(base64);
+          setFileType(file.type);
+        } else {
+          console.log('No file selected');
+        }
+      }
+    })();
+  }, [idCardImgFile]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={style.taxStep3}>
@@ -65,6 +88,7 @@ export default function Step3() {
       <input
         type="file"
         hidden={true}
+        accept=".jpg,.pdf,.png"
         {...rest}
         ref={(e) => {
           registerRef(e);
@@ -74,10 +98,19 @@ export default function Step3() {
 
       <div className={style.fileInputArea} onClick={handleDivClick}>
         <p>파일 및 이미지 첨부 (PDF, JPG, PNG 가능)</p>
-        <div className={style.fileInputBox}>
-          <Image src="/images/icon.file.svg" alt="No Image" width={40} height={40} />
-          <p>파일 첨부</p>
-        </div>
+        {fileUrl ? (
+          fileType === 'application/pdf' ? (
+            <embed src={fileUrl} type="application/pdf" style={{ width: 'auto', height: '200px' }} />
+          ) : (
+            <img src={fileUrl} alt="Preview" style={{ maxWidth: '200px', maxHeight: '200px' }} />
+          )
+        ) : null}
+        {!fileUrl && (
+          <div className={style.fileInputBox}>
+            <Image src="/images/icon.file.svg" alt="No Image" width={40} height={40} />
+            <p>파일 첨부</p>
+          </div>
+        )}
       </div>
     </form>
   );
