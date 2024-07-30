@@ -100,6 +100,10 @@ interface IdentifyModalState {
   // 리서치 페이지 (/research)
   isShowLuckyDrawResearchCompleteModal: boolean;
   showLuckyDrawResearchCompleteModal(isShow: boolean): void;
+
+  // 보상 페이지 (/prize)
+  isShowPrizeLuckyDrawTaxInfoCancel: boolean;
+  showPrizeLuckyDrawTaxInfoCancel(isShow: boolean): void;
 }
 
 export const useModalStore = create(
@@ -305,6 +309,12 @@ export const useModalStore = create(
     isShowLuckyDrawResearchCompleteModal: false,
     showLuckyDrawResearchCompleteModal(isShow: boolean) {
       set({ isShowLuckyDrawResearchCompleteModal: isShow });
+    },
+
+    // 보상 페이지 (/prize)
+    isShowPrizeLuckyDrawTaxInfoCancel: false,
+    showPrizeLuckyDrawTaxInfoCancel(isShow: boolean) {
+      set({ isShowPrizeLuckyDrawTaxInfoCancel: isShow });
     },
   })),
 );

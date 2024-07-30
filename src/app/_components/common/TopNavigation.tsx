@@ -2,8 +2,8 @@
 
 import style from './topNavigation.module.scss';
 import Image from 'next/image';
-import React, { useCallback } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
+import React, { Suspense, useCallback } from 'react';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import useModalStore from '@/store/modalStore';
 
 type Props = {
@@ -11,10 +11,19 @@ type Props = {
   path?: string;
 };
 
-export default function TopNavigation({ title = '', path = '' }: Props) {
+export default function ({ title = '', path = '' }) {
+  return (
+    <Suspense>
+      <TopNavigation title={title} path={path} />
+    </Suspense>
+  );
+}
+
+function TopNavigation({ title = '', path = '' }: Props) {
   const router = useRouter();
   const pathname = usePathname();
-  const { showAddressChangeQuitModal, showQuitInfoModal } = useModalStore();
+  const searchParams = useSearchParams();
+  const { showAddressChangeQuitModal, showQuitInfoModal, showPrizeLuckyDrawTaxInfoCancel } = useModalStore();
 
   const onClickBackButton = useCallback(() => {
     // 경로 입력시 해당 경로로 replace
@@ -32,6 +41,17 @@ export default function TopNavigation({ title = '', path = '' }: Props) {
     if (pathname === '/signup/info') {
       showQuitInfoModal(true);
       return;
+    }
+
+    if (pathname === '/prize/luckydraw/tax/info') {
+      console.log('와우 ');
+
+      const steps = ['2', '3', '4', '5'];
+      const paramsStep = searchParams.get('step');
+      if (paramsStep && steps.includes(paramsStep)) {
+        showPrizeLuckyDrawTaxInfoCancel(true);
+        return;
+      }
     }
 
     router.back();

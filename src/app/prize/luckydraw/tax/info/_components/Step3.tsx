@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import style from './Step3.module.scss';
-import buttonStyle from '../../../../../_style/Button.module.scss';
+import buttonStyle from '@/app/_style/Button.module.scss';
 import cx from 'classnames';
 import Image from 'next/image';
 import useLuckyDrawStore from '@/store/luckydrawStore';

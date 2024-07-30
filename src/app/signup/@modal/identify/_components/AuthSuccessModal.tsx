@@ -17,7 +17,7 @@ export default function AuthSuccessModal() {
       </CSSTransition>
 
       <CSSTransition in={isShowAuthSuccessModal} timeout={200} unmountOnExit classNames="modal" nodeRef={modalRef}>
-        <div className={style.modal} ref={modalRef}>
+        <div className={style.signUpModal} ref={modalRef}>
           <div className={style.title}>
             본인인증이 완료되었습니다. <br />
             지원정보를 작성후 제출하시겠어요?

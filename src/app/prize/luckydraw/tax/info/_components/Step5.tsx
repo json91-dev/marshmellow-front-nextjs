@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import style from './Step5.module.scss';
 import { useForm } from 'react-hook-form';
-import buttonStyle from '../../../../../_style/Button.module.scss';
+import buttonStyle from '@/app/_style/Button.module.scss';
 import cx from 'classnames';
 import Image from 'next/image';
 import DaumPostcodeEmbed, { Address } from 'react-daum-postcode';

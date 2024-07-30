@@ -1,6 +1,6 @@
 'use client';
 import style from './Step1.module.scss';
-import buttonStyle from '../../../../../_style/Button.module.scss';
+import buttonStyle from '@/app/_style/Button.module.scss';
 import React, { useCallback, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import cx from 'classnames';
@@ -8,20 +8,27 @@ import { useRouter } from 'next/navigation';
 import useLuckyDrawStore from '@/store/luckydrawStore';
 
 export default function Step1() {
+  const { setTaxInfo, taxInfo } = useLuckyDrawStore();
   const {
     register,
     watch,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      optionRadio: taxInfo.isAgreeToTax ? 'yes' : 'no',
+    },
+  });
 
-  const { setTaxInfo } = useLuckyDrawStore();
-
-  const selectedValue = watch('optionRadio');
+  const radioValue = watch('optionRadio');
   const router = useRouter();
   const onClickButton = useCallback(() => {
     setTaxInfo({ isAgreeToTax: true });
     router.push('/prize/luckydraw/tax/info?step=2');
   }, []);
+
+  useEffect(() => {
+    setTaxInfo({ isAgreeToTax: radioValue === 'yes' });
+  }, [radioValue]);
 
   useEffect(() => {
     setTaxInfo({ currentStep: 1 });
@@ -39,7 +46,7 @@ export default function Step1() {
       <div className={style.select}>
         <div className={style.radioWrapper}>
           <label className={style.radioLabel}>
-            <input value={0} type="radio" {...register('optionRadio', { required: true })} />
+            <input value={'yes'} type="radio" {...register('optionRadio', { required: true })} />
             <span className={style.radioInnerCircle}></span>
             <p>확인했어요.</p>
           </label>
@@ -47,7 +54,7 @@ export default function Step1() {
 
         <div className={style.radioWrapper}>
           <label className={style.radioLabel}>
-            <input value={1} type="radio" {...register('optionRadio', { required: true })} />
+            <input value={'no'} type="radio" {...register('optionRadio', { required: true })} />
             <span className={style.radioInnerCircle}></span>
             <p>제세공과금 부담하지 않을래요</p>
           </label>
@@ -56,7 +63,7 @@ export default function Step1() {
       </div>
 
       <div className={buttonStyle.buttonsArea} onClick={onClickButton}>
-        <div className={cx(buttonStyle.confirmButton, selectedValue === '0' && buttonStyle.active)}>저장 후 다음</div>
+        <div className={cx(buttonStyle.confirmButton, radioValue === 'yes' && buttonStyle.active)}>저장 후 다음</div>
       </div>
     </div>
   );

@@ -16,7 +16,7 @@ export default function AuthFailModal() {
       </CSSTransition>
 
       <CSSTransition in={isShowAuthFailModal} timeout={200} unmountOnExit classNames="modal" nodeRef={modalRef}>
-        <div className={style.modal} ref={modalRef}>
+        <div className={style.signUpModal} ref={modalRef}>
           <div className={style.title}>본인인증에 실패했어요.</div>
           <div className={style.description}>
             본인인증에 실패했어요 <br />

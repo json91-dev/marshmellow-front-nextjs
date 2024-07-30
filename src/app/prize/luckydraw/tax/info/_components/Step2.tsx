@@ -3,7 +3,7 @@ import React, { useCallback, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import style from './Step2.module.scss';
-import buttonStyle from '../../../../../_style/Button.module.scss';
+import buttonStyle from '@/app/_style/Button.module.scss';
 import cx from 'classnames';
 import useLuckyDrawStore from '@/store/luckydrawStore';
 
@@ -13,18 +13,21 @@ export default function Step2() {
     watch,
     formState: { errors },
   } = useForm();
-  const depositChecked = watch('deposit');
+  const isTransferTaxChecked = watch('deposit');
   const { setTaxInfo } = useLuckyDrawStore();
 
   const router = useRouter();
   const onClickButton = useCallback(() => {
     router.push('/prize/luckydraw/tax/info?step=3');
-    setTaxInfo({ isTransferTax: true });
   }, []);
 
   useEffect(() => {
     setTaxInfo({ currentStep: 2 });
   }, []);
+
+  useEffect(() => {
+    setTaxInfo({ isTransferTax: isTransferTaxChecked });
+  }, [isTransferTaxChecked]);
 
   return (
     <div className={style.taxStep2}>
@@ -65,7 +68,7 @@ export default function Step2() {
         <div className={buttonStyle.prevButton} onClick={() => router.back()}>
           이전
         </div>
-        <div onClick={onClickButton} className={cx(buttonStyle.confirmButton, depositChecked && buttonStyle.active)}>
+        <div onClick={onClickButton} className={cx(buttonStyle.confirmButton, isTransferTaxChecked && buttonStyle.active)}>
           저장 후 다음
         </div>
       </div>

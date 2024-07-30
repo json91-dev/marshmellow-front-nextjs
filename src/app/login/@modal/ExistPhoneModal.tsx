@@ -17,7 +17,7 @@ export default function ExistPhoneModal() {
       </CSSTransition>
 
       <CSSTransition in={isShowExistNumberModal} timeout={200} unmountOnExit classNames="modal" nodeRef={modalRef}>
-        <div className={style.modal} ref={modalRef}>
+        <div className={style.loginModal} ref={modalRef}>
           <div className={style.title}>해당 번호로 입사한 이력이 있습니다.</div>
           <div className={style.description}>
             000으로 입사한 이력이 있습니다. <br />
