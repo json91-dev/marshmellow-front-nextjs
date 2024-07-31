@@ -58,7 +58,7 @@ function TopNavigation({ title = '', path = '' }: Props) {
   }, [pathname, path]);
 
   return (
-    <div className={style.container}>
+    <div className={style.topNavigation}>
       <div className={style.leftIcon} onClick={onClickBackButton}>
         <Image src="/images/arrow.left.svg" alt="No Image" width={24} height={24} />
       </div>
