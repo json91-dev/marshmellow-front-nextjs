@@ -21,6 +21,10 @@ export default function NameCardEmploy() {
     return <></>;
   }
 
+  if (!result) {
+    return <></>;
+  }
+
   const { createdAt, grade } = result.data;
   const { nickname } = result.data.profile;
   const { startHour, endHour, launchTimeAt } = result.data.officeHour;

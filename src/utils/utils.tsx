@@ -308,7 +308,7 @@ export function isNumeric(str: string) {
   return !isNaN(num) && typeof num === 'number';
 }
 
-export const getBase64 = (file: File) => {
+export const getBase64 = (file: File): Promise<string | ArrayBuffer | null> => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);

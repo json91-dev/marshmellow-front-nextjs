@@ -23,9 +23,9 @@ export default function Step3() {
     router.push('/prize/luckydraw/tax/info?step=4');
   }, []);
   const hiddenInputRef = useRef<any>(null!);
-  const { ref: registerRef, ...rest } = register('idCardImg');
-  const idCardImgFile = watch('idCardImg');
-  const [fileUrl, setFileUrl] = useState(null!);
+  const { ref: registerFileRef, ...rest } = register('IdCardImg');
+  const idCardImgFile = watch('IdCardImg');
+  const [fileUrl, setFileUrl] = useState<any>(null!);
   const [fileType, setFileType] = useState(null!);
 
   const handleDivClick = () => {
@@ -91,7 +91,8 @@ export default function Step3() {
         accept=".jpg,.pdf,.png"
         {...rest}
         ref={(e) => {
-          registerRef(e);
+          /** 숨겨진 input[type="file"] 태그에 클릭 이벤트를 전달하기 위한 방법 **/
+          registerFileRef(e);
           hiddenInputRef.current = e;
         }}
       />

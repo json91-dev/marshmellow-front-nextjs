@@ -1,5 +1,5 @@
 import style from './page.module.scss';
-import accordionStyle from './_components/accordiaon.module.scss'
+import accordionStyle from './_components/accordiaon.module.scss';
 import QuestionAccordion from './_components/QuestionAccordion';
 import TopNavigation from '@/app/_components/common/TopNavigation';
 
@@ -20,8 +20,7 @@ export default function GuidePage() {
               '2. 점심시간\n' +
               '3. 정시퇴근\n' +
               '\n' +
-              '업무 시간에 15분 내로 사무실 하단의 마시멜로우 버튼만 누르면 ‘마시멜로우’를 획득할 수 있어요! \n
-            }
+              '업무 시간에 15분 내로 사무실 하단의 마시멜로우 버튼만 누르면 ‘마시멜로우’를 획득할 수 있어요! \n'}
             <span className={accordionStyle.highlight}>{'Tip) 1분 안에 누르면 뽀너스 마시멜로우를 받을 수 있어요.'}</span>
           </p>
         </QuestionAccordion>
@@ -71,7 +70,9 @@ export default function GuidePage() {
 
         <QuestionAccordion title={'탕비실은 무엇인가요?'}>
           <p>
-            {'아직 오픈 예정이지만, 임직원분들을 위해 다양한 복지를 준비 중이에요. 현재 설문조사도 진행 중이니, 한 번씩 참여 부탁드려요! 🥺'}
+            {
+              '아직 오픈 예정이지만, 임직원분들을 위해 다양한 복지를 준비 중이에요. 현재 설문조사도 진행 중이니, 한 번씩 참여 부탁드려요! 🥺'
+            }
           </p>
         </QuestionAccordion>
 
@@ -100,9 +101,7 @@ export default function GuidePage() {
         </QuestionAccordion>
 
         <QuestionAccordion title={'하루에 마시멜로우를 몇 개까지 획득 가능한가요? '}>
-          <p>
-            {'하루에 마시멜로우는 n개 까지 획득이 가능해요.'}
-          </p>
+          <p>{'하루에 마시멜로우는 n개 까지 획득이 가능해요.'}</p>
         </QuestionAccordion>
       </div>
     </div>

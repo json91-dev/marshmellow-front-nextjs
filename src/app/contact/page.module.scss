@@ -1,0 +1,141 @@
+
+.contactPage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .scrollArea {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    padding: 0 2rem;
+
+    .header {
+      color: #1C222B;
+      font-weight: bold;
+      font-size: 1.8rem;
+      line-height: 2.8rem;
+      white-space: pre-wrap;
+      margin-top: 1.6rem;
+    }
+
+    .inputTextArea {
+      margin-top: 1.6rem;
+      height: 22.4rem;
+
+      background-color:#F0F3FA;
+      border-radius: 0.4rem;
+      position: relative;
+
+      textarea {
+        width: 100%;
+        height: 85%;
+        background-color:#F0F3FA;
+        border-radius: 0.5rem;
+        padding: 1.4rem 1.4rem 3.2rem 1.4rem;
+        outline: none;
+        font-size: 14px;
+        border: none !important;
+        color: #1C222B;
+        resize: none;
+        line-height: 2rem;
+        font-weight: 400;
+
+        &::placeholder {
+          color: #ACB6CA !important;
+        }
+
+        &:disabled {
+          background-color: white;
+        }
+
+        &:placeholder-shown {
+          border: 1px solid #9DA5B7;
+        }
+
+        &::placeholder {
+          color: #ACB6CA;
+        }
+      }
+
+      .charCount {
+        position: absolute;
+        right: 1.2rem;
+        bottom: 0.6rem;
+
+        p {
+          color: #ACB6CA;
+          font-weight: 400;
+          font-size: 1.4rem;
+          line-height: 2rem;
+        }
+      }
+
+    }
+
+    .inputImageArea {
+      margin-top: 1.6rem;
+      border: 1px solid #BCC5D5;
+
+      .infoAttachment {
+        color: #1C222B;
+        font-weight: 500;
+        font-size: 1.4rem;
+        line-height: 2rem;
+        margin-top: 1.6rem;
+        margin-left: 1.6rem;
+      }
+
+
+      .swiperImages {
+        display: flex;
+        overflow-x: auto;
+        @include noScrollBar;
+        gap: 1.2rem;
+        padding-left: 2rem;
+        padding-bottom: 2rem;
+
+
+        .fileInputBox {
+          flex-shrink: 0;
+          margin-top: 1.2rem;
+          width: 8.8rem;
+          height: 8.8rem;
+          border: 1px solid #ACB6CA;
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          gap: 0.4rem;
+          border-radius: 0.6rem;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .notification {
+      margin-top: 3.2rem;
+
+      & > p:nth-child(1) {
+        color: #1C222B;
+        font-weight: 500;
+        font-size: 1.6rem;
+        line-height: 2.4rem;
+      }
+
+      .notificationDetail {
+        margin-top: 2rem;
+        color: #5C6475;
+        font-weight: 500;
+        font-size: 1.2rem;
+        line-height: 1.8rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+  }
+}
