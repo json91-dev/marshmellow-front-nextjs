@@ -32,9 +32,7 @@ export default function LuckyDrawWinningCheckModal() {
       setTimeout(() => {
         const randomValue = Math.random();
 
-        if (randomValue < 0.33) {
-          showLuckyDrawWinningCheckModal(false);
-        } else if (randomValue < 0.66) {
+        if (randomValue < 0.5) {
           showLuckyDrawWinningCheckModal(false);
           router.push('/recreation/luckydraw/failure');
         } else {

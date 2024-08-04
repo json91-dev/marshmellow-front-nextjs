@@ -7,7 +7,7 @@ import Link from 'next/link';
 export default function RecreationPage() {
   return (
     <div className={style.recreationPage}>
-      <TopNavigationWithMallow title={'레크레이션'} path={'/recreation'} />
+      <TopNavigationWithMallow title={'레크레이션'} />
       <div className={style.main}>
         <div className={style.bg}></div>
         <div className={style.title}>
