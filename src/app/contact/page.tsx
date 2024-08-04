@@ -1,17 +1,37 @@
 'use client';
+
 import TopNavigation from '@/app/_components/common/TopNavigation';
 import style from './page.module.scss';
 import { useForm } from 'react-hook-form';
 import buttonStyle from '@/app/_style/Button.module.scss';
 import cx from 'classnames';
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
+import { getBase64 } from '@/utils/utils';
 
 export default function GuidePage() {
   const { register, watch } = useForm();
   const InquiryTextArea = watch('InquiryTextArea');
+  const hiddenInputRef = useRef<any>(null!);
+  const handleInputFileClick = () => {
+    if (hiddenInputRef.current) {
+      hiddenInputRef.current.click();
+    }
+  };
   const { ref: registerFileRef, ...rest } = register('AttachmentImg');
-  const AttachmentFiles = watch('AttachmentImg');
+  const attachmentFiles = watch('AttachmentImg');
+  const [base64Image, setBase64Images] = useState<(string | ArrayBuffer | null)[]>([]);
+
+  useEffect(() => {
+    const loadFiles = async () => {
+      if (attachmentFiles) {
+        const base64Images = await Promise.all(Array.from(attachmentFiles).map((file) => getBase64(file)));
+        setBase64Images(base64Images);
+      }
+    };
+
+    loadFiles();
+  }, [attachmentFiles]);
 
   return (
     <div className={style.contactPage}>
@@ -35,48 +55,29 @@ export default function GuidePage() {
         </div>
 
         <div className={style.inputImageArea}>
-          {/*<input*/}
-          {/*  type="file"*/}
-          {/*  hidden={true}*/}
-          {/*  accept=".jpg,.pdf,.png"*/}
-          {/*  {...rest}*/}
-          {/*  ref={(e) => {*/}
-          {/*    registerRef(e);*/}
-          {/*    hiddenInputRef.current = e;*/}
-          {/*  }}*/}
-          {/*/>*/}
+          <input
+            type="file"
+            hidden={true}
+            accept=".jpg,.pdf,.png"
+            multiple
+            {...rest}
+            ref={(e) => {
+              registerFileRef(e);
+              hiddenInputRef.current = e;
+            }}
+          />
           <p className={style.infoAttachment}>이미지 첨부 (JPG PNG 가능)</p>
 
           <div className={style.swiperImages}>
-            <div className={style.fileInputBox}>
+            <div className={style.fileInputBox} onClick={handleInputFileClick}>
               <Image src="/images/icon.file.svg" alt="No Image" width={40} height={40} />
               <p>파일 첨부</p>
             </div>
 
-            <div className={style.fileInputBox}>
-              <Image src="/images/icon.file.svg" alt="No Image" width={40} height={40} />
-              <p>파일 첨부</p>
-            </div>
-
-            <div className={style.fileInputBox}>
-              <Image src="/images/icon.file.svg" alt="No Image" width={40} height={40} />
-              <p>파일 첨부</p>
-            </div>
-
-            <div className={style.fileInputBox}>
-              <Image src="/images/icon.file.svg" alt="No Image" width={40} height={40} />
-              <p>파일 첨부</p>
-            </div>
-
-            <div className={style.fileInputBox}>
-              <Image src="/images/icon.file.svg" alt="No Image" width={40} height={40} />
-              <p>파일 첨부</p>
-            </div>
-
-            <div className={style.fileInputBox}>
-              <Image src="/images/icon.file.svg" alt="No Image" width={40} height={40} />
-              <p>파일 첨부</p>
-            </div>
+            {base64Image &&
+              base64Image.map((base64, index) => {
+                return <Image src={base64} key={index} width={88} height={88} />;
+              })}
           </div>
         </div>
 

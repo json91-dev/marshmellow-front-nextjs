@@ -6,11 +6,11 @@
   flex-direction: column;
 
   .scrollArea {
-    flex: 1;
     display: flex;
     flex-direction: column;
     overflow: auto;
     padding: 0 2rem;
+    height: calc(100% - 15rem);
 
     .header {
       color: #1C222B;
@@ -78,6 +78,8 @@
     .inputImageArea {
       margin-top: 1.6rem;
       border: 1px solid #BCC5D5;
+      height: 15rem;
+      //border: 1px solid red;
 
       .infoAttachment {
         color: #1C222B;
@@ -96,11 +98,12 @@
         gap: 1.2rem;
         padding-left: 2rem;
         padding-bottom: 2rem;
+        align-items: center;
+        margin-top: 1.2rem;
 
 
         .fileInputBox {
           flex-shrink: 0;
-          margin-top: 1.2rem;
           width: 8.8rem;
           height: 8.8rem;
           border: 1px solid #ACB6CA;
@@ -113,6 +116,7 @@
           border-radius: 0.6rem;
           cursor: pointer;
         }
+
       }
     }
 

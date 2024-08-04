@@ -28,7 +28,7 @@ export default function Step3() {
   const [fileUrl, setFileUrl] = useState<any>(null!);
   const [fileType, setFileType] = useState(null!);
 
-  const handleDivClick = () => {
+  const handleInputFileClick = () => {
     if (hiddenInputRef.current) {
       hiddenInputRef.current.click();
     }
@@ -97,7 +97,7 @@ export default function Step3() {
         }}
       />
 
-      <div className={style.fileInputArea} onClick={handleDivClick}>
+      <div className={style.fileInputArea} onClick={handleInputFileClick}>
         <p>파일 및 이미지 첨부 (PDF, JPG, PNG 가능)</p>
         {fileUrl ? (
           fileType === 'application/pdf' ? (

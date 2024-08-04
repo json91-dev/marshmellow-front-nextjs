@@ -316,3 +316,32 @@ export const getBase64 = (file: File): Promise<string | ArrayBuffer | null> => {
     reader.onerror = (error) => reject(error);
   });
 };
+
+// Base64 문자열을 File로 변환하는 함수
+export const base64ToFile = (base64: string, fileName: string) => {
+  // Base64 문자열을 Blob으로 변환하는 함수
+  const base64ToBlob = (base64: string, mime: string) => {
+    const byteCharacters = atob(base64.split(',')[1]);
+    const byteNumbers = new Array(byteCharacters.length);
+    for (let i = 0; i < byteCharacters.length; i++) {
+      byteNumbers[i] = byteCharacters.charCodeAt(i);
+    }
+    const byteArray = new Uint8Array(byteNumbers);
+    return new Blob([byteArray], { type: mime });
+  };
+
+  // Blob을 File로 변환하는 함수
+  const blobToFile = (blob: Blob, fileName: string) => {
+    return new File([blob], fileName, { type: blob.type });
+  };
+
+  const mime = base64.split(',')[0].split(':')[1].split(';')[0]; // MIME 타입 추출
+  const blob = base64ToBlob(base64, mime);
+  return blobToFile(blob, fileName);
+
+  // // 사용 예
+  // const base64String = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAU...'; // Base64 이미지 문자열
+  // const fileName = 'image.png';
+  //
+  // const file = base64ToFile(base64String, fileName);
+};
