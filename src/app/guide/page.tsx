@@ -2,6 +2,7 @@ import style from './page.module.scss';
 import accordionStyle from './_components/accordiaon.module.scss';
 import QuestionAccordion from './_components/QuestionAccordion';
 import TopNavigation from '@/app/_components/common/TopNavigation';
+import Link from 'next/link';
 
 export default function GuidePage() {
   return (
@@ -103,6 +104,13 @@ export default function GuidePage() {
         <QuestionAccordion title={'하루에 마시멜로우를 몇 개까지 획득 가능한가요? '}>
           <p>{'하루에 마시멜로우는 n개 까지 획득이 가능해요.'}</p>
         </QuestionAccordion>
+      </div>
+
+      <div className={style.bottomContact}>
+        <p className={style.info}>도움이 필요하신가요?</p>
+        <Link className={style.contactButton} href={'/contact'}>
+          <p>문의하기</p>
+        </Link>
       </div>
     </div>
   );

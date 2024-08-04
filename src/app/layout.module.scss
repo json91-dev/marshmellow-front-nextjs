@@ -22,7 +22,11 @@
   width: 100%;
 
 
-  @include isMobile {
+  @include isSmallMobile {
+    width: 100%;
+  }
+
+  @include isTablet {
     width: var(--rootLayoutChildrenWidth);
   }
 
