@@ -5,7 +5,7 @@ import style from './page.module.scss';
 import { useForm } from 'react-hook-form';
 import buttonStyle from '@/app/_style/Button.module.scss';
 import cx from 'classnames';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { getBase64 } from '@/utils/utils';
 
@@ -19,9 +19,15 @@ export default function GuidePage() {
     }
   };
   const { ref: registerFileRef, ...rest } = register('AttachmentImg');
-  const attachmentFiles = watch('AttachmentImg');
-  const [base64Image, setBase64Images] = useState<(string | ArrayBuffer | null)[]>([]);
+  const attachmentFiles = watch('AttachmentImg') as FileList;
+  const [base64Images, setBase64Images] = useState<(string | ArrayBuffer | null)[]>([]);
 
+  /** 등록된 이미지 중 특정 이미지 제거 **/
+  const onImageFileCancel = useCallback((indexToRemove: number) => {
+    setBase64Images((prevState) => prevState.filter((_, index) => index !== indexToRemove));
+  }, []);
+
+  /** 파일을 로드하고 base64 이미지로 바꿔줌 **/
   useEffect(() => {
     const loadFiles = async () => {
       if (attachmentFiles) {
@@ -70,13 +76,25 @@ export default function GuidePage() {
 
           <div className={style.swiperImages}>
             <div className={style.fileInputBox} onClick={handleInputFileClick}>
-              <Image src="/images/icon.file.svg" alt="No Image" width={40} height={40} />
-              <p>파일 첨부</p>
+              <Image src="/images/icon.camera.svg" alt="No Image" width={40} height={40} />
+              <p className={style.fileCount}>
+                <span className={cx(base64Images.length > 0 && style.highlight)}>{base64Images.length}</span>/10
+              </p>
             </div>
 
-            {base64Image &&
-              base64Image.map((base64, index) => {
-                return <Image src={base64} key={index} width={88} height={88} />;
+            {base64Images &&
+              base64Images.map((base64, index) => {
+                if (typeof base64 !== 'string') {
+                  return null;
+                }
+                return (
+                  <div className={style.imgFileItem}>
+                    <Image src={base64} alt={'No Image'} key={index} fill />
+                    <div className={style.imgFileCancel} onClick={() => onImageFileCancel(index)}>
+                      <Image src={'/images/x.circle.cancel.svg'} alt={'No Image'} key={index} fill />
+                    </div>
+                  </div>
+                );
               })}
           </div>
         </div>
@@ -98,7 +116,7 @@ export default function GuidePage() {
       </div>
 
       <div className={buttonStyle.buttonsArea}>
-        <div className={cx(buttonStyle.confirmButton, 1 === 2 && buttonStyle.active)}>문의하기</div>
+        <div className={cx(buttonStyle.confirmButton, 0 && buttonStyle.active)}>문의하기</div>
       </div>
     </div>
   );

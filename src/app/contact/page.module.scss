@@ -24,7 +24,6 @@
     .inputTextArea {
       margin-top: 1.6rem;
       height: 22.4rem;
-
       background-color:#F0F3FA;
       border-radius: 0.4rem;
       position: relative;
@@ -78,8 +77,7 @@
     .inputImageArea {
       margin-top: 1.6rem;
       border: 1px solid #BCC5D5;
-      height: 15rem;
-      //border: 1px solid red;
+      padding-bottom: 0.5rem;
 
       .infoAttachment {
         color: #1C222B;
@@ -96,8 +94,9 @@
         overflow-x: auto;
         @include noScrollBar;
         gap: 1.2rem;
-        padding-left: 2rem;
-        padding-bottom: 2rem;
+        //padding-left: 2rem;
+        //padding-bottom: 2rem;
+        padding: 1rem 2rem;
         align-items: center;
         margin-top: 1.2rem;
 
@@ -115,6 +114,34 @@
           gap: 0.4rem;
           border-radius: 0.6rem;
           cursor: pointer;
+
+          .fileCount {
+            color: #929DB0;
+            font-size: 1.4rem;
+            line-height: 2rem;
+            font-weight: 500;
+
+            .highlight {
+              color: #BB4EF2;
+            }
+
+          }
+        }
+
+        .imgFileItem {
+          width: 8.8rem;
+          height: 8.8rem;
+          position: relative;
+
+          .imgFileCancel {
+            position: absolute;
+            width: 2rem;
+            height: 2rem;
+            top: -0.8rem;
+            right: -0.8rem;
+            cursor: pointer;
+            @include activeScale(0.85);
+          }
         }
 
       }
