@@ -108,7 +108,7 @@ export default function GuidePage() {
 
       <div className={style.bottomContact}>
         <p className={style.info}>도움이 필요하신가요?</p>
-        <Link className={style.contactButton} href={'/contact'}>
+        <Link className={style.contactButton} href={'/request'}>
           <p>문의하기</p>
         </Link>
       </div>

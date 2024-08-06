@@ -5,11 +5,11 @@ import style from './page.module.scss';
 import { useForm } from 'react-hook-form';
 import buttonStyle from '@/app/_style/Button.module.scss';
 import cx from 'classnames';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { getBase64 } from '@/utils/utils';
 
-export default function GuidePage() {
+export default function RequestPage() {
   const { register, watch } = useForm();
   const InquiryTextArea = watch('InquiryTextArea');
   const hiddenInputRef = useRef<any>(null!);
@@ -40,7 +40,7 @@ export default function GuidePage() {
   }, [attachmentFiles]);
 
   return (
-    <div className={style.contactPage}>
+    <div className={style.requestNew}>
       <TopNavigation title={'문의하기'} />
 
       <div className={style.scrollArea}>

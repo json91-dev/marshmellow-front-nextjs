@@ -29,7 +29,7 @@ export default function EnjoyItems() {
           onClick={() => router.push('/recreation')}
         />
         <Image src="/images/enjoy.event.svg" alt="No Image" width={100} height={100} />
-        <Image src="/images/enjoy.guide.svg" alt="No Image" width={100} height={100} />
+        <Image src="/images/enjoy.guide.svg" alt="No Image" width={100} height={100} onClick={() => router.push('/guide')} />
         <Image
           src="/images/enjoy.mission.svg"
           alt="No Image"
@@ -51,7 +51,7 @@ export default function EnjoyItems() {
         onClick={() => router.push('/recreation')}
       />
       <Image src="/images/enjoy.event.svg" alt="No Image" width={100} height={100} />
-      <Image src="/images/enjoy.guide.svg" alt="No Image" width={100} height={100} />
+      <Image src="/images/enjoy.guide.svg" alt="No Image" width={100} height={100} onClick={() => router.push('/guide')} />
     </div>
   );
 }
