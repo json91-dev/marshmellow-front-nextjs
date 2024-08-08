@@ -16,26 +16,29 @@ type Props = {
 };
 import localFont from 'next/font/local';
 import OnboardingGuideModal from '@/app/_components/onboarding/OnboardingGuideModal';
+import { MSWComponent } from '@/mocks/MSWComponent';
 const pretendard = localFont({ src: '../font/PretendardVariable.woff2' });
 
 export default function RootLayout({ children }: Props) {
   return (
     <html lang="en">
       <body className={pretendard.className}>
-        <AuthSession>
-          <RQProvider>
-            <div className={style.rootLayout}>
-              <LeftZone />
-              <div className={style.content}>
-                {children}
-                <Toast />
-                <div id={'onboarding-guide-modal'} />
-                <OnboardingGuideModal />
+        <MSWComponent>
+          <AuthSession>
+            <RQProvider>
+              <div className={style.rootLayout}>
+                <LeftZone />
+                <div className={style.content}>
+                  {children}
+                  <Toast />
+                  <div id={'onboarding-guide-modal'} />
+                  <OnboardingGuideModal />
+                </div>
+                <div className={style.rightZone}></div>
               </div>
-              <div className={style.rightZone}></div>
-            </div>
-          </RQProvider>
-        </AuthSession>
+            </RQProvider>
+          </AuthSession>
+        </MSWComponent>
       </body>
     </html>
   );

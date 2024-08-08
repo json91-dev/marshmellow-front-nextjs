@@ -1,0 +1,54 @@
+.topNavigation {
+  @include z-index-vars;
+  @include sizes;
+
+  position: relative;
+  top: 0;
+  z-index: var(--topNavIndex);
+  height: 5.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+  flex-direction: row;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  background-color: white;
+  cursor: pointer;
+  width: 100%;
+
+  & > p {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #2E343F;
+    text-align: center;
+    flex-shrink: 0;
+    line-height: 2.4rem
+  }
+
+  .leftIcon {
+    width: 3rem;
+    height: 3rem;
+    position:relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+
+    @include activeOpacity;
+    @include activeScale;
+  }
+
+  .rightSetting {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.4rem;
+
+    p {
+      color: #4D5564;
+      font-weight:600;
+      font-size: 1.4rem;
+      line-height: 2rem;
+    }
+  }
+}

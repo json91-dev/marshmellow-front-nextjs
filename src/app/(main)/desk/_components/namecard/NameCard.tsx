@@ -41,11 +41,11 @@ export default function NameCard() {
     return <Spinner />;
   }
 
-  if (result.data === null) {
+  if (result?.data === null) {
     return <PassCard />;
   }
 
-  if (result.data.grade === '인턴') {
+  if (result?.data.grade === '인턴') {
     return <NameCardIntern />;
   } else {
     return <NameCardEmploy />;

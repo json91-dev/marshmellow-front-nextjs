@@ -39,6 +39,29 @@ export const dummyLuckyDrawResearchItems = [
   { id: 14, name: '기타' },
 ];
 
+export const alarmData = [
+  {
+    type: 'contact',
+    title: '',
+    description: '',
+  },
+
+  {
+    type: 'notice',
+    title: '공지사항 제목',
+  },
+
+  {
+    type: 'event',
+    title: '공지사항 제목',
+  },
+
+  {
+    type: 'work',
+    title: '업무',
+  },
+];
+
 export const dummyLuckyDrawCardsData: LuckyDrawCardsItem = [
   [
     {
