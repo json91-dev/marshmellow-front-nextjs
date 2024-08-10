@@ -6,7 +6,6 @@ import { getCalendarData } from '@/utils/utils';
 import dayjs, { Dayjs } from 'dayjs';
 import isBetween from 'dayjs/plugin/isBetween';
 dayjs.extend(isBetween);
-import Spinner from '@/app/login/_components/Spinner';
 import { useSession } from 'next-auth/react';
 import MissionCalendarGuest from '@/app/attendance/_components/guest/MissionCalendarGuest';
 import { useWorkMonthlyQuery } from '@/app/_hook/queries/activity';
@@ -57,11 +56,7 @@ export default function MissionCalendar() {
   }
 
   if (isLoading || isFetching || isLoadingProfile || isFetchingProfile) {
-    return (
-      <div className={style.missionCalendar}>
-        <Spinner />
-      </div>
-    );
+    return null;
   }
 
   const memberStartDate = dayjs(profileResult?.data.createdAt);

@@ -5,13 +5,12 @@ import React from 'react';
 import NoticeItem from '@/app/notice/_components/NoticeItem';
 import TopNavigation from '@/app/_components/common/TopNavigation';
 import { useNoticeAll } from '@/app/_hook/queries/notice';
-import Spinner from '@/app/login/_components/Spinner';
 
 export default function noticePage() {
   const { data: result, status, error } = useNoticeAll();
 
   if (status === 'pending') {
-    return <Spinner />;
+    return null;
   }
 
   return (

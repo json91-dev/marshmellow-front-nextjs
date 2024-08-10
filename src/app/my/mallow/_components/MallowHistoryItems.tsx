@@ -1,5 +1,4 @@
 'use client';
-import Spinner from '@/app/login/_components/Spinner';
 import style from '@/app/my/mallow/page.module.scss';
 import { extractHourMinute, replaceAt } from '@/utils/utils';
 import React, { useMemo } from 'react';
@@ -34,7 +33,7 @@ export default function MallowHistoryItems() {
   }, [result?.data, status]);
 
   if (status === 'error' || status === 'pending') {
-    return <Spinner />;
+    return null;
   }
 
   if (result.data.length === 0) {

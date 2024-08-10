@@ -4,25 +4,12 @@ import Image from 'next/image';
 import React from 'react';
 import { dateStringToFormat, dateStringToFormatDiff, formatHourMinute } from '@/utils/utils';
 import { useMemberProfileQuery } from '@/app/_hook/queries/member';
-import Spinner from '@/app/login/_components/Spinner';
 
 export default function NameCardEmploy() {
   const { data: result, isLoading, isError } = useMemberProfileQuery();
 
-  if (isLoading) {
-    return (
-      <div className={style.nameCardIntern}>
-        <Spinner />
-      </div>
-    );
-  }
-
-  if (isError) {
-    return <></>;
-  }
-
-  if (!result) {
-    return <></>;
+  if (isLoading || isError || !result) {
+    return null;
   }
 
   const { createdAt, grade } = result.data;

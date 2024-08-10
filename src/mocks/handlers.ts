@@ -1,12 +1,10 @@
 import { HttpResponse, http } from 'msw';
+import { alarmData } from '@/constraints';
 
 export const handlers = [
-  http.get('https://api.example.com/api/user', () => {
+  http.get(`${process.env.NEXT_PUBLIC_MSW_API_URL}/alarm`, () => {
     return HttpResponse.json({
-      data: {
-        name: 'handongryong',
-        age: 25,
-      },
+      data: alarmData,
     });
   }),
 ];

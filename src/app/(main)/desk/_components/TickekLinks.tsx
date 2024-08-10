@@ -4,7 +4,6 @@ import style from './ticketLink.module.scss';
 import Image from 'next/image';
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import Spinner from '@/app/login/_components/Spinner';
 import { useMemberMeQuery } from '@/app/_hook/queries/member';
 
 export default function TicketLinks() {
@@ -12,7 +11,7 @@ export default function TicketLinks() {
   const { data: result, status, error } = useMemberMeQuery();
 
   if (status === 'pending') {
-    return <Spinner />;
+    return null;
   }
 
   return (

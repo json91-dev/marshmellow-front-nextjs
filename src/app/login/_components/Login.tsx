@@ -1,14 +1,12 @@
 'use client';
 
 import KakaoLoginButton from '@/app/login/_components/KakaoLoginButton';
-import { fakeServerCall, isAppleDevice, setLocalStorage } from '@/utils/utils';
+import { isAppleDevice } from '@/utils/utils';
 import AppleLoginButton from '@/app/login/_components/AppleLoginButton';
 import GoogleLoginButton from '@/app/login/_components/GoogleLoginButton';
-import React, { memo, useEffect, useRef, useState } from 'react';
-import Spinner from '@/app/login/_components/Spinner';
-import { useSession, signOut, getCsrfToken } from 'next-auth/react';
+import React, { memo, useEffect, useState } from 'react';
+import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import useModalStore from '@/store/modalStore';
 import style from '@/app/login/page.module.scss';
 
 export default memo(function Login() {
@@ -47,9 +45,6 @@ export default memo(function Login() {
     return (
       <>
         <KakaoLoginButton style={{ marginTop: '2rem' }} />
-        <div style={{ marginTop: '1rem', height: '6rem', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <Spinner />
-        </div>
       </>
     );
   } else {

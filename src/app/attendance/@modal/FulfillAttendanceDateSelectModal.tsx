@@ -10,7 +10,6 @@ import dayjs, { Dayjs } from 'dayjs';
 import { useWorkMonthlyQuery } from '@/app/_hook/queries/activity';
 import Image from 'next/image';
 import { useMemberProfileQuery } from '@/app/_hook/queries/member';
-import Spinner from '@/app/login/_components/Spinner';
 const DAY_LIST = ['일', '월', '화', '수', '목', '금', '토'];
 
 type calendarItem = {
@@ -73,7 +72,7 @@ export default function FulfillAttendanceDateSelectModal() {
       >
         <div className={cx(style.fulfillAttendanceDateSelectModal, 'modal')} ref={modalRef}>
           {isLoading || isFetching || isLoadingProfile || isFetchingProfile ? (
-            <Spinner />
+            <></>
           ) : (
             <>
               <p className={style.title}>출근 보충할 날 선택하기</p>

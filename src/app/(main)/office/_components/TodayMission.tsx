@@ -9,10 +9,8 @@ import { useWorkTodayQuery } from '@/app/_hook/queries/activity';
 import dayjs from 'dayjs';
 import { formatDateToTodayDate, getWorkTimeRangeString } from '@/utils/utils';
 import isBetween from 'dayjs/plugin/isBetween';
-import WeekAttendanceGuest from '@/app/(main)/office/_components/guest/WeekAttendanceGuest';
 import { useSession } from 'next-auth/react';
 import TodayMissionGuest from '@/app/(main)/office/_components/guest/TodayMissionGuest';
-import Spinner from '@/app/login/_components/Spinner';
 dayjs.extend(isBetween);
 
 type workStateType = {
@@ -85,11 +83,7 @@ export default function TodayMission() {
   }
 
   if (isLoadingProfile || isFetchingProfile || isLoadingWork || isFetchingWork || sessionStatus === 'loading') {
-    return (
-      <div className={style.todayMission}>
-        <Spinner />
-      </div>
-    );
+    return null;
   }
 
   return (

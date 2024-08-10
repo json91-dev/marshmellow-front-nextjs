@@ -1,13 +1,9 @@
 'use client';
 import style from './page.module.scss';
 import Image from 'next/image';
-import React, { useMemo, useState } from 'react';
-import cx from 'classnames';
+import React from 'react';
 import useModalStore from '@/store/modalStore';
 import TopNavigation from '@/app/_components/common/TopNavigation';
-import { useMarshmallowHistoryQuery } from '@/app/_hook/queries/currency';
-import Spinner from '@/app/login/_components/Spinner';
-import { extractHourMinute } from '@/utils/utils';
 import FilterState from '@/app/my/mallow/_components/FilterState';
 import useMallowHistoryStore from '@/store/mallowHistoryStore';
 import { useMemberCurrencyQuery } from '@/app/_hook/queries/member';

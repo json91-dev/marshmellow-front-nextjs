@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import style from './layout.module.scss';
 import './global.scss';
 import LeftZone from '@/app/_components/leftzone/LeftZone';
@@ -17,6 +17,7 @@ type Props = {
 import localFont from 'next/font/local';
 import OnboardingGuideModal from '@/app/_components/onboarding/OnboardingGuideModal';
 import { MSWComponent } from '@/mocks/MSWComponent';
+import LoadingOverlaySpinner from '@/app/_components/common/LoadingOverlaySpinner';
 const pretendard = localFont({ src: '../font/PretendardVariable.woff2' });
 
 export default function RootLayout({ children }: Props) {
@@ -29,10 +30,11 @@ export default function RootLayout({ children }: Props) {
               <div className={style.rootLayout}>
                 <LeftZone />
                 <div className={style.content}>
-                  {children}
+                  {children} {/* children 내의 컴포넌트들이 로딩되는 동안 로딩 스피너를 보여줌 */}
                   <Toast />
                   <div id={'onboarding-guide-modal'} />
                   <OnboardingGuideModal />
+                  <LoadingOverlaySpinner />
                 </div>
                 <div className={style.rightZone}></div>
               </div>

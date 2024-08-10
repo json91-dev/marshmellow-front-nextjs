@@ -2,7 +2,6 @@
 import style from './noticeDetail.module.scss';
 import TopNavigation from '@/app/_components/common/TopNavigation';
 import { useNotice } from '@/app/_hook/queries/notice';
-import Spinner from '@/app/login/_components/Spinner';
 
 type Props = {
   params: {
@@ -15,7 +14,7 @@ export default function NoticeDetailpage({ params }: Props) {
   const { data: result, status } = useNotice(id);
 
   if (status === 'pending') {
-    return <Spinner />;
+    return null;
   }
 
   return (

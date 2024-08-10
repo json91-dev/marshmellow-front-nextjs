@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 import { getSession } from 'next-auth/react';
-import { filterActionType } from '@/app/my/mallow/page';
+import { MallowStateType } from '@/app/my/mallow/page';
 
 /** 마시멜로우 내역 조회 **/
-export function useMarshmallowHistoryQuery(type: filterActionType = 'ALL', range: number) {
+export function useMarshmallowHistoryQuery(type: MallowStateType = 'ALL', range: number) {
   const getWorkMonthly = async () => {
     const session = await getSession();
     if (!session) {
