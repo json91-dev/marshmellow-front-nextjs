@@ -1,6 +1,6 @@
 'use client';
 
-import style from './topNavigationWithAlarmSetting.module.scss';
+import style from './topNavigationWithSetting.module.scss';
 import Image from 'next/image';
 import React, { useCallback } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
@@ -11,7 +11,7 @@ type Props = {
   path?: string;
 };
 
-export default function TopNavigationWithAlarmSetting({ title = '', path = '' }: Props) {
+export default function TopNavigationWithSetting({ title = '', path = '' }: Props) {
   const router = useRouter();
   const pathname = usePathname();
   const { data: result } = useMemberMeQuery();

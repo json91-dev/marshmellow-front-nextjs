@@ -345,3 +345,24 @@ export const base64ToFile = (base64: string, fileName: string) => {
   //
   // const file = base64ToFile(base64String, fileName);
 };
+
+export function timeAgo(inputTime: string) {
+  const now = dayjs();
+  const diffInSeconds = now.diff(inputTime, 'second');
+  const diffInMinutes = now.diff(inputTime, 'minute');
+  const diffInHours = now.diff(inputTime, 'hour');
+  const diffInDays = now.diff(inputTime, 'day');
+  const diffInMonths = now.diff(inputTime, 'month');
+
+  if (diffInSeconds < 60) {
+    return `${diffInSeconds}초 전`;
+  } else if (diffInMinutes < 60) {
+    return `${diffInMinutes}분 전`;
+  } else if (diffInHours < 24) {
+    return `${diffInHours}시간 전`;
+  } else if (diffInDays < 31) {
+    return `${diffInDays}일 전`;
+  } else {
+    return `${diffInMonths}달 전`;
+  }
+}

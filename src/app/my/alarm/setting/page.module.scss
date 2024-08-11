@@ -1,0 +1,90 @@
+.alarmSettingPage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+
+  .scrollArea {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    height: calc(100% - 15rem);
+
+    & > :last-child {
+      border: none !important;
+    }
+
+    .alarmArea {
+      margin-top: 2rem;
+      padding: 0 2rem;
+      border-bottom: 1px solid #DFE3EE;
+
+      .topLabel {
+        & > p:nth-child(1) {
+          font-weight: bold;
+          font-size: 1.4rem;
+          line-height: 2.2rem;
+          color: #1C222B;
+        }
+
+        & > p:nth-child(2) {
+          font-weight: 400;
+          font-size: 1.2rem;
+          line-height: 1.6rem;
+          color: #5C6475;
+          margin-top: 0.2rem;
+          white-space: pre-wrap;
+        }
+      }
+
+      .alarmRow {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.6rem 0;
+        gap: 1rem;
+        position: relative;
+
+        .info {
+          display: flex;
+          flex-direction: column;
+          gap: 0.4rem;
+
+          & > p:nth-child(1) {
+            font-weight: 500;
+            font-size: 1.6rem;
+            line-height: 2.2rem;
+            color: #1C222B;
+          }
+
+          & > p:nth-child(2) {
+            font-weight: 400;
+            font-size: 1.2rem;
+            line-height: 1.6rem;
+            color: #5C6475;
+          }
+        }
+
+        .nightAlarmToggle {
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+
+          p {
+            font-weight: 500;
+            font-size: 1.4rem;
+            line-height: 2rem;
+            color: #5C6475;
+          }
+
+        }
+      }
+    }
+
+
+
+  }
+}
+
+

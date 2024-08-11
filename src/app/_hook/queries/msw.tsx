@@ -1,9 +1,8 @@
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { getSession } from 'next-auth/react';
-import { MemberMeResponse, MemberProfileResponse } from '@/app/_hook/types/member';
 
 export function useAlarmQuery() {
-  const getAlarm = async (): Promise<MemberMeResponse> => {
+  const getAlarm = async (): Promise<any> => {
     const session = await getSession();
     if (!session) {
       console.error('로그인이 되어있지 않음');
