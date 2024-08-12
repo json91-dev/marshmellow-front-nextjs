@@ -1,5 +1,5 @@
 'use client';
-import style from '@/app/(main)/office/office.module.scss';
+import style from '@/app/(main)/office/page.module.scss';
 import cx from 'classnames';
 import Image from 'next/image';
 import React, { useMemo } from 'react';

@@ -8,12 +8,8 @@ import { useMemberProfileQuery } from '@/app/_hook/queries/member';
 export default function NameCardIntern() {
   const { data: result, isError, isLoading } = useMemberProfileQuery();
 
-  if (isLoading) {
+  if (isError || !result || isLoading) {
     return null;
-  }
-
-  if (isError) {
-    return <></>;
   }
 
   const { createdAt, grade } = result.data;

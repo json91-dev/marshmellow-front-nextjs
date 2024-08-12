@@ -1,10 +1,8 @@
-import style from './desk.module.scss';
+import style from './page.module.scss';
 import NameCard from '@/app/(main)/desk/_components/namecard/NameCard';
-import Image from 'next/image';
 import React from 'react';
 import Options from '@/app/(main)/desk/_components/Options';
 import TicketLinks from '@/app/(main)/desk/_components/TickekLinks';
-import HorizontalLine from '@/app/(main)/desk/_components/HorizontalLine';
 import PageLinks from '@/app/(main)/desk/_components/PageLinks';
 
 export default function DeskPage() {
@@ -16,7 +14,7 @@ export default function DeskPage() {
       <div className={style.main}>
         <NameCard />
         <TicketLinks />
-        <HorizontalLine />
+        <div className={style.banner}>적응형 배너</div>
         <PageLinks />
       </div>
     </div>

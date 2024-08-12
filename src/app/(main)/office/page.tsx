@@ -1,5 +1,5 @@
 'use client';
-import style from './office.module.scss';
+import style from './page.module.scss';
 import Image from 'next/image';
 import React from 'react';
 import TimerMissionCheck from '@/app/(main)/office/_components/TimerMissionCheck';

@@ -95,7 +95,7 @@ export default function FulfillAttendanceDateSelectModal() {
                             <CalendarMallowItem
                               key={item.date}
                               item={item}
-                              memberStartDate={dayjs(profileResult.data.createdAt)}
+                              memberStartDate={dayjs(profileResult?.data.createdAt)}
                             />
                           );
                         })}

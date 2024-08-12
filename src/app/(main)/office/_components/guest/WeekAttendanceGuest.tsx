@@ -2,7 +2,7 @@
 import useModalStore from '@/store/modalStore';
 import dayjs from 'dayjs';
 import { findMonday, findSunday } from '@/utils/utils';
-import style from '@/app/(main)/office/office.module.scss';
+import style from '@/app/(main)/office/page.module.scss';
 import Image from 'next/image';
 import React from 'react';
 

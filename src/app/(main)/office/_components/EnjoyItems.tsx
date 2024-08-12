@@ -1,5 +1,5 @@
 'use client';
-import style from '@/app/(main)/office/office.module.scss';
+import style from '@/app/(main)/office/page.module.scss';
 import Image from 'next/image';
 import React from 'react';
 import { useOnboardingStatusQuery } from '@/app/_hook/queries/onboarding';

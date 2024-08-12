@@ -15,7 +15,7 @@ export default function BottomNavMenu() {
         <Link href="/pantry">
           <div className={cx(pathname === '/pantry' && style.selected)}>
             <div className={style.image}>
-              `<Image src="/images/bottom.tab.pantry.svg" alt="No Image" width={24} height={24} />`
+              <Image src="/images/bottom.tab.pantry.svg" alt="No Image" width={24} height={24} />
             </div>
             <div>탕비실</div>
           </div>
