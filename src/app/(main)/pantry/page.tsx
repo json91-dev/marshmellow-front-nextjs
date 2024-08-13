@@ -1,6 +1,7 @@
 import style from './page.module.scss';
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function DeskPage() {
   return (
@@ -23,9 +24,10 @@ export default function DeskPage() {
             {'설문조사를 하고 있습니다.'}
           </p>
           <Image src="/images/pantry.document.svg" alt="No Image" width={100} height={100} />
-          <div className={style.button}>
+
+          <Link href={'/research/pantry'} className={style.button}>
             <p>설문조사</p>
-          </div>
+          </Link>
         </div>
         <div className={style.alarmCard}>
           <p>탕비실 오픈 시 알림을 보내드려요</p>

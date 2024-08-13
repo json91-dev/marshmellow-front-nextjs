@@ -1,5 +1,5 @@
 'use client';
-import style from './luckydraw.complete.module.scss';
+import style from './page.module.scss';
 import Image from 'next/image';
 import React from 'react';
 import { useForm } from 'react-hook-form';

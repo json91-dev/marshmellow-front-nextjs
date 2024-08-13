@@ -1,5 +1,5 @@
 'use client';
-import style from './luckydraw.module.scss';
+import style from './page.module.scss';
 import { dummyLuckyDrawResearchItems } from '@/constraints';
 import React from 'react';
 import { useForm } from 'react-hook-form';
