@@ -2,13 +2,13 @@
 import style from './tax.module.scss';
 import { useRouter, useSearchParams } from 'next/navigation';
 import React, { Suspense, useEffect } from 'react';
-import Step1 from '@/app/prize/luckydraw/tax/info/_components/Step1';
+import Step1 from '@/app/prize/luckydraw/tax/info/_containers/Step1';
 import TopNavigation from '@/app/_components/common/TopNavigation';
 import cx from 'classnames';
-import Step2 from '@/app/prize/luckydraw/tax/info/_components/Step2';
-import Step3 from '@/app/prize/luckydraw/tax/info/_components/Step3';
-import Step4 from '@/app/prize/luckydraw/tax/info/_components/Step4';
-import Step5 from '@/app/prize/luckydraw/tax/info/_components/Step5';
+import Step2 from '@/app/prize/luckydraw/tax/info/_containers/Step2';
+import Step3 from '@/app/prize/luckydraw/tax/info/_containers/Step3';
+import Step4 from '@/app/prize/luckydraw/tax/info/_containers/Step4';
+import Step5 from '@/app/prize/luckydraw/tax/info/_containers/Step5';
 
 export default function LuckyDrawTaxInfo() {
   return (

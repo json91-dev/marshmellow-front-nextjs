@@ -4,7 +4,7 @@ import style from './page.module.scss';
 import React, { useEffect } from 'react';
 import TopNavigation from '@/app/_components/common/TopNavigation';
 import cx from 'classnames';
-import Step5 from '@/app/prize/luckydraw/tax/info/_components/Step5';
+import Step5 from '@/app/prize/luckydraw/tax/info/_containers/Step5';
 
 export default function LuckyDrawAddressInfo() {
   // const searchParams = useSearchParams();
