@@ -1,5 +1,5 @@
 'use client';
-import style from './modal.module.scss';
+import styles from './modal.module.scss';
 import React from 'react';
 import { CSSTransition } from 'react-transition-group';
 import ModalBackdrop from '@/app/signup/@modal/identify/_components/ModalBackdrop';
@@ -24,11 +24,11 @@ export default function NicknameNotChangeByDateModal() {
         classNames="modal"
         nodeRef={modalRef}
       >
-        <div className={cx(style.nicknameNotChangeByDateModal, 'modal')} ref={modalRef}>
-          <p className={style.title}>{`${nicknameChangeRemainDays}일 후에 변경이 가능해요.`}</p>
-          <p className={style.description}>{'닉네임 변경 후 30일 이후에 변경 가능해요.'}</p>
+        <div className={cx(styles.nicknameNotChangeByDateModal, 'modal')} ref={modalRef}>
+          <p className={styles.title}>{`${nicknameChangeRemainDays}일 후에 변경이 가능해요.`}</p>
+          <p className={styles.description}>{'닉네임 변경 후 30일 이후에 변경 가능해요.'}</p>
 
-          <button className={style.confirmButton} onClick={() => showNicknameNotChangeByDateModal(false)}>
+          <button className={styles.confirmButton} onClick={() => showNicknameNotChangeByDateModal(false)}>
             확인
           </button>
         </div>

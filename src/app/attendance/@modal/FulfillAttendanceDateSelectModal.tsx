@@ -1,5 +1,5 @@
 'use client';
-import style from './modal.module.scss';
+import styles from './modal.module.scss';
 import useModalStore from '@/store/modalStore';
 import React, { useCallback, useEffect, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
@@ -7,9 +7,9 @@ import ModalBackdrop from '@/app/signup/@modal/identify/_components/ModalBackdro
 import cx from 'classnames';
 import { getCalendarData } from '@/utils/utils';
 import dayjs, { Dayjs } from 'dayjs';
-import { useWorkMonthlyQuery } from '@/app/_hook/queries/activity';
+import { useWorkMonthlyQuery } from '@/hooks/queries/activity';
 import Image from 'next/image';
-import { useMemberProfileQuery } from '@/app/_hook/queries/member';
+import { useMemberProfileQuery } from '@/hooks/queries/member';
 const DAY_LIST = ['일', '월', '화', '수', '목', '금', '토'];
 
 type calendarItem = {
@@ -70,25 +70,25 @@ export default function FulfillAttendanceDateSelectModal() {
         classNames="modal"
         nodeRef={modalRef}
       >
-        <div className={cx(style.fulfillAttendanceDateSelectModal, 'modal')} ref={modalRef}>
+        <div className={cx(styles.fulfillAttendanceDateSelectModal, 'modal')} ref={modalRef}>
           {isLoading || isFetching || isLoadingProfile || isFetchingProfile ? (
             <></>
           ) : (
             <>
-              <p className={style.title}>출근 보충할 날 선택하기</p>
-              <div className={style.calendarBody}>
-                <div className={style.days}>
+              <p className={styles.title}>출근 보충할 날 선택하기</p>
+              <div className={styles.calendarBody}>
+                <div className={styles.days}>
                   {DAY_LIST.map((day) => {
                     return <p key={day}>{day}</p>;
                   })}
                 </div>
-                <div className={style.dates}>
+                <div className={styles.dates}>
                   {calendarList?.map((week, weekIndex) => {
                     return (
-                      <div className={style.week} key={weekIndex}>
+                      <div className={styles.week} key={weekIndex}>
                         {week.map((item, dayIndex) => {
                           if (item === 0) {
-                            return <div key={`empty-${weekIndex}-${dayIndex}`} className={style.dateItem} />;
+                            return <div key={`empty-${weekIndex}-${dayIndex}`} className={styles.dateItem} />;
                           }
 
                           return (
@@ -104,7 +104,7 @@ export default function FulfillAttendanceDateSelectModal() {
                   })}
                 </div>
               </div>
-              <div className={style.bottomInfo}>
+              <div className={styles.bottomInfo}>
                 <Image src="/images/snack.purple.svg" alt="No Image" width={24} height={24} />
                 <p>출근 보충 시 업무 3개 모두 완수한 것으로 처리돼요.</p>
               </div>
@@ -125,11 +125,11 @@ function CalendarMallowItem({ item, memberStartDate }: { item: calendarItem; mem
 
   if (item.completeCount > 0) {
     return (
-      <div key={item.date} className={style.dateItem}>
+      <div key={item.date} className={styles.dateItem}>
         {item.completeCount === 1 && <Image src="/images/snack.gray.svg" alt="No Image" width={28} height={28} />}
         {item.completeCount === 2 && <Image src="/images/snack.purple.light.svg" alt="No Image" width={28} height={28} />}
         {item.completeCount === 3 && <Image src="/images/snack.purple.svg" alt="No Image" width={28} height={28} />}
-        {item.today && <div className={style.dot} />}
+        {item.today && <div className={styles.dot} />}
       </div>
     );
   }
@@ -140,15 +140,15 @@ function CalendarMallowItem({ item, memberStartDate }: { item: calendarItem; mem
   }, []);
 
   return (
-    <div key={item.date} className={style.dateItem}>
+    <div key={item.date} className={styles.dateItem}>
       {isBeforeMemberStart && (
         <div>
-          <p className={style.gray}>{item.name}</p>
+          <p className={styles.gray}>{item.name}</p>
         </div>
       )}
 
       {isBetweenTodayAndMemberStart && (
-        <div className={style.missionFail} onClick={() => onClickMissionFailed(item.date)}>
+        <div className={styles.missionFail} onClick={() => onClickMissionFailed(item.date)}>
           <p>{item.name}</p>
         </div>
       )}
@@ -165,7 +165,7 @@ function CalendarMallowItem({ item, memberStartDate }: { item: calendarItem; mem
         </div>
       )}
 
-      {item.today && <div className={style.dot} />}
+      {item.today && <div className={styles.dot} />}
     </div>
   );
 }

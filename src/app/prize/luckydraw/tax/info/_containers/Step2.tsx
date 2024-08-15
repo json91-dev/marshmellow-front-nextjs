@@ -2,8 +2,8 @@
 import React, { useCallback, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
-import style from './Step2.module.scss';
-import buttonStyle from '@/app/_style/Button.module.scss';
+import styles from './Step2.module.scss';
+import buttonStyle from '@/moduleStyle/Button.module.scss';
 import cx from 'classnames';
 import useLuckyDrawStore from '@/store/luckydrawStore';
 
@@ -30,11 +30,11 @@ export default function Step2() {
   }, [isTransferTaxChecked]);
 
   return (
-    <div className={style.taxStep2}>
-      <div className={style.headInfoBox}>
+    <div className={styles.taxStep2}>
+      <div className={styles.headInfoBox}>
         <p>당첨자 제세공과금 입금 안내</p>
       </div>
-      <div className={style.taxInfo}>
+      <div className={styles.taxInfo}>
         <p>
           {'당첨된 제품의 정가는 100,000원으로, 당첨자가 부담해야하는 제세공과금은 '}
           <span>{'5,000원이에요.\n'}</span>
@@ -53,11 +53,11 @@ export default function Step2() {
         </p>
       </div>
 
-      <div className={style.account}>
+      <div className={styles.account}>
         <p>00은행 000-00000-00-00 (주)프롬디언노운</p>
       </div>
 
-      <div className={style.checkBoxContainer}>
+      <div className={styles.checkBoxContainer}>
         <input type="checkbox" id="checkbox" {...register('deposit')} />
         <label htmlFor="checkbox">
           <p>네 입금했어요.</p>

@@ -1,6 +1,6 @@
 'use client';
 
-import style from './tutorialBottomNavMenu.module.scss';
+import styles from './tutorialBottomNavMenu.module.scss';
 import Image from 'next/image';
 import React from 'react';
 import cx from 'classnames';
@@ -13,18 +13,18 @@ export default function TutorialBottomNavMenu({ tutorialStep }: Props) {
   if (tutorialStep === 7) {
     return (
       <>
-        <div className={cx(style.tutorialNav, style.dim)}>
+        <div className={cx(styles.tutorialNav, styles.dim)}>
           <li style={{ opacity: 0 }}>
-            <div className={style.selected}>
-              <div className={style.image}>
+            <div className={styles.selected}>
+              <div className={styles.image}>
                 <Image src="/images/bottom.tab.pantry.svg" alt="No Image" width={24} height={24} />
               </div>
               <div>탕비실</div>
             </div>
           </li>
-          <li className={style.dim}>
-            <div className={style.selected}>
-              <div className={style.image}>
+          <li className={styles.dim}>
+            <div className={styles.selected}>
+              <div className={styles.image}>
                 <Image src="/images/bottom.tab.office.svg" alt="No Image" width={24} height={24} />
               </div>
               <div>사무실</div>
@@ -33,7 +33,7 @@ export default function TutorialBottomNavMenu({ tutorialStep }: Props) {
 
           <li>
             <div>
-              <div className={style.image}>
+              <div className={styles.image}>
                 <Image src="/images/bottom.tab.desk.svg" alt="No Image" width={24} height={24} />
               </div>
               <div>내 책상</div>
@@ -46,18 +46,18 @@ export default function TutorialBottomNavMenu({ tutorialStep }: Props) {
   }
 
   return (
-    <div className={cx(style.tutorialNav, style.dim)}>
+    <div className={cx(styles.tutorialNav, styles.dim)}>
       <li>
         <div>
-          <div className={style.image}>
+          <div className={styles.image}>
             <Image src="/images/bottom.tab.pantry.svg" alt="No Image" width={24} height={24} />
           </div>
           <div>탕비실</div>
         </div>
       </li>
       <li>
-        <div className={style.selected}>
-          <div className={style.image}>
+        <div className={styles.selected}>
+          <div className={styles.image}>
             <Image src="/images/bottom.tab.office.svg" alt="No Image" width={24} height={24} />
           </div>
           <div>사무실</div>
@@ -66,7 +66,7 @@ export default function TutorialBottomNavMenu({ tutorialStep }: Props) {
 
       <li>
         <div>
-          <div className={style.image}>
+          <div className={styles.image}>
             <Image src="/images/bottom.tab.desk.svg" alt="No Image" width={24} height={24} />
           </div>
           <div>내 책상</div>
@@ -78,9 +78,9 @@ export default function TutorialBottomNavMenu({ tutorialStep }: Props) {
 
 function PantryFocus() {
   return (
-    <div className={cx(style.selected, style.pantryFocus)}>
-      <div className={style.inner}>
-        <div className={style.image}>
+    <div className={cx(styles.selected, styles.pantryFocus)}>
+      <div className={styles.inner}>
+        <div className={styles.image}>
           <Image src="/images/bottom.tab.pantry.svg" alt="No Image" width={24} height={24} />
         </div>
         <div>탕비실</div>

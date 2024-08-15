@@ -1,6 +1,6 @@
 'use client';
 
-import style from '@/app/my/mallow/page.module.scss';
+import styles from '@/app/my/mallow/page.module.scss';
 import cx from 'classnames';
 import React from 'react';
 import { MallowStateType } from '@/app/my/mallow/page';
@@ -15,27 +15,27 @@ export default function FilterState() {
   };
 
   return (
-    <div className={style.filterState}>
+    <div className={styles.filterState}>
       <div
-        className={cx(style.state, history.filterState === 'ALL' && style.active)}
+        className={cx(styles.state, history.filterState === 'ALL' && styles.active)}
         onClick={() => handleActionClick('ALL')}
       >
         전체
       </div>
       <div
-        className={cx(style.state, history.filterState === 'GAIN' && style.active)}
+        className={cx(styles.state, history.filterState === 'GAIN' && styles.active)}
         onClick={() => handleActionClick('GAIN')}
       >
         획득
       </div>
       <div
-        className={cx(style.state, history.filterState === 'USE' && style.active)}
+        className={cx(styles.state, history.filterState === 'USE' && styles.active)}
         onClick={() => handleActionClick('USE')}
       >
         사용
       </div>
       <div
-        className={cx(style.state, history.filterState === 'EXPIRED' && style.active)}
+        className={cx(styles.state, history.filterState === 'EXPIRED' && styles.active)}
         onClick={() => handleActionClick('EXPIRED')}
       >
         소멸

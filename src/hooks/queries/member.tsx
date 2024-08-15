@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { getSession } from 'next-auth/react';
-import { MemberMeResponse, MemberProfileResponse } from '@/app/_hook/types/member';
+import { MemberMeResponse, MemberProfileResponse } from '@/hooks/types/member';
 
 export function useMemberMeQuery() {
   const getMember = async (): Promise<MemberMeResponse> => {

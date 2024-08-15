@@ -1,11 +1,11 @@
 'use client';
 
-import style from './topNavigationWithMallow.module.scss';
+import styles from './topNavigationWithMallow.module.scss';
 import Image from 'next/image';
 import React, { useCallback } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import useModalStore from '@/store/modalStore';
-import { useMemberMeQuery } from '@/app/_hook/queries/member';
+import { useMemberMeQuery } from '@/hooks/queries/member';
 
 type Props = {
   title?: string;
@@ -40,12 +40,12 @@ export default function TopNavigationWithMallow({ title = '', path = '' }: Props
   }, [pathname, path]);
 
   return (
-    <div className={style.topNavigation}>
-      <div className={style.leftIcon} onClick={onClickBackButton}>
+    <div className={styles.topNavigation}>
+      <div className={styles.leftIcon} onClick={onClickBackButton}>
         <Image src="/images/arrow.left.svg" alt="No Image" width={24} height={24} />
       </div>
       {title ? <p>{title}</p> : <p></p>}
-      <div className={style.rightMallow}>
+      <div className={styles.rightMallow}>
         <Image src="/images/snack.gray.svg" alt="No Image" width={24} height={24} />
         <p>{result?.data?.currency?.marshmallowQuantity ? result?.data?.currency?.marshmallowQuantity : '0'}</p>
       </div>

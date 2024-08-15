@@ -1,4 +1,4 @@
-import style from './signupLayout.module.scss';
+import styles from './signupLayout.module.scss';
 import React, { ReactNode } from 'react';
 
 type Props = {
@@ -10,7 +10,7 @@ export default function SignUpLayout({ children, modal }: Props) {
   return (
     <>
       {modal}
-      <div className={style.layoutChild}>{children}</div>
+      <div className={styles.layoutChild}>{children}</div>
     </>
   );
 }

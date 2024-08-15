@@ -1,5 +1,5 @@
 'use client';
-import style from './page.module.scss';
+import styles from './page.module.scss';
 import { useRouter, useSearchParams } from 'next/navigation';
 import React, { Suspense, useEffect, useRef, useState } from 'react';
 import PrizeStepDefault from '@/app/recreation/luckydraw/winner/prize/_components/PrizeStepDefault';
@@ -28,7 +28,7 @@ function LuckyDrawWinnerMarshmallowContent() {
 
   if (!step) {
     return (
-      <div ref={mallowPageRef} className={style.winnerPrizePage}>
+      <div ref={mallowPageRef} className={styles.winnerPrizePage}>
         <PrizeStepDefault />
       </div>
     );
@@ -36,7 +36,7 @@ function LuckyDrawWinnerMarshmallowContent() {
 
   if (isNumeric(step) && parseInt(step) === 2) {
     return (
-      <div ref={mallowPageRef} className={style.winnerPrizePage}>
+      <div ref={mallowPageRef} className={styles.winnerPrizePage}>
         <PrizeStep2 />
       </div>
     );

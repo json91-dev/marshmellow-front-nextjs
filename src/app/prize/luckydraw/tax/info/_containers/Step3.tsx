@@ -2,8 +2,8 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
-import style from './Step3.module.scss';
-import buttonStyle from '@/app/_style/Button.module.scss';
+import styles from './Step3.module.scss';
+import buttonStyle from '@/moduleStyle/Button.module.scss';
 import cx from 'classnames';
 import Image from 'next/image';
 import useLuckyDrawStore from '@/store/luckydrawStore';
@@ -60,12 +60,12 @@ export default function Step3() {
   }, [idCardImgFile]);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={style.taxStep3}>
-      <div className={style.headInfoBox}>
+    <form onSubmit={handleSubmit(onSubmit)} className={styles.taxStep3}>
+      <div className={styles.headInfoBox}>
         <p>당첨자 신분증 제출</p>
       </div>
 
-      <div className={style.taxInfo}>
+      <div className={styles.taxInfo}>
         <p>
           {'제세공과금 신고를 위해 '}
           <span>{'당첨자 본인의 신분증'}</span>
@@ -97,7 +97,7 @@ export default function Step3() {
         }}
       />
 
-      <div className={style.fileInputArea} onClick={handleInputFileClick}>
+      <div className={styles.fileInputArea} onClick={handleInputFileClick}>
         <p>파일 및 이미지 첨부 (PDF, JPG, PNG 가능)</p>
         {fileUrl ? (
           fileType === 'application/pdf' ? (
@@ -107,7 +107,7 @@ export default function Step3() {
           )
         ) : null}
         {!fileUrl && (
-          <div className={style.fileInputBox}>
+          <div className={styles.fileInputBox}>
             <Image src="/images/icon.file.svg" alt="No Image" width={40} height={40} />
             <p>파일 첨부</p>
           </div>

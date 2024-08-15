@@ -1,14 +1,14 @@
 'use client';
-import style from './tax.module.scss';
+import styles from './tax.module.scss';
 import { useRouter, useSearchParams } from 'next/navigation';
 import React, { Suspense, useEffect } from 'react';
 import Step1 from '@/app/prize/luckydraw/tax/info/_containers/Step1';
-import TopNavigation from '@/app/_components/common/TopNavigation';
-import cx from 'classnames';
+import TopNavigation from '@/components/nav/TopNavigation';
 import Step2 from '@/app/prize/luckydraw/tax/info/_containers/Step2';
 import Step3 from '@/app/prize/luckydraw/tax/info/_containers/Step3';
 import Step4 from '@/app/prize/luckydraw/tax/info/_containers/Step4';
 import Step5 from '@/app/prize/luckydraw/tax/info/_containers/Step5';
+import { StepIndicator } from '@/components/common/StepIndicator';
 
 export default function LuckyDrawTaxInfo() {
   return (
@@ -37,16 +37,16 @@ function LuckyDrawInfoContent() {
   }, [step, router]);
 
   return (
-    <div className={style.luckyDrawPrizeTaxPage}>
+    <div className={styles.luckyDrawPrizeTaxPage}>
       {step ? (
         <>
           <TopNavigation title={parseFloat(step) !== 5 ? '제세공과금 정보 입력' : '배송정보 입력'} />
-          <TaxStepIndicator currentStep={parseFloat(step)} />
+          <StepIndicator currentStep={parseFloat(step)} />
         </>
       ) : (
         <>
           <TopNavigation title={'제세공과금 정보 입력'} />
-          <TaxStepIndicator currentStep={1} />
+          <StepIndicator currentStep={1} />
           <Step1 />
         </>
       )}
@@ -55,16 +55,6 @@ function LuckyDrawInfoContent() {
       {step === '3' && <Step3 />}
       {step === '4' && <Step4 />}
       {step === '5' && <Step5 />}
-    </div>
-  );
-}
-
-function TaxStepIndicator({ currentStep = 1, totalSteps = 5 }) {
-  return (
-    <div className={style.taxStepIndicator}>
-      {[...Array(totalSteps)].map((_, index) => {
-        return <div key={index} className={cx(style.step, index <= currentStep - 1 && style.active)}></div>;
-      })}
     </div>
   );
 }

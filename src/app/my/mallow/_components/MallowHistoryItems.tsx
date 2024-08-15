@@ -1,8 +1,8 @@
 'use client';
-import style from '@/app/my/mallow/page.module.scss';
+import styles from '@/app/my/mallow/page.module.scss';
 import { extractHourMinute, replaceAt } from '@/utils/utils';
 import React, { useMemo } from 'react';
-import { useMarshmallowHistoryQuery } from '@/app/_hook/queries/currency';
+import { useMarshmallowHistoryQuery } from '@/hooks/queries/currency';
 import useMallowHistoryStore from '@/store/mallowHistoryStore';
 
 export default function MallowHistoryItems() {
@@ -37,37 +37,37 @@ export default function MallowHistoryItems() {
   }
 
   if (result.data.length === 0) {
-    return <div className={style.oneYearNoneInfo}>최근 1년간 내역이 없습니다.</div>;
+    return <div className={styles.oneYearNoneInfo}>최근 1년간 내역이 없습니다.</div>;
   }
 
   console.log(groupDateMallowList);
   return (
     <>
-      <div className={style.actionHistory}>
+      <div className={styles.actionHistory}>
         {groupDateMallowList?.map((item, index) => {
           return (
             <>
               {index === 0 ? (
-                <div key={item.date} className={style.actionDate}>
+                <div key={item.date} className={styles.actionDate}>
                   {replaceAt(item.date, item.date.indexOf('.'), '\n')}
                 </div>
               ) : (
-                <div key={item.date} className={style.actionDate}>
+                <div key={item.date} className={styles.actionDate}>
                   {item.date.substring(item.date.indexOf('.') + 1)}
                 </div>
               )}
-              <div className={style.actionList}>
+              <div className={styles.actionList}>
                 {item?.mallowItems?.map((item: any) => {
                   return (
-                    <div key={item.createdAt} className={style.item}>
-                      <div className={style.info}>
+                    <div key={item.createdAt} className={styles.item}>
+                      <div className={styles.info}>
                         <div>{item.modifyReasonDescription}</div>
                         <div>{item.modifyReasonTitle}</div>
                         <div>
                           {extractHourMinute(item.createdAt)} | {item.state}
                         </div>
                       </div>
-                      <div className={style.count}>+{item.modifiedQuantity}개</div>
+                      <div className={styles.count}>+{item.modifiedQuantity}개</div>
                     </div>
                   );
                 })}
@@ -76,7 +76,7 @@ export default function MallowHistoryItems() {
           );
         })}
       </div>
-      <div className={style.oneYearInfo}>최근 1년 내역만 확인할 수 있습니다.</div>
+      <div className={styles.oneYearInfo}>최근 1년 내역만 확인할 수 있습니다.</div>
     </>
   );
 }

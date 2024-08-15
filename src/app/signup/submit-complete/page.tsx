@@ -1,5 +1,5 @@
 'use client';
-import style from './submitComplete.module.scss';
+import styles from './submitComplete.module.scss';
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -9,17 +9,17 @@ export default function SignupSubmitCompletePage() {
   const [isSubmit, setIsSubmit] = useState(true);
   const router = useRouter();
   return (
-    <div className={style.submitCompletePage}>
-      <div className={style.title}>지원 완료</div>
-      <div className={style.header}>
-        <div className={style.headerTitle}>마시멜로우 채용팀</div>
-        <div className={style.headerImage}>
+    <div className={styles.submitCompletePage}>
+      <div className={styles.title}>지원 완료</div>
+      <div className={styles.header}>
+        <div className={styles.headerTitle}>마시멜로우 채용팀</div>
+        <div className={styles.headerImage}>
           <Image src="/images/document.svg" alt="No Image" width={56} height={68} />
         </div>
       </div>
-      <div className={style.main}>
-        <div className={style.mainTitle}>{'00님,\n입사지원을 감사드려요!'}</div>
-        <div className={style.mainDescription}>
+      <div className={styles.main}>
+        <div className={styles.mainTitle}>{'00님,\n입사지원을 감사드려요!'}</div>
+        <div className={styles.mainDescription}>
           000님의 입사지원서가 무사히 제출되었어요! 마시멜로우에 관심을 가지고 지원해 주셔서 너무나도 기뻐요! :)
           <br />
           <br />
@@ -30,7 +30,7 @@ export default function SignupSubmitCompletePage() {
         </div>
       </div>
 
-      <div className={style.confirmButton} onClick={() => window.location.replace('/desk')}>
+      <div className={styles.confirmButton} onClick={() => window.location.replace('/desk')}>
         채용 결과 보기
       </div>
     </div>

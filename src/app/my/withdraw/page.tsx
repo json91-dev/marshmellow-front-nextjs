@@ -1,11 +1,11 @@
 'use client';
 
-import style from './page.module.scss';
+import styles from './page.module.scss';
 import React, { useCallback, useRef, useState } from 'react';
 import { debounce, getLocalStorage, setLocalStorage } from '@/utils/utils';
-import TopNavigation from '@/app/_components/common/TopNavigation';
+import TopNavigation from '@/components/nav/TopNavigation';
 import cx from 'classnames';
-import { useMemberProfileQuery } from '@/app/_hook/queries/member';
+import { useMemberProfileQuery } from '@/hooks/queries/member';
 import { useRouter } from 'next/navigation';
 
 export default function WithdrawPage() {
@@ -33,15 +33,15 @@ export default function WithdrawPage() {
   }, []);
 
   return (
-    <div className={style.withdrawPage}>
+    <div className={styles.withdrawPage}>
       <TopNavigation />
-      <div className={style.main}>
-        <div className={style.title}>{`${profileResult?.data?.profile?.nickname}님,\n탈퇴하는 이유가 무엇인가요?`}</div>
-        <div className={style.description}>더욱 성장하는 마시멜로우가 될 수 있도록 의견을 남겨주세요.</div>
-        <div className={style.reason}>
+      <div className={styles.main}>
+        <div className={styles.title}>{`${profileResult?.data?.profile?.nickname}님,\n탈퇴하는 이유가 무엇인가요?`}</div>
+        <div className={styles.description}>더욱 성장하는 마시멜로우가 될 수 있도록 의견을 남겨주세요.</div>
+        <div className={styles.reason}>
           <textarea ref={textRef} onChange={onChangeText} placeholder={'의견을 남겨주세요.'} />
         </div>
-        <div className={cx(style.confirmButton, isActive && style.isActive)} onClick={onClickConfirm}>
+        <div className={cx(styles.confirmButton, isActive && styles.isActive)} onClick={onClickConfirm}>
           확인
         </div>
       </div>

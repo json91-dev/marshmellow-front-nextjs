@@ -1,10 +1,10 @@
 'use client';
-import style from './termsBottomSheet.module.scss';
+import styles from './termsBottomSheet.module.scss';
 import useModalStore from '@/store/modalStore';
 import ModalBackdrop from '@/app/signup/@modal/identify/_components/ModalBackdrop';
 import { CSSTransition } from 'react-transition-group';
 import React, { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react';
-import Checkbox from '@/app/_components/common/Checkbox';
+import Checkbox from '@/components/forms/Checkbox';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import cx from 'classnames';
@@ -118,90 +118,90 @@ export default function TermsBottomSheet() {
         unmountOnExit
         nodeRef={bottomSheetRef}
       >
-        <div className={style.bottomSheet} ref={bottomSheetRef}>
-          <div className={style.topLine} />
-          <div className={style.content}>
-            <div className={style.allAgree}>
-              <label htmlFor={'all'} className={style.checkboxGroup}>
+        <div className={styles.bottomSheet} ref={bottomSheetRef}>
+          <div className={styles.topLine} />
+          <div className={styles.content}>
+            <div className={styles.allAgree}>
+              <label htmlFor={'all'} className={styles.checkboxGroup}>
                 <Checkbox
                   labelId={'all'}
                   checked={allCheck}
                   onChange={(e: ChangeEvent<HTMLInputElement>) => handleAllCheckboxChange(e.target.checked)}
                 />
-                <div className={style.title}>약관에 모두 동의합니다.</div>
+                <div className={styles.title}>약관에 모두 동의합니다.</div>
               </label>
             </div>
-            <div className={style.grayBoxArea}>
-              <div className={style.terms}>
-                <label htmlFor={'check1'} className={style.checkboxGroup}>
+            <div className={styles.grayBoxArea}>
+              <div className={styles.terms}>
+                <label htmlFor={'check1'} className={styles.checkboxGroup}>
                   <Checkbox
                     labelId={'check1'}
                     checked={check1}
                     onChange={(e: ChangeEvent<HTMLInputElement>) => setCheck1(e.target.checked)}
                   />
-                  <div className={style.title}>
+                  <div className={styles.title}>
                     (필수) 마시멜로우 <span>이용약관</span>에 동의합니다.
                   </div>
                 </label>
-                <div className={style.link}>
+                <div className={styles.link}>
                   <div>
                     <div>개인정보 수집 이용동의</div>
-                    <div className={style.image}>
+                    <div className={styles.image}>
                       <Image src="/images/arrow.right.svg" alt="No Image" width={24} height={24} />
                     </div>
                   </div>
 
                   <div>
                     <div>서비스 이용 약관 동의</div>
-                    <div className={style.image}>
+                    <div className={styles.image}>
                       <Image src="/images/arrow.right.svg" alt="No Image" width={24} height={24} />
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className={style.marketing}>
-                <label htmlFor={'check2'} className={style.checkboxGroup} style={{ marginBottom: '.2rem' }}>
+              <div className={styles.marketing}>
+                <label htmlFor={'check2'} className={styles.checkboxGroup} style={{ marginBottom: '.2rem' }}>
                   <Checkbox
                     labelId={'check2'}
                     checked={check2}
                     onChange={(e: ChangeEvent<HTMLInputElement>) => setCheck2(e.target.checked)}
                   />
-                  <div className={style.title} style={{ marginBottom: '.4rem' }}>
+                  <div className={styles.title} style={{ marginBottom: '.4rem' }}>
                     (선택) <span>마케팅 및 광고 정보 수신동의.</span>
                   </div>
                 </label>
-                <div className={style.description}>
+                <div className={styles.description}>
                   마케팅 정보 동의를 하면 마시멜로우의 다양한 혜택 및 이벤트를 빠르게 알 수 있어요
                 </div>
               </div>
 
-              <div className={style.push}>
-                <label htmlFor={'check3'} className={style.checkboxGroup} style={{ marginBottom: '.4rem' }}>
+              <div className={styles.push}>
+                <label htmlFor={'check3'} className={styles.checkboxGroup} style={{ marginBottom: '.4rem' }}>
                   <Checkbox
                     labelId={'check3'}
                     checked={check3}
                     onChange={(e: ChangeEvent<HTMLInputElement>) => setCheck3(e.target.checked)}
                   />
-                  <div className={style.title}>(선택) 푸시 알림 켜기</div>
+                  <div className={styles.title}>(선택) 푸시 알림 켜기</div>
                 </label>
-                <div className={style.description}>푸시 알림을 켜면 마시멜로우 획득에 도움이 돼요</div>
+                <div className={styles.description}>푸시 알림을 켜면 마시멜로우 획득에 도움이 돼요</div>
               </div>
 
-              <div className={style.age}>
-                <label htmlFor={'check4'} className={style.checkboxGroup}>
+              <div className={styles.age}>
+                <label htmlFor={'check4'} className={styles.checkboxGroup}>
                   <Checkbox
                     labelId={'check4'}
                     checked={check4}
                     onChange={(e: ChangeEvent<HTMLInputElement>) => setCheck4(e.target.checked)}
                   />
-                  <div className={style.title}>(필수) 만 14세 이상입니다.</div>
+                  <div className={styles.title}>(필수) 만 14세 이상입니다.</div>
                 </label>
               </div>
             </div>
           </div>
           <div
-            className={cx(check1 ? style.buttonActive : style.buttonInActive)}
+            className={cx(check1 ? styles.buttonActive : styles.buttonInActive)}
             onClick={() => {
               if (check1) {
                 router.push('/signup/info');

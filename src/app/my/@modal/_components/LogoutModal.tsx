@@ -1,5 +1,5 @@
 'use client';
-import style from './modal.module.scss';
+import styles from './modal.module.scss';
 import React from 'react';
 import { CSSTransition } from 'react-transition-group';
 import ModalBackdrop from '@/app/signup/@modal/identify/_components/ModalBackdrop';
@@ -20,12 +20,12 @@ export default function LogoutModal() {
       </CSSTransition>
 
       <CSSTransition in={isShowLogoutModal} timeout={200} unmountOnExit classNames="modal" nodeRef={modalRef}>
-        <div className={cx(style.logoutModal, 'modal')} ref={modalRef}>
-          <p className={style.title}>로그아웃 하시겠어요?</p>
-          <p className={style.description}>{'로그아웃시 로그인 화면으로 이동해요.\n다시 출근해주실거죠?'}</p>
+        <div className={cx(styles.logoutModal, 'modal')} ref={modalRef}>
+          <p className={styles.title}>로그아웃 하시겠어요?</p>
+          <p className={styles.description}>{'로그아웃시 로그인 화면으로 이동해요.\n다시 출근해주실거죠?'}</p>
 
           <button
-            className={style.confirmButton}
+            className={styles.confirmButton}
             onClick={async () => {
               showLogoutModal(false);
               await signOut({ callbackUrl: '/login' });
@@ -33,7 +33,7 @@ export default function LogoutModal() {
           >
             확인
           </button>
-          <button className={style.cancelButton} onClick={() => showLogoutModal(false)}>
+          <button className={styles.cancelButton} onClick={() => showLogoutModal(false)}>
             취소
           </button>
         </div>

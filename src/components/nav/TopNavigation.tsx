@@ -1,6 +1,6 @@
 'use client';
 
-import style from './topNavigation.module.scss';
+import styles from './topNavigation.module.scss';
 import Image from 'next/image';
 import React, { Suspense, useCallback } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
@@ -58,12 +58,12 @@ function TopNavigation({ title = '', path = '' }: Props) {
   }, [pathname, path]);
 
   return (
-    <div className={style.topNavigation}>
-      <div className={style.leftIcon} onClick={onClickBackButton}>
+    <div className={styles.topNavigation}>
+      <div className={styles.leftIcon} onClick={onClickBackButton}>
         <Image src="/images/arrow.left.svg" alt="No Image" width={24} height={24} />
       </div>
       {title ? <p>{title}</p> : <p></p>}
-      <div className={style.empty}></div>
+      <div className={styles.empty}></div>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 'use client';
-import style from './modal.module.scss';
+import styles from './modal.module.scss';
 import useModalStore from '@/store/modalStore';
 import React, { useCallback, useEffect, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
@@ -53,9 +53,9 @@ export default function LuckyDrawWinningCheckModal() {
       </CSSTransition>
 
       <CSSTransition in={isShowLuckyDrawWinningCheckModal} timeout={200} unmountOnExit classNames="modal" nodeRef={modalRef}>
-        <div className={cx(style.luckyDrawWinningCheckModal, 'modal')} ref={modalRef}>
+        <div className={cx(styles.luckyDrawWinningCheckModal, 'modal')} ref={modalRef}>
           <p>두근두근</p>
-          <div className={style.secondText}>
+          <div className={styles.secondText}>
             <div>긴장되는 순간</div>
             <div ref={dotsRef}>...</div>
           </div>

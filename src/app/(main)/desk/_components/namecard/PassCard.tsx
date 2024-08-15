@@ -1,5 +1,5 @@
 'use client';
-import style from './nameCard.module.scss';
+import styles from './nameCard.module.scss';
 import Image from 'next/image';
 import React, { useCallback, useEffect, useState } from 'react';
 import { isAppleDevice } from '@/utils/utils';
@@ -31,11 +31,11 @@ export default function PassCard() {
   }, []);
 
   return (
-    <div className={style.passCard}>
-      <div className={style.topName}>MARSHMALLOW</div>
+    <div className={styles.passCard}>
+      <div className={styles.topName}>MARSHMALLOW</div>
 
-      <div className={style.title}>출입증</div>
-      <div className={style.info}>
+      <div className={styles.title}>출입증</div>
+      <div className={styles.info}>
         <p>
           {'마시멜로우에 입사하시면\n'}
           <span className={'bold'}>{'다양한 혜택'}</span>
@@ -45,20 +45,20 @@ export default function PassCard() {
         </p>
       </div>
 
-      <div className={style.horizontalLine} />
+      <div className={styles.horizontalLine} />
 
-      <div className={style.loginButtons}>
-        <div className={style.kakaoButton} onClick={() => authLogin('kakao')}>
-          <div className={style.button}>
-            <div className={style.image}>
+      <div className={styles.loginButtons}>
+        <div className={styles.kakaoButton} onClick={() => authLogin('kakao')}>
+          <div className={styles.button}>
+            <div className={styles.image}>
               <Image width={18} height={18} src="/images/login.kakao.svg" alt="No Image" />
             </div>
             <p>카카오톡으로 시작하기</p>
           </div>
         </div>
-        <div className={style.googleButton} onClick={() => authLogin('google')}>
-          <div className={style.button}>
-            <div className={style.image}>
+        <div className={styles.googleButton} onClick={() => authLogin('google')}>
+          <div className={styles.button}>
+            <div className={styles.image}>
               <Image width={18} height={18} src="/images/login.google.svg" alt="No Image" />
             </div>
             <p>구글로 시작하기</p>
@@ -66,18 +66,18 @@ export default function PassCard() {
         </div>
 
         {/*{isAppleOS !== null && !isAppleOS ? (*/}
-        {/*  <div className={style.googleButton} onClick={() => authLogin('google')}>*/}
-        {/*    <div className={style.button}>*/}
-        {/*      <div className={style.image}>*/}
+        {/*  <div className={styles.googleButton} onClick={() => authLogin('google')}>*/}
+        {/*    <div className={styles.button}>*/}
+        {/*      <div className={styles.image}>*/}
         {/*        <Image width={18} height={18} src="/images/login.google.svg" alt="No Image" />*/}
         {/*      </div>*/}
         {/*      <p>구글로 시작하기</p>*/}
         {/*    </div>*/}
         {/*  </div>*/}
         {/*) : (*/}
-        {/*  <div className={style.appleButton} onClick={() => authLogin('apple')}>*/}
-        {/*    <div className={style.button}>*/}
-        {/*      <div className={style.image}>*/}
+        {/*  <div className={styles.appleButton} onClick={() => authLogin('apple')}>*/}
+        {/*    <div className={styles.button}>*/}
+        {/*      <div className={styles.image}>*/}
         {/*        <Image width={18} height={18} src="/images/login.apple.svg" alt="No Image" />*/}
         {/*      </div>*/}
         {/*      <p>Apple로 시작하기</p>*/}
@@ -85,7 +85,7 @@ export default function PassCard() {
         {/*  </div>*/}
         {/*)}*/}
       </div>
-      <div className={style.logo} />
+      <div className={styles.logo} />
     </div>
   );
 }

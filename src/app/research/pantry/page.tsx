@@ -2,7 +2,8 @@
 
 import React, { Suspense, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import Main from '@/app/research/pantry/_containers/main';
+import Main from '@/app/research/pantry/_containers/Main';
+import Step1 from '@/app/research/pantry/_containers/Step1';
 
 export default function PantryResearchPage() {
   return (
@@ -31,7 +32,7 @@ function PantryResearchContent() {
   }, [step, router]);
 
   if (step) {
-    return <div>하이</div>;
+    return <>{step === '1' && <Step1 />}</>;
   }
 
   return <Main />;

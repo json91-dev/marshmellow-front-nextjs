@@ -1,5 +1,5 @@
 'use client';
-import style from './missionCalendar.module.scss';
+import styles from './missionCalendar.module.scss';
 import Image from 'next/image';
 import React, { useCallback, useEffect, useState } from 'react';
 import { getCalendarData } from '@/utils/utils';
@@ -8,8 +8,8 @@ import isBetween from 'dayjs/plugin/isBetween';
 dayjs.extend(isBetween);
 import { useSession } from 'next-auth/react';
 import MissionCalendarGuest from '@/app/attendance/_components/guest/MissionCalendarGuest';
-import { useWorkMonthlyQuery } from '@/app/_hook/queries/activity';
-import { useMemberProfileQuery } from '@/app/_hook/queries/member';
+import { useWorkMonthlyQuery } from '@/hooks/queries/activity';
+import { useMemberProfileQuery } from '@/hooks/queries/member';
 import useModalStore from '@/store/modalStore';
 import useToastStore from '@/store/toastStore';
 const DAY_LIST = ['일', '월', '화', '수', '목', '금', '토'];
@@ -62,21 +62,21 @@ export default function MissionCalendar() {
   const memberStartDate = dayjs(profileResult?.data.createdAt);
 
   return (
-    <div className={style.missionCalendar}>
+    <div className={styles.missionCalendar}>
       <MonthHeader date={date} setDate={setDate} />
-      <div className={style.calendarBody}>
-        <div className={style.days}>
+      <div className={styles.calendarBody}>
+        <div className={styles.days}>
           {DAY_LIST.map((day) => {
             return <p key={day}>{day}</p>;
           })}
         </div>
-        <div className={style.dates}>
+        <div className={styles.dates}>
           {calendarList?.map((week, weekIndex) => {
             return (
-              <div className={style.week} key={weekIndex}>
+              <div className={styles.week} key={weekIndex}>
                 {week.map((item, dayIndex) => {
                   if (item === 0) {
-                    return <div key={`empty-${weekIndex}-${dayIndex}`} className={style.dateItem} />;
+                    return <div key={`empty-${weekIndex}-${dayIndex}`} className={styles.dateItem} />;
                   }
 
                   return <CalendarMallowItem key={item.date} item={item} memberStartDate={memberStartDate} />;
@@ -101,15 +101,15 @@ function MonthHeader({ date, setDate }: { date: Dayjs; setDate: any }) {
 
   /** TODO: 추후 1월, 2월, 3월에 에러 발생 예정. **/
   return (
-    <div className={style.monthHeader}>
+    <div className={styles.monthHeader}>
       {showPreviousButton && (
-        <div className={style.leftButton} onClick={() => setDate(date.subtract(1, 'month'))}>
+        <div className={styles.leftButton} onClick={() => setDate(date.subtract(1, 'month'))}>
           <Image src="/images/arrow.calendar.left.svg" alt="No Image" width={24} height={24} />
         </div>
       )}
       <p>{date.month() + 1}월</p>
       {showNextButton && (
-        <div className={style.rightButton} onClick={() => setDate(date.add(1, 'month'))}>
+        <div className={styles.rightButton} onClick={() => setDate(date.add(1, 'month'))}>
           <Image src="/images/arrow.calendar.right.svg" alt="No Image" width={24} height={24} />
         </div>
       )}
@@ -120,19 +120,19 @@ function MonthHeader({ date, setDate }: { date: Dayjs; setDate: any }) {
 /** 하단 미션 정보 표기 **/
 function MissionInfo() {
   return (
-    <div className={style.missionInfo}>
-      <div className={style.missions}>
-        <div className={style.missionItem}>
+    <div className={styles.missionInfo}>
+      <div className={styles.missions}>
+        <div className={styles.missionItem}>
           <Image src="/images/snack.gray.svg" alt="No Image" width={24} height={24} />
           <p>업무 1개 완수</p>
         </div>
 
-        <div className={style.missionItem}>
+        <div className={styles.missionItem}>
           <Image src="/images/snack.purple.light.svg" alt="No Image" width={24} height={24} />
           <p>업무 2개 완수</p>
         </div>
 
-        <div className={style.missionItem}>
+        <div className={styles.missionItem}>
           <Image src="/images/snack.purple.svg" alt="No Image" width={24} height={24} />
           <p>업무 3개 완수</p>
         </div>
@@ -160,25 +160,25 @@ function CalendarMallowItem({ item, memberStartDate }: { item: calendarItem; mem
 
   if (item.completeCount > 0) {
     return (
-      <div key={item.date} className={style.dateItem}>
+      <div key={item.date} className={styles.dateItem}>
         {item.completeCount === 1 && <Image src="/images/snack.gray.svg" alt="No Image" width={28} height={28} />}
         {item.completeCount === 2 && <Image src="/images/snack.purple.light.svg" alt="No Image" width={28} height={28} />}
         {item.completeCount === 3 && <Image src="/images/snack.purple.svg" alt="No Image" width={28} height={28} />}
-        {item.today && <div className={style.dot} />}
+        {item.today && <div className={styles.dot} />}
       </div>
     );
   }
 
   return (
-    <div key={item.date} className={style.dateItem}>
+    <div key={item.date} className={styles.dateItem}>
       {isBeforeMemberStart && (
         <div>
-          <p className={style.gray}>{item.name}</p>
+          <p className={styles.gray}>{item.name}</p>
         </div>
       )}
 
       {isBetweenTodayAndMemberStart && (
-        <div className={style.missionFail} onClick={() => onClickMissionFailed(item.date)}>
+        <div className={styles.missionFail} onClick={() => onClickMissionFailed(item.date)}>
           <p>{item.name}</p>
         </div>
       )}
@@ -195,7 +195,7 @@ function CalendarMallowItem({ item, memberStartDate }: { item: calendarItem; mem
         </div>
       )}
 
-      {item.today && <div className={style.dot} />}
+      {item.today && <div className={styles.dot} />}
     </div>
   );
 }

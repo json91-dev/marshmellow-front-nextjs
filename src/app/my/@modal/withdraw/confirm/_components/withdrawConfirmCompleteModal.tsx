@@ -1,5 +1,5 @@
 'use client';
-import style from './modal.module.scss';
+import styles from './modal.module.scss';
 import React, { useCallback } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import ModalBackdrop from '@/app/signup/@modal/identify/_components/ModalBackdrop';
@@ -29,12 +29,12 @@ export default function WithdrawConfimCompleteModal() {
         classNames="modal"
         nodeRef={modalRef}
       >
-        <div className={cx(style.withdrawConfirmModal, 'modal')} ref={modalRef}>
-          <p className={style.title}>탈퇴처리 되었어요</p>
+        <div className={cx(styles.withdrawConfirmModal, 'modal')} ref={modalRef}>
+          <p className={styles.title}>탈퇴처리 되었어요</p>
           <p
-            className={style.description}
+            className={styles.description}
           >{`정보가 안전하게 비활성화 처리되었습니다. 30일간 보관되며 다시 돌아오길 기다리고 있을게요🥺`}</p>
-          <div className={style.confirmButton} onClick={onClickConfirm}>
+          <div className={styles.confirmButton} onClick={onClickConfirm}>
             확인
           </div>
         </div>

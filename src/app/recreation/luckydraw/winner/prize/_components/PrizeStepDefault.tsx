@@ -1,5 +1,5 @@
 'use client';
-import style from './prizeStepDefault.module.scss';
+import styles from './prizeStepDefault.module.scss';
 import { useRouter } from 'next/navigation';
 import Confetti from 'react-confetti';
 import React, { useEffect, useRef, useState } from 'react';
@@ -23,8 +23,8 @@ export default function PrizeStepDefault() {
     randomPrize.current = Math.floor(Math.random() * 3 + 1);
   }, []);
   return (
-    <div ref={mallowPageRef} className={cx(style.prizeStepDefault, randomPrize.current === 1 && style.fistPrize)}>
-      <div className={style.confetti}>
+    <div ref={mallowPageRef} className={cx(styles.prizeStepDefault, randomPrize.current === 1 && styles.fistPrize)}>
+      <div className={styles.confetti}>
         {mallowPageClientWidthHeight && (
           <Confetti
             numberOfPieces={60}
@@ -34,31 +34,31 @@ export default function PrizeStepDefault() {
         )}
       </div>
 
-      <div className={style.main}>
-        <div className={style.warning}>
+      <div className={styles.main}>
+        <div className={styles.warning}>
           <p>{'0000.00.00 까지 수령정보를 입력해주세요.\n기간 내 정보 미제출 시 경품수령이 불가합니다.'}</p>
         </div>
-        <p className={style.title}>{randomPrize.current}등 당첨!</p>
-        <div className={style.prize}></div>
-        <p className={style.info}>{'[경품 이름]\n두줄인경우'}</p>
-        <p className={style.detail}>
+        <p className={styles.title}>{randomPrize.current}등 당첨!</p>
+        <div className={styles.prize}></div>
+        <p className={styles.info}>{'[경품 이름]\n두줄인경우'}</p>
+        <p className={styles.detail}>
           {'당첨 안내 문자를 받을 연락처를 확인해주세요.\n(본인인증 완료한 연락처로만 가능합니다.)'}
         </p>
 
-        <div className={style.phoneInfo}>
+        <div className={styles.phoneInfo}>
           <p>연락처</p>
           <p>인증된 연락처가 변경된 경우 본인인증 후 변경이 가능해요.</p>
         </div>
 
-        <div className={style.phone}>
-          <p className={style.number}>010-0000-0000</p>
-          <div className={style.changeButton} onClick={() => openToast('PASS 본인인증 이동')}>
+        <div className={styles.phone}>
+          <p className={styles.number}>010-0000-0000</p>
+          <div className={styles.changeButton} onClick={() => openToast('PASS 본인인증 이동')}>
             <p>변경하기</p>
           </div>
         </div>
       </div>
 
-      <button onClick={() => showLuckyDrawWinnerPrizePhoneCheckModal(true)} className={style.confirmButton}>
+      <button onClick={() => showLuckyDrawWinnerPrizePhoneCheckModal(true)} className={styles.confirmButton}>
         확인
       </button>
     </div>

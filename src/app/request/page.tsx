@@ -1,9 +1,9 @@
 'use client';
 
-import TopNavigation from '@/app/_components/common/TopNavigation';
-import style from './page.module.scss';
+import TopNavigation from '@/components/nav/TopNavigation';
+import styles from './page.module.scss';
 import { useForm } from 'react-hook-form';
-import buttonStyle from '@/app/_style/Button.module.scss';
+import buttonStyle from '@/moduleStyle/Button.module.scss';
 import cx from 'classnames';
 import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
@@ -40,27 +40,27 @@ export default function RequestPage() {
   }, [attachmentFiles]);
 
   return (
-    <div className={style.requestNew}>
+    <div className={styles.requestNew}>
       <TopNavigation title={'문의하기'} />
 
-      <div className={style.scrollArea}>
-        <p className={style.header}>
+      <div className={styles.scrollArea}>
+        <p className={styles.header}>
           {'안녕하세요 :)\n'}
           {'어떤 도움이 필요하신가요?'}
         </p>
 
-        <div className={style.inputTextArea}>
+        <div className={styles.inputTextArea}>
           <textarea
             {...register('InquiryTextArea')}
             maxLength={1000}
             placeholder={'문의할 내용을 남겨주세요. 궁금한 부분을 사진으로 첨부해주시면 좀 더 정확한 답변을 받을 수 있어요.'}
           />
-          <div className={style.charCount}>
+          <div className={styles.charCount}>
             <p>{InquiryTextArea ? InquiryTextArea.length : 0}/1000</p>
           </div>
         </div>
 
-        <div className={style.inputImageArea}>
+        <div className={styles.inputImageArea}>
           <input
             type="file"
             hidden={true}
@@ -72,13 +72,13 @@ export default function RequestPage() {
               hiddenInputRef.current = e;
             }}
           />
-          <p className={style.infoAttachment}>이미지 첨부 (JPG PNG 가능)</p>
+          <p className={styles.infoAttachment}>이미지 첨부 (JPG PNG 가능)</p>
 
-          <div className={style.swiperImages}>
-            <div className={style.fileInputBox} onClick={handleInputFileClick}>
+          <div className={styles.swiperImages}>
+            <div className={styles.fileInputBox} onClick={handleInputFileClick}>
               <Image src="/images/icon.camera.svg" alt="No Image" width={40} height={40} />
-              <p className={style.fileCount}>
-                <span className={cx(base64Images.length > 0 && style.highlight)}>{base64Images.length}</span>/10
+              <p className={styles.fileCount}>
+                <span className={cx(base64Images.length > 0 && styles.highlight)}>{base64Images.length}</span>/10
               </p>
             </div>
 
@@ -88,9 +88,9 @@ export default function RequestPage() {
                   return null;
                 }
                 return (
-                  <div className={style.imgFileItem}>
+                  <div className={styles.imgFileItem}>
                     <Image src={base64} alt={'No Image'} key={index} fill />
-                    <div className={style.imgFileCancel} onClick={() => onImageFileCancel(index)}>
+                    <div className={styles.imgFileCancel} onClick={() => onImageFileCancel(index)}>
                       <Image src={'/images/x.circle.cancel.svg'} alt={'No Image'} key={index} fill />
                     </div>
                   </div>
@@ -99,9 +99,9 @@ export default function RequestPage() {
           </div>
         </div>
 
-        <div className={style.notification}>
+        <div className={styles.notification}>
           <p>안내사항</p>
-          <div className={style.notificationDetail}>
+          <div className={styles.notificationDetail}>
             <p>{'· 고객센터 운영시간은 평일 09:00 ~ 18:00 예요.\n'}</p>
             <p>{'· 산업안전보건법에 따라 고객응대 근로자 보호자조치를 하고 있으며 모든 문의는 기록이 남아요.\n'}</p>
             <p>{'· 문의하기 버튼을 누르시면 개인정보 수집 이용동의서에 동의한 것으로 간주해요.\n'}</p>

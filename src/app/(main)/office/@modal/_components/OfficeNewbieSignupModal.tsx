@@ -1,5 +1,5 @@
 'use client';
-import style from './modal.module.scss';
+import styles from './modal.module.scss';
 import useModalStore from '@/store/modalStore';
 import React, { useCallback, useEffect, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
@@ -54,17 +54,17 @@ export default function OfficeNewbieSignupModal() {
       </CSSTransition>
 
       <CSSTransition in={isShowOfficeNewbieSignupModal} timeout={200} unmountOnExit classNames="modal" nodeRef={modalRef}>
-        <div className={cx(style.officeNewbieSignupModal, 'modal')} ref={modalRef}>
-          <div className={style.title}>
+        <div className={cx(styles.officeNewbieSignupModal, 'modal')} ref={modalRef}>
+          <div className={styles.title}>
             {officeNewbieSignupStatus === 'work' && <>{`취준생님의 회사 출근 체험 성공!`}</>}
             {officeNewbieSignupStatus === 'workEnd' && <>{`취준생님의 구내 식당 점심 체험 성공!`}</>}
             {officeNewbieSignupStatus === 'lunch' && <>{`취준생님의 회사 퇴근 체험 성공!`}</>}
             {officeNewbieSignupStatus === 'idle' && <>{`입사 후 근태 관리를 할 수 있어요!`}</>}
           </div>
-          <div className={style.characterImg}>
+          <div className={styles.characterImg}>
             <Image src="/images/mallow.happy.svg" alt="No Image" width={72} height={72} />
           </div>
-          <div className={style.description}>
+          <div className={styles.description}>
             {officeNewbieSignupStatus === 'idle' ? (
               <>{`마시멜로우에 빠르게 입사 지원하고\n열심히 일한 나의 출근 기록을 남겨보세요.`}</>
             ) : (
@@ -72,19 +72,19 @@ export default function OfficeNewbieSignupModal() {
             )}
           </div>
 
-          <div className={style.loginButtons}>
-            <div className={style.kakaoButton} onClick={() => authLogin('kakao')}>
-              <div className={style.button}>
-                <div className={style.image}>
+          <div className={styles.loginButtons}>
+            <div className={styles.kakaoButton} onClick={() => authLogin('kakao')}>
+              <div className={styles.button}>
+                <div className={styles.image}>
                   <Image width={18} height={18} src="/images/login.kakao.svg" alt="No Image" />
                 </div>
                 <p>카카오톡으로 시작하기</p>
               </div>
             </div>
 
-            <div className={style.googleButton} onClick={() => authLogin('google')}>
-              <div className={style.button}>
-                <div className={style.image}>
+            <div className={styles.googleButton} onClick={() => authLogin('google')}>
+              <div className={styles.button}>
+                <div className={styles.image}>
                   <Image width={18} height={18} src="/images/login.google.svg" alt="No Image" />
                 </div>
                 <p>구글로 시작하기</p>
@@ -92,18 +92,18 @@ export default function OfficeNewbieSignupModal() {
             </div>
 
             {/*{isAppleOS !== null && !isAppleOS ? (*/}
-            {/*  <div className={style.googleButton} onClick={() => authLogin('google')}>*/}
-            {/*    <div className={style.button}>*/}
-            {/*      <div className={style.image}>*/}
+            {/*  <div className={styles.googleButton} onClick={() => authLogin('google')}>*/}
+            {/*    <div className={styles.button}>*/}
+            {/*      <div className={styles.image}>*/}
             {/*        <Image width={18} height={18} src="/images/login.google.svg" alt="No Image" />*/}
             {/*      </div>*/}
             {/*      <p>구글로 시작하기</p>*/}
             {/*    </div>*/}
             {/*  </div>*/}
             {/*) : (*/}
-            {/*  <div className={style.appleButton} onClick={() => authLogin('apple')}>*/}
-            {/*    <div className={style.button}>*/}
-            {/*      <div className={style.image}>*/}
+            {/*  <div className={styles.appleButton} onClick={() => authLogin('apple')}>*/}
+            {/*    <div className={styles.button}>*/}
+            {/*      <div className={styles.image}>*/}
             {/*        <Image width={18} height={18} src="/images/login.apple.svg" alt="No Image" />*/}
             {/*      </div>*/}
             {/*      <p>Apple로 시작하기</p>*/}
@@ -112,7 +112,7 @@ export default function OfficeNewbieSignupModal() {
             {/*)}*/}
           </div>
 
-          <div className={style.laterButton} onClick={onClickLaterButton}>
+          <div className={styles.laterButton} onClick={onClickLaterButton}>
             {officeNewbieSignupStatus === 'idle' ? <p>다음에 지원하기</p> : <p>마시멜로우 다음에 받기</p>}
           </div>
         </div>

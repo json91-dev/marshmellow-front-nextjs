@@ -1,0 +1,72 @@
+.radioButton {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .radioLabel {
+    user-select: none;
+    position:relative;
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    p {
+      margin-left: 1.2rem;
+      color: #1C222B;
+      font-size: 1.4rem;
+      line-height: 2rem;
+      font-weight: 400;
+    }
+
+    input[type="radio"] {
+      -webkit-appearance: none; // 웹킷 브라우저에서 기본 스타일 제거
+      -moz-appearance: none; // 모질라 브라우저에서 기본 스타일 제거
+      width: 2.4rem;
+      height: 2.4rem;
+      border-radius: 50%;
+      border: 1px solid #ACB6CA;
+      background-color: white;
+      cursor: pointer;
+
+      &:checked {
+        border: 3px solid #BB4EF2;
+        background-color: white;
+        padding: 3px;
+        cursor: pointer;
+      }
+
+      &:checked ~ .radioInnerCircle {
+        position: absolute;
+        top: 50%;
+        left: calc(1.2rem);
+        transform: translate(-50%, -50%);
+        background: #BB4EF2;
+        width: 1.3rem;
+        height: 1.3rem;
+        border-radius: 50%;
+      }
+    }
+  }
+
+
+  .textInputWrapper {
+    input[type="text"] {
+      border-top: transparent;
+      border-left: transparent;
+      border-right: transparent;
+      border-bottom: 1px solid #ACB6CA;
+
+      font-size: 1.6rem;
+      height: 4.8rem;
+      padding-left: 1.2rem;
+      width: 100%;
+      outline: none;
+
+      &:focus {
+        border-bottom: 1px solid black;
+      }
+    }
+  }
+}

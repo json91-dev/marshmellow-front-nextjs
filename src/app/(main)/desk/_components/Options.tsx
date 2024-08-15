@@ -1,6 +1,6 @@
 'use client';
 
-import style from './options.module.scss';
+import styles from './options.module.scss';
 import Image from 'next/image';
 import React, { useCallback } from 'react';
 import { useRouter } from 'next/navigation';
@@ -35,11 +35,11 @@ export default function Options() {
   }, [status]);
 
   return (
-    <div className={style.options}>
-      <div className={style.image} onClick={onClickNotice}>
+    <div className={styles.options}>
+      <div className={styles.image} onClick={onClickNotice}>
         <Image src="/images/notice.svg" alt="No Image" width={25} height={25} />
       </div>
-      <div className={style.image} onClick={onClickSetting}>
+      <div className={styles.image} onClick={onClickSetting}>
         <Image src="/images/setting.svg" width={25} height={25} alt={'No Image'} />
       </div>
     </div>

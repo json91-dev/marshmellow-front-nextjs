@@ -1,72 +1,72 @@
-import style from './page.module.scss';
-import TopNavigation from '@/app/_components/common/TopNavigation';
-import Checkbox from '@/app/_components/common/Checkbox';
+import styles from './page.module.scss';
+import TopNavigation from '@/components/nav/TopNavigation';
+import Checkbox from '@/components/forms/Checkbox';
 import Image from 'next/image';
 import React from 'react';
 
 export default function AddressEditPage() {
   return (
-    <div className={style.addressEditPage}>
+    <div className={styles.addressEditPage}>
       <TopNavigation title={'배송지 수정하기'} />
-      <div className={style.content}>
-        <div className={style.mainAddressCheck}>
+      <div className={styles.content}>
+        <div className={styles.mainAddressCheck}>
           <Checkbox />
           <div>대표 배송지로 설정하기</div>
         </div>
 
-        <div className={style.addressName}>
-          <label className={style.label} htmlFor={'locationName'}>
+        <div className={styles.addressName}>
+          <label className={styles.label} htmlFor={'locationName'}>
             배송지명(선택)
           </label>
           <input id={'locationName'} placeholder={'배송지명'} type="text" />
         </div>
 
-        <div className={style.name}>
-          <label className={style.label} htmlFor={'name'}>
+        <div className={styles.name}>
+          <label className={styles.label} htmlFor={'name'}>
             *이름
           </label>
           <input id={'name'} type="text" placeholder={'이름'} />
         </div>
 
-        <div className={style.address}>
-          <label className={style.label} htmlFor={'address'}>
+        <div className={styles.address}>
+          <label className={styles.label} htmlFor={'address'}>
             *주소
           </label>
-          <div className={style.addressSearch}>
+          <div className={styles.addressSearch}>
             <input id={'addressZip'} type="text" disabled={true} placeholder={'우편번호'} />
             <div>
-              <button className={style.addressSearchButton}>주소 검색</button>
+              <button className={styles.addressSearchButton}>주소 검색</button>
             </div>
           </div>
-          <div className={style.addressStreet}>
+          <div className={styles.addressStreet}>
             <input id={'addressStreet'} type="text" disabled={true} placeholder={'주소를 입력해주세요'} />
           </div>
 
-          <div className={style.addressDetail}>
+          <div className={styles.addressDetail}>
             <input id={'addressDetail'} type="text" placeholder={'사는 곳 동,호수를 입력해 주세요.'} />
           </div>
         </div>
 
-        <div className={style.phone}>
-          <label className={style.label} htmlFor={'name'}>
+        <div className={styles.phone}>
+          <label className={styles.label} htmlFor={'name'}>
             *연락처1
           </label>
-          <div className={style.phoneAddMore}>
+          <div className={styles.phoneAddMore}>
             <input id={'number'} type="text" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}" />
-            <div className={style.image}>
+            <div className={styles.image}>
               <Image src="/images/plus.circle.svg" alt="No Image" width={24} height={24} />
             </div>
           </div>
         </div>
 
-        <div className={style.request}>
-          <label className={style.label} htmlFor={'name'}>
+        <div className={styles.request}>
+          <label className={styles.label} htmlFor={'name'}>
             요청사항
           </label>
           <input id={'name'} type="text" />
         </div>
 
-        <button className={style.confirmButton}>확인</button>
+        <button className={styles.confirmButton}>확인</button>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 'use client';
-import style from './page.module.scss';
+import styles from './page.module.scss';
 import React, { useState } from 'react';
 import TutorialBottomNavMenu from '@/app/onboarding/tutorial/_components/TutorialBottomNavMenu';
 import Tutorial1 from '@/app/onboarding/tutorial/_components/TutorialPage.1';
@@ -14,14 +14,14 @@ export default function OnBoardingPage() {
   const [tutorialStep, setTutorialStep] = useState(1);
 
   return (
-    <div className={style.tutorialPage}>
-      <div className={style.layoutChild}>{tutorialStep === 1 && <Tutorial1 setTutorialStep={setTutorialStep} />}</div>
-      <div className={style.layoutChild}>{tutorialStep === 2 && <Tutorial2 setTutorialStep={setTutorialStep} />}</div>
-      <div className={style.layoutChild}>{tutorialStep === 3 && <Tutorial3 setTutorialStep={setTutorialStep} />}</div>
-      <div className={style.layoutChild}>{tutorialStep === 4 && <Tutorial4 setTutorialStep={setTutorialStep} />}</div>
-      <div className={style.layoutChild}>{tutorialStep === 5 && <Tutorial5 setTutorialStep={setTutorialStep} />}</div>
-      <div className={style.layoutChild}>{tutorialStep === 6 && <Tutorial6 setTutorialStep={setTutorialStep} />}</div>
-      <div className={style.layoutChild}>{tutorialStep === 7 && <Tutorial7 setTutorialStep={setTutorialStep} />}</div>
+    <div className={styles.tutorialPage}>
+      <div className={styles.layoutChild}>{tutorialStep === 1 && <Tutorial1 setTutorialStep={setTutorialStep} />}</div>
+      <div className={styles.layoutChild}>{tutorialStep === 2 && <Tutorial2 setTutorialStep={setTutorialStep} />}</div>
+      <div className={styles.layoutChild}>{tutorialStep === 3 && <Tutorial3 setTutorialStep={setTutorialStep} />}</div>
+      <div className={styles.layoutChild}>{tutorialStep === 4 && <Tutorial4 setTutorialStep={setTutorialStep} />}</div>
+      <div className={styles.layoutChild}>{tutorialStep === 5 && <Tutorial5 setTutorialStep={setTutorialStep} />}</div>
+      <div className={styles.layoutChild}>{tutorialStep === 6 && <Tutorial6 setTutorialStep={setTutorialStep} />}</div>
+      <div className={styles.layoutChild}>{tutorialStep === 7 && <Tutorial7 setTutorialStep={setTutorialStep} />}</div>
 
       <TutorialBottomNavMenu tutorialStep={tutorialStep} />
     </div>

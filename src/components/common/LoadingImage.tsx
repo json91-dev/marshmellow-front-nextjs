@@ -1,4 +1,4 @@
-import style from './loadingImage.module.scss';
+import styles from './loadingImage.module.scss';
 import React, { useState } from 'react';
 import Image from 'next/image';
 import cx from 'classnames';
@@ -12,12 +12,12 @@ function LoadingImage() {
         alt={'No Image'}
         fill
         onLoadingComplete={() => setLoading(false)}
-        className={cx(loading && style.hidden)}
+        className={cx(loading && styles.hidden)}
       />
       {loading && (
-        <div className={style.spinnerContainer}>
-          <div className={style.spinner}>
-            <div className={style.spinnerInner}></div>
+        <div className={styles.spinnerContainer}>
+          <div className={styles.spinner}>
+            <div className={styles.spinnerInner}></div>
           </div>
         </div>
       )}

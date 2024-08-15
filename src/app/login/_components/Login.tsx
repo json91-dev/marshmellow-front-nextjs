@@ -7,7 +7,7 @@ import GoogleLoginButton from '@/app/login/_components/GoogleLoginButton';
 import React, { memo, useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import style from '@/app/login/page.module.scss';
+import styles from '@/app/login/page.module.scss';
 
 export default memo(function Login() {
   const [isAppleOS, setIsAppleOS] = useState<boolean>(null!);
@@ -59,7 +59,7 @@ export default memo(function Login() {
           <GoogleLoginButton style={{ marginTop: '1rem' }} />
         )}
 
-        <div className={style.lookAroundButton} onClick={() => router.replace('/desk')}>
+        <div className={styles.lookAroundButton} onClick={() => router.replace('/desk')}>
           <p>마시멜로우 둘러보기 </p>
         </div>
       </>

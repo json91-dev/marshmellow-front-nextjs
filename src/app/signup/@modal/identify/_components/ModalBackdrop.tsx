@@ -1,5 +1,5 @@
 'use client';
-import style from './modalBackdrop.module.scss';
+import styles from './modalBackdrop.module.scss';
 import { ForwardedRef, forwardRef, MouseEventHandler } from 'react';
 
 interface ModalBackdropProps {
@@ -9,7 +9,7 @@ interface ModalBackdropProps {
 const ModalBackdrop = forwardRef((props: ModalBackdropProps, ref?: ForwardedRef<HTMLDivElement>) => {
   const { onClick } = props;
 
-  return <div ref={!!ref ? ref : null} className={style.container} onClick={onClick || (() => {})}></div>;
+  return <div ref={!!ref ? ref : null} className={styles.container} onClick={onClick || (() => {})}></div>;
 });
 
 export default ModalBackdrop;

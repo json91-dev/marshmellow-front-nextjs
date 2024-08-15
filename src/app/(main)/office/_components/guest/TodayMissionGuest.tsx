@@ -1,11 +1,11 @@
 'use client';
-import style from '@/app/(main)/office/page.module.scss';
+import styles from '@/app/(main)/office/page.module.scss';
 import cx from 'classnames';
 import Image from 'next/image';
 import React, { useMemo } from 'react';
-import { useMemberProfileQuery } from '@/app/_hook/queries/member';
-import useMinuteUpdater from '@/app/_hook/useMinuteUpdater';
-import { useWorkTodayQuery } from '@/app/_hook/queries/activity';
+import { useMemberProfileQuery } from '@/hooks/queries/member';
+import useMinuteUpdater from '@/hooks/useMinuteUpdater';
+import { useWorkTodayQuery } from '@/hooks/queries/activity';
 import dayjs from 'dayjs';
 import { formatDateToTodayDate, getWorkTimeRangeString } from '@/utils/utils';
 import isBetween from 'dayjs/plugin/isBetween';
@@ -78,20 +78,20 @@ export default function TodayMissionGuest() {
   }, [currentTimeEveryMinute]);
 
   return (
-    <div className={style.todayMission}>
-      <div className={style.header}>
-        <p className={style.title}>오늘의 업무</p>
-        <p className={style.date}>{todayDate}</p>
+    <div className={styles.todayMission}>
+      <div className={styles.header}>
+        <p className={styles.title}>오늘의 업무</p>
+        <p className={styles.date}>{todayDate}</p>
       </div>
 
-      <div className={style.missionTime}>
+      <div className={styles.missionTime}>
         {workState?.map((item, index) => {
           const { quantity, state: missionState, workTimeRange, name } = item;
 
           return (
-            <div key={index} className={cx(style.row, item.active && style.active)}>
-              <p className={style.name}>{name}</p>
-              <p className={style.time}>{workTimeRange}</p>
+            <div key={index} className={cx(styles.row, item.active && styles.active)}>
+              <p className={styles.name}>{name}</p>
+              <p className={styles.time}>{workTimeRange}</p>
               <MissionBox state={missionState} quantity={quantity} />
             </div>
           );
@@ -114,14 +114,14 @@ function MissionBox({ state, quantity }: missionBoxProps) {
   if (state === 'Complete' || state === 'Failed') {
     if (quantity === 0) {
       return (
-        <div className={cx(style.missionBox, style.failed)}>
+        <div className={cx(styles.missionBox, styles.failed)}>
           <Image src="/images/snack.gray.svg" alt="No Image" width={20} height={20} />
           <p>+{quantity}</p>
         </div>
       );
     } else {
       return (
-        <div className={cx(style.missionBox, style.success)}>
+        <div className={cx(styles.missionBox, styles.success)}>
           <Image src="/images/snack.gray.svg" alt="No Image" width={20} height={20} />
           <p>+{quantity}</p>
         </div>
@@ -131,7 +131,7 @@ function MissionBox({ state, quantity }: missionBoxProps) {
 
   if (state === 'NotYet' || state === 'Soon') {
     return (
-      <div className={style.missionBox}>
+      <div className={styles.missionBox}>
         <Image src="/images/snack.gray.svg" alt="No Image" width={20} height={20} />
         <p>+?</p>
       </div>

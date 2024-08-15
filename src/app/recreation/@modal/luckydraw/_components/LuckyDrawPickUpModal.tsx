@@ -1,5 +1,5 @@
 'use client';
-import style from './modal.module.scss';
+import styles from './modal.module.scss';
 import useModalStore from '@/store/modalStore';
 import React, { useCallback } from 'react';
 import { CSSTransition } from 'react-transition-group';
@@ -18,10 +18,10 @@ export default function LuckyDrawPickUpModal() {
       </CSSTransition>
 
       <CSSTransition in={isShowLuckyDrawPickUpModal} timeout={200} unmountOnExit classNames="modal" nodeRef={modalRef}>
-        <div className={cx(style.luckyDrawPickUpModal, 'modal')} ref={modalRef}>
+        <div className={cx(styles.luckyDrawPickUpModal, 'modal')} ref={modalRef}>
           <p>{`마시멜로우 3개를 사용해\n선택한 뽑기를 뽑으시겠어요?`}</p>
           <button
-            className={style.confirmButton}
+            className={styles.confirmButton}
             onClick={() => {
               showLuckyDrawPickUpModal(false);
               showLuckyDrawWinningCheckModal(true);
@@ -29,7 +29,7 @@ export default function LuckyDrawPickUpModal() {
           >
             뽑기
           </button>
-          <button className={style.cancelButton} onClick={() => showLuckyDrawPickUpModal(false)}>
+          <button className={styles.cancelButton} onClick={() => showLuckyDrawPickUpModal(false)}>
             다음에 하기
           </button>
         </div>

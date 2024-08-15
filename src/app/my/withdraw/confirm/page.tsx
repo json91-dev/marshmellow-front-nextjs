@@ -1,13 +1,13 @@
 'use client';
 
-import style from './page.module.scss';
-import TopNavigation from '@/app/_components/common/TopNavigation';
+import styles from './page.module.scss';
+import TopNavigation from '@/components/nav/TopNavigation';
 import Image from 'next/image';
 import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import cx from 'classnames';
-import Checkbox from '@/app/_components/common/Checkbox';
+import Checkbox from '@/components/forms/Checkbox';
 import useModalStore from '@/store/modalStore';
-import { useMemberCurrencyQuery } from '@/app/_hook/queries/member';
+import { useMemberCurrencyQuery } from '@/hooks/queries/member';
 
 export default function WithdrawConfirmPage() {
   const [checked, setChecked] = useState(false);
@@ -19,26 +19,26 @@ export default function WithdrawConfirmPage() {
   }, []);
 
   return (
-    <div className={style.withdrawConfirmPage}>
+    <div className={styles.withdrawConfirmPage}>
       <TopNavigation />
-      <div className={style.main}>
-        <div className={style.topInfo}>
+      <div className={styles.main}>
+        <div className={styles.topInfo}>
           <Image src="/images/mallow.sad.svg" alt="No Image" width={54} height={54} />
-          <div className={style.message}>탈퇴하기 전에 확인해주세요</div>
+          <div className={styles.message}>탈퇴하기 전에 확인해주세요</div>
         </div>
 
-        <div className={style.items}>
-          <div className={style.name}>
+        <div className={styles.items}>
+          <div className={styles.name}>
             <Image src="/images/snack.gray.svg" alt="No Image" width={24} height={24} />
             <div>마시멜로우</div>
           </div>
-          <div className={style.count}>{currencyResult?.data?.marshmallowQuantity}개</div>
+          <div className={styles.count}>{currencyResult?.data?.marshmallowQuantity}개</div>
         </div>
-        <p className={style.warning}>
+        <p className={styles.warning}>
           계정을 삭제하면 보유하고 있는 마시멜로우와 응모권이 영구적으로 삭제되며 복구할 수 없습니다.
         </p>
 
-        <div className={style.terms}>
+        <div className={styles.terms}>
           <li>
             마시멜로우는 회원 탈퇴를 신청한 회원님의 계정을 30일간 보관하고 있습니다. 해당 기간 안에 로그인을 하신 회원님은
             별도의 신청 과정없이 회원 탈퇴가 철회되며 이전과 같이 마시멜로우를 자유롭게 이용할 수 있습니다.
@@ -53,12 +53,12 @@ export default function WithdrawConfirmPage() {
           </li>
         </div>
 
-        <div className={style.checkArea} onClick={() => setChecked(!checked)}>
+        <div className={styles.checkArea} onClick={() => setChecked(!checked)}>
           <Checkbox checked={checked} onChange={(e: ChangeEvent<HTMLInputElement>) => setChecked(e.target.checked)} />
-          <div className={style.checkMessage}>위 내용을 이해했으며 동의합니다.</div>
+          <div className={styles.checkMessage}>위 내용을 이해했으며 동의합니다.</div>
         </div>
 
-        <div className={cx(style.confirmButton, checked && style.isActive)} onClick={onClickWithdraw}>
+        <div className={cx(styles.confirmButton, checked && styles.isActive)} onClick={onClickWithdraw}>
           탈퇴하기
         </div>
       </div>

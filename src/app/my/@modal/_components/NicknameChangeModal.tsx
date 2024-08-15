@@ -1,5 +1,5 @@
 'use client';
-import style from './modal.module.scss';
+import styles from './modal.module.scss';
 import React, { useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { CSSTransition } from 'react-transition-group';
@@ -90,15 +90,15 @@ export default function NicknameChangeModal() {
       </CSSTransition>
 
       <CSSTransition in={isShowNicknameChangeModal} timeout={200} unmountOnExit classNames="modal" nodeRef={modalRef}>
-        <div className={cx(style.nicknameChangeModal, 'modal')} ref={modalRef}>
+        <div className={cx(styles.nicknameChangeModal, 'modal')} ref={modalRef}>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className={style.title}>닉네임 변경하기</div>
-            <div className={style.nicknameVaildArea}>
-              <div className={style.check}>
+            <div className={styles.title}>닉네임 변경하기</div>
+            <div className={styles.nicknameVaildArea}>
+              <div className={styles.check}>
                 <input
                   type={'text'}
                   placeholder={'특수문자 제외 2~8글자'}
-                  className={style.inputText}
+                  className={styles.inputText}
                   autoComplete={'off'}
                   {...register('nickname', {
                     required: '닉네임을 입력해주세요',
@@ -120,36 +120,36 @@ export default function NicknameChangeModal() {
                     }, 300),
                   })}
                 />
-                <button className={style.validateButton} onClick={onClickNicknameCheck}>
+                <button className={styles.validateButton} onClick={onClickNicknameCheck}>
                   중복 확인
                 </button>
               </div>
 
               {errors.nickname && (
-                <div className={cx(style.errorMessage, style.fail)}>
+                <div className={cx(styles.errorMessage, styles.fail)}>
                   <Image src="/images/nickname.wrong.svg" alt="No Image" width={20} height={20} />
                   <div>{errors.nickname.message}</div>
                 </div>
               )}
 
               {!errors.nickname && getValues('nickname') && isPassNickname ? (
-                <div className={cx(style.errorMessage, style.success)}>
+                <div className={cx(styles.errorMessage, styles.success)}>
                   <Image src="/images/nickname.ok.svg" alt="No Image" width={20} height={20} />
                   <div>사용할 수 있는 닉네임이에요</div>
                 </div>
               ) : null}
             </div>
 
-            <div className={style.description}>
+            <div className={styles.description}>
               {'특수문자 제외 2~8글자 입력 가능\n(닉네임 변경 후 30일 이후에 변경 가능합니다.)'}
             </div>
 
-            <button type="submit" className={style.confirmButton}>
+            <button type="submit" className={styles.confirmButton}>
               확인
             </button>
 
             <button
-              className={style.cancelButton}
+              className={styles.cancelButton}
               onClick={(e) => {
                 e.preventDefault();
                 showNicknameChangeModal(false);

@@ -2,9 +2,9 @@
 import useModalStore from '@/store/modalStore';
 import { CSSTransition } from 'react-transition-group';
 import ModalBackdrop from '@/app/signup/@modal/identify/_components/ModalBackdrop';
-import style from './filterDateBottomSheet.module.scss';
+import styles from './filterDateBottomSheet.module.scss';
 import React, { useCallback, useRef } from 'react';
-import useBottomSheet from '@/app/_hook/useBottomSheet';
+import useBottomSheet from '@/hooks/useBottomSheet';
 import useMallowHistoryStore from '@/store/mallowHistoryStore';
 
 export default function FilterDataBottomSheet() {
@@ -38,11 +38,11 @@ export default function FilterDataBottomSheet() {
         unmountOnExit
         nodeRef={bottomSheetRef}
       >
-        <div className={style.bottomSheet} ref={bottomSheetRef}>
-          <div className={style.topLine} />
-          <div className={style.title}>기간</div>
-          <div className={style.selectPeriod}>
-            <div onClick={() => onClickFilterDate(1)} className={style.active}>
+        <div className={styles.bottomSheet} ref={bottomSheetRef}>
+          <div className={styles.topLine} />
+          <div className={styles.title}>기간</div>
+          <div className={styles.selectPeriod}>
+            <div onClick={() => onClickFilterDate(1)} className={styles.active}>
               1개월
             </div>
             <div onClick={() => onClickFilterDate(3)}>3개월</div>

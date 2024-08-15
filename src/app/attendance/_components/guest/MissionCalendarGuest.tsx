@@ -1,5 +1,5 @@
 'use client';
-import style from '../missionCalendar.module.scss';
+import styles from '../missionCalendar.module.scss';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import { getCalendarData } from '@/utils/utils';
@@ -19,27 +19,27 @@ export default function MissionCalendarGuest() {
   }, [month, year]);
 
   return (
-    <div className={style.missionCalendar}>
+    <div className={styles.missionCalendar}>
       <MonthHeader month={month} setMonth={setMonth} />
-      <div className={style.calendarBody}>
-        <div className={style.days}>
+      <div className={styles.calendarBody}>
+        <div className={styles.days}>
           {DAY_LIST.map((day) => {
             return <p key={day}>{day}</p>;
           })}
         </div>
 
-        <div className={style.dates}>
+        <div className={styles.dates}>
           {calendarList?.map((week) => {
             return (
-              <div key={week[0]} className={style.week}>
+              <div key={week[0]} className={styles.week}>
                 {week.map((date, index) => {
                   const comparedDate = dayjs().year(year).month(month).date(date);
                   const isBeforeToday = comparedDate.isBefore(dayjs(), 'day');
 
                   return (
-                    <div key={date + index} className={style.dateItem}>
-                      <p className={cx(isBeforeToday && style.gray)}>{date !== 0 && date}</p>
-                      {dayjs().month() === month && dayjs().date() === date && <div className={style.dot} />}
+                    <div key={date + index} className={styles.dateItem}>
+                      <p className={cx(isBeforeToday && styles.gray)}>{date !== 0 && date}</p>
+                      {dayjs().month() === month && dayjs().date() === date && <div className={styles.dot} />}
                     </div>
                   );
                 })}
@@ -48,19 +48,19 @@ export default function MissionCalendarGuest() {
           })}
         </div>
 
-        <div className={style.missionInfo}>
-          <div className={style.missions}>
-            <div className={style.missionItem}>
+        <div className={styles.missionInfo}>
+          <div className={styles.missions}>
+            <div className={styles.missionItem}>
               <Image src="/images/snack.gray.svg" alt="No Image" width={24} height={24} />
               <p>업무 1개 완수</p>
             </div>
 
-            <div className={style.missionItem}>
+            <div className={styles.missionItem}>
               <Image src="/images/snack.purple.light.svg" alt="No Image" width={24} height={24} />
               <p>업무 2개 완수</p>
             </div>
 
-            <div className={style.missionItem}>
+            <div className={styles.missionItem}>
               <Image src="/images/snack.purple.svg" alt="No Image" width={24} height={24} />
               <p>업무 3개 완수</p>
             </div>
@@ -80,15 +80,15 @@ function MonthHeader({ month, setMonth }: { month: number; setMonth: any }) {
 
   /** TODO: 추후 1월, 2월, 3월에 에러 발생 예정. **/
   return (
-    <div className={style.monthHeader}>
+    <div className={styles.monthHeader}>
       {showPreviousButton && (
-        <div className={style.leftButton} onClick={() => setMonth(month - 1)}>
+        <div className={styles.leftButton} onClick={() => setMonth(month - 1)}>
           <Image src="/images/arrow.calendar.left.svg" alt="No Image" width={24} height={24} />
         </div>
       )}
       <p>{month + 1}월</p>
       {showNextButton && (
-        <div className={style.rightButton} onClick={() => setMonth(month + 1)}>
+        <div className={styles.rightButton} onClick={() => setMonth(month + 1)}>
           <Image src="/images/arrow.calendar.right.svg" alt="No Image" width={24} height={24} />
         </div>
       )}

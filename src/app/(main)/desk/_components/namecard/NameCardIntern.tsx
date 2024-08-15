@@ -1,9 +1,9 @@
 'use client';
-import style from './nameCard.module.scss';
+import styles from './nameCard.module.scss';
 import Image from 'next/image';
 import React from 'react';
 import { dateStringToFormat, dateStringToFormatDiff, formatHourMinute } from '@/utils/utils';
-import { useMemberProfileQuery } from '@/app/_hook/queries/member';
+import { useMemberProfileQuery } from '@/hooks/queries/member';
 
 export default function NameCardIntern() {
   const { data: result, isError, isLoading } = useMemberProfileQuery();
@@ -17,19 +17,19 @@ export default function NameCardIntern() {
   const { startHour, endHour, launchTimeAt } = result.data.officeHour;
 
   return (
-    <div className={style.nameCardIntern}>
-      <div className={style.topName}>MARSHMALLOW</div>
+    <div className={styles.nameCardIntern}>
+      <div className={styles.topName}>MARSHMALLOW</div>
 
-      <div className={style.profile}>
+      <div className={styles.profile}>
         <Image src="/images/mallow.happy.svg" alt="No Image" width={68} height={68} />
       </div>
 
-      <div className={style.nickname}>
+      <div className={styles.nickname}>
         <div>{nickname}</div>
         <Image src="/images/arrow.right.svg" alt="No Image" width={24} height={24} />
       </div>
 
-      <div className={style.detailInfo}>
+      <div className={styles.detailInfo}>
         <div>
           <div>입사일</div>
           <div>직급</div>
@@ -37,16 +37,16 @@ export default function NameCardIntern() {
         </div>
 
         <div>
-          <div className={style.workPeriod}>
+          <div className={styles.workPeriod}>
             <div>{dateStringToFormat(createdAt)}</div>
-            <div className={style.workPeriodTag}>{dateStringToFormatDiff(createdAt)}</div>
+            <div className={styles.workPeriodTag}>{dateStringToFormatDiff(createdAt)}</div>
           </div>
           <div>{grade}</div>
           <div>{`${formatHourMinute(startHour)} ~ ${formatHourMinute(endHour)} (점심시간 ${formatHourMinute(launchTimeAt)})`}</div>
         </div>
       </div>
 
-      <div className={style.logo}></div>
+      <div className={styles.logo}></div>
     </div>
   );
 }

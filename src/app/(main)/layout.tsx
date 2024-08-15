@@ -1,4 +1,4 @@
-import style from './layout.module.scss';
+import styles from './layout.module.scss';
 import BottomNavMenu from '@/app/(main)/_components/BottomNavMenu';
 import React, { ReactNode } from 'react';
 
@@ -9,7 +9,7 @@ type Props = {
 export default function Layout({ children }: Props) {
   return (
     <>
-      <div className={style.layoutChild}>{children}</div>
+      <div className={styles.layoutChild}>{children}</div>
       <BottomNavMenu />
     </>
   );

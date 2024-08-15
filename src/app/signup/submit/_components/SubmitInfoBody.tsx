@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import style from './submitInfoBody.module.scss';
+import styles from './submitInfoBody.module.scss';
 import useSignupStore from '@/store/signUpStore';
 
 export default function () {
@@ -11,7 +11,7 @@ export default function () {
 
   return (
     <>
-      <div className={style.infoCheckArea}>
+      <div className={styles.infoCheckArea}>
         <div>
           <div>이 름</div>
           <div>{name}</div>
@@ -40,7 +40,7 @@ export default function () {
           <div>{recommender}</div>
         </div>
       </div>
-      <div className={style.confirmButton} onClick={() => router.push('/signup/submit-complete')}>
+      <div className={styles.confirmButton} onClick={() => router.push('/signup/submit-complete')}>
         최종제출
       </div>
     </>

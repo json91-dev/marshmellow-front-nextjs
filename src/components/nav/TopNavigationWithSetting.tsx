@@ -1,10 +1,10 @@
 'use client';
 
-import style from './topNavigationWithSetting.module.scss';
+import styles from './topNavigationWithSetting.module.scss';
 import Image from 'next/image';
 import React, { useCallback } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import { useMemberMeQuery } from '@/app/_hook/queries/member';
+import { useMemberMeQuery } from '@/hooks/queries/member';
 
 type Props = {
   title?: string;
@@ -27,12 +27,12 @@ export default function TopNavigationWithSetting({ title = '', path = '' }: Prop
   }, [pathname, path]);
 
   return (
-    <div className={style.topNavigation}>
-      <div className={style.leftIcon} onClick={onClickBackButton}>
+    <div className={styles.topNavigation}>
+      <div className={styles.leftIcon} onClick={onClickBackButton}>
         <Image src="/images/arrow.left.svg" alt="No Image" width={24} height={24} />
       </div>
       {title ? <p>{title}</p> : <p></p>}
-      <div className={style.rightSetting} onClick={() => router.push('/my/alarm/setting')}>
+      <div className={styles.rightSetting} onClick={() => router.push('/my/alarm/setting')}>
         <Image src="/images/setting.svg" alt="No Image" width={24} height={24} />
       </div>
     </div>

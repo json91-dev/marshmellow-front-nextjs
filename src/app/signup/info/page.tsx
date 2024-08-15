@@ -1,6 +1,6 @@
 'use client';
 
-import style from './info.module.scss';
+import styles from './info.module.scss';
 import InformationTab from '@/app/signup/_components/InformationTab';
 import React, { useCallback, useEffect, useState } from 'react';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -9,7 +9,7 @@ import SectionInfo from '@/app/signup/_components/SectionInfo';
 import cx from 'classnames';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
-import TopNavigation from '@/app/_components/common/TopNavigation';
+import TopNavigation from '@/components/nav/TopNavigation';
 import { Controller, useForm } from 'react-hook-form';
 import useToastStore from '@/store/toastStore';
 import { debounce, getBirthNumberWithDot } from '@/utils/utils';
@@ -192,15 +192,15 @@ export default function SignupInfoPage() {
   }, [session?.user?.name]);
 
   return (
-    <div className={style.signupInfoPage}>
+    <div className={styles.signupInfoPage}>
       <TopNavigation title={'지원하기'} />
 
-      <div className={style.content}>
+      <div className={styles.content}>
         <InformationTab index={2} />
         <SectionInfo title={'*기본정보'} />
 
-        <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
-          <div className={style.imageArea}>
+        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+          <div className={styles.imageArea}>
             <input
               type="file"
               id="profileInput"
@@ -209,31 +209,31 @@ export default function SignupInfoPage() {
               accept="image/*"
               onChange={onChangeInputImage}
             />
-            <div className={style.image} onClick={() => document.getElementById('profileInput')?.click()}>
+            <div className={styles.image} onClick={() => document.getElementById('profileInput')?.click()}>
               <>
                 {!profileImageUrl && <Image src="/images/mallow.image.svg" alt="No Image" width={80} height={80} />}
                 {profileImageUrl && <Image src={profileImageUrl} alt="No Image" width={80} height={80} />}
               </>
             </div>
-            <div className={style.info}>
-              <div className={style.label}>지원서 사진등록</div>
-              <div className={style.label}>권장사이즈: 가로 160px X 세로 160px)</div>
+            <div className={styles.info}>
+              <div className={styles.label}>지원서 사진등록</div>
+              <div className={styles.label}>권장사이즈: 가로 160px X 세로 160px)</div>
             </div>
           </div>
 
-          <div className={cx(style.phoneNumberArea, style.inputDisabled)}>
-            <div className={style.label}>이름</div>
+          <div className={cx(styles.phoneNumberArea, styles.inputDisabled)}>
+            <div className={styles.label}>이름</div>
             <input autoComplete={'off'} type="text" {...register('name')} required disabled readOnly />
           </div>
 
-          <div className={cx(style.phoneNumberArea, style.inputDisabled)}>
-            <div className={style.label}>연락처</div>
+          <div className={cx(styles.phoneNumberArea, styles.inputDisabled)}>
+            <div className={styles.label}>연락처</div>
             <input autoComplete={'off'} type="text" {...register('phoneNumber')} required disabled readOnly />
           </div>
 
-          <div className={style.nicknameArea}>
-            <div className={style.label}>닉네임</div>
-            <div className={style.nickname}>
+          <div className={styles.nicknameArea}>
+            <div className={styles.label}>닉네임</div>
+            <div className={styles.nickname}>
               <div>
                 <input
                   type="text"
@@ -263,14 +263,14 @@ export default function SignupInfoPage() {
             </div>
 
             {errors.nickname && (
-              <div className={cx(style.errorMessage, style.fail)}>
+              <div className={cx(styles.errorMessage, styles.fail)}>
                 <Image src="/images/nickname.wrong.svg" alt="No Image" width={20} height={20} />
                 <div>{errors.nickname.message}</div>
               </div>
             )}
 
             {!errors.nickname && getValues('nickname') && isPassNickname ? (
-              <div className={cx(style.errorMessage, style.success)}>
+              <div className={cx(styles.errorMessage, styles.success)}>
                 <Image src="/images/nickname.ok.svg" alt="No Image" width={20} height={20} />
                 <div>사용할 수 있는 닉네임이에요</div>
               </div>
@@ -282,24 +282,24 @@ export default function SignupInfoPage() {
             defaultValue={'M'}
             render={({ field }) => {
               return (
-                <div className={style.genderArea}>
-                  <div className={style.label}>성별</div>
+                <div className={styles.genderArea}>
+                  <div className={styles.label}>성별</div>
                   <div
                     className={cx(
-                      style.gender,
-                      field.value === 'M' && style.leftSelected,
-                      field.value === 'F' && style.rightSelected,
+                      styles.gender,
+                      field.value === 'M' && styles.leftSelected,
+                      field.value === 'F' && styles.rightSelected,
                     )}
                   >
                     <div
                       onClick={() => setValue('gender', 'M')}
-                      className={cx(style.genderOption, field.value === 'M' && style.selected)}
+                      className={cx(styles.genderOption, field.value === 'M' && styles.selected)}
                     >
                       <div>남</div>
                     </div>
                     <div
                       onClick={() => setValue('gender', 'F')}
-                      className={cx(style.genderOption, field.value === 'F' && style.selected)}
+                      className={cx(styles.genderOption, field.value === 'F' && styles.selected)}
                     >
                       <div>여</div>
                     </div>
@@ -309,9 +309,9 @@ export default function SignupInfoPage() {
             }}
             name={'gender'}
           ></Controller>
-          <div className={style.birthArea}>
-            <div className={style.label}>생년월일</div>
-            <div className={style.date}>
+          <div className={styles.birthArea}>
+            <div className={styles.label}>생년월일</div>
+            <div className={styles.date}>
               <input
                 type="text"
                 {...register('birth', {
@@ -338,7 +338,7 @@ export default function SignupInfoPage() {
             </div>
 
             {errors.birth && (
-              <div className={cx(style.errorMessage, style.fail)}>
+              <div className={cx(styles.errorMessage, styles.fail)}>
                 <Image src="/images/nickname.wrong.svg" alt="No Image" width={20} height={20} />
                 <div>{errors.birth.message}</div>
               </div>
@@ -347,26 +347,26 @@ export default function SignupInfoPage() {
 
           <SectionInfo title={'*기타'} />
 
-          <div className={style.contactArea}>
-            <div className={style.labelLarge}>지원경로</div>
-            <div className={style.contact}>
-              <select className={style.input} {...register('funnelId')} autoComplete={'off'}>
+          <div className={styles.contactArea}>
+            <div className={styles.labelLarge}>지원경로</div>
+            <div className={styles.contact}>
+              <select className={styles.input} {...register('funnelId')} autoComplete={'off'}>
                 <option value={0}>선택없음</option>
                 <option value={1}>광고</option>
                 <option value={2}>지인 추천</option>
                 <option value={3}>기타</option>
               </select>
-              <div className={style.image}>
+              <div className={styles.image}>
                 <Image src="/images/arrow.bottom.svg" alt="No Image" fill />
               </div>
             </div>
           </div>
 
-          <div className={style.recommendArea}>
-            <div className={style.labelLarge}>추천인 입력</div>
-            <div className={style.label}>추천인 입력시, 마시멜로우 10개를 드려요</div>
+          <div className={styles.recommendArea}>
+            <div className={styles.labelLarge}>추천인 입력</div>
+            <div className={styles.label}>추천인 입력시, 마시멜로우 10개를 드려요</div>
 
-            <div className={style.recommend}>
+            <div className={styles.recommend}>
               <input
                 {...register('recommender', {})}
                 autoComplete={'off'}
@@ -376,13 +376,13 @@ export default function SignupInfoPage() {
             </div>
           </div>
 
-          <div className={style.confirmArea}>
-            <button type="submit" className={cx(style.confirmButton, isValid && isPassNickname && style.isActive)}>
+          <div className={styles.confirmArea}>
+            <button type="submit" className={cx(styles.confirmButton, isValid && isPassNickname && styles.isActive)}>
               다음 단계
             </button>
           </div>
         </form>
-        <div className={style.emptyArea}></div>
+        <div className={styles.emptyArea}></div>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 'use client';
-import style from './modal.module.scss';
+import styles from './modal.module.scss';
 import useModalStore from '@/store/modalStore';
 import React from 'react';
 import { CSSTransition } from 'react-transition-group';
@@ -24,7 +24,7 @@ export default function FulfillAttendanceNoDayModal() {
         classNames="modal"
         nodeRef={modalRef}
       >
-        <div className={cx(style.fulfillAttendanceNoDayModal, 'modal')} ref={modalRef}></div>
+        <div className={cx(styles.fulfillAttendanceNoDayModal, 'modal')} ref={modalRef}></div>
       </CSSTransition>
     </>
   );

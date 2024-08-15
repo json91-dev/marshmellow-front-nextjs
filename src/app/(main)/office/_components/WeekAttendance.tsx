@@ -1,10 +1,10 @@
 'use client';
-import style from '@/app/(main)/office/page.module.scss';
+import styles from '@/app/(main)/office/page.module.scss';
 import Image from 'next/image';
 import React, { useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
-import { useWorkWeeklyQuery } from '@/app/_hook/queries/activity';
+import { useWorkWeeklyQuery } from '@/hooks/queries/activity';
 import dayjs from 'dayjs';
 import { findMonday, findSunday } from '@/utils/utils';
 import useModalStore from '@/store/modalStore';
@@ -41,30 +41,30 @@ export default function WeekAttendance() {
   });
 
   return (
-    <div className={style.attendance} onClick={onClickAttendance}>
-      <div className={style.header}>
-        <p className={style.name}>근태 관리</p>
-        <p className={style.date}>{`${mondayTime.format('YYYY.MM.DD')} ~ ${sundayTime.format('YYYY.MM.DD')}`}</p>
-        <div className={style.image}>
+    <div className={styles.attendance} onClick={onClickAttendance}>
+      <div className={styles.header}>
+        <p className={styles.name}>근태 관리</p>
+        <p className={styles.date}>{`${mondayTime.format('YYYY.MM.DD')} ~ ${sundayTime.format('YYYY.MM.DD')}`}</p>
+        <div className={styles.image}>
           <Image src="/images/arrow.gray.right.v2.svg" alt="No Image" width={24} height={24} />
-          <div className={style.redDot}></div>
+          <div className={styles.redDot}></div>
         </div>
       </div>
 
-      <div className={style.weekMissions}>
+      <div className={styles.weekMissions}>
         {weekMissionData.map((item: any, index: any) => {
           const { completeCount, dayString } = item;
           const dayIndex = dayjs().day() === 0 ? 6 : dayjs().day() - 1;
 
           return (
-            <div className={style.col}>
+            <div className={styles.col}>
               {completeCount === 0 && <Image src="/images/snack.gray.light.svg" alt="No Image" width={24} height={24} />}
               {completeCount === 1 && <Image src="/images/snack.gray.svg" alt="No Image" width={24} height={24} />}
               {completeCount === 2 && <Image src="/images/snack.purple.light.svg" alt="No Image" width={24} height={24} />}
               {completeCount === 3 && <Image src="/images/snack.purple.svg" alt="No Image" width={24} height={24} />}
               <p>{dayString}</p>
 
-              {index === dayIndex && <div className={style.blackDot}></div>}
+              {index === dayIndex && <div className={styles.blackDot}></div>}
             </div>
           );
         })}

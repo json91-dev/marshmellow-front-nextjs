@@ -1,10 +1,10 @@
 'use client';
 
-import style from './ticketLink.module.scss';
+import styles from './ticketLink.module.scss';
 import Image from 'next/image';
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { useMemberMeQuery } from '@/app/_hook/queries/member';
+import { useMemberMeQuery } from '@/hooks/queries/member';
 
 export default function TicketLinks() {
   const router = useRouter();
@@ -15,8 +15,8 @@ export default function TicketLinks() {
   }
 
   return (
-    <div className={style.container}>
-      <div className={style.link}>
+    <div className={styles.container}>
+      <div className={styles.link}>
         <div>
           <Image src="/images/snack.gray.svg" alt="No Image" width={26} height={26} />
           <div>마시멜로우</div>

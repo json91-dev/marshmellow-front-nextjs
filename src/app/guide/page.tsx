@@ -1,16 +1,16 @@
-import style from './page.module.scss';
+import styles from './page.module.scss';
 import accordionStyle from './_components/accordiaon.module.scss';
 import QuestionAccordion from './_components/QuestionAccordion';
-import TopNavigation from '@/app/_components/common/TopNavigation';
+import TopNavigation from '@/components/nav/TopNavigation';
 import Link from 'next/link';
 
 export default function GuidePage() {
   return (
-    <div className={style.guidePage}>
+    <div className={styles.guidePage}>
       <TopNavigation title={'사용 가이드'} />
 
-      <div className={style.scrollArea}>
-        <p className={style.header}>자주 묻는 질문</p>
+      <div className={styles.scrollArea}>
+        <p className={styles.header}>자주 묻는 질문</p>
         <QuestionAccordion title={'마시멜로우 서비스는 무엇인가요?'}>
           <p>
             {'만나서 반가워요!😀 마시멜로우에서 할 업무는 '}
@@ -106,9 +106,9 @@ export default function GuidePage() {
         </QuestionAccordion>
       </div>
 
-      <div className={style.bottomContact}>
-        <p className={style.info}>도움이 필요하신가요?</p>
-        <Link className={style.contactButton} href={'/request'}>
+      <div className={styles.bottomContact}>
+        <p className={styles.info}>도움이 필요하신가요?</p>
+        <Link className={styles.contactButton} href={'/request'}>
           <p>문의하기</p>
         </Link>
       </div>

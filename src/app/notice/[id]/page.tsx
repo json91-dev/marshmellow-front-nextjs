@@ -1,7 +1,7 @@
 'use client';
-import style from './noticeDetail.module.scss';
-import TopNavigation from '@/app/_components/common/TopNavigation';
-import { useNotice } from '@/app/_hook/queries/notice';
+import styles from './noticeDetail.module.scss';
+import TopNavigation from '@/components/nav/TopNavigation';
+import { useNotice } from '@/hooks/queries/notice';
 
 type Props = {
   params: {
@@ -18,13 +18,13 @@ export default function NoticeDetailpage({ params }: Props) {
   }
 
   return (
-    <div className={style.noticeDetailPage}>
+    <div className={styles.noticeDetailPage}>
       <TopNavigation />
-      <div className={style.notice}>
-        <div className={style.dateString}>{result.data.createdAt.substring(0, 10).replaceAll('-', '. ')}</div>
-        <div className={style.title}>{result.data.title}</div>
-        <div className={style.horizontalLine} />
-        <div className={style.description}>{result.data.description}</div>
+      <div className={styles.notice}>
+        <div className={styles.dateString}>{result.data.createdAt.substring(0, 10).replaceAll('-', '. ')}</div>
+        <div className={styles.title}>{result.data.title}</div>
+        <div className={styles.horizontalLine} />
+        <div className={styles.description}>{result.data.description}</div>
       </div>
     </div>
   );

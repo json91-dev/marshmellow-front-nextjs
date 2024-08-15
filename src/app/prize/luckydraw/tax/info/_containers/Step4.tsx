@@ -1,9 +1,9 @@
 'use client';
 import React, { useCallback, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import style from './Step4.module.scss';
+import styles from './Step4.module.scss';
 import { useForm } from 'react-hook-form';
-import buttonStyle from '@/app/_style/Button.module.scss';
+import buttonStyle from '@/moduleStyle/Button.module.scss';
 import cx from 'classnames';
 import useLuckyDrawStore from '@/store/luckydrawStore';
 
@@ -25,15 +25,15 @@ export default function Step4() {
   }, []);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={style.taxStep4}>
-      <div className={style.headInfoBox}>
+    <form onSubmit={handleSubmit(onSubmit)} className={styles.taxStep4}>
+      <div className={styles.headInfoBox}>
         <p>당첨자 이메일 주소</p>
       </div>
-      <div className={style.emailInfo}>
+      <div className={styles.emailInfo}>
         <p>당첨자 이메일 주소를 적어주세요.</p>
         <p>제세공과금에 대한 원천징수영수증 수령을 위해 이메일 주소를 적어주세요.</p>
       </div>
-      <div className={style.emailInputArea}>
+      <div className={styles.emailInputArea}>
         <input type="text" {...register('email')} placeholder={'이메일 주소를 입력해주세요.'} />
       </div>
 

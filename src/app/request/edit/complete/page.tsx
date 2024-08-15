@@ -1,19 +1,19 @@
 'use client';
 
 import React from 'react';
-import style from './page.module.scss';
-import TopNavigation from '@/app/_components/common/TopNavigation';
-import buttonStyle from '@/app/_style/Button.module.scss';
+import styles from './page.module.scss';
+import TopNavigation from '@/components/nav/TopNavigation';
+import buttonStyle from '@/moduleStyle/Button.module.scss';
 import cx from 'classnames';
 
 export default function RequestCompletePage() {
   return (
-    <div className={style.requestCompletePage}>
+    <div className={styles.requestCompletePage}>
       <TopNavigation title={'문의 수정하기'} />
-      <div className={style.scrollArea}>
-        <p className={style.header}>{'{닉네임}님의 문의내용이 수정되어\n마시멜로우 팀에게 전달되었어요!'}</p>
+      <div className={styles.scrollArea}>
+        <p className={styles.header}>{'{닉네임}님의 문의내용이 수정되어\n마시멜로우 팀에게 전달되었어요!'}</p>
 
-        <p className={style.description}>
+        <p className={styles.description}>
           {'문의주신 내용은 마시멜로우 팀이 최대한 빠르게 답변드릴게요! '}
           <span>{'문의 답변 내용은 답변 완료 후 알림 내역에서 확인 하실 수 있어요.\n\n'}</span>
           {'마시멜로우를 이용하면서 어려운 부분이 있거나 문제가 생기면 언제든지 문의하기를 이용해주세요. 😀\n\n'}

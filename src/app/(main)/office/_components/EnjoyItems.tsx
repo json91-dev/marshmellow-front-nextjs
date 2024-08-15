@@ -1,8 +1,8 @@
 'use client';
-import style from '@/app/(main)/office/page.module.scss';
+import styles from '@/app/(main)/office/page.module.scss';
 import Image from 'next/image';
 import React from 'react';
-import { useOnboardingStatusQuery } from '@/app/_hook/queries/onboarding';
+import { useOnboardingStatusQuery } from '@/hooks/queries/onboarding';
 import { useRouter } from 'next/navigation';
 
 export default function EnjoyItems() {
@@ -15,7 +15,7 @@ export default function EnjoyItems() {
 
   if (result?.data?.displayOnboardingMissionIcon) {
     return (
-      <div className={style.enjoy}>
+      <div className={styles.enjoy}>
         <Image
           src="/images/enjoy.game.svg"
           alt="No Image"
@@ -37,7 +37,7 @@ export default function EnjoyItems() {
   }
 
   return (
-    <div className={style.enjoy}>
+    <div className={styles.enjoy}>
       <Image
         src="/images/enjoy.game.svg"
         alt="No Image"

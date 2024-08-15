@@ -1,9 +1,9 @@
 'use client';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import style from './Step5.module.scss';
+import styles from './Step5.module.scss';
 import { useForm } from 'react-hook-form';
-import buttonStyle from '@/app/_style/Button.module.scss';
+import buttonStyle from '@/moduleStyle/Button.module.scss';
 import cx from 'classnames';
 import Image from 'next/image';
 import DaumPostcodeEmbed, { Address } from 'react-daum-postcode';
@@ -57,34 +57,34 @@ export default function Step5() {
   }, [addressData]);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={style.addressStep5}>
-      <div className={style.headInfoBox}>
+    <form onSubmit={handleSubmit(onSubmit)} className={styles.addressStep5}>
+      <div className={styles.headInfoBox}>
         <p>
           {'해당 상품을 마시멜로우가\n'}
           <span>{'직접 찾아가서 전달드립니다 :)'}</span>
         </p>
       </div>
-      <div className={style.winnerInfoLabel}>
-        <div className={style.info}>
+      <div className={styles.winnerInfoLabel}>
+        <div className={styles.info}>
           <p>당첨자 정보</p>
           <p>내 정보가 변경되었다면 본인확인을 통해 정보를 수정 할 수 있습니다.</p>
         </div>
         <Image src="/images/arrow.right.svg" alt="No Image" width={24} height={24} />
       </div>
 
-      <div className={style.winnerName}>
+      <div className={styles.winnerName}>
         <p>이름</p>
         <p>김이름</p>
       </div>
 
-      <div className={style.winnerPhone}>
+      <div className={styles.winnerPhone}>
         <p>연락처</p>
         <p>010-0000-0000</p>
       </div>
 
-      <div className={style.horizontalLine}></div>
+      <div className={styles.horizontalLine}></div>
 
-      <div className={style.addressInfoLabel}>
+      <div className={styles.addressInfoLabel}>
         <p>경품 수령 주소</p>
         <p>
           {'경품을 수령할 주소를 정확하게 입력해주세요. '}
@@ -92,8 +92,8 @@ export default function Step5() {
         </p>
       </div>
 
-      <div className={style.addressInputArea}>
-        <div className={style.search}>
+      <div className={styles.addressInputArea}>
+        <div className={styles.search}>
           <input readOnly disabled type="text" {...register('zonecode')} placeholder={'주소를 검색해 주세요.'} />
           <button onClick={onSearchButtonClick}>주소 검색</button>
         </div>
@@ -106,8 +106,8 @@ export default function Step5() {
       </div>
 
       {isAddressSearchVisible && (
-        <div className={style.daumPostCodeContainer}>
-          <div className={style.xButton} onClick={() => setIsAddressSearchVisible(false)}>
+        <div className={styles.daumPostCodeContainer}>
+          <div className={styles.xButton} onClick={() => setIsAddressSearchVisible(false)}>
             <Image src="/images/x.cancel.black.svg" alt={'No Image'} width={24} height={24} />
           </div>
           <DaumPostcodeEmbed

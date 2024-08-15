@@ -1,6 +1,6 @@
 'use client';
 
-import style from './confirmButton.module.scss';
+import styles from './confirmButton.module.scss';
 import React, { CSSProperties, useCallback } from 'react';
 import cx from 'classnames';
 
@@ -20,7 +20,7 @@ export default function ConfirmButton(props: Props) {
   }, [onClick]);
 
   return (
-    <div className={cx(style.confirmButton, isActive && style.isActive)} style={customStyle} onClick={handleClick}>
+    <div className={cx(styles.confirmButton, isActive && styles.isActive)} style={customStyle} onClick={handleClick}>
       {text}
     </div>
   );

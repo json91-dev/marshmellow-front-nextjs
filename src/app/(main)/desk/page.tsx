@@ -1,4 +1,4 @@
-import style from './page.module.scss';
+import styles from './page.module.scss';
 import NameCard from '@/app/(main)/desk/_components/namecard/NameCard';
 import React from 'react';
 import Options from '@/app/(main)/desk/_components/Options';
@@ -7,14 +7,14 @@ import PageLinks from '@/app/(main)/desk/_components/PageLinks';
 
 export default function DeskPage() {
   return (
-    <div className={style.deskPage}>
-      <div className={style.option}>
+    <div className={styles.deskPage}>
+      <div className={styles.option}>
         <Options />
       </div>
-      <div className={style.main}>
+      <div className={styles.main}>
         <NameCard />
         <TicketLinks />
-        <div className={style.banner}>적응형 배너</div>
+        <div className={styles.banner}>적응형 배너</div>
         <PageLinks />
       </div>
     </div>

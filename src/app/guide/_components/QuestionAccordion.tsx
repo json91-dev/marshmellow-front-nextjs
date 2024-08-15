@@ -2,7 +2,7 @@
 
 import React, { useCallback, useRef, useState } from 'react';
 import Image from 'next/image';
-import style from './accordiaon.module.scss';
+import styles from './accordiaon.module.scss';
 
 type props = {
   title: string;
@@ -21,23 +21,23 @@ const DropDown = ({ title, children }: props) => {
 
   const onClickAccordionToggle = useCallback(() => {
     if (!isOpenedAccordion.current) {
-      accordionContentRef.current.classList.add(style.active);
-      accordionToggleRef.current.classList.add(style.active);
+      accordionContentRef.current.classList.add(styles.active);
+      accordionToggleRef.current.classList.add(styles.active);
       isOpenedAccordion.current = true;
     } else {
-      accordionContentRef.current.classList.remove(style.active);
-      accordionToggleRef.current.classList.remove(style.active);
+      accordionContentRef.current.classList.remove(styles.active);
+      accordionToggleRef.current.classList.remove(styles.active);
       isOpenedAccordion.current = false;
     }
   }, []);
 
   return (
-    <div className={style.accordion}>
-      <div className={style.accordionToggle} ref={accordionToggleRef} onClick={onClickAccordionToggle}>
+    <div className={styles.accordion}>
+      <div className={styles.accordionToggle} ref={accordionToggleRef} onClick={onClickAccordionToggle}>
         <p>{title}</p>
         <Image src={'/images/arrow.bottom.svg'} width={24} height={24} alt="No Image" />
       </div>
-      <div className={style.accordionContent} ref={accordionContentRef}>
+      <div className={styles.accordionContent} ref={accordionContentRef}>
         {children}
       </div>
     </div>

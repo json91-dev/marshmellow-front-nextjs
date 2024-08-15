@@ -1,6 +1,6 @@
 import { getSession } from 'next-auth/react';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { OnboardingResponse } from '@/app/_hook/types/onboarding';
+import { OnboardingResponse } from '@/hooks/types/onboarding';
 
 /** 온보딩 완료시 완료 상태 변경 **/
 export function useOnboardingCompleteMutation() {

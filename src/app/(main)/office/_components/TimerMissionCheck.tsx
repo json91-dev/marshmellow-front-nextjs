@@ -1,10 +1,10 @@
 'use client';
-import style from '@/app/(main)/office/page.module.scss';
+import styles from '@/app/(main)/office/page.module.scss';
 import Image from 'next/image';
 import React, { useCallback, useMemo } from 'react';
-import { useMemberProfileQuery } from '@/app/_hook/queries/member';
-import { useWorkAttendanceMutation, useWorkTodayQuery } from '@/app/_hook/queries/activity';
-import useSecondUpdater from '@/app/_hook/useSecondUpdater';
+import { useMemberProfileQuery } from '@/hooks/queries/member';
+import { useWorkAttendanceMutation, useWorkTodayQuery } from '@/hooks/queries/activity';
+import useSecondUpdater from '@/hooks/useSecondUpdater';
 import cx from 'classnames';
 import { findMissionDateMatchingStart } from '@/utils/utils';
 
@@ -218,7 +218,7 @@ export default function TimerMissionCheck() {
   }, [time, workResult]);
 
   return (
-    <div className={style.timeCheckArea}>
+    <div className={styles.timeCheckArea}>
       <TimerTime timerData={timerData} />
       <RemainingTimeInfo remainingTimeData={remainingTimeData} />
       <MissionCheckButton missionCheckButtonData={missionCheckButtonData} />
@@ -231,9 +231,9 @@ function TimerTime({ timerData }: any) {
   const { status, timerTimeString } = timerData;
 
   if (status === 'active') {
-    return <div className={cx(style.timerTime, style.active)}>{timerTimeString}</div>;
+    return <div className={cx(styles.timerTime, styles.active)}>{timerTimeString}</div>;
   } else {
-    return <div className={style.timerTime}>{timerTimeString}</div>;
+    return <div className={styles.timerTime}>{timerTimeString}</div>;
   }
 }
 
@@ -243,7 +243,7 @@ function RemainingTimeInfo({ remainingTimeData }: any) {
 
   if (status === 'idle') {
     return (
-      <div className={style.timeDetail}>
+      <div className={styles.timeDetail}>
         <p>
           정시출근까지 <span>{remainingTimeString}</span> 남았어요
         </p>
@@ -253,7 +253,7 @@ function RemainingTimeInfo({ remainingTimeData }: any) {
 
   if (status === 'active') {
     return (
-      <div className={cx(style.timeDetail, style.active)}>
+      <div className={cx(styles.timeDetail, styles.active)}>
         <p>지금 마시멜로우를 획득하세요!</p>
       </div>
     );
@@ -261,7 +261,7 @@ function RemainingTimeInfo({ remainingTimeData }: any) {
 
   if (status === 'complete') {
     return (
-      <div className={cx(style.timeDetail, style.active)}>
+      <div className={cx(styles.timeDetail, styles.active)}>
         <p>마시멜로우 획득 성공!</p>
       </div>
     );
@@ -282,7 +282,7 @@ function MissionCheckButton({ missionCheckButtonData }: any) {
 
   if (status === 'idle' || status === 'complete') {
     return (
-      <div className={style.checkWorkButton}>
+      <div className={styles.checkWorkButton}>
         <Image src="/images/mallow.sleep.circle.png" alt="No Image" width={100} height={100} />
       </div>
     );
@@ -290,8 +290,8 @@ function MissionCheckButton({ missionCheckButtonData }: any) {
 
   if (status === 'active') {
     return (
-      <div className={cx(style.checkWorkButton, style.active)} onClick={onClickAttendance}>
-        <CheckActiveButtonSVG circleBgClassName={style.circle} />
+      <div className={cx(styles.checkWorkButton, styles.active)} onClick={onClickAttendance}>
+        <CheckActiveButtonSVG circleBgClassName={styles.circle} />
       </div>
     );
   }

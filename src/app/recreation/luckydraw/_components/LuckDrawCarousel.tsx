@@ -1,6 +1,6 @@
 'use client';
-// import style from '@/app/recreation/luckydraw/luckdraw.module.scss';
-import style from './luckydrawCarousel.module.scss';
+// import styles from '@/app/recreation/luckydraw/luckdraw.module.scss';
+import styles from './luckydrawCarousel.module.scss';
 import React, { PointerEventHandler, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import cx from 'classnames';
 import { dummyLuckyDrawCardsData, LuckyDrawCard } from '@/constraints';
@@ -63,13 +63,13 @@ export default function LuckDrawCarousel() {
   return (
     <div
       ref={luckyDrawCardsRef}
-      className={style.luckyDrawCards}
+      className={styles.luckyDrawCards}
       onPointerLeave={isMobile.any() ? () => {} : handlePointerUp}
     >
-      <div className={style.carouselContainer}>
-        <div ref={carouselRef} className={style.carousel} style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+      <div className={styles.carouselContainer}>
+        <div ref={carouselRef} className={styles.carousel} style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
           {dummyLuckyDrawCardsData.map((cardsItem, index) => (
-            <div className={style.carouselItem} key={cardsItem[index].id}>
+            <div className={styles.carouselItem} key={cardsItem[index].id}>
               <LuckyDrawCards
                 cardsItem={cardsItem}
                 handlePointerDown={handlePointerDown}
@@ -79,11 +79,11 @@ export default function LuckDrawCarousel() {
             </div>
           ))}
         </div>
-        <div className={style.carouselDots}>
+        <div className={styles.carouselDots}>
           {[...Array(dummyLuckyDrawCardsData.length)].map((_, index) => (
             <span
               key={index}
-              className={cx(style.dot, index === currentIndex ? style.active : '')}
+              className={cx(styles.dot, index === currentIndex ? styles.active : '')}
               onClick={() => handleDotClick(index)}
             ></span>
           ))}
@@ -112,7 +112,7 @@ function LuckyDrawCards({ cardsItem, handlePointerDown, handlePointerMove, handl
 
   return (
     <div
-      className={style.drawCards}
+      className={styles.drawCards}
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
@@ -123,7 +123,7 @@ function LuckyDrawCards({ cardsItem, handlePointerDown, handlePointerMove, handl
 
           return (
             <div
-              className={style.cardItem}
+              className={styles.cardItem}
               onPointerDown={handlePointerDown}
               onPointerMove={handlePointerMove}
               onPointerUp={handlePointerUp}

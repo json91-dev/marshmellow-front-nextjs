@@ -1,5 +1,5 @@
 'use client';
-import style from './modal.module.scss';
+import styles from './modal.module.scss';
 import useModalStore from '@/store/modalStore';
 import React, { useCallback } from 'react';
 import { CSSTransition } from 'react-transition-group';
@@ -35,11 +35,11 @@ export default function FulfillAttendanceCompleteModal() {
         classNames="modal"
         nodeRef={modalRef}
       >
-        <div className={cx(style.fulfillAttendanceCompleteModal, 'modal')} ref={modalRef}>
-          <p className={style.title}>{dayjs(fulfillAttendanceCheckedDateString).format('M월 D일')} 출근 보충 완료!</p>
-          <Image className={style.icon} src="/images/mallow.happy.svg" alt="No Image" width={72} height={72} />
-          <p className={style.description}>{'마시멜로우 1개로 출근을 보충했어요!'}</p>
-          <button className={style.confirmButton} onClick={onClickConfirm}>
+        <div className={cx(styles.fulfillAttendanceCompleteModal, 'modal')} ref={modalRef}>
+          <p className={styles.title}>{dayjs(fulfillAttendanceCheckedDateString).format('M월 D일')} 출근 보충 완료!</p>
+          <Image className={styles.icon} src="/images/mallow.happy.svg" alt="No Image" width={72} height={72} />
+          <p className={styles.description}>{'마시멜로우 1개로 출근을 보충했어요!'}</p>
+          <button className={styles.confirmButton} onClick={onClickConfirm}>
             확인
           </button>
         </div>

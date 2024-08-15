@@ -1,6 +1,6 @@
-import style from './leftZone.module.scss';
+import styles from './leftZone.module.scss';
 import React from 'react';
 
 export default function LeftZone() {
-  return <div className={style.container}></div>;
+  return <div className={styles.container}></div>;
 }

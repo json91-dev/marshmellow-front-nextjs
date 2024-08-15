@@ -1,0 +1,63 @@
+
+.step {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  justify-content: flex-start;
+  height: 100%;
+
+  .scrollArea {
+    width: 100%;
+    height: 80%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.4rem 2rem 0;
+
+    .headerBox {
+      width: 100%;
+      padding: 1.6rem;
+      background-color: #F0F3FA;
+      border-radius: 0.8rem;
+
+      p {
+        font-weight: bold;
+        font-size: 1.4rem;
+        line-height: 2rem;
+        color: #1C222B;
+        white-space: pre-wrap;
+        text-align: center;
+      }
+    }
+
+    .selectInfo {
+      width: 100%;
+      margin-top: 0.8rem;
+
+      p {
+        text-align: right;
+        font-weight: 400;
+        font-size: 1.4rem;
+        line-height: 2rem;
+        color: #5C6475;
+      }
+    }
+
+    .selectBox {
+      width: 100%;
+      margin-top: 0.8rem;
+      border: 1px solid #DDE2ED;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+

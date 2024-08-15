@@ -4,7 +4,7 @@ import React from 'react';
 import { CSSTransition } from 'react-transition-group';
 import ModalBackdrop from '@/app/signup/@modal/identify/_components/ModalBackdrop';
 import cx from 'classnames';
-import style from '@/app/_style/Modal.module.scss';
+import styles from '@/moduleStyle/Modal.module.scss';
 import { useRouter } from 'next/navigation';
 export default function stepCancelModal() {
   const { isShowPrizeLuckyDrawTaxInfoCancel, showPrizeLuckyDrawTaxInfoCancel } = useModalStore();
@@ -25,13 +25,13 @@ export default function stepCancelModal() {
         classNames="modal"
         nodeRef={modalRef}
       >
-        <div className={cx(style.confirmCancelModal, 'modal')} ref={modalRef}>
-          <p className={style.title}>작성을 중단하시나요?</p>
+        <div className={cx(styles.confirmCancelModal, 'modal')} ref={modalRef}>
+          <p className={styles.title}>작성을 중단하시나요?</p>
 
-          <p className={style.description}>{'작성 중인 내용은 다음에 이어서\n 작성 할 수 있어요.'}</p>
+          <p className={styles.description}>{'작성 중인 내용은 다음에 이어서\n 작성 할 수 있어요.'}</p>
 
           <button
-            className={style.confirmButton}
+            className={styles.confirmButton}
             onClick={() => {
               router.back();
               showPrizeLuckyDrawTaxInfoCancel(false);
@@ -40,7 +40,7 @@ export default function stepCancelModal() {
             중단하기
           </button>
 
-          <button className={style.cancelButton} onClick={() => showPrizeLuckyDrawTaxInfoCancel(false)}>
+          <button className={styles.cancelButton} onClick={() => showPrizeLuckyDrawTaxInfoCancel(false)}>
             취소
           </button>
         </div>

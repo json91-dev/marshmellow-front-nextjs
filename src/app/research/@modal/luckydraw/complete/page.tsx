@@ -1,5 +1,5 @@
 'use client';
-import style from './modal.module.scss';
+import styles from './modal.module.scss';
 import useModalStore from '@/store/modalStore';
 import React, { useCallback } from 'react';
 import { CSSTransition } from 'react-transition-group';
@@ -33,17 +33,17 @@ export default function LuckyDrawResearchCompleteModal() {
         classNames="modal"
         nodeRef={modalRef}
       >
-        <div className={cx(style.luckyDrawResearchCompleteModal, 'modal')} ref={modalRef}>
-          <p className={style.title}>입력하신 정보가 맞으신가요?</p>
-          <div className={style.phoneInfoBox}>
+        <div className={cx(styles.luckyDrawResearchCompleteModal, 'modal')} ref={modalRef}>
+          <p className={styles.title}>입력하신 정보가 맞으신가요?</p>
+          <div className={styles.phoneInfoBox}>
             <p>연락처</p>
             <p>000-000-0000</p>
           </div>
 
-          <button onClick={onClickConfirm} className={style.confirmButton}>
+          <button onClick={onClickConfirm} className={styles.confirmButton}>
             확인
           </button>
-          <button onClick={() => showLuckyDrawResearchCompleteModal(false)} className={style.cancelButton}>
+          <button onClick={() => showLuckyDrawResearchCompleteModal(false)} className={styles.cancelButton}>
             다시 입력하기
           </button>
         </div>
