@@ -1,4 +1,4 @@
-import styles from './checkbox.module.scss';
+import styles from './Checkbox.module.scss';
 import { ChangeEventHandler } from 'react';
 
 type Props = {
