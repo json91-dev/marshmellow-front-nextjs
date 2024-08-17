@@ -6,6 +6,7 @@ interface TextInputProps<T extends FieldValues> {
   register: UseFormRegister<T>;
   name: Path<T>;
   required?: boolean;
+  disabled?: boolean;
   placeholder?: string;
   customStyle?: CSSProperties;
 }
@@ -15,10 +16,11 @@ const TextInput = <T extends FieldValues>({
   register,
   name,
   required = false,
+  disabled = false,
   customStyle,
 }: TextInputProps<T>) => (
   <div className={styles.textInput} style={customStyle}>
-    <input type="text" placeholder={placeholder} {...register(name, { required })} />
+    <input type="text" placeholder={placeholder} {...register(name, { required, disabled })} />
   </div>
 );
 

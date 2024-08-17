@@ -68,6 +68,21 @@
           }
         }
       }
+
+      .checkItem {
+        width: 100%;
+
+        &:last-child {
+          display: flex;
+          flex-direction: row;
+          gap: 1rem;
+
+          input[type="text"] {
+            border: none !important;
+            padding-left: 0.4rem !important;
+          }
+        }
+      }
     }
   }
 }

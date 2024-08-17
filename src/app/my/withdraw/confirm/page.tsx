@@ -5,7 +5,7 @@ import TopNavigation from '@/components/nav/TopNavigation';
 import Image from 'next/image';
 import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import cx from 'classnames';
-import Checkbox from '@/components/forms/Checkbox';
+import Checkbox from '@/components/common/Checkbox';
 import useModalStore from '@/store/modalStore';
 import { useMemberCurrencyQuery } from '@/hooks/queries/member';
 

@@ -1,6 +1,6 @@
 import styles from './page.module.scss';
 import TopNavigation from '@/components/nav/TopNavigation';
-import Checkbox from '@/components/forms/Checkbox';
+import Checkbox from '@/components/common/Checkbox';
 import Image from 'next/image';
 import React from 'react';
 

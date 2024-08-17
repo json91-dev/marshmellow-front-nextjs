@@ -8,10 +8,12 @@ import { StepIndicator } from '@/components/common/StepIndicator';
 import { useForm } from 'react-hook-form';
 import RadioButton from '@/components/forms/RadioButton';
 import TextInput from '@/components/forms/TextInput';
+import { useRouter } from 'next/navigation';
 export default function Step1() {
   const { register, handleSubmit, setValue, watch } = useForm();
   const itemId = watch('itemId');
   const itemOtherComment = watch('itemOtherComment');
+  const router = useRouter();
 
   /** 다음 버튼 활성 상태 확인 **/
   const activeNextButton = useMemo(() => {
@@ -20,7 +22,8 @@ export default function Step1() {
       return false;
     }
 
-    if (itemId === 'other') {
+    // 기타 선택시, 1글자 이상 입력 확인
+    if (itemId === 'itemOther') {
       return itemOtherComment !== undefined && itemOtherComment.length > 0;
     }
 
@@ -66,7 +69,7 @@ export default function Step1() {
 
           <div className={styles.radioItem}>
             <RadioButton
-              value={'other'}
+              value={'itemOther'}
               label={'기타:'}
               register={register}
               name={'itemId'}
@@ -83,7 +86,12 @@ export default function Step1() {
       </div>
 
       <div className={buttonStyle.buttonsArea}>
-        <div className={cx(buttonStyle.confirmButton, activeNextButton && buttonStyle.active)}>다음</div>
+        <div
+          onClick={() => router.push('/research/pantry?step=2')}
+          className={cx(buttonStyle.confirmButton, activeNextButton && buttonStyle.active)}
+        >
+          다음
+        </div>
       </div>
     </form>
   );

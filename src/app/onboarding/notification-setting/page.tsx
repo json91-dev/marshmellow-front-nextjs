@@ -2,7 +2,7 @@
 import styles from './page.module.scss';
 import React, { ChangeEvent, useState } from 'react';
 import Image from 'next/image';
-import Checkbox from '@/components/forms/Checkbox';
+import Checkbox from '@/components/common/Checkbox';
 
 export default function OnBoardingTimePage() {
   const [checked, setChecked] = useState(false);

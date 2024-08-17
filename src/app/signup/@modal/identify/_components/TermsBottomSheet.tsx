@@ -4,7 +4,7 @@ import useModalStore from '@/store/modalStore';
 import ModalBackdrop from '@/app/signup/@modal/identify/_components/ModalBackdrop';
 import { CSSTransition } from 'react-transition-group';
 import React, { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react';
-import Checkbox from '@/components/forms/Checkbox';
+import Checkbox from '@/components/common/Checkbox';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import cx from 'classnames';

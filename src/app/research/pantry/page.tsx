@@ -4,6 +4,8 @@ import React, { Suspense, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Main from '@/app/research/pantry/_containers/Main';
 import Step1 from '@/app/research/pantry/_containers/Step1';
+import Step2 from '@/app/research/pantry/_containers/Step2';
+import Step3 from '@/app/research/pantry/_containers/Step3';
 
 export default function PantryResearchPage() {
   return (
@@ -32,7 +34,13 @@ function PantryResearchContent() {
   }, [step, router]);
 
   if (step) {
-    return <>{step === '1' && <Step1 />}</>;
+    return (
+      <>
+        {step === '1' && <Step1 />}
+        {step === '2' && <Step2 />}
+        {step === '3' && <Step3 />}
+      </>
+    );
   }
 
   return <Main />;

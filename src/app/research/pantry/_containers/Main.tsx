@@ -4,7 +4,7 @@ import buttonStyle from '@/moduleStyle/Button.module.scss';
 import cx from 'classnames';
 import React from 'react';
 import styles from './main.module.scss';
-import { StepIndicator } from '@/components/common/StepIndicator';
+import Link from 'next/link';
 
 export default function Main() {
   return (
@@ -26,9 +26,9 @@ export default function Main() {
         </div>
       </div>
 
-      <div className={buttonStyle.buttonsArea}>
+      <Link href={'/research/pantry?step=1'} className={buttonStyle.buttonsArea}>
         <div className={cx(buttonStyle.confirmButton, buttonStyle.active)}>다음</div>
-      </div>
+      </Link>
     </div>
   );
 }

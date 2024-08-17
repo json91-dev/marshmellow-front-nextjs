@@ -9,30 +9,32 @@ import { useForm } from 'react-hook-form';
 import RadioButton from '@/components/forms/RadioButton';
 import TextInput from '@/components/forms/TextInput';
 import { useRouter } from 'next/navigation';
-
-export default function Step2() {
-  const { register, watch, setValue } = useForm();
+import CheckButton from '@/components/forms/CheckButton';
+export default function Step3() {
+  const { register, handleSubmit, watch, setValue } = useForm();
   const router = useRouter();
   const itemId = watch('itemId');
   const itemOtherComment = watch('itemOtherComment');
 
   /** 다음 버튼 활성 상태 확인 **/
   const activeNextButton = useMemo(() => {
-    const isItemSelected = itemId !== undefined;
+    const isItemSelected = Array.isArray(itemId) ? itemId.length > 0 : false;
+
     if (!isItemSelected) {
       return false;
     }
 
     // 기타 선택시, 1글자 이상 입력 확인
-    if (itemId === 'itemOther') {
+    if (Array.isArray(itemId) && itemId.includes('itemOther')) {
       return itemOtherComment !== undefined && itemOtherComment.length > 0;
     }
 
     return true;
   }, [itemId, itemOtherComment]);
 
+  /** 기타 선택 해지시 텍스트 필드 초기화 **/
   useEffect(() => {
-    if (itemId && itemId !== 'itemOther') {
+    if (Array.isArray(itemId) && !itemId.includes('itemOther')) {
       setValue('itemOtherComment', '');
     }
   }, [itemId]);
@@ -40,56 +42,46 @@ export default function Step2() {
   return (
     <form className={styles.step}>
       <TopNavigationWithCancel title={'탕비실 설문조사'} />
-      <StepIndicator currentStep={2} totalSteps={6} />
+      <StepIndicator currentStep={3} totalSteps={6} />
 
       <div className={styles.scrollArea}>
         <div className={styles.headerBox}>
           <p>
-            {'회사 생활 중, 가장 먹고싶은\n'}
-            {'간식을 알려주세요.'}
+            {'회사 생활 중, 힘들었던 일들이 있었나요?\n'}
+            {'어떤 점들이 힘들었는지 알려주세요.'}
           </p>
         </div>
         <div className={styles.selectInfo}>
-          <p>1개 선택</p>
+          <p>복수 선택</p>
         </div>
 
         <div className={styles.selectBox}>
-          <div className={styles.radioItem}>
-            <RadioButton value={'0'} label={'커피'} register={register} name={'itemId'} />
+          <div className={styles.checkItem}>
+            <CheckButton value={'0'} label={'커피'} register={register} name={'itemId'} />
           </div>
 
-          <div className={styles.radioItem}>
-            <RadioButton value={'1'} label={'음료수'} register={register} name={'itemId'} />
+          <div className={styles.checkItem}>
+            <CheckButton value={'1'} label={'워라밸 붕괴'} register={register} name={'itemId'} />
           </div>
 
-          <div className={styles.radioItem}>
-            <RadioButton value={'2'} label={'과자'} register={register} name={'itemId'} />
+          <div className={styles.checkItem}>
+            <CheckButton value={'2'} label={'실적압박'} register={register} name={'itemId'} />
           </div>
 
-          <div className={styles.radioItem}>
-            <RadioButton value={'3'} label={'젤리'} register={register} name={'itemId'} />
+          <div className={styles.checkItem}>
+            <CheckButton value={'3'} label={'미래에 대한 불안감'} register={register} name={'itemId'} />
           </div>
 
-          <div className={styles.radioItem}>
-            <RadioButton value={'4'} label={'에너지바'} register={register} name={'itemId'} />
+          <div className={styles.checkItem}>
+            <CheckButton value={'4'} label={'업무량 과다'} register={register} name={'itemId'} />
           </div>
 
-          <div className={styles.radioItem}>
-            <RadioButton value={'5'} label={'사탕'} register={register} name={'itemId'} />
-          </div>
-
-          <div className={styles.radioItem}>
-            <RadioButton
-              value={'itemOther'}
-              label={'기타:'}
-              register={register}
-              name={'itemId'}
-              customStyle={{ width: 'auto' }}
-            />
+          <div className={styles.checkItem}>
+            <CheckButton value={'itemOther'} label={'기타:'} register={register} name={'itemId'} />
             <TextInput
               placeholder={'50자 이내로 작성해주세요.'}
               register={register}
-              disabled={itemId !== 'itemOther'}
+              disabled={!(Array.isArray(itemId) && itemId.includes('itemOther'))}
               name={'itemOtherComment'}
               customStyle={{ height: '2.4rem', borderBottom: '1px solid #DDE2ED' }}
             />
@@ -97,16 +89,12 @@ export default function Step2() {
         </div>
       </div>
 
-      <div className={buttonStyle.buttonsArea}>
+      <div className={buttonStyle.buttonsArea} onClick={() => router.push('/research/pantry?step=3')}>
         <div className={cx(buttonStyle.prevButton, activeNextButton && buttonStyle.active)} onClick={() => router.back()}>
           이전
         </div>
-        <div
-          className={cx(buttonStyle.confirmButton, activeNextButton && buttonStyle.active)}
-          onClick={() => router.push('/research/pantry?step=3')}
-        >
-          다음
-        </div>
+
+        <div className={cx(buttonStyle.confirmButton, activeNextButton && buttonStyle.active)}>다음</div>
       </div>
     </form>
   );
