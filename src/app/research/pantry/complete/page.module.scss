@@ -1,0 +1,43 @@
+
+.researchPantryCompletePage {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  padding-top: 1.4rem;
+  justify-content: flex-start;
+  height: 100%;
+  overflow: auto;
+
+
+  .scrollArea {
+    width: 100%;
+    height: 80%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .title {
+      font-weight: bold;
+      font-size: 2rem;
+      line-height: 3rem;
+      color: #1C222B;
+      text-align: center;
+    }
+
+    .description {
+      font-weight: 500;
+      font-size: 1.4rem;
+      line-height: 2rem;
+      color: #1C222B;
+      white-space: pre-wrap;
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+  }
+
+}
+

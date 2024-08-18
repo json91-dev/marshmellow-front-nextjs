@@ -10,7 +10,7 @@ import RadioButton from '@/components/forms/RadioButton';
 import TextInput from '@/components/forms/TextInput';
 import { useRouter } from 'next/navigation';
 import CheckButton from '@/components/forms/CheckButton';
-export default function Step3() {
+export default function Step4() {
   const { register, handleSubmit, watch, setValue } = useForm();
   const router = useRouter();
   const itemId = watch('itemId');
@@ -42,12 +42,12 @@ export default function Step3() {
   return (
     <form className={styles.step}>
       <TopNavigationWithCancel title={'탕비실 설문조사'} />
-      <StepIndicator currentStep={3} totalSteps={6} />
+      <StepIndicator currentStep={4} totalSteps={6} />
 
       <div className={styles.scrollArea}>
         <div className={styles.headerBox}>
           <p>
-            {'회사 생활 중, 힘들었던 일들이 있었나요?\n'}
+            {'회사 생활 중, 좋았던 것들이 있었나요?\n'}
             {'어떤 점들이 힘들었는지 알려주세요.'}
           </p>
         </div>
@@ -61,19 +61,19 @@ export default function Step3() {
           </div>
 
           <div className={styles.checkItem}>
-            <CheckButton value={'1'} label={'워라밸 붕괴'} register={register} name={'itemId'} />
+            <CheckButton value={'1'} label={'워라밸'} register={register} name={'itemId'} />
           </div>
 
           <div className={styles.checkItem}>
-            <CheckButton value={'2'} label={'실적압박'} register={register} name={'itemId'} />
+            <CheckButton value={'2'} label={'회사 복지'} register={register} name={'itemId'} />
           </div>
 
           <div className={styles.checkItem}>
-            <CheckButton value={'3'} label={'미래에 대한 불안감'} register={register} name={'itemId'} />
+            <CheckButton value={'3'} label={'성장 가능성'} register={register} name={'itemId'} />
           </div>
 
           <div className={styles.checkItem}>
-            <CheckButton value={'4'} label={'업무량 과다'} register={register} name={'itemId'} />
+            <CheckButton value={'4'} label={'급여 / 성과급'} register={register} name={'itemId'} />
           </div>
 
           <div className={styles.checkItem}>
@@ -89,7 +89,7 @@ export default function Step3() {
         </div>
       </div>
 
-      <div className={buttonStyle.buttonsArea} onClick={() => router.push('/research/pantry?step=4')}>
+      <div className={buttonStyle.buttonsArea} onClick={() => router.push('/research/pantry?step=5')}>
         <div className={cx(buttonStyle.prevButton, activeNextButton && buttonStyle.active)} onClick={() => router.back()}>
           이전
         </div>
