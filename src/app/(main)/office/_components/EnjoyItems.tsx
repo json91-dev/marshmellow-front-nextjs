@@ -8,32 +8,10 @@ import { useRouter } from 'next/navigation';
 export default function EnjoyItems() {
   const { data: result, status, isLoading, isFetching } = useOnboardingStatusQuery();
   const router = useRouter();
+  console.log(result);
 
   if (isLoading || isFetching) {
     return null;
-  }
-
-  if (result?.data?.displayOnboardingMissionIcon) {
-    return (
-      <div className={styles.enjoy}>
-        <Image
-          src="/images/enjoy.game.svg"
-          alt="No Image"
-          width={100}
-          height={100}
-          onClick={() => router.push('/recreation')}
-        />
-        <Image src="/images/enjoy.event.svg" alt="No Image" width={100} height={100} />
-        <Image src="/images/enjoy.guide.svg" alt="No Image" width={100} height={100} onClick={() => router.push('/guide')} />
-        <Image
-          src="/images/enjoy.mission.svg"
-          alt="No Image"
-          width={100}
-          height={100}
-          onClick={() => router.push('/onboarding/mission')}
-        />
-      </div>
-    );
   }
 
   return (
@@ -47,6 +25,15 @@ export default function EnjoyItems() {
       />
       <Image src="/images/enjoy.event.svg" alt="No Image" width={100} height={100} />
       <Image src="/images/enjoy.guide.svg" alt="No Image" width={100} height={100} onClick={() => router.push('/guide')} />
+      {result?.data?.displayOnboardingMissionIcon && (
+        <Image
+          src="/images/enjoy.mission.svg"
+          alt="No Image"
+          width={100}
+          height={100}
+          onClick={() => router.push('/onboarding/mission')}
+        />
+      )}
     </div>
   );
 }

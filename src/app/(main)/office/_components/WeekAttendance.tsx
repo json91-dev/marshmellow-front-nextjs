@@ -57,7 +57,7 @@ export default function WeekAttendance() {
           const dayIndex = dayjs().day() === 0 ? 6 : dayjs().day() - 1;
 
           return (
-            <div className={styles.col}>
+            <div className={styles.col} key={item.date}>
               {completeCount === 0 && <Image src="/images/snack.gray.light.svg" alt="No Image" width={24} height={24} />}
               {completeCount === 1 && <Image src="/images/snack.gray.svg" alt="No Image" width={24} height={24} />}
               {completeCount === 2 && <Image src="/images/snack.purple.light.svg" alt="No Image" width={24} height={24} />}

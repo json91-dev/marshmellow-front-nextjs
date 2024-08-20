@@ -37,7 +37,9 @@ export function useOnboardingStatusQuery() {
       throw new Error('로그인이 되어있지 않음');
     }
 
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/onboarding/status`, {
+    // const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/onboarding/status`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_MSW_API_URL}/onboarding/status`, {
+      // MSW
       method: 'GET',
       headers: {
         Authorization: `Bearer ${session?.accessToken}`,

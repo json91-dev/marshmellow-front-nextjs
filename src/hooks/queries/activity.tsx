@@ -1,5 +1,6 @@
 import { getSession } from 'next-auth/react';
 import { useMutation, useQuery } from '@tanstack/react-query';
+import { OnboardingResponse } from '@/hooks/types/activity';
 
 /** 주별 근무현황 확인 **/
 export function useWorkWeeklyQuery(dateString: string) {
@@ -113,5 +114,36 @@ export function useWorkAttendanceMutation() {
 
   return useMutation({
     mutationFn: () => work(),
+  });
+}
+
+/** 온보딩 미션 상태 조회 **/
+/** 월별 근무 현황 확인 **/
+export function useActivityOnboarding() {
+  const getWorkMonthly = async (): Promise<OnboardingResponse> => {
+    const session = await getSession();
+    if (!session) {
+      console.error('로그인이 되어있지 않음');
+      throw new Error('로그인이 되어있지 않음');
+    }
+
+    // const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/activity/onboarding`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_MSW_API_URL}/activity/onboarding`, {
+      // MSW
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${session?.accessToken}`,
+        'Content-Type': 'application/json',
+      },
+      cache: 'no-store',
+    });
+
+    return response.json();
+  };
+
+  return useQuery({
+    queryKey: ['onboarding'],
+    queryFn: getWorkMonthly,
+    staleTime: 1000 * 20,
   });
 }
