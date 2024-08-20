@@ -2,6 +2,7 @@ import styles from './page.module.scss';
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import AlarmCard from '@/app/(main)/pantry/_components/AlarmCard';
 
 export default function DeskPage() {
   return (
@@ -29,12 +30,7 @@ export default function DeskPage() {
             <p>설문조사</p>
           </Link>
         </div>
-        <div className={styles.alarmCard}>
-          <p>탕비실 오픈 시 알림을 보내드려요</p>
-          <div className={styles.alarmButton}>
-            <p>오픈 알림 받기</p>
-          </div>
-        </div>
+        <AlarmCard />
       </div>
       <div className={styles.banner}>적응형 배너</div>
     </div>

@@ -99,45 +99,7 @@
       }
     }
 
-    .alarmCard {
-      width: 90%;
-      max-width: 32rem;
-      background-color: white;
-      border-radius: 0.8rem;
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 1.6rem;
 
-      & > p {
-        font-weight: bold;
-        font-size: 1.6rem;
-        line-height: 2rem;
-        color: #1C222B;
-      }
-
-      .alarmButton {
-        margin-top: 1.6rem;
-        background-color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 1rem 1.6rem;
-        border-radius: 0.8rem;
-        cursor: pointer;
-        border: 1px solid #ACB6CA;
-        @include activeOpacity;
-        @include activeScale;
-
-        p {
-          font-weight:500;
-          font-size: 1.4rem;
-          line-height: 2rem;
-          color: black;
-        }
-      }
-    }
   }
 
   .banner {
