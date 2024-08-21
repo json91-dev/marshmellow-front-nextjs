@@ -40,7 +40,7 @@ export default function () {
           <div>{recommender}</div>
         </div>
       </div>
-      <div className={styles.confirmButton} onClick={() => router.push('/signup/submit-complete')}>
+      <div className={styles.confirmButton} onClick={() => router.push('/signup/complete')}>
         최종제출
       </div>
     </>

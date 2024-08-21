@@ -32,9 +32,9 @@ export default function QuitInfoModal() {
           </div>
           <div
             className={styles.secondButton}
-            onClick={async () => {
+            onClick={() => {
               showQuitInfoModal(false);
-              await signOut({ callbackUrl: '/login' });
+              router.push('/signup/complete');
             }}
           >
             다음에 작성할게요

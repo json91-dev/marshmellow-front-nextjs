@@ -210,10 +210,8 @@ export default function SignupInfoPage() {
               onChange={onChangeInputImage}
             />
             <div className={styles.image} onClick={() => document.getElementById('profileInput')?.click()}>
-              <>
-                {!profileImageUrl && <Image src="/images/mallow.image.svg" alt="No Image" width={80} height={80} />}
-                {profileImageUrl && <Image src={profileImageUrl} alt="No Image" width={80} height={80} />}
-              </>
+              {!profileImageUrl && <Image src="/images/mallow.image.svg" alt="No Image" width={80} height={80} />}
+              {profileImageUrl && <Image src={profileImageUrl} alt="No Image" width={80} height={80} />}
             </div>
             <div className={styles.info}>
               <div className={styles.label}>지원서 사진등록</div>

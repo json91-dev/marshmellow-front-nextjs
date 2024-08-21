@@ -22,11 +22,12 @@ export default function NameCard() {
         return;
       }
 
-      if (type === 'NEED_IDENTITY' || type === 'NEED_REGISTER') {
-        router.replace('/login');
-      } else if (type === 'SIGNIN_SUCCESS') {
-        console.log('로그인 성공');
-      }
+      /** TODO: 로그인 상태에 따른 카드 분기 **/
+      // if (type === 'NEED_IDENTITY' || type === 'NEED_REGISTER') {
+      //   router.replace('/login');
+      // } else if (type === 'SIGNIN_SUCCESS') {
+      //   console.log('로그인 성공');
+      // }
     } else {
       console.log(status);
     }

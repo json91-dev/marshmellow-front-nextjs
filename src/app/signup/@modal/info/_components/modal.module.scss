@@ -40,16 +40,15 @@
   }
 }
 
-
-
-
 .firstButton {
+  cursor: pointer;
   @include buttonBlack;
   @include activeOpacity;
   @include activeScale;
 }
 
 .secondButton {
+  cursor: pointer;
   @include buttonWhite;
   @include activeOpacity;
   @include activeScale;
