@@ -31,14 +31,15 @@
     .cartoonArea {
       /** 레이아웃 시프트 막기 **/
       @include sizes;
-      width: var(--rootLayoutChildrenWidth);
-      height: calc(var(--rootLayoutChildrenWidth) * 0.8);
+      //width: var(--rootLayoutChildrenWidth);
+      //height: calc(var(--rootLayoutChildrenWidth) * 0.8);
+      width: 100%;
 
       img {
         position: relative !important;
         width: 100%;
         height: 100%;
-        object-fit: fill;
+        object-fit: contain;
       }
     }
 
@@ -129,7 +130,7 @@
   }
 
   .fadeIn {
-    animation: fadeIn 0.5s ease-in-out;
+    animation: fadeIn 0.2s ease-in-out;
   }
 
   @keyframes fadeIn {

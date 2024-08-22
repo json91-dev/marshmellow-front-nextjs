@@ -8,7 +8,7 @@ import { getLocalStorage, setLocalStorage } from '@/utils/utils';
 export default function OnboardingGuide() {
   const [currentCartoonPage, setCurrentCartoonPage] = useState(1);
   const router = useRouter();
-  const [hasSeenOnboardingGuide, setHasSeenOnboardingGuide] = useState(getLocalStorage('hasSeenOnboardingGuide'));
+  const [hasSeenOnboardingGuide, setHasSeenOnboardingGuide] = useState(getLocalStorage('HAS_SEEN_ONBOARDING_GUIDE'));
 
   const onClickMoveBeforePage = useCallback(() => {
     setCurrentCartoonPage(currentCartoonPage - 1);
@@ -18,7 +18,7 @@ export default function OnboardingGuide() {
     if (currentCartoonPage === 5) {
       router.replace('login');
       setHasSeenOnboardingGuide(true);
-      setLocalStorage('hasSeenOnboardingGuide', true);
+      setLocalStorage('HAS_SEEN_ONBOARDING_GUIDE', true);
       return;
     }
 
@@ -27,7 +27,7 @@ export default function OnboardingGuide() {
 
   const onClickCancelButton = useCallback(() => {
     setHasSeenOnboardingGuide(true);
-    setLocalStorage('hasSeenOnboardingGuide', true);
+    setLocalStorage('HAS_SEEN_ONBOARDING_GUIDE', true);
   }, []);
 
   if (hasSeenOnboardingGuide) {
@@ -47,54 +47,19 @@ export default function OnboardingGuide() {
       <div className={styles.body}>
         <div className={styles.cartoonArea}>
           {currentCartoonPage === 1 && (
-            <Image
-              className={styles.fadeIn}
-              src="/images/onboarding.1.png"
-              alt={'No Image'}
-              placeholder={'blur'}
-              fill
-              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
-            />
+            <Image className={styles.fadeIn} src="/images/onboarding.1.png" alt={'No Image'} width={266} height={213} />
           )}
           {currentCartoonPage === 2 && (
-            <Image
-              className={styles.fadeIn}
-              src="/images/onboarding.2.png"
-              alt={'No Image'}
-              placeholder={'blur'}
-              fill
-              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
-            />
+            <Image className={styles.fadeIn} src="/images/onboarding.2.png" alt={'No Image'} width={266} height={207} />
           )}
           {currentCartoonPage === 3 && (
-            <Image
-              className={styles.fadeIn}
-              src="/images/onboarding.3.png"
-              alt={'No Image'}
-              placeholder={'blur'}
-              fill
-              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
-            />
+            <Image className={styles.fadeIn} src="/images/onboarding.3.png" alt={'No Image'} width={266} height={207} />
           )}
           {currentCartoonPage === 4 && (
-            <Image
-              className={styles.fadeIn}
-              src="/images/onboarding.4.png"
-              alt={'No Image'}
-              placeholder={'blur'}
-              fill
-              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
-            />
+            <Image className={styles.fadeIn} src="/images/onboarding.4.png" alt={'No Image'} width={266} height={207} />
           )}
           {currentCartoonPage === 5 && (
-            <Image
-              className={styles.fadeIn}
-              src="/images/onboarding.5.png"
-              alt={'No Image'}
-              placeholder={'blur'}
-              fill
-              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
-            />
+            <Image className={styles.fadeIn} src="/images/onboarding.5.png" alt={'No Image'} width={266} height={207} />
           )}
         </div>
 
