@@ -3,6 +3,7 @@ import kakao from 'next-auth/providers/kakao';
 import google from 'next-auth/providers/google'; // import 추가
 import apple from 'next-auth/providers/apple'; // import 추가
 import NextAuth from 'next-auth';
+import jwt from 'jsonwebtoken';
 
 export const {
   handlers: { GET, POST }, // API Routes
@@ -35,6 +36,24 @@ export const {
     apple({
       clientId: process.env.APPLE_CLIENT_ID ?? '',
       clientSecret: process.env.APPLE_CLIENT_SECRET ?? '',
+      profile(profile, tokens) {
+        // appleFirstInfo는 처음 로그인할 때 Apple에서 제공하는 사용자 정보입니다.
+        const appleFirstInfo: any = tokens.id_token ? jwt.decode(tokens.id_token) : null;
+        console.log('Test 1');
+        console.log(appleFirstInfo);
+
+        // 처음 로그인 시 Apple에서 전달된 이름 정보가 있다면 사용
+        if (appleFirstInfo && appleFirstInfo.name) {
+          profile.name = `${appleFirstInfo.name.firstName} ${appleFirstInfo.name.lastName}`;
+        }
+
+        return {
+          id: profile.sub,
+          name: profile.name || null,
+          email: profile.email || null,
+          image: null, // Apple은 기본적으로 프로필 이미지를 제공하지 않습니다.
+        };
+      },
     }),
   ],
   callbacks: {
@@ -73,6 +92,7 @@ export const {
           token.profileImg = profile?.properties?.profile_image;
         } else if (account.provider === 'apple') {
           console.log(`로그인 넘어옴??`);
+          console.log('Test 2');
           console.log(account);
           const response = await fetch(`${process.env.API_URL}/auth/signin`, {
             method: 'POST',
