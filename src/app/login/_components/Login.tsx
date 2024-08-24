@@ -51,10 +51,8 @@ export default memo(function Login() {
     return (
       <>
         <KakaoLoginButton style={{ marginTop: '2rem' }} />
-        {/*<GoogleLoginButton style={{ marginTop: '1rem' }} />*/}
         {isAppleOS ? (
-          // <AppleLoginButton style={{ marginTop: '1rem' }} />
-          <GoogleLoginButton style={{ marginTop: '1rem' }} />
+          <AppleLoginButton style={{ marginTop: '1rem' }} />
         ) : (
           <GoogleLoginButton style={{ marginTop: '1rem' }} />
         )}

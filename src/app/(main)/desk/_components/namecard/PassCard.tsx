@@ -56,34 +56,26 @@ export default function PassCard() {
             <p>카카오톡으로 시작하기</p>
           </div>
         </div>
-        <div className={styles.googleButton} onClick={() => authLogin('google')}>
-          <div className={styles.button}>
-            <div className={styles.image}>
-              <Image width={18} height={18} src="/images/login.google.svg" alt="No Image" />
-            </div>
-            <p>구글로 시작하기</p>
-          </div>
-        </div>
 
-        {/*{isAppleOS !== null && !isAppleOS ? (*/}
-        {/*  <div className={styles.googleButton} onClick={() => authLogin('google')}>*/}
-        {/*    <div className={styles.button}>*/}
-        {/*      <div className={styles.image}>*/}
-        {/*        <Image width={18} height={18} src="/images/login.google.svg" alt="No Image" />*/}
-        {/*      </div>*/}
-        {/*      <p>구글로 시작하기</p>*/}
-        {/*    </div>*/}
-        {/*  </div>*/}
-        {/*) : (*/}
-        {/*  <div className={styles.appleButton} onClick={() => authLogin('apple')}>*/}
-        {/*    <div className={styles.button}>*/}
-        {/*      <div className={styles.image}>*/}
-        {/*        <Image width={18} height={18} src="/images/login.apple.svg" alt="No Image" />*/}
-        {/*      </div>*/}
-        {/*      <p>Apple로 시작하기</p>*/}
-        {/*    </div>*/}
-        {/*  </div>*/}
-        {/*)}*/}
+        {isAppleOS !== null && !isAppleOS ? (
+          <div className={styles.googleButton} onClick={() => authLogin('google')}>
+            <div className={styles.button}>
+              <div className={styles.image}>
+                <Image width={18} height={18} src="/images/login.google.svg" alt="No Image" />
+              </div>
+              <p>구글로 시작하기</p>
+            </div>
+          </div>
+        ) : (
+          <div className={styles.appleButton} onClick={() => authLogin('apple')}>
+            <div className={styles.button}>
+              <div className={styles.image}>
+                <Image width={18} height={18} src="/images/login.apple.svg" alt="No Image" />
+              </div>
+              <p>Apple로 시작하기</p>
+            </div>
+          </div>
+        )}
       </div>
       <div className={styles.logo} />
     </div>
