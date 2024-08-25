@@ -1,14 +1,11 @@
-// import KakaoProvider from "next-auth/providers/kakao"
 import kakao from 'next-auth/providers/kakao';
 import google from 'next-auth/providers/google'; // import 추가
 import apple from 'next-auth/providers/apple'; // import 추가
 import NextAuth from 'next-auth';
-import jwt from 'jsonwebtoken';
 
 export const {
   handlers: { GET, POST }, // API Routes
   auth, // 요부분이 결국 미들웨어가 되는것 체크할것 / auth 함수 호출시 내가 로그인했는지 안했는지 여부 판단 가능.
-  signIn, // 로그인용
 } = NextAuth({
   trustHost: true,
   /** apple 로그인시 쿠키 설정 해줘야함 **/
@@ -42,25 +39,31 @@ export const {
       clientId: process.env.KAKAO_CLIENT_ID ?? '',
       clientSecret: process.env.KAKAO_CLIENT_SECRET ?? '',
     }),
+
     apple({
-      clientId: process.env.APPLE_CLIENT_ID ?? '',
-      clientSecret: process.env.APPLE_CLIENT_SECRET ?? '',
-      wellKnown: 'https://appleid.apple.com/.well-known/openid-configuration',
+      clientId: process.env.AUTH_APPLE_ID,
+      clientSecret: '' + process.env.AUTH_APPLE_SECRET,
       checks: ['pkce'],
       token: {
         url: `https://appleid.apple.com/auth/token`,
       },
-      authorization: {
-        url: 'https://appleid.apple.com/auth/authorize',
-        params: {
-          scope: '',
-          response_type: 'code',
-          response_mode: 'query',
-          state: crypto.randomUUID(),
-        },
-      },
       client: {
         token_endpoint_auth_method: 'client_secret_post',
+      },
+      authorization: {
+        params: {
+          response_mode: 'form_post',
+          response_type: 'code', //do not set to "code id_token" as it will not work
+          scope: 'name email',
+        },
+      },
+      profile(profile) {
+        return {
+          id: profile.sub,
+          name: 'Person Doe', //profile.name.givenName + " " + profile.name.familyName, but apple does not return name...
+          email: profile.email,
+          image: '',
+        };
       },
     }),
   ],
