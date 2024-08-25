@@ -8,8 +8,18 @@ export const {
   auth, // 요부분이 결국 미들웨어가 되는것 체크할것 / auth 함수 호출시 내가 로그인했는지 안했는지 여부 판단 가능.
 } = NextAuth({
   trustHost: true,
+  debug: true,
   /** apple 로그인시 쿠키 설정 해줘야함 **/
   cookies: {
+    csrfToken: {
+      name: 'next-auth.csrf-token',
+      options: {
+        httpOnly: true,
+        sameSite: 'none',
+        path: '/',
+        secure: true,
+      },
+    },
     pkceCodeVerifier: {
       name: 'next-auth.pkce.code_verifier',
       options: {
@@ -41,8 +51,8 @@ export const {
     }),
 
     apple({
-      clientId: process.env.AUTH_APPLE_ID,
-      clientSecret: '' + process.env.AUTH_APPLE_SECRET,
+      clientId: process.env.APPLE_CLIENT_ID ?? '',
+      clientSecret: process.env.APPLE_CLIENT_SECRET ?? '',
       checks: ['pkce'],
       token: {
         url: `https://appleid.apple.com/auth/token`,
@@ -58,6 +68,7 @@ export const {
         },
       },
       profile(profile) {
+        console.log(profile);
         return {
           id: profile.sub,
           name: 'Person Doe', //profile.name.givenName + " " + profile.name.familyName, but apple does not return name...
@@ -68,7 +79,8 @@ export const {
     }),
   ],
   callbacks: {
-    async jwt({ token, user, account, profile, isNewUser, trigger, session }) {
+    async jwt({ token, user, account, profile }) {
+      console.log(account);
       if (account) {
         if (account.provider === 'google') {
           const response = await fetch(`${process.env.API_URL}/auth/signin`, {
