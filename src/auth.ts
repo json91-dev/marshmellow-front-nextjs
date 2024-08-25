@@ -13,6 +13,15 @@ export const {
   trustHost: true,
   /** apple 로그인시 쿠키 설정 해줘야함 **/
   cookies: {
+    pkceCodeVerifier: {
+      name: 'next-auth.pkce.code_verifier',
+      options: {
+        httpOnly: true,
+        sameSite: 'none',
+        path: '/',
+        secure: true,
+      },
+    },
     callbackUrl: {
       name: `__Secure-next-auth.callback-url`,
       options: {
@@ -36,23 +45,22 @@ export const {
     apple({
       clientId: process.env.APPLE_CLIENT_ID ?? '',
       clientSecret: process.env.APPLE_CLIENT_SECRET ?? '',
-      profile(profile, tokens) {
-        // appleFirstInfo는 처음 로그인할 때 Apple에서 제공하는 사용자 정보입니다.
-        const appleFirstInfo: any = tokens.id_token ? jwt.decode(tokens.id_token) : null;
-        console.log('Test 1');
-        console.log(appleFirstInfo);
-
-        // 처음 로그인 시 Apple에서 전달된 이름 정보가 있다면 사용
-        if (appleFirstInfo && appleFirstInfo.name) {
-          profile.name = `${appleFirstInfo.name.firstName} ${appleFirstInfo.name.lastName}`;
-        }
-
-        return {
-          id: profile.sub,
-          name: profile.name || null,
-          email: profile.email || null,
-          image: null, // Apple은 기본적으로 프로필 이미지를 제공하지 않습니다.
-        };
+      wellKnown: 'https://appleid.apple.com/.well-known/openid-configuration',
+      checks: ['pkce'],
+      token: {
+        url: `https://appleid.apple.com/auth/token`,
+      },
+      authorization: {
+        url: 'https://appleid.apple.com/auth/authorize',
+        params: {
+          scope: '',
+          response_type: 'code',
+          response_mode: 'query',
+          state: crypto.randomUUID(),
+        },
+      },
+      client: {
+        token_endpoint_auth_method: 'client_secret_post',
       },
     }),
   ],
