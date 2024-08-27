@@ -162,3 +162,22 @@ button {
   align-items: center;
   z-index: 3000;
 }
+
+
+.slick-slider{
+  width: 100%;
+}
+
+
+.slick-dots{
+  bottom:5px;
+
+  li button:before{
+    font-size: 15px;
+    color: white;
+  }
+  li.slick-active button:before {
+    opacity: .75;
+    color: white;
+  }
+}

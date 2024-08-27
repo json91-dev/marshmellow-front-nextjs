@@ -11,7 +11,6 @@ export default function LuckyDrawErrorModal() {
   const { isShowLuckyDrawErrorModal, showLuckyDrawErrorModal, luckyDrawErrorType } = useModalStore();
   const backdropRef = React.useRef(null);
   const modalRef = React.useRef(null);
-  console.log(isShowLuckyDrawErrorModal);
 
   return (
     <>
