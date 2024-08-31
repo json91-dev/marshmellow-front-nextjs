@@ -31,6 +31,7 @@ export default function LuckDrawCarousel() {
   const isDragging = useRef(false);
   const dragStartTime = useRef(0);
   const startPosition = useRef({ x: 0, y: 0 });
+  const sliderRef = useRef(null!);
 
   /** 시간 및 이동 초기화 **/
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
@@ -62,7 +63,7 @@ export default function LuckDrawCarousel() {
 
   return (
     <div className={styles.luckyDrawCards}>
-      <Slider {...settings} touchThreshold={10}>
+      <Slider {...settings} touchThreshold={10} ref={sliderRef}>
         {dummyLuckyDrawCardsData.map((cardsItem, index) => {
           return (
             <div className={styles.carouselItem} onPointerDown={handlePointerDown} onPointerMove={handlePointerMove}>
