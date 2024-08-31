@@ -24,8 +24,8 @@ export default function OfficePage() {
         </div>
         <div className={styles.todayArea}>
           <div className={styles.myIcon}>
-            <div className={styles.nameRank}>{`${result?.data?.grade}\n`}</div>
-            <div className={styles.name}>{`${result?.data?.profile?.name}`}</div>
+            <div className={styles.nameRank}>{`${result?.data ? result?.data?.grade : '취준생'}\n`}</div>
+            <div className={styles.name}>{`${result?.data ? result?.data?.profile?.name : '마시멜로우'}`}</div>
             <Image src="/images/mallow.happy.v2.svg" alt="No Image" width={120} height={102} />
           </div>
           <TodayMission />

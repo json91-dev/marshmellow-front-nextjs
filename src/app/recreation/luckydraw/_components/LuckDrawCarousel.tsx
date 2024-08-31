@@ -20,8 +20,7 @@ const MIN_DRAG_DISTANCE = 10; // 최소 드래그 거리 (픽셀)
 const MAX_CLICK_TIME = 200; // 클릭으로 간주할 최대 시간 (밀리초)
 
 export default function LuckDrawCarousel() {
-  const { showLuckyDrawErrorModal, showLuckyDrawPickUpModal, showFeverGuideModal, setLuckyDrawWinningCheckType } =
-    useModalStore();
+  const { showLuckyDrawPickUpModal, setLuckyDrawWinningCheckType } = useModalStore();
 
   const onDrawCardClick = useCallback((isOdd: boolean) => {
     isOdd ? setLuckyDrawWinningCheckType('VIOLET') : setLuckyDrawWinningCheckType('PURPLE');
@@ -66,7 +65,12 @@ export default function LuckDrawCarousel() {
       <Slider {...settings} touchThreshold={10} ref={sliderRef}>
         {dummyLuckyDrawCardsData.map((cardsItem, index) => {
           return (
-            <div className={styles.carouselItem} onPointerDown={handlePointerDown} onPointerMove={handlePointerMove}>
+            <div
+              className={styles.carouselItem}
+              onPointerDown={handlePointerDown}
+              onPointerMove={handlePointerMove}
+              key={index}
+            >
               <div className={styles.drawCards}>
                 {cardsItem.map((item) => {
                   if (item.status === 'default') {

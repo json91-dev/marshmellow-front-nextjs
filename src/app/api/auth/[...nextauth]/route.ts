@@ -69,6 +69,7 @@ const handler = NextAuth({
           token.accountId = result.data.accountId;
           token.type = result.data.type;
           token.accountId = result.data.accountId;
+          // @ts-ignore
           token.profileImg = profile?.picture;
         } else if (account.provider === 'kakao') {
           const response = await fetch(`${process.env.API_URL}/auth/signin`, {

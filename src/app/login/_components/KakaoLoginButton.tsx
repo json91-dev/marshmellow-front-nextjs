@@ -4,7 +4,7 @@ import styles from './kakaoLoginButton.module.scss';
 import Image from 'next/image';
 import React, { CSSProperties, useCallback } from 'react';
 import { signIn } from 'next-auth/react';
-import { AuthError } from 'next-auth';
+import AuthError from 'next-auth';
 
 type Props = {
   style?: CSSProperties;

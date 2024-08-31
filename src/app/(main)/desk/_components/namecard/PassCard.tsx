@@ -4,7 +4,7 @@ import Image from 'next/image';
 import React, { useCallback, useEffect, useState } from 'react';
 import { isAppleDevice } from '@/utils/utils';
 import { signIn } from 'next-auth/react';
-import { AuthError } from 'next-auth';
+import AuthError from 'next-auth';
 
 export default function PassCard() {
   const [isAppleOS, setIsAppleOS] = useState<boolean>(null!);
