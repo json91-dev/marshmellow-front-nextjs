@@ -1,5 +1,5 @@
 'use client';
-import styles from './missionCalendar.module.scss';
+import styles from './MissionCalendar.module.scss';
 import Image from 'next/image';
 import React, { useCallback, useEffect, useState } from 'react';
 import { getCalendarData } from '@/utils/utils';

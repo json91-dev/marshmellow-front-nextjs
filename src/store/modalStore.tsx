@@ -79,6 +79,8 @@ interface IdentifyModalState {
   isShowFulfillAttendanceDateCheckModal: boolean;
   fulfillAttendanceCheckedDateString: string;
   showFulfillAttendanceDateCheckModal(isShow: boolean, checkedDateString?: string): void;
+  isShowFulfillAttendanceAlarmSettingModal: boolean;
+  showFulfillAttendanceAlarmSettingModal(isShow: boolean): void;
 
   // 레크레이션 럭키드로우 페이지 (/recreation/luckydraw)
   isShowFeverGuideModal: boolean;
@@ -255,7 +257,10 @@ export const useModalStore = create(
           checkedDateString === '' ? state.fulfillAttendanceCheckedDateString : checkedDateString,
       }));
     },
-
+    isShowFulfillAttendanceAlarmSettingModal: false,
+    showFulfillAttendanceAlarmSettingModal(isShow: boolean) {
+      set({ isShowFulfillAttendanceAlarmSettingModal: isShow });
+    },
     // 레크레이션 럭키드로우 페이지
     isShowFeverGuideModal: false,
     showFeverGuideModal(isShow: boolean) {

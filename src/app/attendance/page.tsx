@@ -5,24 +5,13 @@ import Image from 'next/image';
 import React from 'react';
 import BottomInfo from '@/app/attendance/_components/BottomInfo';
 import dayjs from 'dayjs';
+import AttendanceAlarmSetting from '@/app/attendance/_components/AttendanceAlarmSetting';
 
 export default function AttendancePage() {
   return (
     <div className={styles.attendancePage}>
       <TopNavigation title={'근태 관리'} />
-
-      <div className={styles.settingAlert}>
-        <div className={styles.top}>
-          <div className={styles.title}>출근을 놓치지 마세요</div>
-          <div className={styles.toggle}>
-            <div className={styles.onOffSwitchContainer}>
-              <input type="checkbox" name="onoff-switch" id="onoff-switch1" />
-              <label htmlFor="onoff-switch1"></label>
-            </div>
-          </div>
-        </div>
-        <div className={styles.description}>출근하지 않았으면, 점심시간 30분 전에 알림을 보내드려요.</div>
-      </div>
+      <AttendanceAlarmSetting />
 
       <div className={styles.body}>
         <div className={styles.calendarArea}>

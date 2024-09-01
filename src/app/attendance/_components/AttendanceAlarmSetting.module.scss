@@ -1,0 +1,89 @@
+.settingAlert {
+  width: 100%;
+  height: 7.4rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 2.4rem 1.2rem 2.4rem;
+  gap: 0.4rem;
+  background: white;
+  border-radius: 0 0 2rem 2rem;
+
+  .top {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .title {
+      color: #12171E;
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+
+    .toggle {
+      color: #5C6475;
+      font-size: 1.2rem;
+      font-weight: bold;
+
+      .onOffSwitchContainer{
+        display:inline-block;
+        height: 30px;
+        position:relative;
+
+        .boundingBox {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background: transparent;
+          z-index:10;
+          cursor: pointer;
+        }
+      }
+
+      .onOffSwitchContainer input[type="checkbox"]{
+        position: absolute;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+      }
+      .onOffSwitchContainer label{
+        padding-left: 70px;
+        line-height: 30px;
+        font-size: 16px;
+      }
+
+      .onOffSwitchContainer label::after{
+        position:absolute;
+        top:3px;
+        left:4px;
+        content:'';
+        width: 24px;
+        height: 24px;
+        background: #FFFFFF !important;
+        border-radius: 100%;
+        transition: all 0.3s
+      }
+
+      .onOffSwitchContainer label::before{
+        position:absolute;
+        top:0;
+        left:0;
+        content:'';
+        width: 60px;
+        height: 30px;
+        border:1px solid #d1d1d1;
+        border-radius: 20px;
+        background: #f1f1f1;
+        box-sizing: border-box;
+      }
+
+      .onOffSwitchContainer input[type="checkbox"]:checked + label::after {
+        transform: translateX(28px);
+        background: #E5E9F2;
+      }
+
+      .onOffSwitchContainer input[type="checkbox"]:checked + label::before {
+        background: #BB4EF2;
+      }
+    }
+  }
+}

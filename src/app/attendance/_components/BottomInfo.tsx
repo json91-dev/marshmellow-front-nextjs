@@ -1,10 +1,12 @@
 'use client';
-import styles from './bottomInfo.module.scss';
+import styles from './BottomInfo.module.scss';
 import Image from 'next/image';
 import React, { useCallback, useRef } from 'react';
 import { useWorkMonthlyQuery } from '@/hooks/queries/activity';
 import dayjs from 'dayjs';
 import useModalStore from '@/store/modalStore';
+import { useSession } from 'next-auth/react';
+import useToastStore from '@/store/toastStore';
 
 export default function BottomInfo() {
   const accordionContentRef = useRef<HTMLDivElement>(null!);
@@ -124,11 +126,19 @@ export default function BottomInfo() {
 
 /** 근태관리 하단 출근 보충 일수 화면 **/
 function FulfillAttendance() {
-  const { data: workMonthlyResult, isLoading, isFetching } = useWorkMonthlyQuery(dayjs().format('YYYY-MM-DD'));
+  const { data: workMonthlyResult } = useWorkMonthlyQuery(dayjs().format('YYYY-MM-DD'));
   const { showFulfillAttendanceDateSelectModal } = useModalStore();
+  const { status } = useSession();
+  const { openToast } = useToastStore();
+
   const onClickFillAds = useCallback(() => {
-    showFulfillAttendanceDateSelectModal(true);
-  }, []);
+    if (status === 'authenticated') {
+      showFulfillAttendanceDateSelectModal(true);
+      return;
+    }
+
+    openToast('로그인 이후 출근보충이 가능합니다.');
+  }, [status]);
 
   return (
     <>

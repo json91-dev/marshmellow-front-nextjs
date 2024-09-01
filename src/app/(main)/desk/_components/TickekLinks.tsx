@@ -10,7 +10,7 @@ export default function TicketLinks() {
   const router = useRouter();
   const { data: result, status, error } = useMemberMeQuery();
 
-  if (status === 'pending') {
+  if (status === 'pending' || status === 'error') {
     return null;
   }
 
@@ -23,7 +23,6 @@ export default function TicketLinks() {
         </div>
         <div onClick={() => router.push('/my/mallow')}>
           {status === 'success' && <div>{result?.data?.currency?.marshmallowQuantity}개</div>}
-          {status === 'error' && <div>{0}개</div>}
           <div>
             <Image src="/images/arrow.right.svg" alt="No Image" width={26} height={26} />
           </div>

@@ -2,6 +2,7 @@ import FulfillAttendanceCompleteModal from '@/app/@modal/attendance/FulfillAtten
 import FulfillAttendanceNoDayModal from '@/app/@modal/attendance/FulfillAttendanceNoDayModal';
 import FulfillAttendanceDateSelectModal from '@/app/@modal/attendance/FulfillAttendanceDateSelectModal';
 import FulfillAttendanceDateCheckModal from '@/app/@modal/attendance/FulfillAttendanceDateCheckModal';
+import FulfillAttendanceAlarmSettingModal from '@/app/@modal/attendance/FulfillAttendanceAlarmSettingModal';
 
 export default function AttendancePageModals() {
   return (
@@ -10,6 +11,7 @@ export default function AttendancePageModals() {
       <FulfillAttendanceNoDayModal />
       <FulfillAttendanceDateSelectModal />
       <FulfillAttendanceDateCheckModal />
+      <FulfillAttendanceAlarmSettingModal />
     </>
   );
 }
