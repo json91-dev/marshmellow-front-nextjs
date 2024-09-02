@@ -8,7 +8,6 @@ import { useRouter } from 'next/navigation';
 export default function EnjoyItems() {
   const { data: result, status, isLoading, isFetching } = useOnboardingStatusQuery();
   const router = useRouter();
-  console.log(result);
 
   if (isLoading || isFetching) {
     return null;

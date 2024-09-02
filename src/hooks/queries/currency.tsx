@@ -7,7 +7,6 @@ export function useMarshmallowHistoryQuery(type: MallowStateType = 'ALL', range:
   const getWorkMonthly = async () => {
     const session = await getSession();
     if (!session) {
-      console.error('로그인이 되어있지 않음');
       throw new Error('로그인이 되어있지 않음');
     }
 
@@ -38,7 +37,6 @@ export function useTicketHistoryQuery() {
   const getWorkMonthly = async () => {
     const session = await getSession();
     if (!session) {
-      console.error('로그인이 되어있지 않음');
       throw new Error('로그인이 되어있지 않음');
     }
 

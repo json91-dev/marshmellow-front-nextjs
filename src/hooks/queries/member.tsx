@@ -6,7 +6,6 @@ export function useMemberMeQuery() {
   const getMember = async (): Promise<MemberMeResponse> => {
     const session = await getSession();
     if (!session) {
-      console.error('로그인이 되어있지 않음');
       throw new Error('로그인이 되어있지 않음');
     }
 
@@ -33,7 +32,6 @@ export function useMemberProfileQuery() {
   const getMemberProfile = async (): Promise<MemberProfileResponse> => {
     const session = await getSession();
     if (!session) {
-      console.error('로그인이 되어있지 않음');
       throw new Error('로그인이 되어있지 않음');
     }
 
@@ -60,7 +58,6 @@ export function useMemberCurrencyQuery() {
   const getMemberCurrency = async () => {
     const session = await getSession();
     if (!session) {
-      console.error('로그인이 되어있지 않음');
       throw new Error('로그인이 되어있지 않음');
     }
     // console.log(session?.accessToken);
@@ -88,7 +85,6 @@ export function useChangeNicknameMutation() {
   const changeNickname = async (nickname: string) => {
     const session = await getSession();
     if (!session) {
-      console.error('로그인이 되어있지 않음');
       throw new Error('로그인이 되어있지 않음');
     }
 
@@ -118,7 +114,6 @@ export function useWithdrawMutation() {
   const memberWithdraw = async (withdrawReason: string) => {
     const session = await getSession();
     if (!session) {
-      console.error('로그인이 되어있지 않음');
       throw new Error('로그인이 되어있지 않음');
     }
 
@@ -148,7 +143,6 @@ export function useWithdrawCancelMutation() {
   const memberWithdrawCancel = async (withdrawReason: string) => {
     const session = await getSession();
     if (!session) {
-      console.error('로그인이 되어있지 않음');
       throw new Error('로그인이 되어있지 않음');
     }
 
@@ -178,7 +172,6 @@ export function useWorkTimeChangeMutation() {
   const workTimeChange = async (officeHourId: number) => {
     const session = await getSession();
     if (!session) {
-      console.error('로그인이 되어있지 않음');
       throw new Error('로그인이 되어있지 않음');
     }
 

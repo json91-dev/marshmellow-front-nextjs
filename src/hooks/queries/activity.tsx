@@ -7,7 +7,6 @@ export function useWorkWeeklyQuery(dateString: string) {
   const getWorkWeekly = async () => {
     const session = await getSession();
     if (!session) {
-      console.error('로그인이 되어있지 않음');
       throw new Error('로그인이 되어있지 않음');
     }
 
@@ -35,7 +34,6 @@ export function useWorkTodayQuery() {
   const getWorkToday = async () => {
     const session = await getSession();
     if (!session) {
-      console.error('로그인이 되어있지 않음');
       throw new Error('로그인이 되어있지 않음');
     }
 
@@ -63,7 +61,6 @@ export function useWorkMonthlyQuery(dateString: string) {
   const getWorkMonthly = async () => {
     const session = await getSession();
     if (!session) {
-      console.error('로그인이 되어있지 않음');
       throw new Error('로그인이 되어있지 않음');
     }
 
@@ -91,7 +88,6 @@ export function useWorkAttendanceMutation() {
   const work = async () => {
     const session = await getSession();
     if (!session) {
-      console.error('로그인이 되어있지 않음');
       throw new Error('로그인이 되어있지 않음');
     }
 
@@ -114,36 +110,5 @@ export function useWorkAttendanceMutation() {
 
   return useMutation({
     mutationFn: () => work(),
-  });
-}
-
-/** 온보딩 미션 상태 조회 **/
-/** 월별 근무 현황 확인 **/
-export function useActivityOnboarding() {
-  const getWorkMonthly = async (): Promise<OnboardingResponse> => {
-    const session = await getSession();
-    if (!session) {
-      console.error('로그인이 되어있지 않음');
-      throw new Error('로그인이 되어있지 않음');
-    }
-
-    // const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/activity/onboarding`, {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_MSW_API_URL}/activity/onboarding`, {
-      // MSW
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${session?.accessToken}`,
-        'Content-Type': 'application/json',
-      },
-      cache: 'no-store',
-    });
-
-    return response.json();
-  };
-
-  return useQuery({
-    queryKey: ['onboarding'],
-    queryFn: getWorkMonthly,
-    staleTime: 1000 * 20,
   });
 }

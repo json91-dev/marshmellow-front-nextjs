@@ -5,7 +5,6 @@ export function useAlarmQuery() {
   const getAlarm = async (): Promise<any> => {
     const session = await getSession();
     if (!session) {
-      console.error('로그인이 되어있지 않음');
       throw new Error('로그인이 되어있지 않음');
     }
 
