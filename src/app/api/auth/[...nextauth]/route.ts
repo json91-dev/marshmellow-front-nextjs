@@ -88,9 +88,10 @@ const handler = NextAuth({
           // @ts-ignore
           token.profileImg = profile?.properties?.profile_image;
         } else if (account.provider === 'apple') {
-          console.log(`로그인 넘어옴??`);
-          console.log('Test 2');
+          console.log('------애플 로그인 처리 시작--------');
           console.log(account);
+          console.log('ID TOKEN:', account.id_token);
+
           const response = await fetch(`${process.env.API_URL}/auth/signin`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
