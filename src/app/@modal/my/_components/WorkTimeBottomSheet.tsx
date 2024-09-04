@@ -4,7 +4,7 @@ import useModalStore from '@/store/modalStore';
 import ModalBackdrop from '@/app/@modal/signup/identify/_components/ModalBackdrop';
 import { CSSTransition } from 'react-transition-group';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { useMemberProfileQuery } from '@/hooks/queries/member';
+import { useMemberProfileQuery } from '@/api/queries/member';
 import useBottomSheet from '@/hooks/useBottomSheet';
 
 export default function WorkTimeBottomSheet() {

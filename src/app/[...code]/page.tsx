@@ -4,7 +4,7 @@ import styles from './page.module.scss';
 import React from 'react';
 import NoticeItem from '@/app/notice/_components/NoticeItem';
 import TopNavigation from '@/components/nav/TopNavigation';
-import { useNoticeAll } from '@/hooks/queries/notice';
+import { useNoticeAll } from '@/api/queries/notice';
 
 export default function noticePage() {
   const { data: result, status, error } = useNoticeAll();

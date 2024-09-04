@@ -1,14 +1,12 @@
 import { getSession } from 'next-auth/react';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { OnboardingMissionStatusResponse, OnboardingResponse } from '@/hooks/types/onboarding';
+import { OnboardingMissionStatusResponse, OnboardingResponse } from '@/api/types/onboarding';
+import { getAuthenticatedSession } from '@/utils/queryUtils';
 
 /** 온보딩 완료시 완료 상태 변경 **/
 export function useOnboardingCompleteMutation() {
   const onboardingComplete = async () => {
-    const session = await getSession();
-    if (!session) {
-      throw new Error('로그인이 되어있지 않음');
-    }
+    const session = await getAuthenticatedSession();
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/onboarding`, {
       method: 'POST',
@@ -30,10 +28,7 @@ export function useOnboardingCompleteMutation() {
 /** 온보딩 UI 상태 조회 **/
 export function useOnboardingStatusQuery() {
   const getOnboardingStatus = async (): Promise<OnboardingResponse> => {
-    const session = await getSession();
-    if (!session) {
-      throw new Error('로그인이 되어있지 않음');
-    }
+    const session = await getAuthenticatedSession();
 
     // const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/onboarding/status`, {
     const response = await fetch(`${process.env.NEXT_PUBLIC_MSW_API_URL}/onboarding/status`, {
@@ -59,10 +54,7 @@ export function useOnboardingStatusQuery() {
 /** 온보딩 미션 상태 조회 **/
 export function useOnboardingMissionStatus() {
   const getWorkMonthly = async (): Promise<OnboardingMissionStatusResponse> => {
-    const session = await getSession();
-    if (!session) {
-      throw new Error('로그인이 되어있지 않음');
-    }
+    const session = await getAuthenticatedSession();
 
     // const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/activity/onboarding`, {
     const response = await fetch(`${process.env.NEXT_PUBLIC_MSW_API_URL}/activity/onboarding`, {
@@ -88,10 +80,7 @@ export function useOnboardingMissionStatus() {
 /** 온보딩 과정에서 첫 출근 미션 버튼 클릭 시 호출 **/
 export function firstOnboardingMissionCheckMutation() {
   const onboardingGettingMallowPractice = async () => {
-    const session = await getSession();
-    if (!session) {
-      throw new Error('로그인이 되어있지 않음');
-    }
+    const session = await getAuthenticatedSession();
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/activity/practice/onboarding`, {
       method: 'POST',

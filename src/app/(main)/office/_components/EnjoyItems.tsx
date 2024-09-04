@@ -2,7 +2,7 @@
 import styles from '@/app/(main)/office/page.module.scss';
 import Image from 'next/image';
 import React from 'react';
-import { useOnboardingStatusQuery } from '@/hooks/queries/onboarding';
+import { useOnboardingStatusQuery } from '@/api/queries/onboarding';
 import { useRouter } from 'next/navigation';
 
 export default function EnjoyItems() {

@@ -5,7 +5,7 @@ import { signOut, useSession } from 'next-auth/react';
 import NameCardEmploy from '@/app/(main)/desk/_components/namecard/NameCardEmploy';
 import NameCardIntern from '@/app/(main)/desk/_components/namecard/NameCardIntern';
 import PassCard from '@/app/(main)/desk/_components/namecard/PassCard';
-import { useMemberProfileQuery } from '@/hooks/queries/member';
+import { useMemberProfileQuery } from '@/api/queries/member';
 import { useRouter } from 'next/navigation';
 
 export default function NameCard() {

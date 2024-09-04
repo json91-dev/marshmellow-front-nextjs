@@ -3,7 +3,7 @@
 import React from 'react';
 import styles from './page.module.scss';
 import TopNavigationWithSetting from '@/components/nav/TopNavigationWithSetting';
-import { useAlarmQuery } from '@/hooks/queries/msw';
+import { useAlarmQuery } from '@/api/queries/msw';
 import { timeAgo } from '@/utils/utils';
 
 export default function AlarmPage() {

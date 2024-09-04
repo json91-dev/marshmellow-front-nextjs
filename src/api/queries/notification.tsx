@@ -1,12 +1,10 @@
 import { getSession } from 'next-auth/react';
 import { useMutation, useQuery } from '@tanstack/react-query';
+import { getAuthenticatedSession } from '@/utils/queryUtils';
 
 export function useNotificationModalQuery(modalType: number) {
   const getNotificationModalInfo = async () => {
-    const session = await getSession();
-    if (!session) {
-      throw new Error('로그인이 되어있지 않음');
-    }
+    const session = await getAuthenticatedSession();
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/notification/modal?modalType=${modalType}`, {
       method: 'GET',
@@ -29,10 +27,7 @@ export function useNotificationModalQuery(modalType: number) {
 
 export function useNotificationModalAllQuery() {
   const getNotificationModalInfoAll = async () => {
-    const session = await getSession();
-    if (!session) {
-      throw new Error('로그인이 되어있지 않음');
-    }
+    const session = await getAuthenticatedSession();
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/notification/modal/all`, {
       method: 'GET',
@@ -55,10 +50,7 @@ export function useNotificationModalAllQuery() {
 
 export function useNotificationModalReadMutation() {
   const modalRead = async (modalId: number) => {
-    const session = await getSession();
-    if (!session) {
-      throw new Error('로그인이 되어있지 않음');
-    }
+    const session = await getAuthenticatedSession();
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/notification/modal/see`, {
       method: 'PUT',

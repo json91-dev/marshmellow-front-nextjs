@@ -1,14 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 import { getSession } from 'next-auth/react';
 import { MallowStateType } from '@/app/my/mallow/page';
+import { getAuthenticatedSession } from '@/utils/queryUtils';
 
 /** 마시멜로우 내역 조회 **/
 export function useMarshmallowHistoryQuery(type: MallowStateType = 'ALL', range: number) {
   const getWorkMonthly = async () => {
-    const session = await getSession();
-    if (!session) {
-      throw new Error('로그인이 되어있지 않음');
-    }
+    const session = await getAuthenticatedSession();
 
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/currency/marshmallow/history?type=${type}&range=${range}`,
@@ -35,10 +33,7 @@ export function useMarshmallowHistoryQuery(type: MallowStateType = 'ALL', range:
 /** 응모권 내역 조회 **/
 export function useTicketHistoryQuery() {
   const getWorkMonthly = async () => {
-    const session = await getSession();
-    if (!session) {
-      throw new Error('로그인이 되어있지 않음');
-    }
+    const session = await getAuthenticatedSession();
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/currency/drawticket/history`, {
       method: 'GET',

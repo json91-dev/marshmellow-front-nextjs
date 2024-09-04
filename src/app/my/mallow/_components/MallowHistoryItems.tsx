@@ -2,7 +2,7 @@
 import styles from '@/app/my/mallow/page.module.scss';
 import { extractHourMinute, replaceAt } from '@/utils/utils';
 import React, { useMemo } from 'react';
-import { useMarshmallowHistoryQuery } from '@/hooks/queries/currency';
+import { useMarshmallowHistoryQuery } from '@/api/queries/currency';
 import useMallowHistoryStore from '@/store/mallowHistoryStore';
 
 export default function MallowHistoryItems() {

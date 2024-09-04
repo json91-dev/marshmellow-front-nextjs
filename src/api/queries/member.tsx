@@ -1,13 +1,10 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { getSession } from 'next-auth/react';
-import { MemberMeResponse, MemberProfileResponse } from '@/hooks/types/member';
+import { MemberMeResponse, MemberProfileResponse } from '@/api/types/member';
+import { getAuthenticatedSession } from '@/utils/queryUtils';
 
 export function useMemberMeQuery() {
   const getMember = async (): Promise<MemberMeResponse> => {
-    const session = await getSession();
-    if (!session) {
-      throw new Error('로그인이 되어있지 않음');
-    }
+    const session = await getAuthenticatedSession();
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/member/me`, {
       method: 'GET',
@@ -30,10 +27,7 @@ export function useMemberMeQuery() {
 
 export function useMemberProfileQuery() {
   const getMemberProfile = async (): Promise<MemberProfileResponse> => {
-    const session = await getSession();
-    if (!session) {
-      throw new Error('로그인이 되어있지 않음');
-    }
+    const session = await getAuthenticatedSession();
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/member/me/profile`, {
       method: 'GET',
@@ -56,10 +50,7 @@ export function useMemberProfileQuery() {
 
 export function useMemberCurrencyQuery() {
   const getMemberCurrency = async () => {
-    const session = await getSession();
-    if (!session) {
-      throw new Error('로그인이 되어있지 않음');
-    }
+    const session = await getAuthenticatedSession();
     // console.log(session?.accessToken);
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/member/me/currency`, {
@@ -83,10 +74,7 @@ export function useMemberCurrencyQuery() {
 
 export function useChangeNicknameMutation() {
   const changeNickname = async (nickname: string) => {
-    const session = await getSession();
-    if (!session) {
-      throw new Error('로그인이 되어있지 않음');
-    }
+    const session = await getAuthenticatedSession();
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/member/nickname`, {
       method: 'PUT',
@@ -112,10 +100,7 @@ export function useChangeNicknameMutation() {
 
 export function useWithdrawMutation() {
   const memberWithdraw = async (withdrawReason: string) => {
-    const session = await getSession();
-    if (!session) {
-      throw new Error('로그인이 되어있지 않음');
-    }
+    const session = await getAuthenticatedSession();
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/member`, {
       method: 'DELETE',
@@ -141,10 +126,7 @@ export function useWithdrawMutation() {
 
 export function useWithdrawCancelMutation() {
   const memberWithdrawCancel = async (withdrawReason: string) => {
-    const session = await getSession();
-    if (!session) {
-      throw new Error('로그인이 되어있지 않음');
-    }
+    const session = await getAuthenticatedSession();
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/member`, {
       method: 'DELETE',
@@ -170,10 +152,7 @@ export function useWithdrawCancelMutation() {
 
 export function useWorkTimeChangeMutation() {
   const workTimeChange = async (officeHourId: number) => {
-    const session = await getSession();
-    if (!session) {
-      throw new Error('로그인이 되어있지 않음');
-    }
+    const session = await getAuthenticatedSession();
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/member/hour`, {
       method: 'PUT',

@@ -5,7 +5,7 @@ import { CSSTransition } from 'react-transition-group';
 import ModalBackdrop from '@/app/@modal/signup/identify/_components/ModalBackdrop';
 import useModalStore from '@/store/modalStore';
 import cx from 'classnames';
-import { useWorkTimeChangeMutation } from '@/hooks/queries/member';
+import { useWorkTimeChangeMutation } from '@/api/queries/member';
 import useToastStore from '@/store/toastStore';
 import { useQueryClient } from '@tanstack/react-query';
 

@@ -5,7 +5,7 @@ import React, { useCallback, useRef, useState } from 'react';
 import { debounce, getLocalStorage, setLocalStorage } from '@/utils/utils';
 import TopNavigation from '@/components/nav/TopNavigation';
 import cx from 'classnames';
-import { useMemberProfileQuery } from '@/hooks/queries/member';
+import { useMemberProfileQuery } from '@/api/queries/member';
 import { useRouter } from 'next/navigation';
 
 export default function WithdrawPage() {

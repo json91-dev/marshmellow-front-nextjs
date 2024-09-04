@@ -2,7 +2,7 @@
 import styles from './BottomInfo.module.scss';
 import Image from 'next/image';
 import React, { useCallback, useRef } from 'react';
-import { useWorkMonthlyQuery } from '@/hooks/queries/activity';
+import { useWorkMonthlyQuery } from '@/api/queries/activity';
 import dayjs from 'dayjs';
 import useModalStore from '@/store/modalStore';
 import { useSession } from 'next-auth/react';

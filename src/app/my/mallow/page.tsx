@@ -6,7 +6,7 @@ import useModalStore from '@/store/modalStore';
 import TopNavigation from '@/components/nav/TopNavigation';
 import FilterState from '@/app/my/mallow/_components/FilterState';
 import useMallowHistoryStore from '@/store/mallowHistoryStore';
-import { useMemberCurrencyQuery } from '@/hooks/queries/member';
+import { useMemberCurrencyQuery } from '@/api/queries/member';
 import MallowHistoryItems from '@/app/my/mallow/_components/MallowHistoryItems';
 
 export type MallowStateType = 'ALL' | 'GAIN' | 'USE' | 'EXPIRED';

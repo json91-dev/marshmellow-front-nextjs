@@ -6,7 +6,7 @@ import ModalBackdrop from '@/app/@modal/signup/identify/_components/ModalBackdro
 import useModalStore from '@/store/modalStore';
 import cx from 'classnames';
 import { getLocalStorage } from '@/utils/utils';
-import { useWithdrawMutation } from '@/hooks/queries/member';
+import { useWithdrawMutation } from '@/api/queries/member';
 
 export default function WithdrawConfimModal() {
   const { isShowWithdrawConfirmModal, showWithdrawConfirmModal, showWithdrawConfirmCompleteModal } = useModalStore();

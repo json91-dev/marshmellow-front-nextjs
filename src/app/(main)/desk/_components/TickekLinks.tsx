@@ -4,7 +4,7 @@ import styles from './ticketLink.module.scss';
 import Image from 'next/image';
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { useMemberMeQuery } from '@/hooks/queries/member';
+import { useMemberMeQuery } from '@/api/queries/member';
 
 export default function TicketLinks() {
   const router = useRouter();

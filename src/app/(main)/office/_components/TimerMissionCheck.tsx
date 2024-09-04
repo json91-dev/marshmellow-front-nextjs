@@ -2,8 +2,8 @@
 import styles from '@/app/(main)/office/page.module.scss';
 import Image from 'next/image';
 import React, { useCallback, useMemo } from 'react';
-import { useMemberProfileQuery } from '@/hooks/queries/member';
-import { useWorkAttendanceMutation, useWorkTodayQuery } from '@/hooks/queries/activity';
+import { useMemberProfileQuery } from '@/api/queries/member';
+import { useWorkAttendanceMutation, useWorkTodayQuery } from '@/api/queries/activity';
 import useSecondUpdater from '@/hooks/useSecondUpdater';
 import cx from 'classnames';
 import { findMissionDateMatchingStart } from '@/utils/utils';

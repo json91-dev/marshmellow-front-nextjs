@@ -1,14 +1,12 @@
 import { getSession } from 'next-auth/react';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { OnboardingResponse } from '@/hooks/types/activity';
+import { OnboardingResponse } from '@/api/types/activity';
+import { getAuthenticatedSession } from '@/utils/queryUtils';
 
 /** 주별 근무현황 확인 **/
 export function useWorkWeeklyQuery(dateString: string) {
   const getWorkWeekly = async () => {
-    const session = await getSession();
-    if (!session) {
-      throw new Error('로그인이 되어있지 않음');
-    }
+    const session = await getAuthenticatedSession();
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/activity/work/weekly?date=${dateString}`, {
       method: 'GET',
@@ -32,10 +30,7 @@ export function useWorkWeeklyQuery(dateString: string) {
 /** 오늘의 근무 현황 확인 **/
 export function useWorkTodayQuery() {
   const getWorkToday = async () => {
-    const session = await getSession();
-    if (!session) {
-      throw new Error('로그인이 되어있지 않음');
-    }
+    const session = await getAuthenticatedSession();
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/activity/work/today`, {
       method: 'GET',
@@ -59,10 +54,7 @@ export function useWorkTodayQuery() {
 /** 월별 근무 현황 확인 **/
 export function useWorkMonthlyQuery(dateString: string) {
   const getWorkMonthly = async () => {
-    const session = await getSession();
-    if (!session) {
-      throw new Error('로그인이 되어있지 않음');
-    }
+    const session = await getAuthenticatedSession();
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/activity/work/monthly?date=${dateString}`, {
       method: 'GET',
@@ -86,10 +78,7 @@ export function useWorkMonthlyQuery(dateString: string) {
 /** 근무 출석체크 요청 **/
 export function useWorkAttendanceMutation() {
   const work = async () => {
-    const session = await getSession();
-    if (!session) {
-      throw new Error('로그인이 되어있지 않음');
-    }
+    const session = await getAuthenticatedSession();
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/activity/work`, {
       method: 'POST',

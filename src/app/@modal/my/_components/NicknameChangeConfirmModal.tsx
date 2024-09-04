@@ -8,7 +8,7 @@ import cx from 'classnames';
 import { getLocalStorage } from '@/utils/utils';
 import useToastStore from '@/store/toastStore';
 import { useQueryClient } from '@tanstack/react-query';
-import { useChangeNicknameMutation } from '@/hooks/queries/member';
+import { useChangeNicknameMutation } from '@/api/queries/member';
 
 export default function NicknameChangeConfirmModal() {
   const { isShowNicknameChangeConfirmModal, showNicknameChangeConfirmModal } = useModalStore();

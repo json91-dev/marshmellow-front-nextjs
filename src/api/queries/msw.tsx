@@ -1,12 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import { getSession } from 'next-auth/react';
+import { getAuthenticatedSession } from '@/utils/queryUtils';
 
 export function useAlarmQuery() {
   const getAlarm = async (): Promise<any> => {
-    const session = await getSession();
-    if (!session) {
-      throw new Error('로그인이 되어있지 않음');
-    }
+    const session = await getAuthenticatedSession();
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_MSW_API_URL}/alarm`, {
       method: 'GET',

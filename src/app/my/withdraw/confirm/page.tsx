@@ -7,7 +7,7 @@ import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import cx from 'classnames';
 import Checkbox from '@/components/common/Checkbox';
 import useModalStore from '@/store/modalStore';
-import { useMemberCurrencyQuery } from '@/hooks/queries/member';
+import { useMemberCurrencyQuery } from '@/api/queries/member';
 
 export default function WithdrawConfirmPage() {
   const [checked, setChecked] = useState(false);

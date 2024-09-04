@@ -7,9 +7,9 @@ import ModalBackdrop from '@/app/@modal/signup/identify/_components/ModalBackdro
 import cx from 'classnames';
 import { getCalendarData } from '@/utils/utils';
 import dayjs, { Dayjs } from 'dayjs';
-import { useWorkMonthlyQuery } from '@/hooks/queries/activity';
+import { useWorkMonthlyQuery } from '@/api/queries/activity';
 import Image from 'next/image';
-import { useMemberProfileQuery } from '@/hooks/queries/member';
+import { useMemberProfileQuery } from '@/api/queries/member';
 const DAY_LIST = ['일', '월', '화', '수', '목', '금', '토'];
 
 type calendarItem = {

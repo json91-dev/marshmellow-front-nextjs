@@ -5,7 +5,7 @@ import cx from 'classnames';
 import styles from './modal.module.scss';
 import React from 'react';
 import useModalStore from '@/store/modalStore';
-import { useMemberCurrencyQuery } from '@/hooks/queries/member';
+import { useMemberCurrencyQuery } from '@/api/queries/member';
 
 export default function MallowExpiredThisMonthModal() {
   const { isShowMallowExpiredThisMonthModal, showMallowExpiredThisMonthModal } = useModalStore();

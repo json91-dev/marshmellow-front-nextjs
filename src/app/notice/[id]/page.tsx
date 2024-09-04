@@ -1,7 +1,7 @@
 'use client';
 import styles from './noticeDetail.module.scss';
 import TopNavigation from '@/components/nav/TopNavigation';
-import { useNotice } from '@/hooks/queries/notice';
+import { useNotice } from '@/api/queries/notice';
 
 type Props = {
   params: {

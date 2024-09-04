@@ -3,7 +3,7 @@ import styles from './nameCard.module.scss';
 import Image from 'next/image';
 import React from 'react';
 import { dateStringToFormat, dateStringToFormatDiff, formatHourMinute } from '@/utils/utils';
-import { useMemberProfileQuery } from '@/hooks/queries/member';
+import { useMemberProfileQuery } from '@/api/queries/member';
 
 export default function NameCardEmploy() {
   const { data: result, isLoading, isError } = useMemberProfileQuery();

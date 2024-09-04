@@ -6,7 +6,7 @@ import TimerMissionCheck from '@/app/(main)/office/_components/TimerMissionCheck
 import TodayMission from '@/app/(main)/office/_components/TodayMission';
 import WeekAttendance from '@/app/(main)/office/_components/WeekAttendance';
 import MyMallowHeader from '@/app/(main)/office/_components/MyMallowHeader';
-import { useMemberProfileQuery } from '@/hooks/queries/member';
+import { useMemberProfileQuery } from '@/api/queries/member';
 import EnjoyItems from '@/app/(main)/office/_components/EnjoyItems';
 
 export default function OfficePage() {

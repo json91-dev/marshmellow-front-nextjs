@@ -8,7 +8,7 @@ import HorizontalLine from '@/app/my/_components/HorizontalLine';
 import useModalStore from '@/store/modalStore';
 import { useRouter } from 'next/navigation';
 import { formatHourMinute, phoneFomatter } from '@/utils/utils';
-import { useMemberProfileQuery } from '@/hooks/queries/member';
+import { useMemberProfileQuery } from '@/api/queries/member';
 
 export default function myPage() {
   const {

@@ -4,7 +4,7 @@ import styles from './topNavigationWithSetting.module.scss';
 import Image from 'next/image';
 import React, { useCallback } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import { useMemberMeQuery } from '@/hooks/queries/member';
+import { useMemberMeQuery } from '@/api/queries/member';
 
 type Props = {
   title?: string;

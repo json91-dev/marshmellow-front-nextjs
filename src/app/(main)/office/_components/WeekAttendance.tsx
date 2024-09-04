@@ -4,7 +4,7 @@ import Image from 'next/image';
 import React, { useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
-import { useWorkWeeklyQuery } from '@/hooks/queries/activity';
+import { useWorkWeeklyQuery } from '@/api/queries/activity';
 import dayjs from 'dayjs';
 import { findMonday, findSunday } from '@/utils/utils';
 import useModalStore from '@/store/modalStore';
