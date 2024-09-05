@@ -2,11 +2,11 @@
 import styles from '@/app/(main)/office/page.module.scss';
 import Image from 'next/image';
 import React from 'react';
-import { useOnboardingStatusQuery } from '@/api/queries/onboarding';
 import { useRouter } from 'next/navigation';
+import useOnboardingStatus from '@/api/queries/onboarding/useOnboardingStatus';
 
 export default function EnjoyItems() {
-  const { data: result, status, isLoading, isFetching } = useOnboardingStatusQuery();
+  const { data: result, status, isLoading, isFetching } = useOnboardingStatus();
   const router = useRouter();
 
   if (isLoading || isFetching) {

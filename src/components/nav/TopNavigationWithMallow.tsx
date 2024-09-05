@@ -5,7 +5,7 @@ import Image from 'next/image';
 import React, { useCallback } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import useModalStore from '@/store/modalStore';
-import { useMemberMeQuery } from '@/api/queries/member';
+import useMemberMe from '@/api/queries/member/useMemberMe';
 
 type Props = {
   title?: string;
@@ -16,7 +16,7 @@ export default function TopNavigationWithMallow({ title = '', path = '' }: Props
   const router = useRouter();
   const pathname = usePathname();
   const { showAddressChangeQuitModal, showQuitInfoModal } = useModalStore();
-  const { data: result } = useMemberMeQuery();
+  const { data: result } = useMemberMe();
 
   const onClickBackButton = useCallback(() => {
     // 경로 입력시 해당 경로로 replace

@@ -6,15 +6,15 @@ import useModalStore from '@/store/modalStore';
 import TopNavigation from '@/components/nav/TopNavigation';
 import FilterState from '@/app/my/mallow/_components/FilterState';
 import useMallowHistoryStore from '@/store/mallowHistoryStore';
-import { useMemberCurrencyQuery } from '@/api/queries/member';
 import MallowHistoryItems from '@/app/my/mallow/_components/MallowHistoryItems';
+import useMemberCurrency from '@/api/queries/member/useMemberCurrency';
 
 export type MallowStateType = 'ALL' | 'GAIN' | 'USE' | 'EXPIRED';
 
 export default function MarshmallowPage() {
   const { showMallowFilterDateBottomSheet, showMallowExpiredThisMonthModal } = useModalStore();
   const { history } = useMallowHistoryStore();
-  const { data: currencyResult } = useMemberCurrencyQuery();
+  const { data: currencyResult } = useMemberCurrency();
 
   return (
     <div className={styles.myMarshMallowPage}>

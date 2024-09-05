@@ -6,10 +6,10 @@ import { CSSTransition } from 'react-transition-group';
 import ModalBackdrop from '@/app/@modal/signup/identify/_components/ModalBackdrop';
 import cx from 'classnames';
 import Image from 'next/image';
-import { useWorkAttendanceMutation } from '@/api/queries/activity';
 import useToastStore from '@/store/toastStore';
 import { useQueryClient } from '@tanstack/react-query';
 import dayjs from 'dayjs';
+import useWorkAttendanceMutation from '@/api/mutations/work/useWorkAttendanceMutation';
 
 export default function AttendanceCheckModal() {
   const { isShowAttendanceCheckModal, showAttendanceCheckModal, isAttendanceCheckInOneMinute } = useModalStore();

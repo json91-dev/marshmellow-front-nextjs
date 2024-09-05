@@ -7,9 +7,9 @@ import ModalBackdrop from '@/app/@modal/signup/identify/_components/ModalBackdro
 import cx from 'classnames';
 import { getCalendarData } from '@/utils/utils';
 import dayjs, { Dayjs } from 'dayjs';
-import { useWorkMonthlyQuery } from '@/api/queries/activity';
 import Image from 'next/image';
-import { useMemberProfileQuery } from '@/api/queries/member';
+import useWorkMonthly from '@/api/queries/work/useWorkMonthly';
+import useMemberProfile from '@/api/queries/member/useMemberProfile';
 const DAY_LIST = ['일', '월', '화', '수', '목', '금', '토'];
 
 type calendarItem = {
@@ -25,8 +25,8 @@ type calendarList = (calendarItem | 0)[][];
 export default function FulfillAttendanceDateSelectModal() {
   const { isShowFulfillAttendanceDateSelectModal, showFulfillAttendanceDateSelectModal } = useModalStore();
   const [calendarList, setCalendarList] = useState<calendarList>([[]]);
-  const { data: workMonthlyResult, isLoading, isFetching } = useWorkMonthlyQuery(dayjs().format('YYYY-MM-DD'));
-  const { data: profileResult, isLoading: isLoadingProfile, isFetching: isFetchingProfile } = useMemberProfileQuery();
+  const { data: workMonthlyResult, isLoading, isFetching } = useWorkMonthly(dayjs().format('YYYY-MM-DD'));
+  const { data: profileResult, isLoading: isLoadingProfile, isFetching: isFetchingProfile } = useMemberProfile();
   const backdropRef = React.useRef(null);
   const modalRef = React.useRef(null);
 

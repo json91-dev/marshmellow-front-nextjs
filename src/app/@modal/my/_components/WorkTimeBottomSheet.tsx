@@ -4,15 +4,15 @@ import useModalStore from '@/store/modalStore';
 import ModalBackdrop from '@/app/@modal/signup/identify/_components/ModalBackdrop';
 import { CSSTransition } from 'react-transition-group';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { useMemberProfileQuery } from '@/api/queries/member';
 import useBottomSheet from '@/hooks/useBottomSheet';
+import useMemberProfile from '@/api/queries/member/useMemberProfile';
 
 export default function WorkTimeBottomSheet() {
   const { isShowWorkTimeBottomSheet, showWorkTimeBottomSheet, showWorkTimeChangeModal } = useModalStore();
   const bottomSheetRef = useRef<HTMLDivElement>(null!);
   const backDropRef = useRef<HTMLDivElement>(null!);
   const [modifyOfficeHourId, setModifyOfficeHourId] = useState<number>(null!);
-  const { data: result } = useMemberProfileQuery();
+  const { data: result } = useMemberProfile();
 
   const { closeBottomSheet } = useBottomSheet({
     bottomSheetRef,

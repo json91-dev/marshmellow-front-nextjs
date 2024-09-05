@@ -8,7 +8,7 @@ import HorizontalLine from '@/app/my/_components/HorizontalLine';
 import useModalStore from '@/store/modalStore';
 import { useRouter } from 'next/navigation';
 import { formatHourMinute, phoneFomatter } from '@/utils/utils';
-import { useMemberProfileQuery } from '@/api/queries/member';
+import useMemberProfile from '@/api/queries/member/useMemberProfile';
 
 export default function myPage() {
   const {
@@ -22,7 +22,7 @@ export default function myPage() {
     setWorkTimeChangeRemainDays,
   } = useModalStore();
   const router = useRouter();
-  const { data: result, isLoading, isFetching } = useMemberProfileQuery();
+  const { data: result, isLoading, isFetching } = useMemberProfile();
 
   const onClickNicknameChangeButton = useCallback(() => {
     if (result?.data) {

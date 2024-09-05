@@ -3,10 +3,10 @@ import styles from './nameCard.module.scss';
 import Image from 'next/image';
 import React from 'react';
 import { dateStringToFormat, dateStringToFormatDiff, formatHourMinute } from '@/utils/utils';
-import { useMemberProfileQuery } from '@/api/queries/member';
+import useMemberProfile from '@/api/queries/member/useMemberProfile';
 
 export default function NameCardIntern() {
-  const { data: result, isError, isLoading } = useMemberProfileQuery();
+  const { data: result, isError, isLoading } = useMemberProfile();
 
   if (isError || !result || isLoading) {
     return null;

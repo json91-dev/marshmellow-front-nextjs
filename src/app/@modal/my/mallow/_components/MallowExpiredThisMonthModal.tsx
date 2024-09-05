@@ -5,11 +5,11 @@ import cx from 'classnames';
 import styles from './modal.module.scss';
 import React from 'react';
 import useModalStore from '@/store/modalStore';
-import { useMemberCurrencyQuery } from '@/api/queries/member';
+import useMemberCurrency from '@/api/queries/member/useMemberCurrency';
 
 export default function MallowExpiredThisMonthModal() {
   const { isShowMallowExpiredThisMonthModal, showMallowExpiredThisMonthModal } = useModalStore();
-  const { data: result } = useMemberCurrencyQuery();
+  const { data: result } = useMemberCurrency();
   const backdropRef = React.useRef(null);
   const modalRef = React.useRef(null);
 

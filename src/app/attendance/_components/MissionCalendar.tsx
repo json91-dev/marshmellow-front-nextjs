@@ -8,10 +8,10 @@ import isBetween from 'dayjs/plugin/isBetween';
 dayjs.extend(isBetween);
 import { useSession } from 'next-auth/react';
 import MissionCalendarGuest from '@/app/attendance/_components/guest/MissionCalendarGuest';
-import { useWorkMonthlyQuery } from '@/api/queries/activity';
-import { useMemberProfileQuery } from '@/api/queries/member';
 import useModalStore from '@/store/modalStore';
 import useToastStore from '@/store/toastStore';
+import useWorkMonthly from '@/api/queries/work/useWorkMonthly';
+import useMemberProfile from '@/api/queries/member/useMemberProfile';
 const DAY_LIST = ['일', '월', '화', '수', '목', '금', '토'];
 
 type calendarItem = {
@@ -27,8 +27,8 @@ type calendarList = (calendarItem | 0)[][];
 export default function MissionCalendar() {
   const [date, setDate] = useState(dayjs());
   const [calendarList, setCalendarList] = useState<calendarList>([[]]);
-  const { data: workMonthlyResult, isLoading, isFetching } = useWorkMonthlyQuery(date.format('YYYY-MM-DD'));
-  const { data: profileResult, isLoading: isLoadingProfile, isFetching: isFetchingProfile } = useMemberProfileQuery();
+  const { data: workMonthlyResult, isLoading, isFetching } = useWorkMonthly(date.format('YYYY-MM-DD'));
+  const { data: profileResult, isLoading: isLoadingProfile, isFetching: isFetchingProfile } = useMemberProfile();
   const { status: sessionStatus } = useSession();
 
   /** Calendar 화면을 그리기 위한 데이터를 생성 **/

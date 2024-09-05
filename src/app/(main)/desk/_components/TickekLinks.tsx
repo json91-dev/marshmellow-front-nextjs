@@ -4,11 +4,11 @@ import styles from './ticketLink.module.scss';
 import Image from 'next/image';
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { useMemberMeQuery } from '@/api/queries/member';
+import useMemberMe from '@/api/queries/member/useMemberMe';
 
 export default function TicketLinks() {
   const router = useRouter();
-  const { data: result, status, error } = useMemberMeQuery();
+  const { data: result, status, error } = useMemberMe();
 
   if (status === 'pending' || status === 'error') {
     return null;

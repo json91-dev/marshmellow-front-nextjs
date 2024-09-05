@@ -2,11 +2,11 @@
 import styles from './BottomInfo.module.scss';
 import Image from 'next/image';
 import React, { useCallback, useRef } from 'react';
-import { useWorkMonthlyQuery } from '@/api/queries/activity';
 import dayjs from 'dayjs';
 import useModalStore from '@/store/modalStore';
 import { useSession } from 'next-auth/react';
 import useToastStore from '@/store/toastStore';
+import useWorkMonthly from '@/api/queries/work/useWorkMonthly';
 
 export default function BottomInfo() {
   const accordionContentRef = useRef<HTMLDivElement>(null!);
@@ -126,7 +126,7 @@ export default function BottomInfo() {
 
 /** 근태관리 하단 출근 보충 일수 화면 **/
 function FulfillAttendance() {
-  const { data: workMonthlyResult } = useWorkMonthlyQuery(dayjs().format('YYYY-MM-DD'));
+  const { data: workMonthlyResult } = useWorkMonthly(dayjs().format('YYYY-MM-DD'));
   const { showFulfillAttendanceDateSelectModal } = useModalStore();
   const { status } = useSession();
   const { openToast } = useToastStore();

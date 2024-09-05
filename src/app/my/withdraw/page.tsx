@@ -2,18 +2,18 @@
 
 import styles from './page.module.scss';
 import React, { useCallback, useRef, useState } from 'react';
-import { debounce, getLocalStorage, setLocalStorage } from '@/utils/utils';
+import { debounce, setLocalStorage } from '@/utils/utils';
 import TopNavigation from '@/components/nav/TopNavigation';
 import cx from 'classnames';
-import { useMemberProfileQuery } from '@/api/queries/member';
 import { useRouter } from 'next/navigation';
+import useMemberProfile from '@/api/queries/member/useMemberProfile';
 
 export default function WithdrawPage() {
   const [text, setText] = useState<string>('');
   const textRef = useRef<HTMLTextAreaElement>(null!);
   const [isActive, setIsActive] = useState(false);
   const router = useRouter();
-  const { data: profileResult, isLoading, isFetching } = useMemberProfileQuery();
+  const { data: profileResult, isLoading, isFetching } = useMemberProfile();
 
   const onChangeText = useCallback(
     debounce(() => {

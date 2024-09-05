@@ -5,12 +5,12 @@ import { signOut, useSession } from 'next-auth/react';
 import NameCardEmploy from '@/app/(main)/desk/_components/namecard/NameCardEmploy';
 import NameCardIntern from '@/app/(main)/desk/_components/namecard/NameCardIntern';
 import PassCard from '@/app/(main)/desk/_components/namecard/PassCard';
-import { useMemberProfileQuery } from '@/api/queries/member';
 import { useRouter } from 'next/navigation';
+import useMemberProfile from '@/api/queries/member/useMemberProfile';
 
 export default function NameCard() {
   const { data: session, status: sessionStatus } = useSession();
-  const { data: result, status } = useMemberProfileQuery();
+  const { data: result, status } = useMemberProfile();
   const router = useRouter();
 
   useEffect(() => {

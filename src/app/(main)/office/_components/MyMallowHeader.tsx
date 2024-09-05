@@ -2,10 +2,10 @@
 import styles from '@/app/(main)/office/page.module.scss';
 import Image from 'next/image';
 import React from 'react';
-import { useMemberCurrencyQuery } from '@/api/queries/member';
+import useMemberCurrency from '@/api/queries/member/useMemberCurrency';
 
 export default function MyMallowHeader() {
-  const { data: currencyResult, isLoading, isFetching } = useMemberCurrencyQuery();
+  const { data: currencyResult, isLoading, isFetching } = useMemberCurrency();
 
   return (
     <div className={styles.myMallowArea}>

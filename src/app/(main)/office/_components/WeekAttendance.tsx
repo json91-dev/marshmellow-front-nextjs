@@ -4,18 +4,18 @@ import Image from 'next/image';
 import React, { useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
-import { useWorkWeeklyQuery } from '@/api/queries/activity';
 import dayjs from 'dayjs';
 import { findMonday, findSunday } from '@/utils/utils';
 import useModalStore from '@/store/modalStore';
 import WeekAttendanceGuest from '@/app/(main)/office/_components/guest/WeekAttendanceGuest';
+import useWorkWeekly from '@/api/queries/work/useWorkWeekly';
 
 /** 로그인 상태일때 Office => 근태관리 화면 **/
 export default function WeekAttendance() {
   const router = useRouter();
   const { data: session, status: sessionStatus } = useSession();
   const { showOfficeNewbieSignupModal } = useModalStore();
-  const { data: workWeeklyResult, isFetching, isLoading, isError } = useWorkWeeklyQuery(dayjs().format('YYYY-MM-DD'));
+  const { data: workWeeklyResult, isFetching, isLoading, isError } = useWorkWeekly(dayjs().format('YYYY-MM-DD'));
   const onClickAttendance = () => {
     router.push('/attendance');
   };

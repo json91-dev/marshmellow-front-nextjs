@@ -2,8 +2,6 @@
 import styles from '@/app/(main)/office/page.module.scss';
 import Image from 'next/image';
 import React, { useCallback, useMemo } from 'react';
-import { useMemberProfileQuery } from '@/api/queries/member';
-import { useWorkAttendanceMutation, useWorkTodayQuery } from '@/api/queries/activity';
 import useSecondUpdater from '@/hooks/useSecondUpdater';
 import cx from 'classnames';
 import { findMissionDateMatchingStart } from '@/utils/utils';
@@ -13,12 +11,14 @@ import isBetween from 'dayjs/plugin/isBetween';
 import duration from 'dayjs/plugin/duration';
 import useModalStore from '@/store/modalStore';
 import { useClick } from '@floating-ui/react';
+import useWorkToday from '@/api/queries/work/useWorkToday';
+import useMemberProfile from '@/api/queries/member/useMemberProfile';
 dayjs.extend(isBetween);
 dayjs.extend(duration);
 
 export default function TimerMissionCheck() {
-  const { data: profileResult, isLoading: isLoadingProfile, isFetching: isFetchingProfile } = useMemberProfileQuery();
-  const { data: workResult, isLoading: isLoadingWork, isFetching: isFetchingWork } = useWorkTodayQuery();
+  const { data: profileResult, isLoading: isLoadingProfile, isFetching: isFetchingProfile } = useMemberProfile();
+  const { data: workResult, isLoading: isLoadingWork, isFetching: isFetchingWork } = useWorkToday();
 
   const { time } = useSecondUpdater();
   const timerData = useMemo(() => {

@@ -3,14 +3,14 @@ import styles from '@/app/(main)/office/page.module.scss';
 import cx from 'classnames';
 import Image from 'next/image';
 import React, { useMemo } from 'react';
-import { useMemberProfileQuery } from '@/api/queries/member';
 import useMinuteUpdater from '@/hooks/useMinuteUpdater';
-import { useWorkTodayQuery } from '@/api/queries/activity';
 import dayjs from 'dayjs';
 import { formatDateToTodayDate, getWorkTimeRangeString } from '@/utils/utils';
 import isBetween from 'dayjs/plugin/isBetween';
 import { useSession } from 'next-auth/react';
 import TodayMissionGuest from '@/app/(main)/office/_components/guest/TodayMissionGuest';
+import useWorkToday from '@/api/queries/work/useWorkToday';
+import useMemberProfile from '@/api/queries/member/useMemberProfile';
 dayjs.extend(isBetween);
 
 type workStateType = {
@@ -23,8 +23,8 @@ type workStateType = {
 
 /** 로그인 상태일때 Office => 오늘의 업무 화면 **/
 export default function TodayMission() {
-  const { data: profileResult, isLoading: isLoadingProfile, isFetching: isFetchingProfile } = useMemberProfileQuery();
-  const { data: workResult, isLoading: isLoadingWork, isFetching: isFetchingWork } = useWorkTodayQuery();
+  const { data: profileResult, isLoading: isLoadingProfile, isFetching: isFetchingProfile } = useMemberProfile();
+  const { data: workResult, isLoading: isLoadingWork, isFetching: isFetchingWork } = useWorkToday();
   const { time: currentTimeEveryMinute } = useMinuteUpdater();
   const { data: session, status: sessionStatus } = useSession();
 

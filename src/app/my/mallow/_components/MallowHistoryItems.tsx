@@ -2,12 +2,12 @@
 import styles from '@/app/my/mallow/page.module.scss';
 import { extractHourMinute, replaceAt } from '@/utils/utils';
 import React, { useMemo } from 'react';
-import { useMarshmallowHistoryQuery } from '@/api/queries/currency';
 import useMallowHistoryStore from '@/store/mallowHistoryStore';
+import useMarshmallowHistory from '@/api/queries/history/useMarshmallowHistory';
 
 export default function MallowHistoryItems() {
   const { history } = useMallowHistoryStore();
-  const { data: result, status } = useMarshmallowHistoryQuery(history.filterState, history.filterMonth);
+  const { data: result, status } = useMarshmallowHistory(history.filterState, history.filterMonth);
 
   const groupDateMallowList = useMemo(() => {
     // 날짜별로 데이터를 그룹화하는 함수
