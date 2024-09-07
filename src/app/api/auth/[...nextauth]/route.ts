@@ -1,9 +1,9 @@
-import NextAuth from 'next-auth';
+import NextAuth, { NextAuthOptions } from 'next-auth';
 import google from 'next-auth/providers/google';
 import kakao from 'next-auth/providers/kakao';
 import apple from 'next-auth/providers/apple';
 
-const handler = NextAuth({
+export const authOptions: NextAuthOptions = {
   debug: true,
   /** apple 로그인시 쿠키 설정 해줘야함 **/
   cookies: {
@@ -53,7 +53,7 @@ const handler = NextAuth({
   ],
   callbacks: {
     async jwt({ token, user, account, profile }) {
-      console.log(account);
+      console.log('jwt 콜백 실행');
       if (account) {
         if (account.provider === 'google') {
           const response = await fetch(`${process.env.API_URL}/auth/signin`, {
@@ -111,7 +111,8 @@ const handler = NextAuth({
       return token;
     },
 
-    async session({ session, token, trigger, newSession }) {
+    async session({ session, token }) {
+      console.log('session 콜백 실행');
       if (session) {
         session.accessToken = token.accessToken + '';
         session.refreshToken = token.refreshToken + '';
@@ -123,6 +124,8 @@ const handler = NextAuth({
       return session;
     },
   },
-});
+};
+
+const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };
