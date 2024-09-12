@@ -15,7 +15,7 @@ type Period = {
   endAt: string;
 };
 
-type OnboardingMissionState = {
+export type OnboardingMissionState = {
   missionName: string;
   missionDescription: string;
   isComplete: boolean;

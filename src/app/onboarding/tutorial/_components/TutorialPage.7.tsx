@@ -4,6 +4,8 @@ import React from 'react';
 import cx from 'classnames';
 import dayjs from 'dayjs';
 import { findMonday, findSunday, formatDateToTodayDate } from '@/utils/utils';
+import useOnboardingCompleteMutation from '@/api/mutations/onboarding/useOnboardingComplete';
+import { getAuthenticatedSession } from '@/utils/queryUtils';
 
 type Prop = {
   setTutorialStep: Function;
@@ -168,6 +170,25 @@ function TimerMissionCheck() {
 }
 
 function TutorialMessageBox({ setTutorialStep }: any) {
+  const onboardingComplete = async () => {
+    const session = await getAuthenticatedSession();
+
+    const response = await fetch(`${process.env.API_URL}/onboarding`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${session?.accessToken}`,
+        'Content-Type': 'application/json',
+      },
+      cache: 'no-store',
+    });
+
+    return response.json();
+  };
+
+  const completeOnboarding = () => {
+    // Cookies.set('tutorialCompleted', 'true', { expires: 7 }); // 7일 후 만료되는 쿠키 설정
+  };
+
   return (
     <div className={cx(styles.tutorialMessageBoxContainer, styles.tutorial7)}>
       <div className={styles.tutorialMessageBox}>

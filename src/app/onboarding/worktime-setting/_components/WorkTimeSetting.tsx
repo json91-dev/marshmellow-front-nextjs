@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from '../page.module.scss';
+import WorkTimeConfirmPopup from '@/app/onboarding/worktime-setting/_components/WorkTimeConfirmPopup';
 
 export default function WorkTimeSetting() {
   const [modifyOfficeHourId, setModifyOfficeHourId] = useState<number>(1);
@@ -102,25 +103,6 @@ function WorkTimeSelectPopup({ handleRadioChange, modifyOfficeHourId, setIsSelec
 
       <button className={styles.confirmButton} onClick={() => setIsSelectTime(true)}>
         확인
-      </button>
-    </div>
-  );
-}
-
-function WorkTimeConfirmPopup({ setIsSelectTime, modifyOfficeHourId }: any) {
-  return (
-    <div className={styles.workTimeConfirmPopup}>
-      {modifyOfficeHourId === 1 && <p className={styles.title}>08시 ~ 17시로 하시겠어요?</p>}
-      {modifyOfficeHourId === 2 && <p className={styles.title}>09시 ~ 18시로 하시겠어요?</p>}
-      {modifyOfficeHourId === 3 && <p className={styles.title}>10시 ~ 19시로 하시겠어요?</p>}
-
-      <p className={styles.description}>근무시간 확정 이후 7일이 지나야 변경 가능해요.</p>
-
-      <button className={styles.confirmButton} style={{ marginTop: '2.4rem' }}>
-        확인
-      </button>
-      <button className={styles.cancelButton} onClick={() => setIsSelectTime(false)}>
-        취소
       </button>
     </div>
   );

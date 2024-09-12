@@ -1,4 +1,6 @@
 import dayjs, { Dayjs } from 'dayjs';
+import duration from 'dayjs/plugin/duration';
+dayjs.extend(duration);
 
 export const isMobile = {
   Android: function () {
@@ -365,4 +367,24 @@ export function timeAgo(inputTime: string) {
   } else {
     return `${diffInMonths}달 전`;
   }
+}
+
+export function formatRemainingTime(targetTime: string) {
+  const now = dayjs(); // 현재 시간
+  const end = dayjs(targetTime); // 서버로부터 전달받은 완료 시간
+  const diff = end.diff(now); // 완료 시간까지 남은 시간 (밀리초 단위)
+
+  if (diff <= 0) {
+    return '참여 시간이 종료되었습니다.'; // 이미 시간이 지난 경우
+  }
+
+  const remainingDuration = dayjs.duration(diff);
+
+  const days = Math.floor(remainingDuration.asDays()); // 남은 일수
+  const hours = remainingDuration.hours(); // 남은 시간
+  const minutes = remainingDuration.minutes(); // 남은 분
+  const seconds = remainingDuration.seconds(); // 남은 초
+
+  // 0일 00시간 00분 00초 형식으로 반환
+  return `${days}일 ${String(hours).padStart(2, '0')}시간 ${String(minutes).padStart(2, '0')}분 ${String(seconds).padStart(2, '0')}초`;
 }
