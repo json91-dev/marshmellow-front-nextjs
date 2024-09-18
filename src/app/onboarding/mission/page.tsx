@@ -31,7 +31,7 @@ export default async function missionPage() {
         <MissionTimer endAt={endAt} />
 
         <div className={styles.bgImage}>
-          <Image src="/images/onboarding.mission.bg.png" alt="No Image" fill />
+          <Image src="/images/onboarding.mission.bg.png" alt="No Image" width={1080} height={924} />
         </div>
 
         <div className={styles.duration}>

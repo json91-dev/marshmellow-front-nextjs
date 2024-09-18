@@ -4,9 +4,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import AlarmCard from '@/app/(main)/pantry/_components/AlarmCard';
 
-export default function DeskPage() {
+export default function PantryPage() {
   return (
-    <div className={styles.deskPage}>
+    <div className={styles.pantryPage}>
       <div className={styles.header}>
         <p>탕비실</p>
       </div>
@@ -32,7 +32,7 @@ export default function DeskPage() {
         </div>
         <AlarmCard />
       </div>
-      <div className={styles.banner}>적응형 배너</div>
+      {/*<div className={styles.banner}>적응형 배너</div>*/}
     </div>
   );
 }
