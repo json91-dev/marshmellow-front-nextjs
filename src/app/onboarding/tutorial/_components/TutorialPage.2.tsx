@@ -161,7 +161,7 @@ function TimerMissionCheck({ setTutorialStep }: any) {
           <span>지금 마시멜로우를 획득하세요!</span>
         </p>
       </div>
-      <div className={styles.checkWorkButton} onClick={() => setTutorialStep(3)}>
+      <div className={styles.checkWorkButton} style={{ cursor: 'pointer' }} onClick={() => setTutorialStep(3)}>
         <Image src="/images/mallow.black.happy.svg" alt="No Image" width={100} height={100} />
       </div>
     </div>

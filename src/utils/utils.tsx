@@ -388,3 +388,29 @@ export function formatRemainingTime(targetTime: string) {
   // 0일 00시간 00분 00초 형식으로 반환
   return `${days}일 ${String(hours).padStart(2, '0')}시간 ${String(minutes).padStart(2, '0')}분 ${String(seconds).padStart(2, '0')}초`;
 }
+
+/** 랜덤한 핸드폰 번호를 만들어줌 **/
+export function generateRandomPhoneNumber() {
+  const prefix = '010'; // 앞의 010 고정
+  const randomNumber = Math.floor(Math.random() * 100000000)
+    .toString()
+    .padStart(8, '0'); // 8자리 랜덤 숫자 생성, 0으로 패딩
+
+  const firstPart = randomNumber.slice(0, 4); // 첫 4자리
+  const secondPart = randomNumber.slice(4); // 나머지 4자리
+
+  return `${prefix}-${firstPart}-${secondPart}`;
+}
+
+/** 랜덤한 생일을 만들어줌 **/
+export function generateRandomBirthDay() {
+  const startYear = 1980;
+  const endYear = 2004;
+
+  // 랜덤한 연도, 월, 일 생성
+  const year = Math.floor(Math.random() * (endYear - startYear + 1)) + startYear;
+  const month = ('0' + (Math.floor(Math.random() * 12) + 1)).slice(-2); // 1 ~ 12월
+  const day = ('0' + (Math.floor(Math.random() * 31) + 1)).slice(-2); // 1 ~ 31일
+
+  return `${year}.${month}.${day}`;
+}

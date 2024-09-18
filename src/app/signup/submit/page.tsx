@@ -1,4 +1,4 @@
-import styles from './submit.module.scss';
+import styles from './page.module.scss';
 import InformationTab from '@/app/signup/_components/InformationTab';
 import React from 'react';
 import SectionInfo from '@/app/signup/_components/SectionInfo';

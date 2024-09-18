@@ -48,12 +48,17 @@
     align-items: flex-end;
     margin-bottom: 3rem;
     gap: 1rem;
+    pointer-events: none;
 
     .image {
       width: 8rem;
       height: 8rem;
       position: relative;
       cursor: pointer;
+
+      img {
+        border-radius: 0.4rem;
+      }
     }
 
     .info {
@@ -133,6 +138,7 @@
   .genderArea {
     width: 100%;
     margin-bottom: 3rem;
+    pointer-events: none;
   }
 
   .birthArea {

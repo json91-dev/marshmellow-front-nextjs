@@ -6,6 +6,7 @@ import dayjs from 'dayjs';
 import { findMonday, findSunday, formatDateToTodayDate } from '@/utils/utils';
 import useOnboardingCompleteMutation from '@/api/mutations/onboarding/useOnboardingComplete';
 import { getAuthenticatedSession } from '@/utils/queryUtils';
+import Link from 'next/link';
 
 type Prop = {
   setTutorialStep: Function;
@@ -199,7 +200,10 @@ function TutorialMessageBox({ setTutorialStep }: any) {
             }
           </p>
         </p>
-        <button onClick={() => setTutorialStep(7)}>다음</button>
+
+        <Link className={styles.contactButton} href={'/onboarding/mission'}>
+          <button>다음</button>
+        </Link>
       </div>
     </div>
   );

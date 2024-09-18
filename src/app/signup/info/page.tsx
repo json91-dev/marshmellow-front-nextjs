@@ -1,6 +1,6 @@
 'use client';
 
-import styles from './info.module.scss';
+import styles from './page.module.scss';
 import InformationTab from '@/app/signup/_components/InformationTab';
 import React, { useCallback, useEffect, useState } from 'react';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -12,7 +12,7 @@ import { useSession } from 'next-auth/react';
 import TopNavigation from '@/components/nav/TopNavigation';
 import { Controller, useForm } from 'react-hook-form';
 import useToastStore from '@/store/toastStore';
-import { debounce, getBirthNumberWithDot } from '@/utils/utils';
+import { debounce, generateRandomBirthDay, generateRandomPhoneNumber, getBirthNumberWithDot } from '@/utils/utils';
 import useSignupStore from '@/store/signUpStore';
 
 interface Inputs {
@@ -34,7 +34,7 @@ type SignupRequestBody = {
     profileImageUrl: string;
     phoneNumber: string;
     birth: string;
-    funnelId: string;
+    funnelId: string | null;
     recommender: string | null;
   };
 };
@@ -118,76 +118,51 @@ export default function SignupInfoPage() {
 
   /** 폼 제출 요청 **/
   const onSubmit = async (data: Inputs) => {
-    try {
-      // @ts-ignore
-      if (!session.accountId) {
-        console.log('[OnSubmit] session.accountId is not found.');
-        return;
-      }
+    const { name, nickname, gender, birth, funnelId, recommender, phoneNumber } = data;
 
-      const { name, nickname, gender, birth, funnelId, recommender } = data;
-
-      const requestBody = {
-        // @ts-ignore
-        accountId: session.accountId,
-        memberInfo: {
-          name,
-          nickname,
-          gender,
-          // @ts-ignore
-          profileImageUrl: profileImageUrl ? profileImageUrl : session.profileImg,
-          phoneNumber: '01012341234' /** TODO: 현재 PASS 인증이 없어서 임시로 넣어둠 **/,
-          birth: birth.replaceAll('.', '-'),
-          funnelId: parseInt(funnelId),
-          recommender: recommender ? recommender : null,
-        },
-      };
-
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/signup`, {
-        method: 'POST',
-        headers: {
-          // @ts-ignore
-          Authorization: `Bearer ${session.accessToken}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(requestBody),
+    if (recommender.trim().length === 0) {
+      setSignupInfo({
+        name,
+        nickname,
+        phoneNumber,
+        gender,
+        birth,
+        funnelId: funnelId ? funnelId : null,
+        recommender: recommender ? recommender.trim() : null,
       });
 
-      const result = response.json();
-      console.log(result);
+      router.push('/signup/submit');
+      return;
+    }
 
-      if (!response.ok) {
-        /** TODO: 현재 한번 등록이 되면 서버 에러가 발생하는 문제가 있다. **/
-        setSignupInfo({
-          name,
-          nickname,
-          gender,
-          birth,
-          funnelId,
-          recommender,
-        });
-        router.replace('/signup/submit');
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/valid/recommender?recommender=${recommender}`);
+    if (response.ok) {
+      const result = await response.json();
+      if (result.data === 'NONE_EXISTS') {
+        setError('recommender', { type: 'custom', message: '추천인이 존재하지 않습니다.' });
         return;
-      } else {
-        setSignupInfo({
-          name,
-          nickname,
-          gender,
-          birth,
-          funnelId,
-          recommender,
-        });
-        router.replace('/signup/submit');
       }
-    } catch (e) {
-      console.error(e);
+
+      setSignupInfo({
+        name,
+        nickname,
+        phoneNumber,
+        gender,
+        birth,
+        funnelId: funnelId ? funnelId : null,
+        recommender: recommender ? recommender.trim() : null,
+      });
+
+      router.push('/signup/submit');
     }
   };
 
   useEffect(() => {
     if (session?.user?.name) {
       setValue('name', session.user.name);
-      setValue('phoneNumber', '010-1234-1234');
+      setValue('phoneNumber', generateRandomPhoneNumber());
+      setValue('birth', generateRandomBirthDay());
+      setValue('gender', Math.random() > 0.5 ? 'M' : 'F');
     }
   }, [session?.user?.name]);
 
@@ -220,12 +195,12 @@ export default function SignupInfoPage() {
           </div>
 
           <div className={cx(styles.phoneNumberArea, styles.inputDisabled)}>
-            <div className={styles.label}>이름</div>
+            <div className={styles.label}>이름 (PASS 인증)</div>
             <input autoComplete={'off'} type="text" {...register('name')} required disabled readOnly />
           </div>
 
           <div className={cx(styles.phoneNumberArea, styles.inputDisabled)}>
-            <div className={styles.label}>연락처</div>
+            <div className={styles.label}>연락처 (PASS 인증)</div>
             <input autoComplete={'off'} type="text" {...register('phoneNumber')} required disabled readOnly />
           </div>
 
@@ -281,7 +256,7 @@ export default function SignupInfoPage() {
             render={({ field }) => {
               return (
                 <div className={styles.genderArea}>
-                  <div className={styles.label}>성별</div>
+                  <div className={styles.label}>성별 (PASS 인증)</div>
                   <div
                     className={cx(
                       styles.gender,
@@ -308,7 +283,7 @@ export default function SignupInfoPage() {
             name={'gender'}
           ></Controller>
           <div className={styles.birthArea}>
-            <div className={styles.label}>생년월일</div>
+            <div className={styles.label}>생년월일 (PASS 인증)</div>
             <div className={styles.date}>
               <input
                 type="text"
@@ -325,6 +300,7 @@ export default function SignupInfoPage() {
                 })}
                 maxLength={10}
                 placeholder="YYYY.MM.DD"
+                readOnly
                 onChange={async (e) => {
                   const { value } = e.target;
                   const onlyNumber = value.replace(/[^0-9]/g, ''); // value의 값이 숫자가 아닐경우 빈문자열로 replace 해버림.
@@ -372,6 +348,13 @@ export default function SignupInfoPage() {
                 placeholder="추천인 닉네임을 입력해주세요."
               />
             </div>
+
+            {errors.recommender && (
+              <div className={cx(styles.errorMessage, styles.fail)}>
+                <Image src="/images/nickname.wrong.svg" alt="No Image" width={20} height={20} />
+                <div>{errors.recommender.message}</div>
+              </div>
+            )}
           </div>
 
           <div className={styles.confirmArea}>

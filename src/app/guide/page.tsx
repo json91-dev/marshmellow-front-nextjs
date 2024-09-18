@@ -1,10 +1,38 @@
+'use client';
 import styles from './page.module.scss';
 import accordionStyle from './_components/accordiaon.module.scss';
 import QuestionAccordion from './_components/QuestionAccordion';
 import TopNavigation from '@/components/nav/TopNavigation';
 import Link from 'next/link';
+import useOnboardingMissionStatus from '@/api/queries/onboarding/useOnboardingMissionStatus';
+import dayjs from 'dayjs';
+import { useEffect, useMemo } from 'react';
+import useModalStore from '@/store/modalStore';
+import useOnboardingCompleteMutation from '@/api/mutations/onboarding/useOnboardingComplete';
 
 export default function GuidePage() {
+  const { data: result } = useOnboardingMissionStatus();
+  const { mutate } = useOnboardingCompleteMutation();
+  const { showOnboardingMissionModal } = useModalStore();
+  const isMissionDateDone = useMemo(() => {
+    if (!result?.data) {
+      return false;
+    }
+
+    return dayjs(result?.data.period.endAt).isBefore();
+  }, [result]);
+
+  useEffect(() => {
+    if (!result?.data) return;
+    if (isMissionDateDone) return;
+
+    const isGuideMissionComplete = result?.data.onboardingMissionStates[3].isComplete;
+
+    if (isMissionDateDone && !isGuideMissionComplete) {
+      // 가이드 미션 읽고오기 팝업 띄우기
+    }
+  }, [isMissionDateDone, result]);
+
   return (
     <div className={styles.guidePage}>
       <TopNavigation title={'사용 가이드'} />

@@ -3,11 +3,54 @@ import React from 'react';
 import { useRouter } from 'next/navigation';
 import styles from './submitInfoBody.module.scss';
 import useSignupStore from '@/store/signUpStore';
+import { useSession } from 'next-auth/react';
 
 export default function () {
   const router = useRouter();
   const { signupInfo } = useSignupStore();
-  const { name, nickname, gender, birth, funnelId, recommender } = signupInfo;
+  const { data: session } = useSession();
+  const { name, nickname, gender, birth, funnelId, recommender, phoneNumber } = signupInfo;
+
+  const onSubmit = async () => {
+    try {
+      // @ts-ignore
+      if (!session.accountId) {
+        console.log('[OnSubmit] session.accountId is not found.');
+        return;
+      }
+
+      const requestBody = {
+        // @ts-ignore
+        accountId: session.accountId,
+        memberInfo: {
+          name,
+          nickname,
+          gender,
+          // @ts-ignore
+          profileImageUrl: profileImageUrl ? profileImageUrl : session.profileImg,
+          phoneNumber: phoneNumber.replaceAll('-', '') /** TODO: 현재 PASS 인증이 없어서 임시로 넣어둠 **/,
+          birth: birth.replaceAll('.', '-'),
+          funnelId: funnelId ? (parseInt(funnelId) === 0 ? null : parseInt(funnelId)) : null,
+          recommender: recommender ? recommender : null,
+        },
+      };
+
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/signup`, {
+        method: 'POST',
+        headers: {
+          // @ts-ignore
+          Authorization: `Bearer ${session.accessToken}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestBody),
+      });
+
+      const result = response.json();
+      console.log(result);
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   return (
     <>
@@ -15,6 +58,10 @@ export default function () {
         <div>
           <div>이 름</div>
           <div>{name}</div>
+        </div>
+        <div>
+          <div>연락처</div>
+          <div>{phoneNumber}</div>
         </div>
         <div>
           <div>닉네임</div>
@@ -37,7 +84,7 @@ export default function () {
         </div>
         <div>
           <div>추천인</div>
-          <div>{recommender}</div>
+          <div>{recommender ? recommender : '없음'}</div>
         </div>
       </div>
       <div className={styles.confirmButton} onClick={() => router.push('/signup/complete')}>

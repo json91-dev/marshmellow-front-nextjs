@@ -64,6 +64,7 @@ export const authOptions: NextAuthOptions = {
           console.log(`구글 로그인 토큰: ${account.id_token}`);
 
           const result = await response.json();
+          console.log(result.data);
           token.accessToken = result.data.credentials.accessToken;
           token.refreshToken = result.data.credentials.refreshToken;
           token.accountId = result.data.accountId;

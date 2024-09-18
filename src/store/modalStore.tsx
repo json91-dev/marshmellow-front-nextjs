@@ -106,6 +106,11 @@ interface IdentifyModalState {
   // 보상 페이지 (/prize)
   isShowPrizeLuckyDrawTaxInfoCancel: boolean;
   showPrizeLuckyDrawTaxInfoCancel(isShow: boolean): void;
+
+  // 미션 모달
+  isShowOnboardingMissionModal: boolean;
+  onboardingMissionModalType: 'MissionComplete' | 'MissionAllComplete' | null;
+  showOnboardingMissionModal(isShow: boolean, type: string): void;
 }
 
 export const useModalStore = create(
@@ -320,6 +325,13 @@ export const useModalStore = create(
     isShowPrizeLuckyDrawTaxInfoCancel: false,
     showPrizeLuckyDrawTaxInfoCancel(isShow: boolean) {
       set({ isShowPrizeLuckyDrawTaxInfoCancel: isShow });
+    },
+
+    // 온보딩 미션 모달
+    isShowOnboardingMissionModal: false,
+    onboardingMissionModalType: null,
+    showOnboardingMissionModal: (isShow: boolean, type: 'MissionComplete' | 'MissionAllComplete') => {
+      set({ isShowOnboardingMissionModal: isShow, onboardingMissionModalType: type });
     },
   })),
 );

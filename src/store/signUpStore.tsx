@@ -6,8 +6,9 @@ type SignupInfo = {
   nickname: string;
   gender: 'M' | 'F';
   birth: string;
-  funnelId?: string;
-  recommender?: string;
+  phoneNumber: string;
+  funnelId: string | null; // optional
+  recommender: string | null; // optional
 };
 
 interface SignupStoreState {
@@ -24,8 +25,9 @@ export const useSignupStore = create(
         nickname: '',
         gender: 'M',
         birth: '',
-        funnelId: '',
-        recommender: '',
+        phoneNumber: '',
+        funnelId: null,
+        recommender: null,
       },
 
       setSignupInfo(signupInfo: SignupInfo) {
