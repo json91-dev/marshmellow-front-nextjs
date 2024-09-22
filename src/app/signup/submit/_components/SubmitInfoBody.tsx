@@ -29,7 +29,6 @@ export default function () {
           nickname,
           gender,
           // @ts-ignore
-          profileImageUrl: profileImageUrl ? profileImageUrl : session.profileImg,
           phoneNumber: phoneNumber.replaceAll('-', '') /** TODO: 현재 PASS 인증이 없어서 임시로 넣어둠 **/,
           birth: birth.replaceAll('.', '-'),
           funnelId: funnelId ? (parseInt(funnelId) === 0 ? null : parseInt(funnelId)) : null,
