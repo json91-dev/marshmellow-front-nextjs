@@ -33,6 +33,7 @@ export default function () {
           birth: birth.replaceAll('.', '-'),
           funnelId: funnelId ? (parseInt(funnelId) === 0 ? null : parseInt(funnelId)) : null,
           recommender: recommender ? recommender : null,
+          profileImageUrl: null,
         },
       };
 
