@@ -4,12 +4,14 @@ import { useRouter } from 'next/navigation';
 import styles from './submitInfoBody.module.scss';
 import useSignupStore from '@/store/signUpStore';
 import { useSession } from 'next-auth/react';
+import useToastStore from '@/store/toastStore';
 
 export default function () {
   const router = useRouter();
   const { signupInfo } = useSignupStore();
   const { data: session } = useSession();
   const { name, nickname, gender, birth, funnelId, recommender, phoneNumber } = signupInfo;
+  const { openToast } = useToastStore();
 
   const onSubmit = async () => {
     try {
@@ -45,8 +47,14 @@ export default function () {
         body: JSON.stringify(requestBody),
       });
 
-      const result = response.json();
-      console.log(result);
+      if (!response.ok) {
+        openToast('회원가입 요청이 실패하였습니다.');
+        const result = await response.json();
+        console.log(result.data.errorCode);
+        return;
+      } else {
+        router.push('/signup/complete');
+      }
     } catch (e) {
       console.error(e);
     }
@@ -87,7 +95,7 @@ export default function () {
           <div>{recommender ? recommender : '없음'}</div>
         </div>
       </div>
-      <div className={styles.confirmButton} onClick={() => router.push('/signup/complete')}>
+      <div className={styles.confirmButton} onClick={onSubmit}>
         최종제출
       </div>
     </>

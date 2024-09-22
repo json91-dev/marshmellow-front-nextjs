@@ -2,7 +2,7 @@ import { getAuthenticatedSession } from '@/utils/queryUtils';
 import { useMutation } from '@tanstack/react-query';
 
 export default function useWithdrawCancelMutation() {
-  const memberWithdrawCancel = async (withdrawReason: string) => {
+  const memberWithdrawCancel = async (withdrawalReason: string) => {
     const session = await getAuthenticatedSession();
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/member`, {
@@ -11,7 +11,7 @@ export default function useWithdrawCancelMutation() {
         Authorization: `Bearer ${session?.accessToken}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ withdrawReason: withdrawReason }),
+      body: JSON.stringify({ withdrawalReason: withdrawalReason }),
       cache: 'no-store',
     });
 

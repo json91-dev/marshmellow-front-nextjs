@@ -5,24 +5,36 @@ import { CSSTransition } from 'react-transition-group';
 import ModalBackdrop from '@/app/@modal/signup/identify/_components/ModalBackdrop';
 import useModalStore from '@/store/modalStore';
 import cx from 'classnames';
-import { getLocalStorage } from '@/utils/utils';
+import { getLocalStorage, setLocalStorage } from '@/utils/utils';
 import useWithdrawMutation from '@/api/mutations/member/useWithdrawMutation';
+import useToastStore from '@/store/toastStore';
 
 export default function WithdrawConfimModal() {
   const { isShowWithdrawConfirmModal, showWithdrawConfirmModal, showWithdrawConfirmCompleteModal } = useModalStore();
   const backdropRef = React.useRef(null);
   const modalRef = React.useRef(null);
   const { mutate } = useWithdrawMutation();
+  const { openToast } = useToastStore();
 
-  const onClickWithdraw = useCallback(() => {
-    const reason = getLocalStorage('withdrawReason');
+  const onClickWithdraw = useCallback(async () => {
+    const reason = getLocalStorage('withdrawalReason');
+    const withdrawalReason = await getLocalStorage('withdrawalReason');
+    if (!withdrawalReason) {
+      openToast('회원탈퇴가 정상적으로 처리되지 않았습니다.');
+      return;
+    }
+
     mutate(reason, {
       onSuccess: () => {
+        openToast('회원탈퇴 처리 완료');
         showWithdrawConfirmModal(false);
         showWithdrawConfirmCompleteModal(true);
+        setLocalStorage('withdrawalReason', '');
       },
-      onError: () => {},
-      onSettled: () => {},
+      onError: () => {
+        openToast('회원탈퇴 처리 실패');
+        showWithdrawConfirmModal(false);
+      },
     });
   }, []);
 

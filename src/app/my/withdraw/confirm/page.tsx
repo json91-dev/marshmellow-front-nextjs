@@ -8,6 +8,9 @@ import cx from 'classnames';
 import Checkbox from '@/components/common/Checkbox';
 import useModalStore from '@/store/modalStore';
 import useMemberCurrency from '@/api/queries/member/useMemberCurrency';
+import useWithdrawMutation from '@/api/mutations/member/useWithdrawMutation';
+import { getLocalStorage } from '@/utils/utils';
+import useToastStore from '@/store/toastStore';
 
 export default function WithdrawConfirmPage() {
   const [checked, setChecked] = useState(false);

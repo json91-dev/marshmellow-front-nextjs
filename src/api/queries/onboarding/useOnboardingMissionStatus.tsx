@@ -6,9 +6,8 @@ export default function useOnboardingMissionStatus() {
   const getWorkMonthly = async (): Promise<OnboardingMissionStatusResponse> => {
     const session = await getAuthenticatedSession();
 
-    // const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/activity/onboarding`, {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_MSW_API_URL}/activity/onboarding`, {
-      // MSW
+    // const response = await fetch(`${process.env.NEXT_PUBLIC_MSW_API_URL}/activity/onboarding`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/activity/onboarding`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${session?.accessToken}`,

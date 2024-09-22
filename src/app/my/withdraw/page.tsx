@@ -28,7 +28,7 @@ export default function WithdrawPage() {
   );
 
   const onClickConfirm = useCallback(async () => {
-    await setLocalStorage('withdrawReason', textRef.current.value);
+    await setLocalStorage('withdrawalReason', textRef.current.value);
     router.push('/my/withdraw/confirm');
   }, []);
 
@@ -36,7 +36,9 @@ export default function WithdrawPage() {
     <div className={styles.withdrawPage}>
       <TopNavigation />
       <div className={styles.main}>
-        <div className={styles.title}>{`${profileResult?.data?.profile?.nickname}님,\n탈퇴하는 이유가 무엇인가요?`}</div>
+        <div
+          className={styles.title}
+        >{`${profileResult?.data?.profile?.nickname ? profileResult?.data?.profile?.nickname : '회원'}님,\n탈퇴하는 이유가 무엇인가요?`}</div>
         <div className={styles.description}>더욱 성장하는 마시멜로우가 될 수 있도록 의견을 남겨주세요.</div>
         <div className={styles.reason}>
           <textarea ref={textRef} onChange={onChangeText} placeholder={'의견을 남겨주세요.'} />
