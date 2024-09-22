@@ -1,9 +1,9 @@
-import { OnboardingResponse } from '@/api/types/onboarding';
+import { OnboardingCompleteStatusResponse } from '@/api/types/onboarding';
 import { getAuthenticatedSession } from '@/utils/queryUtils';
 import { useQuery } from '@tanstack/react-query';
 
-export default function useOnboardingStatus() {
-  const getOnboardingStatus = async (): Promise<OnboardingResponse> => {
+export default function useOnboardingCompleteStatus() {
+  const getOnboardingStatus = async (): Promise<OnboardingCompleteStatusResponse> => {
     const session = await getAuthenticatedSession();
 
     // const response = await fetch(`${process.env.NEXT_PUBLIC_MSW_API_URL}/onboarding/status`, {
@@ -21,7 +21,7 @@ export default function useOnboardingStatus() {
   };
 
   return useQuery({
-    queryKey: ['onboarding'],
+    queryKey: ['onboarding', 'status'],
     queryFn: getOnboardingStatus,
     staleTime: 1000 * 20,
   });

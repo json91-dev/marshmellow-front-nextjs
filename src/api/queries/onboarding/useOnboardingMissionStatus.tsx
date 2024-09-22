@@ -20,7 +20,7 @@ export default function useOnboardingMissionStatus() {
   };
 
   return useQuery({
-    queryKey: ['onboarding'],
+    queryKey: ['activity', 'onboarding'],
     queryFn: getWorkMonthly,
     staleTime: 1000 * 20,
   });

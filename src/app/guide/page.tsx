@@ -20,7 +20,7 @@ export default function GuidePage() {
     }
 
     return dayjs(result?.data.period.endAt).isBefore();
-  }, [result]);
+  }, [result?.data]);
 
   useEffect(() => {
     if (!result?.data) return;
