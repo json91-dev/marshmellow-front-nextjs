@@ -14,24 +14,32 @@ export default function GuidePage() {
   const { data: result } = useOnboardingMissionStatus();
   const { mutate } = useOnboardingCompleteMutation();
   const { showOnboardingMissionModal } = useModalStore();
-  const isMissionDateDone = useMemo(() => {
-    if (!result?.data) {
+
+  /** 가이드 미션 날짜가 지났을때를 체크 **/
+  const isOnboardingMissionDateDone = useMemo(() => {
+    const missionStatus = result?.data;
+
+    // 데이터가 없는 경우 false 반환
+    if (!missionStatus) {
       return false;
     }
 
-    return dayjs(result?.data.period.endAt).isBefore();
+    // 미션 종료 날짜가 현재보다 이전인 경우 true 반환
+    return dayjs(missionStatus.period.endAt).isBefore();
   }, [result?.data]);
 
   useEffect(() => {
-    if (!result?.data) return;
-    if (isMissionDateDone) return;
+    const missionStatus = result?.data;
 
-    const isGuideMissionComplete = result?.data.onboardingMissionStates[3].isComplete;
+    // 온보딩 미션 기간 확인
+    if (!missionStatus || isOnboardingMissionDateDone) return;
 
-    if (isMissionDateDone && !isGuideMissionComplete) {
-      // 가이드 미션 읽고오기 팝업 띄우기
-    }
-  }, [isMissionDateDone, result]);
+    // 가이드 미션 종료 확인
+    const isGuideMissionComplete = missionStatus.onboardingMissionStates[3]?.isComplete; // (4번째 상태값이 가이드 미션 상태)
+    if (isGuideMissionComplete) return;
+
+    // showOnboardingMissionModal(true, 'MissionComplete');
+  }, [isOnboardingMissionDateDone, result]);
 
   return (
     <div className={styles.guidePage}>

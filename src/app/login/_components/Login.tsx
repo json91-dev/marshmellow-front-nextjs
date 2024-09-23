@@ -20,6 +20,7 @@ export default memo(function Login() {
     setIsAppleOS(isAppleOS);
   }, []);
 
+  // TODO: 맨처음 로그인시 타입이 결정되면 이후에 바꾸기 힘듬
   useEffect(() => {
     if (status === 'authenticated') {
       const type = session.type;
