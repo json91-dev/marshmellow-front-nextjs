@@ -1,6 +1,7 @@
 import { getAuthenticatedSession } from '@/utils/queryUtils';
 import { useMutation } from '@tanstack/react-query';
 
+/** 온보딩이 완전히 종료되었을때 호출하는 API **/
 export default function useOnboardingCompleteMutation() {
   const onboardingComplete = async () => {
     const session = await getAuthenticatedSession();

@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import React from 'react';
 import styles from '../page.module.scss';
-import { OnboardingMissionState } from '@/api/types/onboarding';
 import cx from 'classnames';
+import { OnboardingMissionState } from '@/api/queries/onboarding/useOnboardingMissionStatus';
 
 type PropTypes = {
   onboardingMissionStates: OnboardingMissionState[];

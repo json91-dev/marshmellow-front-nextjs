@@ -4,7 +4,7 @@ import React from 'react';
 import cx from 'classnames';
 import dayjs from 'dayjs';
 import { findMonday, findSunday, formatDateToTodayDate } from '@/utils/utils';
-import useOnboardingCompleteMutation from '@/api/mutations/onboarding/useOnboardingComplete';
+import useOnboardingCompleteMutation from '@/api/mutations/onboarding/useOnboardingCompleteMutation';
 import { getAuthenticatedSession } from '@/utils/queryUtils';
 import Link from 'next/link';
 

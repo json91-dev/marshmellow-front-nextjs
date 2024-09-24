@@ -110,7 +110,7 @@ interface IdentifyModalState {
   // 미션 모달
   isShowOnboardingMissionModal: boolean;
   onboardingMissionModalType: 'MissionComplete' | 'MissionAllComplete';
-  showOnboardingMissionModal(isShow: boolean, type: string): void;
+  showOnboardingMissionModal(isShow: boolean, type: 'MissionComplete' | 'MissionAllComplete'): void;
 }
 
 export const useModalStore = create(

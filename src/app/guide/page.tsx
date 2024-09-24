@@ -8,38 +8,46 @@ import useOnboardingMissionStatus from '@/api/queries/onboarding/useOnboardingMi
 import dayjs from 'dayjs';
 import { useEffect, useMemo } from 'react';
 import useModalStore from '@/store/modalStore';
-import useOnboardingCompleteMutation from '@/api/mutations/onboarding/useOnboardingComplete';
+import useOnboardingReadGuideMutation from '@/api/mutations/onboarding/useOnboardingReadGuideMutation';
+import useToastStore from '@/store/toastStore';
 
 export default function GuidePage() {
-  const { data: result } = useOnboardingMissionStatus();
-  const { mutate } = useOnboardingCompleteMutation();
+  const { data: result, isSuccess } = useOnboardingMissionStatus();
+  const { mutate } = useOnboardingReadGuideMutation();
   const { showOnboardingMissionModal } = useModalStore();
+  const { openToast } = useToastStore();
 
-  /** 가이드 미션 날짜가 지났을때를 체크 **/
-  const isOnboardingMissionDateDone = useMemo(() => {
+  /** 가이드 미션 진행중인지 체크 **/
+  const isDuringOnboardingDate = useMemo(() => {
     const missionStatus = result?.data;
 
-    // 데이터가 없는 경우 false 반환
-    if (!missionStatus) {
-      return false;
+    if (isSuccess && missionStatus) {
+      return dayjs(missionStatus.period.endAt).isAfter(new Date());
     }
-
-    // 미션 종료 날짜가 현재보다 이전인 경우 true 반환
-    return dayjs(missionStatus.period.endAt).isBefore();
-  }, [result?.data]);
+  }, [isSuccess]);
 
   useEffect(() => {
-    const missionStatus = result?.data;
-
     // 온보딩 미션 기간 확인
-    if (!missionStatus || isOnboardingMissionDateDone) return;
+    if (!isDuringOnboardingDate) return;
 
-    // 가이드 미션 종료 확인
-    const isGuideMissionComplete = missionStatus.onboardingMissionStates[3]?.isComplete; // (4번째 상태값이 가이드 미션 상태)
-    if (isGuideMissionComplete) return;
+    // 데이터 패칭 확인
+    const missionStatus = result?.data;
+    if (isSuccess && missionStatus) {
+      // 가이드 미션 종료 확인
+      const isGuideMissionHasCompleted = missionStatus.onboardingMissionStates[3]?.isComplete; // (4번째 상태값이 가이드 미션 상태)
+      if (isGuideMissionHasCompleted) return;
 
-    // showOnboardingMissionModal(true, 'MissionComplete');
-  }, [isOnboardingMissionDateDone, result]);
+      mutate(undefined, {
+        onSuccess: () => {
+          showOnboardingMissionModal(true, 'MissionComplete');
+        },
+        onError: (error) => {
+          console.log(error);
+          openToast('에러');
+        },
+      });
+    }
+  }, [isDuringOnboardingDate, isSuccess]);
 
   return (
     <div className={styles.guidePage}>

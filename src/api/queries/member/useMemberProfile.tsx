@@ -1,6 +1,40 @@
-import { MemberProfileResponse } from '@/api/types/member';
 import { getAuthenticatedSession } from '@/utils/queryUtils';
 import { useQuery } from '@tanstack/react-query';
+
+type Profile = {
+  name: string;
+  nickname: string;
+  phoneNumber: string;
+  email: string;
+  profileImageUrl: string;
+  gender: string;
+  birth: string;
+};
+
+type OfficeHour = {
+  startHour: number;
+  endHour: number;
+  launchTimeAt: number;
+  todayStartTime: string;
+  todayEndTime: string;
+  todayLaunchTime: string;
+};
+
+type MemberProfile = {
+  profile: Profile;
+  createdAt: string;
+  grade: string;
+  officeHour: OfficeHour;
+  isNicknameModifiable: boolean;
+  nicknameModifiableRemainingDays: number;
+  isOfficeHourModifiable: boolean;
+  officeHourModifiableRemainingDays: number;
+};
+
+export type MemberProfileResponse = {
+  message: string;
+  data: MemberProfile;
+};
 
 export default function useMemberProfile() {
   const getMemberProfile = async (): Promise<MemberProfileResponse> => {

@@ -1,6 +1,16 @@
-import { OnboardingCompleteStatusResponse } from '@/api/types/onboarding';
 import { getAuthenticatedSession } from '@/utils/queryUtils';
 import { useQuery } from '@tanstack/react-query';
+
+/** /onboarding/status (온보딩 UI 상태 조회) **/
+type OnboardingCompleteStatus = {
+  onboardingComplete: boolean;
+  displayOnboardingMissionIcon: boolean;
+};
+
+export type OnboardingCompleteStatusResponse = {
+  message: string;
+  data: OnboardingCompleteStatus;
+};
 
 export default function useOnboardingCompleteStatus() {
   const getOnboardingStatus = async (): Promise<OnboardingCompleteStatusResponse> => {

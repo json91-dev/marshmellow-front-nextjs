@@ -5,22 +5,13 @@ import { CSSTransition } from 'react-transition-group';
 import ModalBackdrop from '@/app/@modal/signup/identify/_components/ModalBackdrop';
 import useModalStore from '@/store/modalStore';
 import cx from 'classnames';
-import { getLocalStorage } from '@/utils/utils';
-import useToastStore from '@/store/toastStore';
-import { useQueryClient } from '@tanstack/react-query';
-import useChangeNicknameMutation from '@/api/mutations/member/useChangeNicknameMutation';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
 export default function OnboardingMissionCompleteModal() {
   const { showOnboardingMissionModal, isShowOnboardingMissionModal, onboardingMissionModalType } = useModalStore();
-  const nickname = getLocalStorage('nickname');
-  const { mutate } = useChangeNicknameMutation();
-  const { openToast } = useToastStore();
-  const queryClient = useQueryClient();
   const backdropRef = React.useRef(null);
   const modalRef = React.useRef(null);
-  const isShowModal = isShowOnboardingMissionModal;
   const router = useRouter();
 
   return (

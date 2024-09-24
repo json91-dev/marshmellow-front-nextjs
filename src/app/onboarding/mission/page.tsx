@@ -6,9 +6,9 @@ import { MissionIcons } from '@/app/onboarding/mission/_components/MissionIcons'
 import { MissionCards } from '@/app/onboarding/mission/_components/MissionCards';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
-import { OnboardingMissionStatusResponse } from '@/api/types/onboarding';
 import MissionTimer from '@/app/onboarding/mission/_components/MissionTimer';
 import dayjs from 'dayjs';
+import { OnboardingMissionStatusResponse } from '@/api/queries/onboarding/useOnboardingMissionStatus';
 
 export default async function missionPage() {
   const session = await getServerSession(authOptions);
