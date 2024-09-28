@@ -1,6 +1,6 @@
 'use client';
 import styles from './modal.module.scss';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import ModalBackdrop from '@/app/@modal/signup/identify/_components/ModalBackdrop';
 import useModalStore from '@/store/modalStore';
@@ -13,6 +13,15 @@ export default function OnboardingMissionCompleteModal() {
   const backdropRef = React.useRef(null);
   const modalRef = React.useRef(null);
   const router = useRouter();
+
+  const onClickConfirm = useCallback(() => {
+    showOnboardingMissionModal(false, onboardingMissionModalType);
+    router.push('/onboarding/mission');
+  }, []);
+
+  const onClickCancel = useCallback(() => {
+    showOnboardingMissionModal(false, onboardingMissionModalType);
+  }, []);
 
   return (
     <>
@@ -28,13 +37,10 @@ export default function OnboardingMissionCompleteModal() {
             {'적응 미션 임무 완수!\n'} {'마시멜로우 3개를 추가 보상으로 받았어요!'}
           </p>
 
-          <button className={styles.confirmButton} onClick={() => router.push('/onboarding/mission')}>
+          <button className={styles.confirmButton} onClick={onClickConfirm}>
             미션 보기
           </button>
-          <button
-            className={styles.cancelButton}
-            onClick={() => showOnboardingMissionModal(false, onboardingMissionModalType)}
-          >
+          <button className={styles.cancelButton} onClick={onClickCancel}>
             확인
           </button>
         </div>

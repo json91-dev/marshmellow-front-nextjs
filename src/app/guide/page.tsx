@@ -10,12 +10,14 @@ import { useEffect, useMemo } from 'react';
 import useModalStore from '@/store/modalStore';
 import useOnboardingReadGuideMutation from '@/api/mutations/onboarding/useOnboardingReadGuideMutation';
 import useToastStore from '@/store/toastStore';
+import { useQueryClient } from '@tanstack/react-query';
 
 export default function GuidePage() {
   const { data: result, isSuccess } = useOnboardingMissionStatus();
   const { mutate } = useOnboardingReadGuideMutation();
   const { showOnboardingMissionModal } = useModalStore();
   const { openToast } = useToastStore();
+  const queryClient = useQueryClient();
 
   /** 가이드 미션 진행중인지 체크 **/
   const isDuringOnboardingDate = useMemo(() => {
@@ -39,6 +41,7 @@ export default function GuidePage() {
 
       mutate(undefined, {
         onSuccess: () => {
+          queryClient.invalidateQueries({ queryKey: ['activity', 'onboarding', 'mission'] }).then();
           showOnboardingMissionModal(true, 'MissionComplete');
         },
         onError: (error) => {
