@@ -52,16 +52,23 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
-    async jwt({ token, user, account, profile }) {
-      console.log('jwt 콜백 실행');
+    async jwt({ token, trigger, account, profile, session }) {
+      if (trigger === 'update' && session?.type) {
+        // Update token with the new type
+        token.type = session.type;
+        return token;
+      }
+
       if (account) {
+        console.log(account.provider + ' 로그인 시도');
+        console.log('토큰', account.id_token ? account.id_token : account.access_token);
+
         if (account.provider === 'google') {
           const response = await fetch(`${process.env.API_URL}/auth/signin`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ accessToken: account.id_token, vendor: account.provider }),
           });
-          console.log(`구글 로그인 토큰: ${account.id_token}`);
 
           const result = await response.json();
           console.log(result.data);
@@ -69,9 +76,6 @@ export const authOptions: NextAuthOptions = {
           token.refreshToken = result.data.credentials.refreshToken;
           token.accountId = result.data.accountId;
           token.type = result.data.type;
-          token.accountId = result.data.accountId;
-          // @ts-ignore
-          token.profileImg = profile?.picture;
         } else if (account.provider === 'kakao') {
           const response = await fetch(`${process.env.API_URL}/auth/signin`, {
             method: 'POST',
@@ -79,20 +83,13 @@ export const authOptions: NextAuthOptions = {
             body: JSON.stringify({ accessToken: account.access_token, vendor: account.provider }),
           });
 
-          console.log(`카카오 로그인 토큰: ${account.access_token}`);
           const result = await response.json();
 
           token.accessToken = result.data.credentials.accessToken;
           token.refreshToken = result.data.credentials.refreshToken;
           token.type = result.data.type;
           token.accountId = result.data.accountId;
-          // @ts-ignore
-          token.profileImg = profile?.properties?.profile_image;
         } else if (account.provider === 'apple') {
-          console.log('------애플 로그인 처리 시작--------');
-          console.log(account);
-          console.log('ID TOKEN:', account.id_token);
-
           const response = await fetch(`${process.env.API_URL}/auth/signin`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -104,8 +101,6 @@ export const authOptions: NextAuthOptions = {
           token.refreshToken = result.data.credentials.refreshToken;
           token.type = result.data.type;
           token.accountId = result.data.accountId;
-          // @ts-ignore
-          token.profileImg = profile?.properties?.profile_image;
         }
       }
 
@@ -119,7 +114,6 @@ export const authOptions: NextAuthOptions = {
         session.refreshToken = token.refreshToken + '';
         session.type = token.type + '';
         session.accountId = token.accountId + '';
-        session.profileImg = token.profileImg + '';
       }
 
       return session;

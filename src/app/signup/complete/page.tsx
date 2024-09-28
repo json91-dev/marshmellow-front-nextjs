@@ -6,7 +6,6 @@ import { useRouter } from 'next/navigation';
 
 /** 회원가입 제출 페이지 **/
 export default function SignupSubmitCompletePage() {
-  const [isSubmit, setIsSubmit] = useState(true);
   const router = useRouter();
   return (
     <div className={styles.submitCompletePage}>

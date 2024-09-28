@@ -9,7 +9,7 @@ import useToastStore from '@/store/toastStore';
 export default function () {
   const router = useRouter();
   const { signupInfo } = useSignupStore();
-  const { data: session } = useSession();
+  const { data: session, update } = useSession();
   const { name, nickname, gender, birth, funnelId, recommender, phoneNumber } = signupInfo;
   const { openToast } = useToastStore();
 
@@ -52,6 +52,7 @@ export default function () {
         console.log(result.data.errorCode);
         return;
       } else {
+        await update({ type: 'SIGNIN_SUCCESS' });
         router.push('/signup/complete');
       }
     } catch (e) {
