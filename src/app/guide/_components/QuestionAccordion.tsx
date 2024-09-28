@@ -1,39 +1,33 @@
 'use client';
 
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import styles from './accordiaon.module.scss';
 
 type props = {
   title: string;
   children: React.ReactNode;
+  isOpened: boolean; // 열림 상태
+  onToggle: () => void; // 열림 상태 변경 함수
 };
 
-const DropDown = ({ title, children }: props) => {
-  const [isOpen, setIsOpen] = useState(false);
+const QuestionAccordion = ({ title, children, isOpened, onToggle }: props) => {
   const accordionContentRef = useRef<HTMLDivElement>(null!);
   const accordionToggleRef = useRef<HTMLDivElement>(null!);
-  const isOpenedAccordion = useRef<boolean>(false);
 
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const onClickAccordionToggle = useCallback(() => {
-    if (!isOpenedAccordion.current) {
+  useEffect(() => {
+    if (isOpened) {
       accordionContentRef.current.classList.add(styles.active);
       accordionToggleRef.current.classList.add(styles.active);
-      isOpenedAccordion.current = true;
     } else {
       accordionContentRef.current.classList.remove(styles.active);
       accordionToggleRef.current.classList.remove(styles.active);
-      isOpenedAccordion.current = false;
     }
-  }, []);
+  }, [isOpened]);
 
   return (
     <div className={styles.accordion}>
-      <div className={styles.accordionToggle} ref={accordionToggleRef} onClick={onClickAccordionToggle}>
+      <div className={styles.accordionToggle} ref={accordionToggleRef} onClick={onToggle}>
         <p>{title}</p>
         <Image src={'/images/arrow.bottom.svg'} width={24} height={24} alt="No Image" />
       </div>
@@ -44,4 +38,4 @@ const DropDown = ({ title, children }: props) => {
   );
 };
 
-export default DropDown;
+export default QuestionAccordion;

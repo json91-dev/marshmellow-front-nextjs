@@ -9,6 +9,7 @@
     padding: 1.6rem 2rem;
     border-bottom: 1px solid #E5E9F2;
 
+
     &.active {
       img {
         transform: rotate(-180deg);
@@ -21,18 +22,17 @@
       font-size: 1.6rem;
       font-weight: 500;
     }
-
-
   }
 
   .accordionContent {
     flex-direction: column;
     gap: 0.6rem;
     overflow: hidden;
-    padding: 1.4rem 2rem;
-    display: none;
+    display: flex;
+    max-height: 0;
     border-bottom: 1px solid #E5E9F2;
-
+    padding: 0;
+    transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
 
     p {
       color: #1C222B;
@@ -40,6 +40,8 @@
       font-size: 1.4rem;
       line-height: 2.2rem;
       white-space: pre-wrap;
+      padding: 1.4rem 2rem;
+
     }
 
     .bold {
@@ -53,6 +55,7 @@
 
     &.active {
       display: flex;
+      max-height: 1000px;
     }
 
   }
