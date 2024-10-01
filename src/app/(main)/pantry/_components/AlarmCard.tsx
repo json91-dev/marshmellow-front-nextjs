@@ -24,7 +24,7 @@ export default function AlarmCard() {
     <div className={styles.alarmCard} onClick={onClickAlarmCard}>
       <p>탕비실 오픈 시 알림을 보내드려요</p>
       <div className={styles.alarmButton}>
-        <p>오픈 알림 받기</p>
+        <p>오픈알림 받기</p>
       </div>
     </div>
   );

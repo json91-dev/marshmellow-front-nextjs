@@ -89,7 +89,7 @@ export default function WorkTimeBottomSheet() {
               <div className={styles.info}>
                 <div>정시출근: 08:00 ~ 08:15</div>
                 <div>점심시간: 11:00 ~ 11:15</div>
-                <div>정시퇴근: 15:00 ~ 15:15</div>
+                <div>정시퇴근: 17:00 ~ 17:15</div>
               </div>
             </div>
 
@@ -112,7 +112,7 @@ export default function WorkTimeBottomSheet() {
               <div className={styles.info}>
                 <div>정시출근: 09:00 ~ 09:15</div>
                 <div>점심시간: 12:00 ~ 12:15</div>
-                <div>정시퇴근: 16:00 ~ 16:15</div>
+                <div>정시퇴근: 18:00 ~ 18:15</div>
               </div>
             </div>
 
@@ -135,7 +135,7 @@ export default function WorkTimeBottomSheet() {
               <div className={styles.info}>
                 <div>정시출근: 10:00 ~ 10:15</div>
                 <div>점심시간: 13:00 ~ 13:15</div>
-                <div>정시퇴근: 17:00 ~ 17:15</div>
+                <div>정시퇴근: 19:00 ~ 19:15</div>
               </div>
             </div>
           </div>

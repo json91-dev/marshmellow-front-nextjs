@@ -9,11 +9,9 @@
     padding: 1.6rem 2rem;
     border-bottom: 1px solid #E5E9F2;
 
-
     &.active {
       img {
         transform: rotate(-180deg);
-        //transition: all 0.5s;
       }
     }
 

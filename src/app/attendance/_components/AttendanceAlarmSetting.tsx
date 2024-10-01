@@ -1,12 +1,24 @@
 'use client';
 import styles from './AttendanceAlarmSetting.module.scss';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import useModalStore from '@/store/modalStore';
+import { getLocalStorage } from '@/utils/utils';
+import cx from 'classnames';
 
 export default function AttendanceAlarmSetting() {
-  const { showFulfillAttendanceAlarmSettingModal } = useModalStore();
+  const { showFulfillAttendanceAlarmSettingModal, isShowFulfillAttendanceAlarmSettingModal } = useModalStore();
+  const [launchNotifyEnabled, setLaunchNotifyEnabled] = useState(getLocalStorage('APP_LAUNCH_NOTIFY_ENABLED')); // 알림 활성화 되었는지 여부 확인
+  console.log(launchNotifyEnabled);
+
+  /** 알림 상단 Setting 영역 제거 **/
+  useEffect(() => {
+    if (!isShowFulfillAttendanceAlarmSettingModal) {
+      setLaunchNotifyEnabled(getLocalStorage('APP_LAUNCH_NOTIFY_ENABLED'));
+    }
+  }, [isShowFulfillAttendanceAlarmSettingModal]);
+
   return (
-    <div className={styles.settingAlert}>
+    <div className={cx(styles.settingAlert, launchNotifyEnabled && styles.hidden)}>
       <div className={styles.top}>
         <div className={styles.title}>출근을 놓치지 마세요</div>
         <div className={styles.toggle}>

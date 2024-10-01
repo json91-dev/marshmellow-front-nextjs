@@ -8,6 +8,7 @@ import cx from 'classnames';
 import { getLocalStorage, setLocalStorage } from '@/utils/utils';
 import useWithdrawMutation from '@/api/mutations/member/useWithdrawMutation';
 import useToastStore from '@/store/toastStore';
+import { signOut } from 'next-auth/react';
 
 export default function WithdrawConfimModal() {
   const { isShowWithdrawConfirmModal, showWithdrawConfirmModal, showWithdrawConfirmCompleteModal } = useModalStore();
@@ -25,13 +26,14 @@ export default function WithdrawConfimModal() {
     }
 
     mutate(reason, {
-      onSuccess: () => {
-        openToast('회원탈퇴 처리 완료');
+      onSuccess: async () => {
+        openToast('회원탈퇴 처리가 완료되었습니다.\n로그인 화면으로 이동합니다.');
         showWithdrawConfirmModal(false);
         showWithdrawConfirmCompleteModal(true);
         setLocalStorage('withdrawalReason', '');
       },
-      onError: () => {
+      onError: (error) => {
+        console.log(error);
         openToast('회원탈퇴 처리 실패');
         showWithdrawConfirmModal(false);
       },

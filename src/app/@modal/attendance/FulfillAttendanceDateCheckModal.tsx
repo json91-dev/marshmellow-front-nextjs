@@ -36,9 +36,12 @@ export default function FulfillAttendanceDateCheckModal() {
         nodeRef={modalRef}
       >
         <div className={cx(styles.fulfillAttendanceDateCheckModal, 'modal')} ref={modalRef}>
-          <p className={styles.title}>{dayjs(fulfillAttendanceCheckedDateString).format('M월 D일')} 출근 보충하기</p>
+          <p className={styles.title}>{dayjs(new Date()).format('M월 D일')} 출근 보충하기</p>
           <Image className={styles.icon} src="/images/mallow.happy.svg" alt="No Image" width={72} height={72} />
-          <p className={styles.description}>{'광고를 끝까지 시청해야 보상으로\n출근일수를 채울 수 있어요!'}</p>
+          <p className={styles.description}>
+            {"‘쿠팡'에 방문해야 보상으로\n"}
+            {'출근일수를 채울 수 있어요!'}
+          </p>
           <button className={styles.confirmButton} onClick={onClickConfirm}>
             <Image
               style={{ marginRight: '0.6rem', marginBottom: '0.1rem' }}
@@ -47,7 +50,7 @@ export default function FulfillAttendanceDateCheckModal() {
               width={20}
               height={20}
             />
-            광고보고 출근 보충하기
+            쿠팡 광고보고 출근 보충하기
           </button>
           <button className={styles.cancelButton} onClick={() => showFulfillAttendanceDateCheckModal(false)}>
             다음에 하기

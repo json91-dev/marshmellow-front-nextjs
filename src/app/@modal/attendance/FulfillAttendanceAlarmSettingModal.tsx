@@ -6,11 +6,14 @@ import { CSSTransition } from 'react-transition-group';
 import ModalBackdrop from '@/app/@modal/signup/identify/_components/ModalBackdrop';
 import cx from 'classnames';
 import Image from 'next/image';
+import useToastStore from '@/store/toastStore';
+import { setLocalStorage } from '@/utils/utils';
 
 export default function FulfillAttendanceAlarmSettingModal() {
   const { isShowFulfillAttendanceAlarmSettingModal, showFulfillAttendanceAlarmSettingModal } = useModalStore();
   const backdropRef = React.useRef(null);
   const modalRef = React.useRef(null);
+  const { openToast } = useToastStore();
 
   return (
     <>
@@ -35,7 +38,14 @@ export default function FulfillAttendanceAlarmSettingModal() {
             {'앱 서비스 런칭 시 오픈 알림을 받으시려면\n'}
             {'오픈알림 받기 버튼을 눌러주세요'}
           </p>
-          <button className={styles.confirmButton} onClick={() => showFulfillAttendanceAlarmSettingModal(false)}>
+          <button
+            className={styles.confirmButton}
+            onClick={() => {
+              showFulfillAttendanceAlarmSettingModal(false);
+              setLocalStorage('APP_LAUNCH_NOTIFY_ENABLED', true);
+              openToast('앱 서비스 오픈 시 오픈알림을 보내드릴게요!');
+            }}
+          >
             오픈알림 받기
           </button>
           <button className={styles.cancelButton} onClick={() => showFulfillAttendanceAlarmSettingModal(false)}>

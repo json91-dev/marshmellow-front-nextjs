@@ -16,7 +16,9 @@ export default function useWithdrawMutation() {
     });
 
     if (response.ok) {
-      return response.json();
+      // 200으로만 응답올때가 있음
+      const responseBody = await response.text();
+      return responseBody ? JSON.parse(responseBody) : null;
     } else {
       throw new Error('회원 탈퇴 실패');
     }

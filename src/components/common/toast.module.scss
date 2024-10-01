@@ -18,6 +18,7 @@
   font-size: 1.6rem;
   left: 50%;
   transform: translateX(-50%);
+  white-space: pre-wrap;
 
   @include isMobile {
   }
