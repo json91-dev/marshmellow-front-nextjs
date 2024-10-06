@@ -36,6 +36,8 @@ export default memo(function Login() {
         router.push('/signup/info');
       } else if (type === 'SIGNIN_SUCCESS') {
         router.replace('/desk');
+      } else if (type === 'DISABLED_MEMBER_ACCOUNT') {
+        router.replace('/my/restore');
       }
     } else {
       console.log(status);

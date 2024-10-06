@@ -115,7 +115,7 @@ export default function RequestPage() {
         </div>
       </div>
 
-      <div className={buttonStyle.buttonsArea}>
+      <div className={buttonStyle.horizontalButtonArea}>
         <div className={cx(buttonStyle.confirmButton, 0 && buttonStyle.active)}>문의하기</div>
       </div>
     </div>

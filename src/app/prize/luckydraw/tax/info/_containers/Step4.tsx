@@ -37,7 +37,7 @@ export default function Step4() {
         <input type="text" {...register('email')} placeholder={'이메일 주소를 입력해주세요.'} />
       </div>
 
-      <div className={buttonStyle.buttonsArea}>
+      <div className={buttonStyle.horizontalButtonArea}>
         <div className={buttonStyle.prevButton} onClick={() => router.back()}>
           이전
         </div>

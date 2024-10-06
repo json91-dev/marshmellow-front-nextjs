@@ -44,7 +44,7 @@ export default function Step6() {
         </div>
       </div>
 
-      <div className={buttonStyle.buttonsArea}>
+      <div className={buttonStyle.horizontalButtonArea}>
         <div className={cx(buttonStyle.prevButton, activeNextButton && buttonStyle.active)} onClick={() => router.back()}>
           이전
         </div>

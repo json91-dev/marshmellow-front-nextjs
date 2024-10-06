@@ -26,7 +26,7 @@ export default function Main() {
         </div>
       </div>
 
-      <Link href={'/research/pantry?step=1'} className={buttonStyle.buttonsArea}>
+      <Link href={'/research/pantry?step=1'} className={buttonStyle.horizontalButtonArea}>
         <div className={cx(buttonStyle.confirmButton, buttonStyle.active)}>다음</div>
       </Link>
     </div>

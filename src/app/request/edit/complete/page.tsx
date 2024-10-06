@@ -23,7 +23,7 @@ export default function RequestCompletePage() {
         </p>
       </div>
 
-      <div className={buttonStyle.buttonsArea}>
+      <div className={buttonStyle.horizontalButtonArea}>
         <div className={cx(buttonStyle.confirmButton, buttonStyle.active)}>확인</div>
       </div>
     </div>

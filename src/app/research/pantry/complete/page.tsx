@@ -17,7 +17,7 @@ export default function LuckyDrawResearchCompletePage() {
         </p>
       </div>
 
-      <div className={buttonStyle.buttonsArea}>
+      <div className={buttonStyle.horizontalButtonArea}>
         <button className={cx(buttonStyle.confirmButton, buttonStyle.active)}>확인</button>
       </div>
     </div>

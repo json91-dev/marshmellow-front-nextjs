@@ -89,7 +89,7 @@ export default function Step4() {
         </div>
       </div>
 
-      <div className={buttonStyle.buttonsArea} onClick={() => router.push('/research/pantry?step=5')}>
+      <div className={buttonStyle.horizontalButtonArea} onClick={() => router.push('/research/pantry?step=5')}>
         <div className={cx(buttonStyle.prevButton, activeNextButton && buttonStyle.active)} onClick={() => router.back()}>
           이전
         </div>

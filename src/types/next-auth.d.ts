@@ -9,6 +9,9 @@ declare module 'next-auth' {
     refreshToken: string;
     type: string;
     accountId: string;
+    deletionId: string;
+    deletionNickname: string;
+    deleteDate: string;
     profileImg: string;
   }
 }

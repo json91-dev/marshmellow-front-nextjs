@@ -71,7 +71,7 @@ export default function LuckyDrawPrizePage() {
         </div>
       </div>
 
-      <div className={buttonStyle.buttonsArea}>
+      <div className={buttonStyle.horizontalButtonArea}>
         <div
           onClick={() => router.push('/recreation/luckydraw')}
           className={cx(buttonStyle.confirmButton, 1 !== 1 && buttonStyle.active)}

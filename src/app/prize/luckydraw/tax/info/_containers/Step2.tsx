@@ -64,7 +64,7 @@ export default function Step2() {
         </label>
       </div>
 
-      <div className={buttonStyle.buttonsArea}>
+      <div className={buttonStyle.horizontalButtonArea}>
         <div className={buttonStyle.prevButton} onClick={() => router.back()}>
           이전
         </div>

@@ -118,7 +118,7 @@ export default function Step5() {
         </div>
       )}
 
-      <div className={buttonStyle.buttonsArea}>
+      <div className={buttonStyle.horizontalButtonArea}>
         <div onClick={onClickButton} className={cx(buttonStyle.confirmButton, detailAddress && buttonStyle.active)}>
           저장 후 입력 정보 확인
         </div>

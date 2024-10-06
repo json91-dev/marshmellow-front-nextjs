@@ -62,7 +62,7 @@ export default function Step1() {
         </div>
       </div>
 
-      <div className={buttonStyle.buttonsArea} onClick={onClickButton}>
+      <div className={buttonStyle.horizontalButtonArea} onClick={onClickButton}>
         <div className={cx(buttonStyle.confirmButton, radioValue === 'yes' && buttonStyle.active)}>저장 후 다음</div>
       </div>
     </div>

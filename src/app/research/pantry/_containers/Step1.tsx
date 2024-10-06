@@ -85,7 +85,7 @@ export default function Step1() {
         </div>
       </div>
 
-      <div className={buttonStyle.buttonsArea}>
+      <div className={buttonStyle.horizontalButtonArea}>
         <div
           onClick={() => router.push('/research/pantry?step=2')}
           className={cx(buttonStyle.confirmButton, activeNextButton && buttonStyle.active)}

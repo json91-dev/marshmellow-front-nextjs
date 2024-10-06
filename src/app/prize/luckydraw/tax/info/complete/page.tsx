@@ -51,7 +51,7 @@ export default function taxInfoCompletePage() {
         </div>
       </div>
 
-      <div className={buttonStyle.buttonsArea}>
+      <div className={buttonStyle.horizontalButtonArea}>
         <div className={cx(buttonStyle.confirmButton, 11 === 11 && buttonStyle.active)}>제출하기</div>
       </div>
     </div>

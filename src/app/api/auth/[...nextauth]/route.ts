@@ -69,7 +69,9 @@ export const authOptions: NextAuthOptions = {
 
           if (result.data.deletionId) {
             token.type = 'DISABLED_MEMBER_ACCOUNT';
-            token.accountId = result.data.deletionId;
+            token.deletionId = result.data.deletionId;
+            token.deleteDate = result.data.deleteDate;
+            token.deletionNickname = result.data.nickname;
           } else {
             token.accessToken = result.data.credentials.accessToken;
             token.refreshToken = result.data.credentials.refreshToken;
@@ -93,6 +95,9 @@ export const authOptions: NextAuthOptions = {
         session.refreshToken = token.refreshToken ? token.refreshToken + '' : '';
         session.type = token.type ? token.type + '' : '';
         session.accountId = token.accountId ? token.accountId + '' : '';
+        session.deletionId = token.deletionId ? token.deletionId + '' : '';
+        session.deleteDate = token.deleteDate ? token.deleteDate + '' : '';
+        session.deletionNickname = token.deletionNickname ? token.deletionNickname + '' : '';
       }
 
       return session;
