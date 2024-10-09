@@ -18,6 +18,7 @@ export default function OfficePage() {
 
       <div className={styles.body}>
         <div className={styles.topCarousel}>
+          <Image src="/images/banner.full.attendance.png" alt="No Image" fill />
           <div className={styles.pagination}>
             <p>1/10</p>
           </div>
