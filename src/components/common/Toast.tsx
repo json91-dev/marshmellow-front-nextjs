@@ -17,7 +17,9 @@ export default function Toast() {
 
   return (
     <div className={cx(styles.toast, isOpen && styles.active)} onClick={() => closeToast()}>
-      {message}
+      <div className={styles.toastInner}>
+        <p>{message}</p>
+      </div>
     </div>
   );
 }

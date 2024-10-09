@@ -1,23 +1,29 @@
 'use client';
 
 import KakaoLoginButton from '@/app/login/_components/KakaoLoginButton';
-import { isAppleDevice } from '@/utils/utils';
+import { getLocalStorage, isAppleDevice, setLocalStorage } from '@/utils/utils';
 import AppleLoginButton from '@/app/login/_components/AppleLoginButton';
 import GoogleLoginButton from '@/app/login/_components/GoogleLoginButton';
 import React, { memo, useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import styles from '@/app/login/page.module.scss';
+import useToastStore from '@/store/toastStore';
 
 export default memo(function Login() {
   const [isAppleOS, setIsAppleOS] = useState<boolean>(null!);
   const { data: session, status } = useSession();
-
   const router = useRouter();
+  const isRestoreAccountToastShow = getLocalStorage('RESTORE_ACCOUNT_TOAST_SHOW');
+  const { openToast } = useToastStore();
 
   useEffect(() => {
     const isAppleOS = isAppleDevice();
     setIsAppleOS(isAppleOS);
+    if (isRestoreAccountToastShow) {
+      openToast('계정이 재활성화되었어요.\n다시 로그인해주세요.😀');
+      setLocalStorage('RESTORE_ACCOUNT_TOAST_SHOW', false);
+    }
   }, []);
 
   // TODO: 맨처음 로그인시 타입이 결정되면 이후에 바꾸기 힘듬

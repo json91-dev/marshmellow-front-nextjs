@@ -9,11 +9,36 @@ import buttonStyle from '@/moduleStyle/Button.module.scss';
 import Image from 'next/image';
 import { useSession } from 'next-auth/react';
 import dayjs from 'dayjs';
+import { useRouter } from 'next/navigation';
+import { signOut } from 'next-auth/react';
+import useWithdrawCancelMutation from '@/api/mutations/member/useWithdrawCancelMutation';
+import useToastStore from '@/store/toastStore';
+import { setLocalStorage } from '@/utils/utils';
 export default function RestorePage() {
-  const onClickConfirm = useCallback(async () => {}, []);
+  const { mutate } = useWithdrawCancelMutation();
+
   const { data: session } = useSession();
   const deletionNickname = session?.deletionNickname;
   const deleteDate = session?.deleteDate;
+  const router = useRouter();
+  const { openToast } = useToastStore();
+
+  const onClickConfirm = useCallback(async () => {
+    if (!session?.deletionId) {
+      return null;
+    }
+
+    mutate(session.deletionId, {
+      onSuccess: () => {
+        setLocalStorage('RESTORE_ACCOUNT_TOAST_SHOW', true);
+        signOut({ callbackUrl: '/login' });
+      },
+
+      onError: () => {
+        openToast('계정을 재활성화하는데 에러가 발생했어요 🥲');
+      },
+    });
+  }, [session]);
 
   return (
     <div className={styles.restorePage}>
@@ -36,7 +61,9 @@ export default function RestorePage() {
           네, 재활성화 할게요.
         </div>
 
-        <div className={buttonStyle.cancelButton}>취소</div>
+        <div className={buttonStyle.cancelButton} onClick={() => router.back()}>
+          취소
+        </div>
       </div>
     </div>
   );
