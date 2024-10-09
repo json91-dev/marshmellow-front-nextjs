@@ -3,6 +3,7 @@ import styles from './page.module.scss';
 import TopNavigation from '@/components/nav/TopNavigation';
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 export default function EventPage() {
   const [activeTab, setActiveTab] = useState(0);
@@ -31,9 +32,10 @@ export default function EventPage() {
 }
 
 function OngoingEvents() {
+  const router = useRouter();
   return (
     <div className={styles.events}>
-      <div className={styles.eventItem}>
+      <div className={styles.eventItem} onClick={() => router.push('/event/attendance')}>
         <div className={styles.titleImage}>
           <Image src="/images/banner.event.full.attendance.png" alt="No Image" width={320} height={140} />
         </div>

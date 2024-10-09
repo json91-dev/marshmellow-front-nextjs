@@ -1,0 +1,87 @@
+.fullAttendanceEventPage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .titleImage {
+    width: 100%;
+    position: relative;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .eventDetail {
+    display: flex;
+    flex-direction: column;
+    padding: 1.6rem 2rem;
+
+
+    .badge {
+      border-radius: 0.6rem;
+      width: 4.2rem;
+      flex-shrink: 0;
+      background-color: #D4E8FF;
+      height: 2.4rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      p.badgeText {
+        color: #007AFF;
+        font-size: 1.2rem;
+        line-height: 1.8rem;
+        font-weight: 600;
+      }
+    }
+
+    .title {
+      margin-top: 0.8rem;
+      p.name {
+        font-weight: bold;
+        font-size: 2.2rem;
+        line-height: 3.4rem;
+      }
+
+      p.description {
+        color: #1C222B;
+        font-size: 1.6rem;
+        line-height: 2.4rem;
+        font-weight: 400;
+        margin-top: 0.8rem;
+      }
+
+      margin-bottom: 1.6rem;
+    }
+
+
+
+    .info {
+      margin-top: 1.4rem;
+
+      p.name {
+        font-weight: bold;
+        font-size: 1.6rem;
+        line-height: 2.4rem;
+      }
+
+      .descriptionBox {
+        background-color: #F0F3FA;
+        border-radius: 0.8rem;
+        padding: 0.8rem 1.6rem;
+        margin-top: 1.2rem;
+
+        p.description {
+          font-size: 1.4rem;
+          line-height: 2.4rem;
+          font-weight: 400;
+          color: #1C222B;
+        }
+      }
+
+    }
+  }
+}
