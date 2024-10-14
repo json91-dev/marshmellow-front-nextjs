@@ -16,7 +16,7 @@ export default function useChangeNicknameMutation() {
     });
 
     if (response.ok) {
-      return response.json();
+      return true;
     } else {
       throw new Error('닉네임 변경 실패');
     }
