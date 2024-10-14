@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 
 type BottomSheetHookType = {
-  bottomSheetRef: React.RefObject<HTMLDivElement>;
+  bottomSheetRef: React.RefObject<HTMLDivElement> | React.RefObject<HTMLDialogElement>;
   backDropRef: React.RefObject<HTMLDivElement>;
   isShow: boolean;
   setIsShow: (value: boolean) => void;
@@ -67,9 +67,9 @@ export default function useBottomSheet({ bottomSheetRef, backDropRef, isShow, se
 
   useEffect(() => {
     if (isShow) {
-      bottomSheetRef.current?.addEventListener('pointerdown', onPointerDown);
-      bottomSheetRef.current?.addEventListener('pointermove', onPointerMove);
-      bottomSheetRef.current?.addEventListener('pointerup', onPointerUp);
+      bottomSheetRef.current?.addEventListener('pointerdown', onPointerDown as EventListener);
+      bottomSheetRef.current?.addEventListener('pointermove', onPointerMove as EventListener);
+      bottomSheetRef.current?.addEventListener('pointerup', onPointerUp as EventListener);
 
       if (backDropRef.current !== null) {
         backDropRef.current.addEventListener('pointerup', () => {
@@ -81,9 +81,9 @@ export default function useBottomSheet({ bottomSheetRef, backDropRef, isShow, se
 
   useEffect(() => {
     return () => {
-      bottomSheetRef.current?.removeEventListener('pointerdown', onPointerDown);
-      bottomSheetRef.current?.removeEventListener('pointermove', onPointerDown);
-      bottomSheetRef.current?.removeEventListener('pointerup', onPointerDown);
+      bottomSheetRef.current?.removeEventListener('pointerdown', onPointerDown as EventListener);
+      bottomSheetRef.current?.removeEventListener('pointermove', onPointerDown as EventListener);
+      bottomSheetRef.current?.removeEventListener('pointerup', onPointerDown as EventListener);
     };
   }, []);
 

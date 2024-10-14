@@ -111,6 +111,10 @@ interface IdentifyModalState {
   isShowOnboardingMissionModal: boolean;
   onboardingMissionModalType: 'MissionComplete' | 'MissionAllComplete';
   showOnboardingMissionModal(isShow: boolean, type: 'MissionComplete' | 'MissionAllComplete'): void;
+
+  // 이벤트 모달
+  isShowAttendanceEventInfoBottomSheet: boolean;
+  showAttendanceEventInfoBottomSheet(isShow: boolean): void;
 }
 
 export const useModalStore = create(
@@ -332,6 +336,11 @@ export const useModalStore = create(
     onboardingMissionModalType: 'MissionComplete',
     showOnboardingMissionModal: (isShow: boolean, type: 'MissionComplete' | 'MissionAllComplete') => {
       set({ isShowOnboardingMissionModal: isShow, onboardingMissionModalType: type });
+    },
+
+    isShowAttendanceEventInfoBottomSheet: false,
+    showAttendanceEventInfoBottomSheet(isShow) {
+      set({ isShowAttendanceEventInfoBottomSheet: isShow });
     },
   })),
 );

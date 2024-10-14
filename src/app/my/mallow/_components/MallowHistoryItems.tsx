@@ -40,42 +40,39 @@ export default function MallowHistoryItems() {
     return <div className={styles.oneYearNoneInfo}>최근 1년간 내역이 없습니다.</div>;
   }
 
-  console.log(groupDateMallowList);
   return (
     <>
-      <div className={styles.actionHistory}>
-        {groupDateMallowList?.map((item, index) => {
-          return (
-            <>
-              {index === 0 ? (
-                <div key={item.date} className={styles.actionDate}>
-                  {replaceAt(item.date, item.date.indexOf('.'), '\n')}
-                </div>
-              ) : (
-                <div key={item.date} className={styles.actionDate}>
-                  {item.date.substring(item.date.indexOf('.') + 1)}
-                </div>
-              )}
-              <div className={styles.actionList}>
-                {item?.mallowItems?.map((item: any) => {
-                  return (
-                    <div key={item.createdAt} className={styles.item}>
-                      <div className={styles.info}>
-                        <div>{item.modifyReasonDescription}</div>
-                        <div>{item.modifyReasonTitle}</div>
-                        <div>
-                          {extractHourMinute(item.createdAt)} | {item.state}
-                        </div>
-                      </div>
-                      <div className={styles.count}>+{item.modifiedQuantity}개</div>
-                    </div>
-                  );
-                })}
+      {groupDateMallowList?.map((item, index) => {
+        return (
+          <div className={styles.actionHistory} key={item.date + index}>
+            {index === 0 ? (
+              <div key={item.date} className={styles.actionDate}>
+                {replaceAt(item.date, item.date.indexOf('.'), '\n')}
               </div>
-            </>
-          );
-        })}
-      </div>
+            ) : (
+              <div key={item.date} className={styles.actionDate}>
+                {item.date.substring(item.date.indexOf('.') + 1)}
+              </div>
+            )}
+            <div className={styles.actionList}>
+              {item?.mallowItems?.map((item: any, index: number) => {
+                return (
+                  <div key={item.createdAt + index} className={styles.item}>
+                    <div className={styles.info}>
+                      <div>{item.modifyReasonDescription}</div>
+                      <div>{item.modifyReasonTitle}</div>
+                      <div>
+                        {extractHourMinute(item.createdAt)} | {item.state}
+                      </div>
+                    </div>
+                    <div className={styles.count}>+{item.modifiedQuantity}개</div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })}
       <div className={styles.oneYearInfo}>최근 1년 내역만 확인할 수 있습니다.</div>
     </>
   );

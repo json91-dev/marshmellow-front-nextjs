@@ -8,16 +8,18 @@ import WeekAttendance from '@/app/(main)/office/_components/WeekAttendance';
 import MyMallowHeader from '@/app/(main)/office/_components/MyMallowHeader';
 import EnjoyItems from '@/app/(main)/office/_components/EnjoyItems';
 import useMemberProfile from '@/api/queries/member/useMemberProfile';
+import { useRouter } from 'next/navigation';
 
 export default function OfficePage() {
   const { data: result, status } = useMemberProfile();
+  const router = useRouter();
 
   return (
     <div className={styles.officePage}>
       <MyMallowHeader />
 
       <div className={styles.body}>
-        <div className={styles.topCarousel}>
+        <div className={styles.topCarousel} onClick={() => router.push('/event/attendance')}>
           <Image src="/images/banner.full.attendance.png" alt="No Image" fill />
           <div className={styles.pagination}>
             <p>1/10</p>

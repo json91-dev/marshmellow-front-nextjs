@@ -15,6 +15,7 @@
   background-color: white;
   cursor: pointer;
   width: 100%;
+  flex-shrink: 0;
 
   & > p {
     font-size: 1.8rem;

@@ -24,7 +24,7 @@ export default function MarshmallowPage() {
         <div className={styles.currentMallow}>
           <div className={styles.left}>
             <Image src="/images/snack.gray.svg" alt="No Image" width={34} height={34} />
-            <div>{currencyResult?.data?.expiresThisMonthCurrencies?.marshmallowQuantity}개</div>
+            <div>{currencyResult?.data?.marshmallowQuantity}개</div>
           </div>
           <div className={styles.right} onClick={() => showMallowExpiredThisMonthModal(true)}>
             <div>당월 소멸 예정 마시멜로우 조회</div>
