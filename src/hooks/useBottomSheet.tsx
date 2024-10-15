@@ -40,7 +40,6 @@ export default function useBottomSheet({ bottomSheetRef, backDropRef, isShow, se
       bottomSheetRef.current.style.transform = `translateY(${bottomSheetHeight}px`;
       setTimeout(() => {
         setIsShow(false);
-        // router.back();
       }, 250);
     }
   };

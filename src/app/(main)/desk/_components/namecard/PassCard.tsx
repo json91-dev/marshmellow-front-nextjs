@@ -9,7 +9,7 @@ import AuthError from 'next-auth';
 export default function PassCard() {
   const [isAppleOS, setIsAppleOS] = useState<boolean>(null!);
 
-  const authLogin = useCallback(async (provider: string) => {
+  const authLogin = useCallback(async (provider: 'kakao' | 'google' | 'apple') => {
     try {
       if (provider === 'kakao') {
         await signIn('kakao');

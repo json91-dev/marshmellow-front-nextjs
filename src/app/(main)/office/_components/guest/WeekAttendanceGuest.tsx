@@ -8,9 +8,9 @@ import React from 'react';
 
 /** 비로그인 상태일때 Office => 근태관리 화면 **/
 export default function WeekAttendanceGuest() {
-  const { showOfficeNewbieSignupModal } = useModalStore();
+  const { showLoginModal } = useModalStore();
   const onClickAttendance = () => {
-    showOfficeNewbieSignupModal(true);
+    showLoginModal(true, 'Attendance');
   };
 
   const now = dayjs();

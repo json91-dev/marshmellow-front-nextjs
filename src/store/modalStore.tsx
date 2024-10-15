@@ -62,9 +62,6 @@ interface IdentifyModalState {
   showAddressDeleteModal(isShow: boolean): void;
 
   // 사무실 페이지 (office)
-  isShowOfficeNewbieSignupModal: boolean;
-  officeNewbieSignupStatus: 'work' | 'workEnd' | 'lunch' | 'idle';
-  showOfficeNewbieSignupModal(isShow: boolean, status?: string): void;
   isShowAttendanceCheckModal: boolean;
   isAttendanceCheckInOneMinute: boolean;
   showAttendanceCheckModal(isShow: boolean, isCheckOneMinute?: boolean): void;
@@ -115,6 +112,14 @@ interface IdentifyModalState {
   // 이벤트 모달
   isShowAttendanceEventInfoBottomSheet: boolean;
   showAttendanceEventInfoBottomSheet(isShow: boolean): void;
+
+  // 로그인 모달
+  isShowLoginModal: boolean;
+  loginModalStatus: 'Work' | 'WorkEnd' | 'Lunch' | 'Attendance' | 'EventFullAttendance' | 'Service';
+  showLoginModal(
+    isShow: boolean,
+    status?: 'Work' | 'WorkEnd' | 'Lunch' | 'Attendance' | 'EventFullAttendance' | 'Service',
+  ): void;
 }
 
 export const useModalStore = create(
@@ -225,15 +230,6 @@ export const useModalStore = create(
     },
 
     // 사무실 페이지
-    isShowOfficeNewbieSignupModal: false,
-    officeNewbieSignupStatus: 'work',
-    showOfficeNewbieSignupModal(isShow: boolean, status?: 'work' | 'workEnd' | 'lunch' | 'idle') {
-      set({
-        isShowOfficeNewbieSignupModal: isShow,
-        officeNewbieSignupStatus: status ? status : 'idle',
-      });
-    },
-
     isShowAttendanceCheckModal: false,
     isAttendanceCheckInOneMinute: false,
     showAttendanceCheckModal(isShow, isCheckInOneMinute = false) {
@@ -341,6 +337,18 @@ export const useModalStore = create(
     isShowAttendanceEventInfoBottomSheet: false,
     showAttendanceEventInfoBottomSheet(isShow) {
       set({ isShowAttendanceEventInfoBottomSheet: isShow });
+    },
+
+    isShowLoginModal: false,
+    loginModalStatus: 'Work',
+    showLoginModal(
+      isShow: boolean,
+      status?: 'Work' | 'WorkEnd' | 'Lunch' | 'Attendance' | 'EventFullAttendance' | 'Service',
+    ) {
+      set({
+        isShowLoginModal: isShow,
+        loginModalStatus: status ? status : 'Attendance',
+      });
     },
   })),
 );

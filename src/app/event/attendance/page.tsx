@@ -9,11 +9,15 @@ import useModalStore from '@/store/modalStore';
 const isCompleteAttendanceMission = false;
 
 export default function FullAttendanceEventPage() {
-  const { data: session } = useSession();
-  const { showAttendanceEventInfoBottomSheet } = useModalStore();
+  const { status: sessionStatus } = useSession();
+  const { showAttendanceEventInfoBottomSheet, showLoginModal } = useModalStore();
   const onClickEventJoin = useCallback(() => {
-    showAttendanceEventInfoBottomSheet(true);
-  }, []);
+    if (sessionStatus === 'unauthenticated') {
+      showLoginModal(true, 'Service');
+    } else {
+      showAttendanceEventInfoBottomSheet(true);
+    }
+  }, [sessionStatus]);
 
   return (
     <div className={styles.fullAttendanceEventPage}>

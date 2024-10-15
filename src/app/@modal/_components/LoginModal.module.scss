@@ -1,0 +1,272 @@
+
+@mixin modal() {
+  @include modalBoxShadow;
+  @include z-index-vars;
+  @include sizes;
+  position: absolute;
+  background: white;
+
+  z-index: var(--modalIndex);
+  width: 30rem;
+  padding: 2.4rem 1.6rem 2.4rem;
+  border: 1px solid black;
+  border-radius: 2rem;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.attendanceCheckModal {
+  @include modal;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #12171E;
+  }
+
+  .bonusTitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #BB4EF2;
+    margin-top: 0.8rem;
+    white-space: pre-wrap;
+    text-align: center;
+    line-height: 1.6rem;
+  }
+
+  .mallowImage {
+    margin-top: 1.2rem;
+  }
+
+  .description {
+    margin-top: 1.6rem;
+    text-align: center;
+    white-space: pre-wrap;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #3D4451;
+    line-height: 2rem;
+  }
+
+  .confirmButton {
+    width: 100%;
+    height: 4.8rem;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.8rem;
+    color: white;
+    font-size: 1.4rem;
+    margin-top: 2.4rem;
+    cursor: pointer;
+
+    @include activeScale(0.99);
+    @include activeOpacity(0.8);
+  }
+
+
+  .cancelButton {
+    width: 100%;
+    height: 4.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    font-size: 1.4rem;
+    margin-top: 1rem;
+    color: #5C6475;
+    cursor: pointer;
+
+    @include activeScale(0.99);
+    @include activeOpacity(0.8);
+  }
+}
+
+.attendanceCheckModal.bgPink {
+  background: #F5E4FF;
+}
+
+.officeNewbieSignupModal {
+  @include modal;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #12171E;
+  }
+
+  .characterImg {
+    margin-top: 1rem;
+  }
+
+  .description {
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 2rem;
+    color: #3D4451;
+    margin-top: 1rem;
+    text-align: center;
+    white-space: pre-wrap;
+  }
+
+  .laterButton {
+    @include activeScale();
+    @include activeOpacity();
+    color: #5C6475;
+    font-size: 1.4rem;
+    margin-top: 1.8rem;
+    cursor: pointer;
+  }
+
+  .loginButtons {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.6rem;
+    gap: 0.8rem;
+    .kakaoButton {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+
+      .button {
+        width: 100%;
+        max-width: 50rem;
+        height: 4.4rem;
+        display: flex;
+        justify-content: center;
+        background-color: #FFE611;
+        border-radius: 0.6rem;
+        align-items: center;
+        flex-direction: row;
+        @include activeScale;
+
+        .image {
+          position: relative;
+
+        }
+
+        p {
+          margin-left: 0.8rem;
+          font-size: 1.4rem;
+        }
+      }
+    }
+
+    .googleButton {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+
+      .button {
+        width: 100%;
+        max-width: 50rem;
+        height: 4.4rem;
+        display: flex;
+        justify-content: center;
+        background-color: white;
+        border-radius: 0.6rem;
+        align-items: center;
+        flex-direction: row;
+        border: 1px solid #D4DBE9;
+
+        @include activeScale;
+
+        .image {
+          position: relative;
+        }
+
+        p {
+          margin-left: 1rem;
+          font-size: 1.4rem;
+        }
+      }
+    }
+
+    .appleButton {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+
+      .button {
+        width: 100%;
+        max-width: 50rem;
+        height: 4.4rem;
+        display: flex;
+        justify-content: center;
+        background-color: white;
+        border-radius: 0.6rem;
+        align-items: center;
+        flex-direction: row;
+        border: 1px solid #D4DBE9;
+
+        @include activeScale;
+
+        .image {
+          position: relative;
+
+        }
+
+        p {
+          font-size: 1.4rem;
+          margin-left: 0.8rem;
+        }
+      }
+    }
+  }
+
+  .confirmButton {
+    width: 100%;
+    height: 4.8rem;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.8rem;
+    color: white;
+    font-size: 1.6rem;
+    margin-top: 2.4rem;
+    cursor: pointer;
+
+    @include activeScale(0.99);
+    @include activeOpacity(0.8);
+  }
+
+
+  .cancelButton {
+    width: 100%;
+    height: 4.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    font-size: 1.6rem;
+    margin-top: 1rem;
+    color: black;
+    cursor: pointer;
+
+    @include activeScale(0.99);
+    @include activeOpacity(0.8);
+  }
+}
+
+
+

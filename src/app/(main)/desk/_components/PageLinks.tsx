@@ -19,7 +19,7 @@ export default function PageLinks() {
         <Image src={'/images/arrow.right.svg'} width={24} height={24} alt="No Image" />
       </div>
 
-      <div className={styles.link}>
+      <div className={styles.link} onClick={() => router.push('/event')}>
         <div>이벤트</div>
         <Image src={'/images/arrow.right.svg'} width={24} height={24} alt="No Image" />
       </div>

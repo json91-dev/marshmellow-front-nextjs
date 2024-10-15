@@ -14,7 +14,6 @@ import useWorkWeekly from '@/api/queries/work/useWorkWeekly';
 export default function WeekAttendance() {
   const router = useRouter();
   const { data: session, status: sessionStatus } = useSession();
-  const { showOfficeNewbieSignupModal } = useModalStore();
   const { data: workWeeklyResult, isFetching, isLoading, isError } = useWorkWeekly(dayjs().format('YYYY-MM-DD'));
   const onClickAttendance = () => {
     router.push('/attendance');
