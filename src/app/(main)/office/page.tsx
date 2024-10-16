@@ -9,10 +9,12 @@ import MyMallowHeader from '@/app/(main)/office/_components/MyMallowHeader';
 import EnjoyItems from '@/app/(main)/office/_components/EnjoyItems';
 import useMemberProfile from '@/api/queries/member/useMemberProfile';
 import { useRouter } from 'next/navigation';
+import useRedirectOnAuthLogin from '@/hooks/useRedirectOnAuthLogin';
 
 export default function OfficePage() {
   const { data: result, status } = useMemberProfile();
   const router = useRouter();
+  useRedirectOnAuthLogin();
 
   return (
     <div className={styles.officePage}>

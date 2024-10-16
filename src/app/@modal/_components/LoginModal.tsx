@@ -8,7 +8,7 @@ import cx from 'classnames';
 import Image from 'next/image';
 import { isAppleDevice } from '@/utils/utils';
 import { useRouter } from 'next/navigation';
-import useAuthLogin from '@/hooks/useAuthLogin';
+import { signIn } from 'next-auth/react';
 
 export default function LoginModal() {
   const { isShowLoginModal, showLoginModal, loginModalStatus } = useModalStore();
@@ -16,15 +16,18 @@ export default function LoginModal() {
   const modalRef = React.useRef(null);
   const [isAppleOS, setIsAppleOS] = useState<boolean>(null!);
   const router = useRouter();
-  const { authLogin } = useAuthLogin();
 
   const onClickLaterButton = useCallback(() => {
+    showLoginModal(false);
     if (loginModalStatus === 'Attendance') {
       router.push('/attendance');
     }
-
-    showLoginModal(false);
   }, [loginModalStatus]);
+
+  const onClickSignIn = useCallback(async (provider: string) => {
+    showLoginModal(false);
+    await signIn(provider, { callbackUrl: '/office' });
+  }, []);
 
   useEffect(() => {
     const isAppleOS = isAppleDevice();
@@ -62,7 +65,7 @@ export default function LoginModal() {
           </div>
 
           <div className={styles.loginButtons}>
-            <div className={styles.kakaoButton} onClick={() => authLogin('kakao')}>
+            <div className={styles.kakaoButton} onClick={() => onClickSignIn('kakao')}>
               <div className={styles.button}>
                 <div className={styles.image}>
                   <Image width={18} height={18} src="/images/login.kakao.svg" alt="No Image" />
@@ -72,7 +75,7 @@ export default function LoginModal() {
             </div>
 
             {isAppleOS !== null && !isAppleOS ? (
-              <div className={styles.googleButton} onClick={() => authLogin('google')}>
+              <div className={styles.googleButton} onClick={() => onClickSignIn('google')}>
                 <div className={styles.button}>
                   <div className={styles.image}>
                     <Image width={18} height={18} src="/images/login.google.svg" alt="No Image" />
@@ -81,7 +84,7 @@ export default function LoginModal() {
                 </div>
               </div>
             ) : (
-              <div className={styles.appleButton} onClick={() => authLogin('apple')}>
+              <div className={styles.appleButton} onClick={() => onClickSignIn('apple')}>
                 <div className={styles.button}>
                   <div className={styles.image}>
                     <Image width={18} height={18} src="/images/login.apple.svg" alt="No Image" />

@@ -16,15 +16,15 @@ export const authOptions: NextAuthOptions = {
         secure: true,
       },
     },
-    callbackUrl: {
-      name: `__Secure-next-auth.callback-url`,
-      options: {
-        httpOnly: false,
-        sameSite: 'none',
-        path: '/',
-        secure: true,
-      },
-    },
+    // callbackUrl: {
+    //   name: `__Secure-next-auth.callback-url`,
+    //   options: {
+    //     httpOnly: false,
+    //     sameSite: 'none',
+    //     path: '/',
+    //     secure: true,
+    //   },
+    // },
   },
   secret: process.env.NEXTAUTH_SECRET,
   providers: [
@@ -87,7 +87,6 @@ export const authOptions: NextAuthOptions = {
 
       return token;
     },
-
     async session({ session, token }) {
       console.log('session 콜백 실행');
       if (session) {
