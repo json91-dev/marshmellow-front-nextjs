@@ -120,6 +120,9 @@ interface IdentifyModalState {
     isShow: boolean,
     status?: 'Work' | 'WorkEnd' | 'Lunch' | 'Attendance' | 'EventFullAttendance' | 'Service',
   ): void;
+
+  isShowRestoreWelcomeModal: boolean;
+  showRestoreWelcomeModal(isShow: boolean): void;
 }
 
 export const useModalStore = create(
@@ -349,6 +352,11 @@ export const useModalStore = create(
         isShowLoginModal: isShow,
         loginModalStatus: status ? status : 'Attendance',
       });
+    },
+
+    isShowRestoreWelcomeModal: false,
+    showRestoreWelcomeModal(isShow: boolean) {
+      set({ isShowRestoreWelcomeModal: isShow });
     },
   })),
 );

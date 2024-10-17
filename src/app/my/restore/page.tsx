@@ -31,6 +31,7 @@ export default function RestorePage() {
     mutate(session.deletionId, {
       onSuccess: () => {
         setLocalStorage('RESTORE_ACCOUNT_TOAST_SHOW', true);
+        setLocalStorage('RESTORE_ACCOUNT_DATE', dayjs(deleteDate).format('YYYY-MM-DD'));
         signOut({ callbackUrl: '/login' });
       },
 
