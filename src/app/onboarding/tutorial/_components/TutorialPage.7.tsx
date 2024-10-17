@@ -140,7 +140,7 @@ function WeekAttendance() {
           const dayIndex = dayjs().day() === 0 ? 6 : dayjs().day() - 1;
 
           return (
-            <div className={styles.col}>
+            <div className={styles.col} key={index}>
               {index === dayIndex && <Image src="/images/snack.gray.svg" alt="No Image" width={24} height={24} />}
               {index !== dayIndex && <Image src="/images/snack.gray.light.svg" alt="No Image" width={24} height={24} />}
               <p>{item}</p>

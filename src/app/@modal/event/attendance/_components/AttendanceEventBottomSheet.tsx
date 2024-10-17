@@ -3,28 +3,20 @@ import useModalStore from '@/store/modalStore';
 import { CSSTransition } from 'react-transition-group';
 import ModalBackdrop from '@/app/@modal/signup/identify/_components/ModalBackdrop';
 import styles from './AttendanceEventBottomSheet.module.scss';
-import React, { useCallback, useRef } from 'react';
+import React, { useRef } from 'react';
 import useBottomSheet from '@/hooks/useBottomSheet';
-import useMallowHistoryStore from '@/store/mallowHistoryStore';
 import Image from 'next/image';
 
 export default function AttendanceEventBottomSheet() {
   const { isShowAttendanceEventInfoBottomSheet, showAttendanceEventInfoBottomSheet } = useModalStore();
   const bottomSheetRef = useRef<HTMLDialogElement>(null!);
   const backDropRef = useRef<HTMLDivElement>(null!);
-  const { setHistoryFilterMonth, history } = useMallowHistoryStore();
-
   const { closeBottomSheet } = useBottomSheet({
     bottomSheetRef,
     backDropRef,
     isShow: isShowAttendanceEventInfoBottomSheet,
     setIsShow: showAttendanceEventInfoBottomSheet,
   });
-
-  const onClickFilterDate = useCallback((month: number) => {
-    closeBottomSheet();
-    setHistoryFilterMonth(month);
-  }, []);
 
   return (
     <>

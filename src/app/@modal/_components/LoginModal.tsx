@@ -7,7 +7,7 @@ import ModalBackdrop from '@/app/@modal/signup/identify/_components/ModalBackdro
 import cx from 'classnames';
 import Image from 'next/image';
 import { isAppleDevice } from '@/utils/utils';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
 
 export default function LoginModal() {
@@ -16,6 +16,7 @@ export default function LoginModal() {
   const modalRef = React.useRef(null);
   const [isAppleOS, setIsAppleOS] = useState<boolean>(null!);
   const router = useRouter();
+  const pathname = usePathname();
 
   const onClickLaterButton = useCallback(() => {
     showLoginModal(false);
@@ -24,10 +25,17 @@ export default function LoginModal() {
     }
   }, [loginModalStatus]);
 
-  const onClickSignIn = useCallback(async (provider: string) => {
-    showLoginModal(false);
-    await signIn(provider, { callbackUrl: '/office' });
-  }, []);
+  const onClickSignIn = useCallback(
+    async (provider: string) => {
+      showLoginModal(false);
+      if (pathname === '/event/attendance') {
+        await signIn(provider, { callbackUrl: '/event/attendance' });
+        return;
+      }
+      await signIn(provider, { callbackUrl: '/office' });
+    },
+    [pathname],
+  );
 
   useEffect(() => {
     const isAppleOS = isAppleDevice();

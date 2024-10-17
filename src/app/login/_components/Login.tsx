@@ -15,7 +15,7 @@ export default memo(function Login() {
   const router = useRouter();
   const isRestoreAccountToastShow = getLocalStorage('RESTORE_ACCOUNT_TOAST_SHOW');
   const { openToast } = useToastStore();
-  useRedirectOnAuthLogin('/desk'); // 로그인 후 적절한 페이지로 리다이렉션 처리
+  useRedirectOnAuthLogin('/office'); // 로그인 후 적절한 페이지로 리다이렉션 처리
 
   useEffect(() => {
     const isAppleOS = isAppleDevice();

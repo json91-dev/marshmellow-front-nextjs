@@ -6,10 +6,14 @@ import TopNavigationWithCancel from '@/components/nav/TopNavigationWithCancel';
 import cx from 'classnames';
 import { useSession } from 'next-auth/react';
 import useModalStore from '@/store/modalStore';
-const isCompleteAttendanceMission = false;
+import useMemberProfile from '@/api/queries/member/useMemberProfile';
+
+const isCompleteAttendanceMission = false; /** TODO: 서버에서 만든 조건 알아오기 **/
 
 export default function FullAttendanceEventPage() {
   const { status: sessionStatus } = useSession();
+  const { data: profileResult } = useMemberProfile();
+  const isLoggedIn = sessionStatus === 'authenticated';
   const { showAttendanceEventInfoBottomSheet, showLoginModal } = useModalStore();
   const onClickEventJoin = useCallback(() => {
     if (sessionStatus === 'unauthenticated') {
@@ -84,8 +88,14 @@ export default function FullAttendanceEventPage() {
           <div className={styles.messageBox}>
             <p className={styles.title}>한 달 동안 업무 3개를 모두 완수해서 자동 참여 완료되었어요!</p>
           </div>
+        ) : isLoggedIn ? (
+          <div className={styles.messageBox}>
+            <p className={styles.title}>{`${profileResult?.data?.profile.nickname}님, 만근 이벤트에 도전해보세요!`}</p>
+          </div>
         ) : (
-          <></>
+          <div className={styles.messageBox}>
+            <p className={styles.title}>입사 후 만근 이벤트에 도전해보세요!</p>
+          </div>
         )}
 
         <div
@@ -96,11 +106,13 @@ export default function FullAttendanceEventPage() {
             <>
               <p>자동 참여 완료</p>
             </>
-          ) : (
+          ) : isLoggedIn ? (
             <>
               <p>참여 조건 알아보기</p>
               <Image src="/images/arrow.right.white.svg" alt="No Image" width={24} height={24} />
             </>
+          ) : (
+            <p>입사 후 참여 조건 알아보기</p>
           )}
         </div>
       </footer>
