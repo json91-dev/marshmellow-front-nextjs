@@ -11,7 +11,14 @@ export default function SignupSubmitCompletePage() {
     <div className={styles.submitCompletePage}>
       <div className={styles.title}>지원 완료</div>
       <div className={styles.header}>
-        <div className={styles.headerTitle}>마시멜로우 채용팀</div>
+        <div className={styles.headerTitle}>
+          <div className={styles.logo}>
+            <Image src="/images/logo.svg" alt="No Image" fill />
+          </div>
+
+          <p>마시멜로우 채용팀</p>
+        </div>
+
         <div className={styles.headerImage}>
           <Image src="/images/document.svg" alt="No Image" width={56} height={68} />
         </div>

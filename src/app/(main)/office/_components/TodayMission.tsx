@@ -26,7 +26,7 @@ export default function TodayMission() {
   const { data: profileResult, isLoading: isLoadingProfile, isFetching: isFetchingProfile } = useMemberProfile();
   const { data: workResult, isLoading: isLoadingWork, isFetching: isFetchingWork } = useWorkToday();
   const { time: currentTimeEveryMinute } = useMinuteUpdater();
-  const { data: session, status: sessionStatus } = useSession();
+  const { status: sessionStatus } = useSession();
 
   const todayDate = useMemo(() => {
     return formatDateToTodayDate(currentTimeEveryMinute);
@@ -98,10 +98,10 @@ export default function TodayMission() {
           const { quantity, state: missionState, workTimeRange, name } = item;
 
           return (
-            <div key={index} className={cx(styles.row, item.active && styles.active)}>
+            <div key={index} className={cx(styles.missionRow, item.active && styles.active)}>
               <p className={styles.name}>{name}</p>
               <p className={styles.time}>{workTimeRange}</p>
-              <MissionBox state={missionState} quantity={quantity} />
+              <MissionBox state={missionState} quantity={quantity} active={item.active} />
             </div>
           );
         })}
@@ -114,25 +114,27 @@ export default function TodayMission() {
 // | NotYet   | 아직 수행할 미션이 아님 |
 // | Complete | 출석 성공         |
 // | Failed   | 출석 실패         |
-type missionBoxProps = {
+type mallowBoxProps = {
   state: 'Soon' | 'NotYet' | 'Complete' | 'Failed';
   quantity: number;
+  active: boolean;
 };
 
-function MissionBox({ state, quantity }: missionBoxProps) {
+function MissionBox({ state, quantity, active }: mallowBoxProps) {
   if (state === 'Complete' || state === 'Failed') {
     if (quantity === 0) {
       return (
-        <div className={cx(styles.missionBox, styles.failed)}>
+        <div className={cx(styles.mallowBox, active && styles.active, styles.failed)}>
           <Image src="/images/snack.gray.svg" alt="No Image" width={20} height={20} />
-          <p>+{quantity}</p>
+          <p className={styles.mallowCount}>+{quantity}</p>
         </div>
       );
     } else {
+      // Complete 상태일때
       return (
-        <div className={cx(styles.missionBox, styles.success)}>
+        <div className={cx(styles.mallowBox, active && styles.active, styles.success)}>
           <Image src="/images/snack.gray.svg" alt="No Image" width={20} height={20} />
-          <p>+{quantity}</p>
+          <p className={styles.mallowCount}>+{quantity}</p>
         </div>
       );
     }
@@ -140,9 +142,9 @@ function MissionBox({ state, quantity }: missionBoxProps) {
 
   if (state === 'NotYet' || state === 'Soon') {
     return (
-      <div className={styles.missionBox}>
+      <div className={cx(styles.mallowBox, active && styles.active)}>
         <Image src="/images/snack.gray.svg" alt="No Image" width={20} height={20} />
-        <p>+?</p>
+        <p className={styles.mallowCount}>+?</p>
       </div>
     );
   }

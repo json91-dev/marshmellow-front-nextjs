@@ -62,7 +62,9 @@ export default function PassCard() {
           </div>
         )}
       </div>
-      <div className={styles.logo} />
+      <div className={styles.logo}>
+        <Image src="/images/logo.svg" alt="No Image" fill />
+      </div>
     </div>
   );
 }

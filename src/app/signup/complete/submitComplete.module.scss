@@ -32,10 +32,27 @@
   }
 
   .headerTitle {
-    font-size: 2.4rem;
-    color: white;
-    font-weight: bold;
-    margin-bottom: 0.2rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 1.1rem;
+
+    p {
+      font-size: 2.4rem;
+      color: white;
+      font-weight: bold;
+      margin-bottom: 0.2rem;
+    }
+
+    .logo {
+      width: 10rem;
+      height: 2.4rem;
+      position: relative;
+      margin-left: -0.5rem;
+    }
   }
 
   .headerImage {

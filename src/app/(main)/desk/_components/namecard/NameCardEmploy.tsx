@@ -46,7 +46,9 @@ export default function NameCardEmploy() {
         </div>
       </div>
 
-      <div className={styles.logo}></div>
+      <div className={styles.logo}>
+        <Image src="/images/logo.svg" alt="No Image" fill />
+      </div>
     </div>
   );
 }

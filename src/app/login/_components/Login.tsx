@@ -46,7 +46,7 @@ export default memo(function Login() {
           <GoogleLoginButton style={{ marginTop: '1rem' }} />
         )}
 
-        <div className={styles.lookAroundButton} onClick={() => router.push('/desk')}>
+        <div className={styles.lookAroundButton} onClick={() => router.push('/office')}>
           <p>마시멜로우 둘러보기</p>
         </div>
       </>

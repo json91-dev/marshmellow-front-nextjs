@@ -32,7 +32,6 @@ export default function NicknameChangeModal() {
   const backdropRef = React.useRef(null);
   const modalRef = React.useRef(null);
 
-  console.log(errors);
   /** 닉네임 중복 확인 이후 서버 응답 처리 구현 **/
   const onClickNicknameCheck = useCallback(async () => {
     try {

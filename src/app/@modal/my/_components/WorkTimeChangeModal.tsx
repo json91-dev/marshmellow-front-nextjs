@@ -24,7 +24,12 @@ export default function WorkTimeChangeModal() {
         queryClient.invalidateQueries({ queryKey: ['work', 'today'] }).then();
         queryClient.invalidateQueries({ queryKey: ['me', 'profile'] }).then();
       },
-      onError: () => {
+      onError: (error) => {
+        console.log(error);
+        if (error) {
+          openToast(error.message);
+          return;
+        }
         openToast('근무시간 변경에 실패했어요.');
       },
       onSettled: () => {

@@ -47,7 +47,9 @@ export default function Tutorial1({ setTutorialStep }: Prop) {
 function MyMallowHeader() {
   return (
     <div className={styles.myMallowHeaderArea}>
-      <div className={styles.logo}></div>
+      <div className={styles.logo}>
+        <Image src="/images/logo.svg" alt="No Image" fill />
+      </div>
       <div className={styles.myMallow}>
         <Image src="/images/snack.gray.svg" alt="No Image" width={24} height={24} />
         <p>0</p>

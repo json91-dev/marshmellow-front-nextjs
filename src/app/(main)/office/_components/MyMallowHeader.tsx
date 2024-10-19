@@ -22,7 +22,9 @@ export default function MyMallowHeader() {
 
   return (
     <div className={styles.myMallowArea}>
-      <div className={styles.logo}></div>
+      <div className={styles.logo}>
+        <Image src="/images/logo.svg" alt="No Image" fill />
+      </div>
       <div className={styles.myMallow} onClick={onClickMallowIcon}>
         <Image src="/images/snack.gray.svg" alt="No Image" width={24} height={24} />
         <p>{currencyResult?.data ? currencyResult.data.marshmallowQuantity : 0}</p>

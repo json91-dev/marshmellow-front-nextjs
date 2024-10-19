@@ -17,7 +17,7 @@
     .logo {
       width: 10rem;
       height: 2.4rem;
-      background-color: #E5E9F2;
+      position: relative;
     }
 
     .myMallow {
@@ -115,8 +115,8 @@
           display: flex;
           gap: 1rem;
           align-items: center;
+          color: #1C222B;
 
-            color: #1C222B;
           .title {
             font-size: 1.6rem;
             font-weight: bold;
@@ -137,7 +137,7 @@
           gap: 0.4rem;
           margin-top: 0.8rem;
 
-          .row {
+          .missionRow {
             display: flex;
             align-items: center;
 
@@ -156,42 +156,6 @@
               font-weight: 600;
             }
 
-            .missionBox {
-              width: 5.2rem;
-              display: flex;
-              justify-content: space-evenly;
-              align-items: center;
-              padding: 0.3rem 0.6rem;
-              border: 1px solid #D4DBE9;
-              border-radius: 0.6rem;
-
-              img {
-              }
-
-              p {
-                color: #ACB6CA;
-                font-size: 1.2rem;
-                font-weight: 600;
-              }
-
-              &.success {
-                background-color: #BB4EF2 !important;
-                border-color: #BB4EF2 !important;
-
-                p {
-                  color: white !important;
-                }
-              }
-
-              &.failed {
-                background-color: #E5E9F2 !important;
-                border-color: #E5E9F2 !important;
-
-                p {
-                  color: #4D5564 !important;
-                }
-              }
-            }
 
             &.active {
               background-color: #F5E4FF;
@@ -205,16 +169,54 @@
 
               }
 
-              .missionBox {
-                border-color: #BB4EF2 !important;
 
-                p {
-                  color: #BB4EF2 !important;
-                }
-              }
+            }
+          }
+        }
+
+        .mallowBox {
+          width: 5.3rem;
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          padding: 0.3rem 0.6rem;
+          border: 1px solid #D4DBE9;
+          border-radius: 0.6rem;
+
+          .mallowCount {
+            color: #ACB6CA;
+            font-size: 1.2rem;
+            font-weight: 600;
+          }
+
+          &.success {
+            //background-color: #F5E4FF !important;
+            background-color: #BB4EF2 !important;
+            border-color: #BB4EF2 !important;
+
+            // 성공하면 흰색
+            p.mallowCount {
+              color: white !important;
             }
           }
 
+          &.failed {
+            background-color: #E5E9F2 !important;
+            border-color: #E5E9F2 !important;
+
+            p.mallowCount {
+              color: #4D5564 !important;
+            }
+          }
+
+          &.active {
+            border-color: #BB4EF2 !important;
+
+            // 현재 Row가 Active 되었을때 보라색
+            p.mallowCount {
+              color: #BB4EF2;
+            }
+          }
         }
       }
     }

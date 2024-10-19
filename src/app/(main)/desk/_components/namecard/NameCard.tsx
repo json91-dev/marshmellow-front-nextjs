@@ -11,7 +11,7 @@ import useMemberProfile from '@/api/queries/member/useMemberProfile';
 export default function NameCard() {
   const { data: session, status: sessionStatus } = useSession();
   const { data: result, status } = useMemberProfile();
-  const router = useRouter();
+  console.log(result?.data.grade);
 
   useEffect(() => {
     if (sessionStatus === 'authenticated') {
@@ -21,13 +21,6 @@ export default function NameCard() {
         console.log('타입이 존재하지 않습니다. (로그인 실패)');
         return;
       }
-
-      /** TODO: 로그인 상태에 따른 카드 분기 **/
-      // if (type === 'NEED_IDENTITY' || type === 'NEED_REGISTER') {
-      //   router.replace('/login');
-      // } else if (type === 'SIGNIN_SUCCESS') {
-      //   console.log('로그인 성공');
-      // }
     } else {
       console.log(status);
     }

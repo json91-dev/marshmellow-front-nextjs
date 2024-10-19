@@ -18,7 +18,12 @@ export default function useWorkTimeChangeMutation() {
     if (response.ok) {
       return response.json();
     } else {
-      throw new Error('근무시간 변경 요청 실패');
+      const result = await response.json();
+      if (result) {
+        throw new Error(result.message);
+      } else {
+        throw new Error('에러 발생');
+      }
     }
   };
 
