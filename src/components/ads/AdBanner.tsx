@@ -9,10 +9,12 @@ type AdBannerTypes = {
 
 export default function AdBanner({ dataAdSlot, dataAdFormat, dataFullWidthResponsive }: AdBannerTypes) {
   useEffect(() => {
-    try {
-      ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
-    } catch (error: any) {
-      console.log(error.message);
+    if (window) {
+      try {
+        ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
+      } catch (error: any) {
+        console.log(error.message);
+      }
     }
   }, []);
 
