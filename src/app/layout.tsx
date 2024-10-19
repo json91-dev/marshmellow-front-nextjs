@@ -19,11 +19,16 @@ import localFont from 'next/font/local';
 import OnboardingGuideModal from '@/app/_components/onboarding/OnboardingGuideModal';
 import { MSWComponent } from '@/mocks/MSWComponent';
 import LoadingOverlaySpinner from '@/components/common/LoadingOverlaySpinner';
+import AdSense from '@/components/ads/AdSense';
 const pretendard = localFont({ src: '../font/PretendardVariable.woff2' });
 
 export default function RootLayout({ children, modal }: Props) {
   return (
     <html lang="en">
+      <head>
+        <AdSense pId={'6947622361382868'} />
+      </head>
+
       <body className={pretendard.className}>
         <MSWComponent>
           <AuthSession>

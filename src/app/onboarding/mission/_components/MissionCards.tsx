@@ -3,6 +3,7 @@ import React from 'react';
 import styles from '../page.module.scss';
 import cx from 'classnames';
 import { OnboardingMissionState } from '@/api/queries/onboarding/useOnboardingMissionStatus';
+import AdBanner from '@/components/ads/AdBanner';
 
 type PropTypes = {
   onboardingMissionStates: OnboardingMissionState[];
@@ -14,7 +15,11 @@ export function MissionCards({ onboardingMissionStates }: PropTypes) {
       {onboardingMissionStates.map((item, index) => {
         return (
           <>
-            {index === 3 && <div className={styles.banner}>적응형 배너</div>}
+            {index === 3 && (
+              <div className={styles.banner}>
+                <AdBanner dataAdSlot={'9645025573'} dataAdFormat={'auto'} dataFullWidthResponsive={true} />
+              </div>
+            )}
             <div className={cx(styles.missionCard, item.isComplete && styles.complete)}>
               <div className={styles.missionInfo}>
                 <p className={styles.title}>{item.missionName}</p>

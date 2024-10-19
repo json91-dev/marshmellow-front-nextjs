@@ -8,6 +8,7 @@ import FilterState from '@/app/my/mallow/_components/FilterState';
 import useMallowHistoryStore from '@/store/mallowHistoryStore';
 import MallowHistoryItems from '@/app/my/mallow/_components/MallowHistoryItems';
 import useMemberCurrency from '@/api/queries/member/useMemberCurrency';
+import AdBanner from '@/components/ads/AdBanner';
 
 export type MallowStateType = 'ALL' | 'GAIN' | 'USE' | 'EXPIRED';
 
@@ -34,7 +35,9 @@ export default function MarshmallowPage() {
 
         <div className={styles.horizontalLine}></div>
         <FilterState />
-        <div className={styles.banner}>적응형 배너</div>
+        <div className={styles.banner}>
+          <AdBanner dataAdSlot={'9645025573'} dataAdFormat={'auto'} dataFullWidthResponsive={true} />
+        </div>
 
         <div className={styles.filterDate} onClick={() => showMallowFilterDateBottomSheet(true)}>
           <div>{history.filterMonth}개월</div>
@@ -42,7 +45,9 @@ export default function MarshmallowPage() {
         </div>
 
         <MallowHistoryItems />
-        <div className={styles.banner}>적응형 배너</div>
+        <div className={styles.banner}>
+          <AdBanner dataAdSlot={'9645025573'} dataAdFormat={'auto'} dataFullWidthResponsive={true} />
+        </div>
       </div>
     </div>
   );

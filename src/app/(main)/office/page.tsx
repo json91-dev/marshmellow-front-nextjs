@@ -12,7 +12,7 @@ import { useRouter } from 'next/navigation';
 import useRedirectOnAuthLogin from '@/hooks/useRedirectOnAuthLogin';
 
 export default function OfficePage() {
-  const { data: result, status } = useMemberProfile();
+  const { data: result } = useMemberProfile();
   const router = useRouter();
   useRedirectOnAuthLogin();
 

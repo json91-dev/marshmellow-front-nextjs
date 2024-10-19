@@ -6,6 +6,7 @@ import React from 'react';
 import BottomInfo from '@/app/attendance/_components/BottomInfo';
 import dayjs from 'dayjs';
 import AttendanceAlarmSetting from '@/app/attendance/_components/AttendanceAlarmSetting';
+import AdBanner from '@/components/ads/AdBanner';
 
 export default function AttendancePage() {
   return (
@@ -42,7 +43,7 @@ export default function AttendancePage() {
       </div>
 
       <div className={styles.banner}>
-        <p>적응형 배너</p>
+        <AdBanner dataAdSlot={'9645025573'} dataAdFormat={'auto'} dataFullWidthResponsive={true} />
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import AlarmCard from '@/app/(main)/pantry/_components/AlarmCard';
+import AdBanner from '@/components/ads/AdBanner';
 
 export default function PantryPage() {
   return (
@@ -32,7 +33,9 @@ export default function PantryPage() {
         </div>
         <AlarmCard />
       </div>
-      {/*<div className={styles.banner}>적응형 배너</div>*/}
+      <div className={styles.banner}>
+        <AdBanner dataAdSlot={'9645025573'} dataAdFormat={'auto'} dataFullWidthResponsive={true} />
+      </div>
     </div>
   );
 }

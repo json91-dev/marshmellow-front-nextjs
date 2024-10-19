@@ -3,6 +3,7 @@ import React from 'react';
 import styles from './page.module.scss';
 import TopNavigationWithMallow from '@/components/nav/TopNavigationWithMallow';
 import Link from 'next/link';
+import AdBanner from '@/components/ads/AdBanner';
 
 export default function RecreationPage() {
   return (
@@ -18,14 +19,18 @@ export default function RecreationPage() {
         </div>
 
         <div className={styles.headerImage}></div>
-        <div className={styles.banner}>적응형 배너</div>
+        <div className={styles.banner}>
+          <AdBanner dataAdSlot={'9645025573'} dataAdFormat={'auto'} dataFullWidthResponsive={true} />
+        </div>
         <Link href={'/recreation/luckydraw'}>
           <div className={styles.luckyDrawLink}>
             <Image src="/images/recreation.luckdraw.card.svg" alt="No Image" fill />
           </div>
         </Link>
         <Image src="/images/recreation.new.card.svg" alt="No Image" width={320} height={155} />
-        <div className={styles.banner}>적응형 배너</div>
+        <div className={styles.banner}>
+          <AdBanner dataAdSlot={'9645025573'} dataAdFormat={'auto'} dataFullWidthResponsive={true} />
+        </div>
       </div>
     </div>
   );
