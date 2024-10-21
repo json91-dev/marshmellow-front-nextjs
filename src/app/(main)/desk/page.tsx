@@ -16,8 +16,8 @@ export default function DeskPage() {
       <div className={styles.main}>
         <NameCard />
         <TicketLinks />
-        <div className={styles.banner2}>
-          <AdBanner dataAdSlot={'3341770865'} dataAdFormat={'auto'} dataFullWidthResponsive={true} />
+        <div className={styles.banner}>
+          <AdBanner dataAdSlot={'3341770865'} dataFullWidthResponsive={true} />
         </div>
         <PageLinks />
       </div>

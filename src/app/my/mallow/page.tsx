@@ -36,7 +36,7 @@ export default function MarshmallowPage() {
         <div className={styles.horizontalLine}></div>
         <FilterState />
         <div className={styles.banner}>
-          <AdBanner dataAdSlot={'3341770865'} dataAdFormat={'auto'} dataFullWidthResponsive={true} />
+          <AdBanner dataAdSlot={'3341770865'} dataFullWidthResponsive={true} />
         </div>
 
         <div className={styles.filterDate} onClick={() => showMallowFilterDateBottomSheet(true)}>
@@ -46,7 +46,7 @@ export default function MarshmallowPage() {
 
         <MallowHistoryItems />
         <div className={styles.banner}>
-          <AdBanner dataAdSlot={'3341770865'} dataAdFormat={'auto'} dataFullWidthResponsive={true} />
+          <AdBanner dataAdSlot={'3341770865'} dataFullWidthResponsive={true} />
         </div>
       </div>
     </div>
