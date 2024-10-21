@@ -20,7 +20,7 @@ export default function RecreationPage() {
 
         <div className={styles.headerImage}></div>
         <div className={styles.banner}>
-          <AdBanner dataAdSlot={'9645025573'} dataAdFormat={'auto'} dataFullWidthResponsive={true} />
+          <AdBanner dataAdSlot={'3341770865'} dataAdFormat={'auto'} dataFullWidthResponsive={true} />
         </div>
         <Link href={'/recreation/luckydraw'}>
           <div className={styles.luckyDrawLink}>
@@ -29,7 +29,7 @@ export default function RecreationPage() {
         </Link>
         <Image src="/images/recreation.new.card.svg" alt="No Image" width={320} height={155} />
         <div className={styles.banner}>
-          <AdBanner dataAdSlot={'9645025573'} dataAdFormat={'auto'} dataFullWidthResponsive={true} />
+          <AdBanner dataAdSlot={'3341770865'} dataAdFormat={'auto'} dataFullWidthResponsive={true} />
         </div>
       </div>
     </div>
