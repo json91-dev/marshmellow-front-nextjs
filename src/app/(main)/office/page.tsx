@@ -10,10 +10,15 @@ import EnjoyItems from '@/app/(main)/office/_components/EnjoyItems';
 import useMemberProfile from '@/api/queries/member/useMemberProfile';
 import { useRouter } from 'next/navigation';
 import useRedirectOnAuthLogin from '@/hooks/useRedirectOnAuthLogin';
+import { useSession } from 'next-auth/react';
+import TodayMissionGuest from '@/app/(main)/office/_components/guest/TodayMissionGuest';
+import WeekAttendanceGuest from '@/app/(main)/office/_components/guest/WeekAttendanceGuest';
+import TimerMissionCheckGuest from '@/app/(main)/office/_components/guest/TimerMissionCheckGuest';
 
 export default function OfficePage() {
   const { data: result } = useMemberProfile();
   const router = useRouter();
+  const { status: sessionStatus } = useSession();
   useRedirectOnAuthLogin();
 
   return (
@@ -33,14 +38,14 @@ export default function OfficePage() {
             <div className={styles.name}>{`${result?.data ? result?.data?.profile?.name : '마시멜로우'}`}</div>
             <Image src="/images/mallow.happy.v2.svg" alt="No Image" width={120} height={102} />
           </div>
-          <TodayMission />
+          {sessionStatus === 'unauthenticated' ? <TodayMissionGuest /> : <TodayMission />}
         </div>
-        <WeekAttendance />
+        {sessionStatus === 'unauthenticated' ? <WeekAttendanceGuest /> : <WeekAttendance />}
 
         <EnjoyItems />
       </div>
 
-      <TimerMissionCheck />
+      {sessionStatus === 'unauthenticated' ? <TimerMissionCheckGuest /> : <TimerMissionCheck />}
     </div>
   );
 }

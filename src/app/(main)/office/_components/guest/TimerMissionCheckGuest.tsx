@@ -10,12 +10,14 @@ import dayjs from 'dayjs';
 import isBetween from 'dayjs/plugin/isBetween';
 import duration from 'dayjs/plugin/duration';
 import useModalStore from '@/store/modalStore';
+import { useClick } from '@floating-ui/react';
 import useWorkToday from '@/api/queries/work/useWorkToday';
+import useMemberProfile from '@/api/queries/member/useMemberProfile';
 import { CheckActiveButtonSVG } from '@/components/common/CheckActiveButtonSvg';
 dayjs.extend(isBetween);
 dayjs.extend(duration);
 
-export default function TimerMissionCheck() {
+export default function TimerMissionCheckGuest() {
   const { data: workResult } = useWorkToday();
 
   const { time } = useSecondUpdater();

@@ -17,7 +17,7 @@ export function MissionCards({ onboardingMissionStates }: PropTypes) {
           <>
             {index === 3 && (
               <div className={styles.banner}>
-                <AdBanner dataAdSlot={'3341770865'} dataFullWidthResponsive={true} />
+                <AdBanner dataAdSlot={'3341770865'} dataFullWidthResponsive={false} dataAdFormat={'inline'} />
               </div>
             )}
             <div className={cx(styles.missionCard, item.isComplete && styles.complete)}>

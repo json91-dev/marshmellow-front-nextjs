@@ -4,8 +4,6 @@ import React from 'react';
 import cx from 'classnames';
 import dayjs from 'dayjs';
 import { findMonday, findSunday, formatDateToTodayDate } from '@/utils/utils';
-import { CheckActiveButtonSVG } from '@/app/(main)/office/_components/TimerMissionCheck';
-import { useRouter } from 'next/navigation';
 
 type Prop = {
   setTutorialStep: Function;

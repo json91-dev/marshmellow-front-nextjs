@@ -34,7 +34,7 @@ export default function PantryPage() {
         <AlarmCard />
       </div>
       <div className={styles.banner}>
-        <AdBanner dataAdSlot={'3341770865'} dataFullWidthResponsive={true} />
+        <AdBanner dataAdSlot={'3341770865'} dataFullWidthResponsive={false} dataAdFormat={'inline'} />
       </div>
     </div>
   );

@@ -13,26 +13,18 @@ import useWorkWeekly from '@/api/queries/work/useWorkWeekly';
 /** 로그인 상태일때 Office => 근태관리 화면 **/
 export default function WeekAttendance() {
   const router = useRouter();
-  const { data: session, status: sessionStatus } = useSession();
   const { data: workWeeklyResult, isFetching, isLoading, isError } = useWorkWeekly(dayjs().format('YYYY-MM-DD'));
   const onClickAttendance = () => {
     router.push('/attendance');
   };
 
-  if (isFetching || isLoading || sessionStatus === 'loading') {
-    return null;
-  }
-
-  if (sessionStatus === 'unauthenticated') {
-    return <WeekAttendanceGuest />;
-  }
-
   const now = dayjs();
   const mondayTime = findMonday(now);
   const sundayTime = findSunday(now);
   const daysArray = ['월', '화', '수', '목', '금', '토', '일'];
+  console.log(workWeeklyResult?.data);
 
-  const weekMissionData = workWeeklyResult.data.map((item: any, index: any) => {
+  const weekMissionData = workWeeklyResult?.data.map((item: any, index: any) => {
     return {
       ...item,
       dayString: daysArray[index],
@@ -51,7 +43,7 @@ export default function WeekAttendance() {
       </div>
 
       <div className={styles.weekMissions}>
-        {weekMissionData.map((item: any, index: any) => {
+        {weekMissionData?.map((item: any, index: any) => {
           const { completeCount, dayString } = item;
           const dayIndex = dayjs().day() === 0 ? 6 : dayjs().day() - 1;
 

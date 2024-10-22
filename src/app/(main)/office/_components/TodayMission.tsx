@@ -26,7 +26,6 @@ export default function TodayMission() {
   const { data: profileResult, isLoading: isLoadingProfile, isFetching: isFetchingProfile } = useMemberProfile();
   const { data: workResult, isLoading: isLoadingWork, isFetching: isFetchingWork } = useWorkToday();
   const { time: currentTimeEveryMinute } = useMinuteUpdater();
-  const { status: sessionStatus } = useSession();
 
   const todayDate = useMemo(() => {
     return formatDateToTodayDate(currentTimeEveryMinute);
@@ -77,14 +76,6 @@ export default function TodayMission() {
       },
     ];
   }, [workResult, profileResult, currentTimeEveryMinute]);
-
-  if (sessionStatus === 'unauthenticated') {
-    return <TodayMissionGuest />;
-  }
-
-  if (isLoadingProfile || isFetchingProfile || isLoadingWork || isFetchingWork || sessionStatus === 'loading') {
-    return null;
-  }
 
   return (
     <div className={styles.todayMission}>
